@@ -4,6 +4,7 @@ using UnityEngine;
 public class BallCollision : MonoBehaviour
 {
     public GameObject gameOver;
+    public GameObject ball;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -12,6 +13,7 @@ public class BallCollision : MonoBehaviour
             StartCoroutine(GameOverCoroutine());
         }
     }
+
     IEnumerator GameOverCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
