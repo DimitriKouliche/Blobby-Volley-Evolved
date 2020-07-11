@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode UserKeyDownPrimary = KeyCode.S;
     public KeyCode UserKeyLeftPrimary = KeyCode.A;
     public KeyCode UserKeyRightPrimary = KeyCode.D;
+    public bool isFacingRight = true;
 
     bool facingRight = true;
     float moveDirection = 0;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     // Check every collider except Player and Ignore Raycast
     LayerMask layerMask = ~(1 << 2 | 1 << 8);
     Transform t;
+    int faceDirection = 1;
 
 
     // Use this for initialization
@@ -35,6 +37,11 @@ public class PlayerController : MonoBehaviour
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
         gameObject.layer = 8;
+        if(!isFacingRight)
+        {
+            faceDirection = -1;
+        }
+
     }
 
     // Update is called once per frame
@@ -59,12 +66,12 @@ public class PlayerController : MonoBehaviour
             if (moveDirection > 0 && !facingRight)
             {
                 facingRight = true;
-                t.localScale = new Vector3(Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
+                t.localScale = new Vector3(faceDirection * Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
             }
             if (moveDirection < 0 && facingRight)
             {
                 facingRight = false;
-                t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
+                t.localScale = new Vector3(-faceDirection * Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
             }
         }
 

@@ -8,7 +8,12 @@ public class BallCollision : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Ground")
+        if(collision.gameObject.name == "Left Ground")
+        {
+            StartCoroutine(GameOverCoroutine());
+        }
+
+        if(collision.gameObject.name == "Right Ground")
         {
             StartCoroutine(GameOverCoroutine());
         }
