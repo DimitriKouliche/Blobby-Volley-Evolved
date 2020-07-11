@@ -52,7 +52,7 @@ public class GameLogics : MonoBehaviour
     {
         ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         ball.GetComponent<Rigidbody2D>().angularVelocity = 0;
-        if (winner == "Blob 1")
+        if (winner == "Blob 2")
         {
             ball.transform.position = new Vector3(-ballPosition.x, ballPosition.y);
         } else

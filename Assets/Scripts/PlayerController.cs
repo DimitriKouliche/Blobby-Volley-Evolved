@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public KeyCode UserKeyRightPrimary = KeyCode.D;
     public bool isFacingRight = true;
 
-    bool facingRight = true;
     float moveDirection = 0;
     bool isGrounded = false;
     Rigidbody2D r2d;
@@ -23,7 +22,6 @@ public class PlayerController : MonoBehaviour
     // Check every collider except Player and Ignore Raycast
     LayerMask layerMask = ~(1 << 2 | 1 << 8);
     Transform t;
-    int faceDirection = 1;
     float jumpSpeed = 0;
     bool chargingJump = false;
 
@@ -37,12 +35,7 @@ public class PlayerController : MonoBehaviour
         r2d.freezeRotation = true;
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
-        facingRight = t.localScale.x > 0;
         gameObject.layer = 8;
-        if(!isFacingRight)
-        {
-            faceDirection = -1;
-        }
 
     }
 
@@ -62,20 +55,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Change facing direction
-        if (moveDirection != 0)
-        {
-            if (moveDirection > 0 && !facingRight)
-            {
-                facingRight = true;
-                t.localScale = new Vector3(faceDirection * Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
-            }
-            if (moveDirection < 0 && facingRight)
-            {
-                facingRight = false;
-                t.localScale = new Vector3(-faceDirection * Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
-            }
-        }
 
         if (Input.GetKeyDown(UserKeyUpPrimary) && isGrounded)
         {
