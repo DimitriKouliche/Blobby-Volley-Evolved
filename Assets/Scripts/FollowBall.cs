@@ -14,18 +14,18 @@ public class FollowBall : MonoBehaviour
         {
             heading.x = 1;
         }
-        if(heading.x < -1)
+        if(heading.x < 0)
         {
-            heading.x = -1;
+            heading.x = 0;
         }
         if (heading.y > 1)
         {
             heading.y = 1;
         }
-        if (heading.y < -1)
+        if (heading.y < 0)
         {
-            heading.y = -1;
+            heading.y = 0;
         }
-        transform.localPosition = new Vector3(heading.x * 0.05f, heading.y * 0.05f - 0.05f, -3);
+        transform.localPosition = new Vector3(heading.x * 0.005f, heading.y * 0.006f - 0.006f, -3);
     }
 }

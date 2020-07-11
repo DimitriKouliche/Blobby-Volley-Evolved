@@ -50,6 +50,10 @@ public class GameLogics : MonoBehaviour
 
     public void ResetPositions(string winner)
     {
+        blob1.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        blob1.GetComponent<Rigidbody2D>().angularVelocity = 0;
+        blob2.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        blob2.GetComponent<Rigidbody2D>().angularVelocity = 0;
         ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         ball.GetComponent<Rigidbody2D>().angularVelocity = 0;
         if (winner == "Blob 2")
