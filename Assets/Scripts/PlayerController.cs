@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     LayerMask layerMask = ~(1 << 2 | 1 << 8);
     Transform t;
     int faceDirection = 1;
+    float jumpSpeed = 0;
+    bool chargingJump = false;
 
 
     // Use this for initialization
@@ -75,10 +77,22 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Jumping
         if (Input.GetKeyDown(UserKeyUpPrimary) && isGrounded)
         {
-            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
+            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight/1.5f);
+        }
+
+        if (Input.GetKeyUp(UserKeyDownPrimary) && isGrounded)
+        {
+            r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
+            jumpSpeed = 0;
+            chargingJump = false;
+        }
+
+        // Jumping
+        if (Input.GetKeyDown(UserKeyDownPrimary))
+        {
+            chargingJump = true;
         }
     }
 
@@ -94,5 +108,14 @@ public class PlayerController : MonoBehaviour
 
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, 0.23f, 0), isGrounded ? Color.green : Color.red);
+
+        if(chargingJump)
+        {
+            if (jumpSpeed < jumpHeight)
+            {
+                jumpSpeed += 1f;
+            }
+        }
+
     }
 }
