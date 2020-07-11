@@ -3,25 +3,19 @@ using UnityEngine;
 
 public class BallCollision : MonoBehaviour
 {
-    public GameObject gameOver;
     public GameObject ball;
+    public GameObject gameLogics;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Left Ground")
+        if(collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isPlaying)
         {
-            StartCoroutine(GameOverCoroutine());
+            gameLogics.GetComponent<GameLogics>().playerWins("Blob 2");
         }
 
-        if(collision.gameObject.name == "Right Ground")
+        if(collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isPlaying)
         {
-            StartCoroutine(GameOverCoroutine());
+            gameLogics.GetComponent<GameLogics>().playerWins("Blob 1");
         }
-    }
-
-    IEnumerator GameOverCoroutine()
-    {
-        yield return new WaitForSeconds(0.5f);
-        gameOver.SetActive(true);
     }
 }
