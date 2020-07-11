@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Dash
+        // Dashing
         if (Input.GetKeyDown(UserKeyDashPrimary) && !isDashing)
         {
             float positionX = 0;
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
             }
             if(positionX != 0 || positionY != 0)
             {
+                gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
                 StartCoroutine(DisableDash());
                 isDashing = true;
                 r2d.AddForce(new Vector3(positionX * 1000, positionY * 1000, transform.position.z));
@@ -120,14 +121,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator DisableDash()
-    {
-        yield return new WaitForSeconds(0.3f);
-        isDashing = false;
-    }
-
     void FixedUpdate()
     {
+        if (!gameLogics.GetComponent<GameLogics>().isPlaying)
+        {
+            return;
+        }
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
@@ -150,5 +149,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    IEnumerator DisableDash()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isDashing = false;
     }
 }
