@@ -9,12 +9,12 @@ public class BallLogics : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isPlaying)
+        if(collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
         }
 
-        if(collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isPlaying)
+        if(collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
         }

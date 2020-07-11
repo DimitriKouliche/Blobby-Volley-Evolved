@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode UserKeyRightPrimary = KeyCode.D;
     public KeyCode UserKeyDashPrimary = KeyCode.E;
     public bool isFacingRight = true;
+    public GameObject gameLogics;
 
     float moveDirection = 0;
     bool isGrounded = false;
@@ -46,6 +47,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!gameLogics.GetComponent<GameLogics>().isPlaying)
+        {
+            return;
+        }
         // Movement controls
         if ((Input.GetKey(UserKeyLeftPrimary) || Input.GetKey(UserKeyRightPrimary)))
         {
@@ -117,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DisableDash()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         isDashing = false;
     }
 

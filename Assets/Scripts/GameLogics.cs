@@ -10,6 +10,7 @@ public class GameLogics : MonoBehaviour
     public GameObject blob1;
     public GameObject blob2;
     public GameObject ball;
+    public bool isStarting = false;
     public bool isPlaying = false;
     
     Vector3 blob1Position;
@@ -34,9 +35,10 @@ public class GameLogics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && isPlaying == true)
+        if (Input.GetKeyDown(KeyCode.Return) && isStarting == true)
         {
             Time.timeScale = 1;
+            isPlaying = true;
             uiMessage.SetActive(false);
         }
     }
@@ -44,7 +46,7 @@ public class GameLogics : MonoBehaviour
     void BeginGame()
     {
         Time.timeScale = 0;
-        isPlaying = true;
+        isStarting = true;
         UpdateMessage("Press Enter to begin round");
     }
 
@@ -58,7 +60,7 @@ public class GameLogics : MonoBehaviour
         ball.GetComponent<Rigidbody2D>().angularVelocity = 0;
         if (winner == "Blob 2")
         {
-            ball.transform.position = new Vector3(-ballPosition.x, ballPosition.y);
+            ball.transform.position = new Vector3(-ballPosition.x, ballPosition.y, -2);
         } else
         {
             ball.transform.position = ballPosition;
@@ -89,8 +91,9 @@ public class GameLogics : MonoBehaviour
             blob2Score++;
         }
         DisplayScore();
+        isStarting = false;
         isPlaying = false;
-        if(blob1Score >= 15 || blob2Score >= 15)
+        if (blob1Score >= 15 || blob2Score >= 15)
         {
             UpdateMessage("CONGRATULATIONS, " + player + ", you have won the GAME");
             StartCoroutine(GameOverCoroutine());
