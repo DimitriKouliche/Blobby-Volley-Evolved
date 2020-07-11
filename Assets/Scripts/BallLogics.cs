@@ -18,6 +18,14 @@ public class BallLogics : MonoBehaviour
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
         }
+
+        if(collision.gameObject.name == "Blob 1" || collision.gameObject.name == "Blob 2")
+        {
+            if(collision.gameObject.GetComponent<PlayerController>().isDashing)
+            {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100));
+            }
+        }
     }
 
     // Update is called once per frame
@@ -25,7 +33,7 @@ public class BallLogics : MonoBehaviour
     {
         if(ballIndicator.activeSelf)
         {
-            ballIndicator.transform.position = new Vector3 (ball.transform.position.x, 4.5f, -2);
+            ballIndicator.transform.position = new Vector3 (transform.position.x, 4.5f, -2);
         }
     }
 

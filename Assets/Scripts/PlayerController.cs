@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode UserKeyDashPrimary = KeyCode.E;
     public bool isFacingRight = true;
     public GameObject gameLogics;
+    public bool isDashing = false;
 
     float moveDirection = 0;
     bool isGrounded = false;
@@ -28,7 +29,6 @@ public class PlayerController : MonoBehaviour
     Transform t;
     float jumpSpeed = 0;
     bool chargingJump = false;
-    bool isDashing = false;
 
 
     // Use this for initialization

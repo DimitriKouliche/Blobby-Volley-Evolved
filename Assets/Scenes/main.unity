@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   jumpHeight: 20
-  dashDistance: 2.5
+  dashDistance: 3
   gravityScale: 4
   UserKeyUpPrimary: 122
   UserKeyDownPrimary: 115
@@ -1618,7 +1618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   jumpHeight: 20
-  dashDistance: 2.5
+  dashDistance: 3
   gravityScale: 4
   UserKeyUpPrimary: 273
   UserKeyDownPrimary: 274
