@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 
 public class PlayerController : MonoBehaviour
 {
-    // Move player in 2D space
+    public InputAction moveAction;
+    public InputAction jumpAction;
+    public InputAction dashAction;
+    public InputAction chargeJumpAction;
     public float maxSpeed = 3.4f;
     public float jumpHeight = 6.5f;
     public float dashDistance = 6.5f;
     public float gravityScale = 1.5f;
-    public KeyCode UserKeyUpPrimary = KeyCode.W;
-    public KeyCode UserKeyDownPrimary = KeyCode.S;
-    public KeyCode UserKeyLeftPrimary = KeyCode.A;
-    public KeyCode UserKeyRightPrimary = KeyCode.D;
-    public KeyCode UserKeyDashPrimary = KeyCode.E;
     public bool isFacingRight = true;
     public GameObject gameLogics;
     public bool isDashing = false;
@@ -42,7 +41,43 @@ public class PlayerController : MonoBehaviour
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         gameObject.layer = 8;
+        moveAction.Enable();
+        jumpAction.Enable();
+        dashAction.Enable();
+        chargeJumpAction.Enable();
 
+        // Jumping
+        jumpAction.started += ctx =>
+        {
+            if(isGrounded && !isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
+            {
+                r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight / 1.5f);
+            }
+        };
+
+        // Charging jump
+        chargeJumpAction.started += ctx =>
+        {
+            if(!isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
+            {
+                chargingJump = true;
+            }
+        };
+
+        // Releasing charged jump
+        chargeJumpAction.canceled += ctx =>
+        {
+            if (!isGrounded || isDashing || !gameLogics.GetComponent<GameLogics>().isPlaying)
+            {
+                return;
+            }
+            r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
+            jumpSpeed = 0;
+            chargingJump = false;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            transform.GetChild(1).GetComponent<ParticleSystem>().Stop();
+            needsSparks = true;
+        };
     }
 
     // Update is called once per frame
@@ -52,76 +87,27 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        // Movement controls
-        if ((Input.GetKey(UserKeyLeftPrimary) || Input.GetKey(UserKeyRightPrimary)))
+
+        // Moving
+        var moveDirectionVector = moveAction.ReadValue<Vector2>();
+        moveDirection = moveDirectionVector.x;
+
+        // Fast falling
+        if (moveDirectionVector.y < 0 && !isGrounded)
         {
-            moveDirection = Input.GetKey(UserKeyLeftPrimary) ? -1 : 1;
-        }
-        else
-        {
-            if (isGrounded || r2d.velocity.magnitude < 0.01f)
-            {
-                moveDirection = 0;
-            }
+            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y);
         }
 
         // Dashing
-        if (Input.GetKeyDown(UserKeyDashPrimary) && !isDashing)
+        if (dashAction.triggered && !isDashing)
         {
-            float positionX = 0;
-            float positionY = 0;
-            if (Input.GetKey(UserKeyLeftPrimary))
-            {
-                positionX -= dashDistance;
-            }
-            if (Input.GetKey(UserKeyRightPrimary))
-            {
-                positionX += dashDistance;
-            }
-            if (Input.GetKey(UserKeyUpPrimary))
-            {
-                positionY += dashDistance;
-            }
-            if (Input.GetKey(UserKeyDownPrimary))
-            {
-                positionY -= dashDistance;
-            }
-            if(positionX != 0 || positionY != 0)
+            if (moveDirectionVector.x != 0 || moveDirectionVector.y != 0)
             {
                 gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
                 StartCoroutine(DisableDash());
                 isDashing = true;
-                r2d.AddForce(new Vector3(positionX * 1000, positionY * 1000, transform.position.z));
+                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 1000, moveDirectionVector.y * dashDistance * 1000, transform.position.z));
             }
-        }
-
-        // Jumping
-        if (Input.GetKeyDown(UserKeyUpPrimary) && isGrounded)
-        {
-            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight / 1.5f);
-        }
-
-        // Releasing charged jump
-        if (Input.GetKeyUp(UserKeyDownPrimary) && isGrounded)
-        {
-            r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
-            jumpSpeed = 0;
-            chargingJump = false;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-            transform.GetChild(1).GetComponent<ParticleSystem>().Stop();
-            needsSparks = true;
-        }
-
-        // Charging jump
-        if (Input.GetKeyDown(UserKeyDownPrimary) && isGrounded)
-        {
-            chargingJump = true;
-        }
-
-        // Fast falling
-        if (Input.GetKeyDown(UserKeyDownPrimary) && !isGrounded)
-        {
-            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y);
         }
     }
 
@@ -162,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DisableDash()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         isDashing = false;
     }
 }

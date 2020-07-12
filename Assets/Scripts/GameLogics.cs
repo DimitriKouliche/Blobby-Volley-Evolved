@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameLogics : MonoBehaviour
 {
+    public InputAction startAction;
     public GameObject uiMessage;
     public GameObject uiScore;
     public GameObject gameOver;
@@ -12,7 +14,7 @@ public class GameLogics : MonoBehaviour
     public GameObject ball;
     public bool isStarting = false;
     public bool isPlaying = false;
-    
+
     Vector3 blob1Position;
     Vector3 blob2Position;
     Vector3 blob1Scale;
@@ -93,13 +95,14 @@ public class GameLogics : MonoBehaviour
         blob1Scale = blob1.transform.localScale;
         blob2Scale = blob2.transform.localScale;
         ballPosition = ball.transform.position;
+        startAction.Enable();
         BeginGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && isStarting == true)
+        if (startAction.triggered && isStarting == true)
         {
             Time.timeScale = 1;
             isPlaying = true;

@@ -6,6 +6,7 @@ public class BallLogics : MonoBehaviour
     public GameObject ball;
     public GameObject ballIndicator;
     public GameObject gameLogics;
+    public float dashUpwardForce = 200;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,7 +24,7 @@ public class BallLogics : MonoBehaviour
         {
             if(collision.gameObject.GetComponent<PlayerController>().isDashing)
             {
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300));
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
             }
         }
     }
