@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
+using UnityEngine.InputSystem.Controls;
 
 public class GameLogics : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class GameLogics : MonoBehaviour
     Vector3 ballPosition;
     int blob1Score = 0;
     int blob2Score = 0;
+    int nbPlayer = 0;
 
     public void ResetVelocity(GameObject target)
     {
@@ -92,20 +95,51 @@ public class GameLogics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        blob1 = PlayerInput.Instantiate(blob1Prefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[0]).gameObject;
-        blob2 = PlayerInput.Instantiate(blob2Prefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[1]).gameObject;
-        blob1.GetComponent<PlayerController>().gameLogics = gameObject;
-        blob2.GetComponent<PlayerController>().gameLogics = gameObject;
-        blob1.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
-        blob2.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
-        blob1Position = blob1.transform.position;
-        blob2Position = blob2.transform.position;
-        blob1Scale = blob1.transform.localScale;
-        blob2Scale = blob2.transform.localScale;
+
+        Time.timeScale = 0;
+        ++InputUser.listenForUnpairedDeviceActivity;
+
+        // Example of how to spawn a new player automatically when a button
+        // is pressed on an unpaired device.
+        InputUser.onUnpairedDeviceUsed +=
+            (control, eventPtr) =>
+            {
+                // Ignore anything but button presses.
+                if (!(control is ButtonControl))
+                    return;
+
+                // Spawn player and pair device. If the player's actions have control schemes
+                // defined in them, PlayerInput will look for a compatible scheme automatically.
+                if (nbPlayer == 0)
+                {
+                    blob1 = PlayerInput.Instantiate(blob1Prefab, pairWithDevice: control.device).gameObject;
+                    blob1.GetComponent<PlayerController>().gameLogics = gameObject;
+                    blob1.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
+                    blob1Position = blob1.transform.position;
+                    blob1Scale = blob1.transform.localScale;
+                }
+                else if (nbPlayer == 1)
+                {
+                    blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
+                    blob2.GetComponent<PlayerController>().gameLogics = gameObject;
+                    blob2.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
+                    blob2Position = blob2.transform.position;
+                    blob2Scale = blob2.transform.localScale;
+                }
+                nbPlayer++;
+            };
         ballPosition = ball.transform.position;
+        StartCoroutine(PlayersReady());
+    }
+
+    IEnumerator PlayersReady()
+    {
+        while (nbPlayer < 2)
+        {
+            yield return null;
+        }
+        ball.SetActive(true);
         startAction.Enable();
-        blob1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Gamepad.all[0]);
-        blob2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Gamepad.all[1]);
         BeginGame();
     }
 
@@ -124,10 +158,10 @@ public class GameLogics : MonoBehaviour
     {
         Time.timeScale = 0;
         isStarting = true;
-        UpdateMessage("Press Enter to begin round");
+        UpdateMessage("Press Enter / Start to begin round");
     }
 
-    void eraseMessage()
+    void EraseMessage()
     {
         uiMessage.SetActive(false);
     }
@@ -136,14 +170,14 @@ public class GameLogics : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         ResetPositions(player);
-        eraseMessage();
+        EraseMessage();
         BeginGame();
     }
 
     IEnumerator GameOverCoroutine()
     {
         yield return new WaitForSeconds(3);
-        eraseMessage();
+        EraseMessage();
         gameOver.SetActive(true);
     }
 }

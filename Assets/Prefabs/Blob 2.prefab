@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
-  jumpHeight: 20
+  jumpHeight: 22
   dashDistance: 3
   gravityScale: 4
   isFacingRight: 0
