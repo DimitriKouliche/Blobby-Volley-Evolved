@@ -23,7 +23,7 @@ public class BallLogics : MonoBehaviour
         {
             if(collision.gameObject.GetComponent<PlayerController>().isDashing)
             {
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100));
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300));
             }
         }
     }
