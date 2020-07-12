@@ -148,6 +148,9 @@ public class PlayerController : MonoBehaviour
             {
                 jumpSpeed += 1f;
                 transform.GetChild(0).GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, Color.cyan);
+            } else
+            {
+                transform.GetChild(1).GetComponent<ParticleSystem>().Play();
             }
         }
 
