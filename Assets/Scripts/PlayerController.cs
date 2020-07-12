@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     Transform t;
     float jumpSpeed = 0;
     bool chargingJump = false;
+    bool needsSparks = true;
 
 
     // Use this for initialization
@@ -107,6 +108,8 @@ public class PlayerController : MonoBehaviour
             jumpSpeed = 0;
             chargingJump = false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            transform.GetChild(1).GetComponent<ParticleSystem>().Stop();
+            needsSparks = true;
         }
 
         // Charging jump
@@ -148,9 +151,10 @@ public class PlayerController : MonoBehaviour
             {
                 jumpSpeed += 1f;
                 transform.GetChild(0).GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, Color.cyan);
-            } else
+            } else if (needsSparks)
             {
                 transform.GetChild(1).GetComponent<ParticleSystem>().Play();
+                needsSparks = false;
             }
         }
 

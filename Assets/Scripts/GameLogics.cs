@@ -33,6 +33,8 @@ public class GameLogics : MonoBehaviour
         ResetVelocity(blob1);
         ResetVelocity(blob2);
         ResetVelocity(ball);
+        blob1.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+        blob2.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
         if (winner == "Blob 2")
         {
             ball.transform.position = new Vector3(-ballPosition.x, ballPosition.y, -2);
