@@ -130,9 +130,6 @@ public class PlayerController : MonoBehaviour
             r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
         }
 
-        // Simple debug
-        Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, 0.23f, 0), isGrounded ? Color.green : Color.red);
-
         if (chargingJump)
         {
             if (jumpSpeed < jumpHeight)
@@ -150,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DisableDash()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
         isDashing = false;
     }
 }

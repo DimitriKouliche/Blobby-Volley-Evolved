@@ -6,7 +6,7 @@ public class BallLogics : MonoBehaviour
     public GameObject ball;
     public GameObject ballIndicator;
     public GameObject gameLogics;
-    public float dashUpwardForce = 200;
+    public float dashUpwardForce = 250;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,9 +20,9 @@ public class BallLogics : MonoBehaviour
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
         }
 
-        if(collision.gameObject.name == "Blob 1" || collision.gameObject.name == "Blob 2")
+        if(collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)")
         {
-            if(collision.gameObject.GetComponent<PlayerController>().isDashing)
+            if (collision.gameObject.GetComponent<PlayerController>().isDashing)
             {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
             }
