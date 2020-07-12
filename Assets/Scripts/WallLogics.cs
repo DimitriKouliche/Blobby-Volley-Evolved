@@ -1,31 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class BallLogics : MonoBehaviour
+public class WallLogics : MonoBehaviour
 {
-    public GameObject ballIndicator;
-    public GameObject gameLogics;
-    public float dashUpwardForce = 250;
     bool isScaling;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
-        {
-            gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
-        }
-
-        if (collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
-        {
-            gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
-        }
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)")
         {
-            if (collision.gameObject.GetComponent<PlayerController>().isDashing)
-            {
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
-            }
             StartCoroutine(SquashAnimation(collision.gameObject.transform,
                 new Vector3(collision.gameObject.transform.localScale.x * Mathf.Min(1, (1 - collision.relativeVelocity.x / 30)), 
                 collision.gameObject.transform.localScale.y * Mathf.Min(1, (1 - collision.relativeVelocity.y / 30)), 
@@ -64,24 +48,5 @@ public class BallLogics : MonoBehaviour
         }
 
         isScaling = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (ballIndicator.activeSelf)
-        {
-            ballIndicator.transform.position = new Vector3(transform.position.x, 4.5f, -2);
-        }
-    }
-
-    void OnBecameInvisible()
-    {
-        ballIndicator.SetActive(true);
-    }
-
-    void OnBecameVisible()
-    {
-        ballIndicator.SetActive(false);
     }
 }
