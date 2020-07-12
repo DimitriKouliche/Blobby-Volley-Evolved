@@ -9,12 +9,14 @@ public class GameLogics : MonoBehaviour
     public GameObject uiMessage;
     public GameObject uiScore;
     public GameObject gameOver;
-    public GameObject blob1;
-    public GameObject blob2;
+    public GameObject blob1Prefab;
+    public GameObject blob2Prefab;
     public GameObject ball;
     public bool isStarting = false;
     public bool isPlaying = false;
 
+    GameObject blob1;
+    GameObject blob2;
     Vector3 blob1Position;
     Vector3 blob2Position;
     Vector3 blob1Scale;
@@ -90,12 +92,20 @@ public class GameLogics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        blob1 = PlayerInput.Instantiate(blob1Prefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[0]).gameObject;
+        blob2 = PlayerInput.Instantiate(blob2Prefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[1]).gameObject;
+        blob1.GetComponent<PlayerController>().gameLogics = gameObject;
+        blob2.GetComponent<PlayerController>().gameLogics = gameObject;
+        blob1.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
+        blob2.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
         blob1Position = blob1.transform.position;
         blob2Position = blob2.transform.position;
         blob1Scale = blob1.transform.localScale;
         blob2Scale = blob2.transform.localScale;
         ballPosition = ball.transform.position;
         startAction.Enable();
+        blob1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Gamepad.all[0]);
+        blob2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Gamepad.all[1]);
         BeginGame();
     }
 

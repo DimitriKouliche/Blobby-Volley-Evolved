@@ -7,10 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public InputAction moveAction;
-    public InputAction jumpAction;
-    public InputAction dashAction;
-    public InputAction chargeJumpAction;
     public float maxSpeed = 3.4f;
     public float jumpHeight = 6.5f;
     public float dashDistance = 6.5f;
@@ -18,6 +14,11 @@ public class PlayerController : MonoBehaviour
     public bool isFacingRight = true;
     public GameObject gameLogics;
     public bool isDashing = false;
+    PlayerInput playerInput;
+    InputAction moveAction;
+    InputAction jumpAction;
+    InputAction dashAction;
+    InputAction chargeJumpAction;
 
     float moveDirection = 0;
     bool isGrounded = false;
@@ -41,10 +42,11 @@ public class PlayerController : MonoBehaviour
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         gameObject.layer = 8;
-        moveAction.Enable();
-        jumpAction.Enable();
-        dashAction.Enable();
-        chargeJumpAction.Enable();
+        playerInput = GetComponent<PlayerInput>();
+        moveAction = playerInput.actions["Move"];
+        jumpAction = playerInput.actions["Jump"];
+        dashAction = playerInput.actions["Dash"];
+        chargeJumpAction = playerInput.actions["Charge Jump"];
 
         // Jumping
         jumpAction.started += ctx =>
