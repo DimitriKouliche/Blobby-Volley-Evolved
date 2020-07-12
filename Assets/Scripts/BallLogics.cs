@@ -7,6 +7,7 @@ public class BallLogics : MonoBehaviour
     public GameObject gameLogics;
     public float dashUpwardForce = 250;
     bool isScaling;
+    Vector3 initialScale = new Vector3(-1, -1, -1);
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,9 +27,13 @@ public class BallLogics : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
             }
+            if (initialScale.x == -1)
+            {
+                initialScale = collision.gameObject.transform.localScale;
+            }
             StartCoroutine(SquashAnimation(collision.gameObject.transform,
-                new Vector3(collision.gameObject.transform.localScale.x * Mathf.Min(1, (1 - collision.relativeVelocity.x / 30)), 
-                collision.gameObject.transform.localScale.y * Mathf.Min(1, (1 - collision.relativeVelocity.y / 30)), 
+                new Vector3(collision.gameObject.transform.localScale.x * Mathf.Min(1, (1 - collision.relativeVelocity.x / 30)),
+                collision.gameObject.transform.localScale.y * Mathf.Min(1, (1 - collision.relativeVelocity.y / 30)),
                 collision.gameObject.transform.localScale.z),
                 0.3f));
         }
@@ -62,7 +67,7 @@ public class BallLogics : MonoBehaviour
             objectToScale.localScale = Vector3.Lerp(toScale, startScaleSize, counter / duration);
             yield return null;
         }
-
+        objectToScale.localScale = initialScale;
         isScaling = false;
     }
 

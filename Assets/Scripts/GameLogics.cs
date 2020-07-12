@@ -27,6 +27,7 @@ public class GameLogics : MonoBehaviour
     int blob1Score = 0;
     int blob2Score = 0;
     int nbPlayer = 0;
+    bool applicationQuit = false;
 
     public void ResetVelocity(GameObject target)
     {
@@ -92,6 +93,11 @@ public class GameLogics : MonoBehaviour
         StartCoroutine(PlayerWinsCorountine(player));
     }
 
+    void OnApplicationQuit()
+    {
+        applicationQuit = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +110,11 @@ public class GameLogics : MonoBehaviour
         InputUser.onUnpairedDeviceUsed +=
             (control, eventPtr) =>
             {
+                if(applicationQuit)
+                {
+                    return;
+                }
+
                 // Ignore anything but button presses.
                 if (!(control is ButtonControl))
                     return;
