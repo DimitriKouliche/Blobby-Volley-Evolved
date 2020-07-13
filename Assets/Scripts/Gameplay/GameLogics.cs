@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.InputSystem.Controls;
+using Photon.Pun;
 
-public class GameLogics : MonoBehaviour
+public class GameLogics : MonoBehaviourPun
 {
-    public InputAction startAction;
     public GameObject uiMessage;
     public GameObject uiScore;
     public GameObject gameOver;
@@ -16,13 +16,12 @@ public class GameLogics : MonoBehaviour
     public GameObject ball;
     public bool isStarting = false;
     public bool isPlaying = false;
+    public bool isOnline = true;
 
     GameObject blob1;
     GameObject blob2;
-    Vector3 blob1Position;
-    Vector3 blob2Position;
-    Vector3 blob1Scale;
-    Vector3 blob2Scale;
+    Vector3[] blobPosition;
+    Vector3[] blobScale;
     Vector3 ballPosition;
     int blob1Score = 0;
     int blob2Score = 0;
@@ -51,10 +50,10 @@ public class GameLogics : MonoBehaviour
         {
             ball.transform.position = ballPosition;
         }
-        blob1.transform.position = blob1Position;
-        blob2.transform.position = blob2Position;
-        blob1.transform.localScale = blob1Scale;
-        blob2.transform.localScale = blob2Scale;
+        blob1.transform.position = blobPosition[0];
+        blob2.transform.position = blobPosition[1];
+        blob1.transform.localScale = blobScale[0];
+        blob2.transform.localScale = blobScale[1];
     }
 
     public void UpdateMessage(string message)
@@ -101,72 +100,107 @@ public class GameLogics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        blobPosition = new Vector3[2];
+        blobScale = new Vector3[2];
+        PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate = 0;
+        if(!isOnline)
+        {
+            PhotonNetwork.OfflineMode = true;
+        }
         Time.timeScale = 0;
-        ++InputUser.listenForUnpairedDeviceActivity;
 
-        // Example of how to spawn a new player automatically when a button
-        // is pressed on an unpaired device.
-        InputUser.onUnpairedDeviceUsed +=
-            (control, eventPtr) =>
+        if (!isOnline)
+        {
+            ++InputUser.listenForUnpairedDeviceActivity;
+            // Example of how to spawn a new player automatically when a button
+            // is pressed on an unpaired device.
+            InputUser.onUnpairedDeviceUsed +=
+                (control, eventPtr) =>
+                {
+                    if (applicationQuit || isStarting)
+                    {
+                        return;
+                    }
+
+                    // Ignore anything but button presses.
+                    if (!(control is ButtonControl))
+                        return;
+
+                    // Spawn player and pair device. If the player's actions have control schemes
+                    // defined in them, PlayerInput will look for a compatible scheme automatically.
+                    if (nbPlayer == 0)
+                    {
+                        blob1 = PlayerInput.Instantiate(blob1Prefab, pairWithDevice: control.device).gameObject;
+                    }
+                    else if (nbPlayer == 1)
+                    {
+                        blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
+                    }
+                    nbPlayer++;
+                };
+        }
+        else
+        {
+            if (PlayerController.LocalPlayerInstance != null)
             {
-                if(applicationQuit)
-                {
-                    return;
-                }
-
-                // Ignore anything but button presses.
-                if (!(control is ButtonControl))
-                    return;
-
-                // Spawn player and pair device. If the player's actions have control schemes
-                // defined in them, PlayerInput will look for a compatible scheme automatically.
-                if (nbPlayer == 0)
-                {
-                    blob1 = PlayerInput.Instantiate(blob1Prefab, pairWithDevice: control.device).gameObject;
-                    blob1.GetComponent<PlayerController>().gameLogics = gameObject;
-                    blob1.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
-                    blob1Position = blob1.transform.position;
-                    blob1Scale = blob1.transform.localScale;
-                }
-                else if (nbPlayer == 1)
-                {
-                    blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
-                    blob2.GetComponent<PlayerController>().gameLogics = gameObject;
-                    blob2.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
-                    blob2Position = blob2.transform.position;
-                    blob2Scale = blob2.transform.localScale;
-                }
-                nbPlayer++;
-            };
+                return;
+            }
+            if (PhotonNetwork.IsMasterClient)
+            {
+                blob1 = PhotonNetwork.Instantiate(blob1Prefab.name, blob1Prefab.transform.position, blob1Prefab.transform.rotation, 0);
+            }
+            else
+            {
+                blob2 = PhotonNetwork.Instantiate(blob2Prefab.name, blob2Prefab.transform.position, blob2Prefab.transform.rotation, 0);
+            }
+        }
         ballPosition = ball.transform.position;
         StartCoroutine(PlayersReady());
     }
 
+
+    void InitBlob(GameObject blob, int id)
+    {
+        blob.GetComponent<PlayerController>().gameLogics = gameObject;
+        blob.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
+        blobPosition[id] = blob.transform.position;
+        blobScale[id] = blob.transform.localScale;
+    }
+
     IEnumerator PlayersReady()
     {
-        while (nbPlayer < 2)
+        while (GameObject.Find("Blob 1(Clone)") == null || GameObject.Find("Blob 2(Clone)") == null)
         {
             yield return null;
         }
+        blob1 = GameObject.Find("Blob 1(Clone)");
+        InitBlob(blob1, 0);
+        blob2 = GameObject.Find("Blob 2(Clone)");
+        InitBlob(blob2, 1);
         ball.SetActive(true);
-        startAction.Enable();
         BeginGame();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SendStartRoundMessage()
     {
-        if (startAction.triggered && isStarting == true)
+        if(!isOnline)
         {
-            Time.timeScale = 1;
-            isPlaying = true;
-            uiMessage.SetActive(false);
+            StartRound();
         }
+        photonView.RPC("StartRound", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void StartRound()
+    {
+        Time.timeScale = 1;
+        isPlaying = true;
+        uiMessage.SetActive(false);
     }
 
     void BeginGame()
     {
+        Debug.Log("Beginning Game");
         Time.timeScale = 0;
         isStarting = true;
         UpdateMessage("Press Enter / Start to begin round");

@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
+using Photon.Pun;
+using Photon.Realtime;
+
+
+namespace Com.KousseauCorp.BlobbyVolleyEvolved
+{
+
+    public class GameManager : MonoBehaviourPunCallbacks
+    {
+        [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
+        public static GameObject LocalPlayerInstance;
+
+        #region Photon Callbacks
+
+
+        /// <summary>
+        /// Called when the local player left the room. We need to load the launcher scene.
+        /// </summary>
+        public override void OnLeftRoom()
+        {
+            SceneManager.LoadScene(0);
+        }
+
+
+        #endregion
+
+
+        #region Public Methods
+
+
+        public void LeaveRoom()
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+
+
+        #endregion
+
+    }
+}

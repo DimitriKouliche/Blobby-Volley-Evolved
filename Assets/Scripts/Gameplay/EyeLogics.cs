@@ -10,6 +10,10 @@ public class EyeLogics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ball == null)
+        {
+            return;
+        }
         heading = ball.transform.position - transform.position;
         if (heading.x > 1)
         {

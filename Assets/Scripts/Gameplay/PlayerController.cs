@@ -1,11 +1,12 @@
 ﻿using System.Collections;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     public float maxSpeed = 3.4f;
     public float jumpHeight = 6.5f;
@@ -14,12 +15,14 @@ public class PlayerController : MonoBehaviour
     public bool isFacingRight = true;
     public GameObject gameLogics;
     public bool isDashing = false;
+    public static GameObject LocalPlayerInstance;
+
     PlayerInput playerInput;
     InputAction moveAction;
     InputAction jumpAction;
     InputAction dashAction;
     InputAction chargeJumpAction;
-
+    InputAction startAction;
     float moveDirection = 0;
     bool isGrounded = false;
     Rigidbody2D r2d;
@@ -35,6 +38,10 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
         t = transform;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
@@ -47,6 +54,13 @@ public class PlayerController : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         dashAction = playerInput.actions["Dash"];
         chargeJumpAction = playerInput.actions["Charge Jump"];
+        startAction = playerInput.actions["Start"];
+
+        startAction.started += ctx =>
+        {
+            Debug.Log("starting game");
+            gameLogics.GetComponent<GameLogics>().SendStartRoundMessage();
+        };
 
         // Jumping
         jumpAction.started += ctx =>
@@ -82,10 +96,26 @@ public class PlayerController : MonoBehaviour
         };
     }
 
+    private void Awake()
+    {
+        if (photonView.IsMine)
+        {
+            PlayerController.LocalPlayerInstance = this.gameObject;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(!gameLogics.GetComponent<GameLogics>().isPlaying)
+        if(gameLogics == null)
+        {
+            return;
+        }
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
+        if (!gameLogics.GetComponent<GameLogics>().isPlaying)
         {
             return;
         }
@@ -115,6 +145,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
         if (!gameLogics.GetComponent<GameLogics>().isPlaying)
         {
             return;
