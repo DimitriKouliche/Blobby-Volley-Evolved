@@ -95,6 +95,11 @@ namespace Com.KousseauCorp.BlobbyVolleyEvolved
             }
         }
 
+        public void LocalMultiplayer()
+        {
+            PhotonNetwork.LoadLevel("Local");
+        }
+
 
         #endregion
 
@@ -130,10 +135,10 @@ namespace Com.KousseauCorp.BlobbyVolleyEvolved
 
             if (PhotonNetwork.CurrentRoom.PlayerCount == 2 && PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.LoadLevel("main");
+                PhotonNetwork.LoadLevel("Online");
             } else
             {
-                progressLabel.GetComponent<Text>().text = "Waiting for another player to join...";
+                progressLabel.GetComponent<Text>().text = "Searching for another player...";
                 StartCoroutine(WaitForFullRoom());
             }
             Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
