@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.InputSystem.Controls;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class GameLogics : MonoBehaviourPun
 {
@@ -13,6 +14,8 @@ public class GameLogics : MonoBehaviourPun
     public GameObject gameOver;
     public GameObject blob1Prefab;
     public GameObject blob2Prefab;
+    public GameObject blobOnline1Prefab;
+    public GameObject blobOnline2Prefab;
     public GameObject ball;
     public bool isStarting = false;
     public bool isPlaying = false;
@@ -103,43 +106,52 @@ public class GameLogics : MonoBehaviourPun
         blobPosition = new Vector3[2];
         blobScale = new Vector3[2];
         PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate = 0;
-        if(!isOnline)
+        if (!isOnline)
         {
             PhotonNetwork.OfflineMode = true;
         }
         Time.timeScale = 0;
 
-        if (!isOnline)
-        {
-            ++InputUser.listenForUnpairedDeviceActivity;
-            // Example of how to spawn a new player automatically when a button
-            // is pressed on an unpaired device.
-            InputUser.onUnpairedDeviceUsed +=
-                (control, eventPtr) =>
+        ++InputUser.listenForUnpairedDeviceActivity;
+        // Example of how to spawn a new player automatically when a button
+        // is pressed on an unpaired device.
+        InputUser.onUnpairedDeviceUsed +=
+            (control, eventPtr) =>
+            {
+                if (applicationQuit || isStarting)
                 {
-                    if (applicationQuit || isStarting)
-                    {
-                        return;
-                    }
+                    return;
+                }
 
                     // Ignore anything but button presses.
                     if (!(control is ButtonControl))
-                        return;
+                    return;
 
-                    // Spawn player and pair device. If the player's actions have control schemes
-                    // defined in them, PlayerInput will look for a compatible scheme automatically.
-                    if (nbPlayer == 0)
+                if (isOnline && GameObject.Find("Blob 1(Clone)") != null)
+                {
+                    if(PhotonNetwork.IsMasterClient)
                     {
-                        blob1 = PlayerInput.Instantiate(blob1Prefab, pairWithDevice: control.device).gameObject;
-                    }
-                    else if (nbPlayer == 1)
+                        blob1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("GamePad", control.device);
+                    } else
                     {
-                        blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
+                        blob2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("GamePad", control.device);
                     }
-                    nbPlayer++;
-                };
-        }
-        else
+                    return;
+                }
+                // Spawn player and pair device. If the player's actions have control schemes
+                // defined in them, PlayerInput will look for a compatible scheme automatically.
+                if (nbPlayer == 0)
+                {
+                    blob1 = PlayerInput.Instantiate(blob1Prefab, pairWithDevice: control.device).gameObject;
+                }
+                else if (nbPlayer == 1)
+                {
+                    blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
+                }
+                nbPlayer++;
+            };
+
+        if (isOnline)
         {
             if (PlayerController.LocalPlayerInstance != null)
             {
@@ -147,11 +159,11 @@ public class GameLogics : MonoBehaviourPun
             }
             if (PhotonNetwork.IsMasterClient)
             {
-                blob1 = PhotonNetwork.Instantiate(blob1Prefab.name, blob1Prefab.transform.position, blob1Prefab.transform.rotation, 0);
+                blob1 = PhotonNetwork.Instantiate(blobOnline1Prefab.name, blob1Prefab.transform.position, blob1Prefab.transform.rotation, 0);
             }
             else
             {
-                blob2 = PhotonNetwork.Instantiate(blob2Prefab.name, blob2Prefab.transform.position, blob2Prefab.transform.rotation, 0);
+                blob2 = PhotonNetwork.Instantiate(blobOnline2Prefab.name, blob2Prefab.transform.position, blob2Prefab.transform.rotation, 0);
             }
         }
         ballPosition = ball.transform.position;
@@ -161,7 +173,13 @@ public class GameLogics : MonoBehaviourPun
 
     void InitBlob(GameObject blob, int id)
     {
-        blob.GetComponent<PlayerController>().gameLogics = gameObject;
+        if (!isOnline)
+        {
+            blob.GetComponent<PlayerController>().gameLogics = gameObject;
+        } else
+        {
+            blob.GetComponent<OnlinePlayerController>().gameLogics = gameObject;
+        }
         blob.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
         blobPosition[id] = blob.transform.position;
         blobScale[id] = blob.transform.localScale;
@@ -169,13 +187,25 @@ public class GameLogics : MonoBehaviourPun
 
     IEnumerator PlayersReady()
     {
-        while (GameObject.Find("Blob 1(Clone)") == null || GameObject.Find("Blob 2(Clone)") == null)
+        if(!isOnline)
         {
-            yield return null;
+            while (GameObject.Find("Blob 1(Clone)") == null || GameObject.Find("Blob 2(Clone)") == null)
+            {
+                yield return null;
+            }
+        } else
+        {
+            while (GameObject.Find("BlobOnline 1(Clone)") == null || GameObject.Find("BlobOnline 2(Clone)") == null)
+            {
+                yield return null;
+            }
+            GameObject.Find("BlobOnline 1(Clone)").name = "Blob 1(Clone)";
+            GameObject.Find("BlobOnline 2(Clone)").name = "Blob 2(Clone)";
         }
+
         blob1 = GameObject.Find("Blob 1(Clone)");
-        InitBlob(blob1, 0);
         blob2 = GameObject.Find("Blob 2(Clone)");
+        InitBlob(blob1, 0);
         InitBlob(blob2, 1);
         ball.SetActive(true);
         BeginGame();
@@ -183,9 +213,10 @@ public class GameLogics : MonoBehaviourPun
 
     public void SendStartRoundMessage()
     {
-        if(!isOnline)
+        if (!isOnline)
         {
             StartRound();
+            return;
         }
         photonView.RPC("StartRound", RpcTarget.All);
     }

@@ -1,13 +1,16 @@
 ﻿using System.Collections;
+using Photon.Pun;
 using UnityEngine;
 
-public class BallLogics : MonoBehaviour
+public class BallLogics : MonoBehaviourPunCallbacks
 {
     public GameObject ballIndicator;
     public GameObject gameLogics;
     public float dashUpwardForce = 250;
     bool isScaling;
     Vector3 initialScale = new Vector3(-1, -1, -1);
+    Rigidbody2D rigidBody;
+    Vector3 networkPosition;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,7 +26,8 @@ public class BallLogics : MonoBehaviour
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)")
         {
-            if (collision.gameObject.GetComponent<PlayerController>().isDashing)
+            if ((!gameLogics.GetComponent<GameLogics>().isOnline && collision.gameObject.GetComponent<PlayerController>().isDashing) ||
+                (gameLogics.GetComponent<GameLogics>().isOnline && collision.gameObject.GetComponent<OnlinePlayerController>().isDashing))
             {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
             }
@@ -69,6 +73,11 @@ public class BallLogics : MonoBehaviour
         }
         objectToScale.localScale = initialScale;
         isScaling = false;
+    }
+
+    private void Start()
+    {
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

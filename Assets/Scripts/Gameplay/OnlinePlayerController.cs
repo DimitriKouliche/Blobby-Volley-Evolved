@@ -1,11 +1,12 @@
 ﻿using System.Collections;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 
-public class PlayerController : MonoBehaviour
+public class OnlinePlayerController : MonoBehaviourPunCallbacks
 {
     public float maxSpeed = 6f;
     public float jumpHeight = 22f;
@@ -32,9 +33,15 @@ public class PlayerController : MonoBehaviour
     bool needsSparks = true;
 
 
+
     // Use this for initialization
     void Start()
     {
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            Destroy(gameObject.GetComponent<PlayerInput>());
+            return;
+        }
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
         r2d.freezeRotation = true;
@@ -50,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
         startAction.started += ctx =>
         {
-            Debug.Log("starting game");
             gameLogics.GetComponent<GameLogics>().SendStartRoundMessage();
         };
 
@@ -88,11 +94,22 @@ public class PlayerController : MonoBehaviour
         };
     }
 
+    private void Awake()
+    {
+        if (photonView.IsMine)
+        {
+            PlayerController.LocalPlayerInstance = this.gameObject;
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
         if(gameLogics == null)
+        {
+            return;
+        }
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
         {
             return;
         }
@@ -126,6 +143,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
         if (!gameLogics.GetComponent<GameLogics>().isPlaying)
         {
             return;
