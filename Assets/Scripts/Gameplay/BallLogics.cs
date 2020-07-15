@@ -24,6 +24,10 @@ public class BallLogics : MonoBehaviourPunCallbacks
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
         }
 
+        if (!photonView.IsMine)
+        {
+            return;
+        }
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)")
         {
             if ((!gameLogics.GetComponent<GameLogics>().isOnline && collision.gameObject.GetComponent<PlayerController>().isDashing) ||
@@ -97,5 +101,32 @@ public class BallLogics : MonoBehaviourPunCallbacks
     void OnBecameVisible()
     {
         ballIndicator.SetActive(false);
+    }
+
+    public void FixedUpdate()
+    {
+        if (!photonView.IsMine)
+        {
+            rigidBody.position = Vector3.MoveTowards(rigidBody.position, networkPosition, Time.fixedDeltaTime);
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rigidBody.position);
+            stream.SendNext(rigidBody.rotation);
+            stream.SendNext(rigidBody.velocity);
+        }
+        else
+        {
+            networkPosition = (Vector3)stream.ReceiveNext();
+            rigidBody.velocity = (Vector3)stream.ReceiveNext();
+
+            float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTimestamp));
+            Vector3 velocity3D = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, 0);
+            networkPosition += (velocity3D * lag);
+        }
     }
 }

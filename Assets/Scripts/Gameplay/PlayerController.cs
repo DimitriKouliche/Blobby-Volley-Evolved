@@ -112,14 +112,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // Dashing
-        if (dashAction.triggered && !isDashing)
+        if (dashAction.triggered && !isDashing && isGrounded)
         {
             if (moveDirectionVector.x != 0 || moveDirectionVector.y != 0)
             {
                 gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
                 StartCoroutine(DisableDash());
                 isDashing = true;
-                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 1000, moveDirectionVector.y * dashDistance * 1000, transform.position.z));
+                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 1000, 0, transform.position.z));
             }
         }
     }

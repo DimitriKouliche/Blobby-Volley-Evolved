@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: -608548416690859032}
   - component: {fileID: 581458262511962849}
   - component: {fileID: -614035731672973308}
-  - component: {fileID: -4533886968693870074}
+  - component: {fileID: -3810732928199370272}
   m_Layer: 8
   m_Name: BlobOnline 2
   m_TagString: Untagged
@@ -270,7 +270,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: -4533886968693870074}
+  - {fileID: -3810732928199370272}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -286,13 +286,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e129531843c9a45843f3a518cf70b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 6
+  maxSpeed: 4
   jumpHeight: 22
   dashDistance: 3
   gravityScale: 4
   gameLogics: {fileID: 0}
   isDashing: 0
---- !u!114 &-4533886968693870074
+--- !u!114 &-3810732928199370272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
+  m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &8026730481385283515

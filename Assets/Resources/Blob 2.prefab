@@ -262,11 +262,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c37b1d213b8b644bc5f4f44ded9071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 6
+  maxSpeed: 4
   jumpHeight: 22
   dashDistance: 3
   gravityScale: 4
-  isFacingRight: 0
   gameLogics: {fileID: 0}
   isDashing: 0
 --- !u!1 &8026730481385283515

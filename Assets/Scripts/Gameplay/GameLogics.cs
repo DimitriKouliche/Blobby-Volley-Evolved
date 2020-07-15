@@ -20,6 +20,7 @@ public class GameLogics : MonoBehaviourPun
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;
+    public float timeScale = 0.5f;
 
     GameObject blob1;
     GameObject blob2;
@@ -106,6 +107,8 @@ public class GameLogics : MonoBehaviourPun
         blobPosition = new Vector3[2];
         blobScale = new Vector3[2];
         PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate = 0;
+        PhotonNetwork.SendRate = 15;
+        PhotonNetwork.SerializationRate = 15;
         if (!isOnline)
         {
             PhotonNetwork.OfflineMode = true;
@@ -224,7 +227,7 @@ public class GameLogics : MonoBehaviourPun
     [PunRPC]
     public void StartRound()
     {
-        Time.timeScale = 1;
+        Time.timeScale = timeScale;
         isPlaying = true;
         uiMessage.SetActive(false);
     }

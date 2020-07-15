@@ -31,12 +31,15 @@ public class OnlinePlayerController : MonoBehaviourPunCallbacks
     float jumpSpeed = 0;
     bool chargingJump = false;
     bool needsSparks = true;
+    Rigidbody2D rigidBody;
+    Vector3 networkPosition;
 
 
 
     // Use this for initialization
     void Start()
     {
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
         if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
         {
             Destroy(gameObject.GetComponent<PlayerInput>());
@@ -129,14 +132,14 @@ public class OnlinePlayerController : MonoBehaviourPunCallbacks
         }
 
         // Dashing
-        if (dashAction.triggered && !isDashing)
+        if (dashAction.triggered && !isDashing && isGrounded)
         {
             if (moveDirectionVector.x != 0 || moveDirectionVector.y != 0)
             {
                 gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
                 StartCoroutine(DisableDash());
                 isDashing = true;
-                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 1000, moveDirectionVector.y * dashDistance * 1000, transform.position.z));
+                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 1000, 0, transform.position.z));
             }
         }
     }
@@ -174,6 +177,10 @@ public class OnlinePlayerController : MonoBehaviourPunCallbacks
                 needsSparks = false;
             }
         }
+        if (!photonView.IsMine)
+        {
+            rigidBody.position = Vector3.MoveTowards(rigidBody.position, networkPosition, Time.fixedDeltaTime);
+        }
 
     }
 
@@ -181,5 +188,24 @@ public class OnlinePlayerController : MonoBehaviourPunCallbacks
     {
         yield return new WaitForSeconds(0.7f);
         isDashing = false;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rigidBody.position);
+            stream.SendNext(rigidBody.rotation);
+            stream.SendNext(rigidBody.velocity);
+        }
+        else
+        {
+            networkPosition = (Vector3)stream.ReceiveNext();
+            rigidBody.velocity = (Vector3)stream.ReceiveNext();
+
+            float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTimestamp));
+            Vector3 velocity3D = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, 0);
+            networkPosition += (velocity3D * lag);
+        }
     }
 }
