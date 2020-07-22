@@ -4827,7 +4827,7 @@ GameObject:
   - component: {fileID: 867539141897593031}
   - component: {fileID: 8994805040716221875}
   m_Layer: 8
-  m_Name: Blob 2
+  m_Name: Blob 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4841,7 +4841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7391375786624266156}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.5, y: -3.64, z: -2}
+  m_LocalPosition: {x: 3, y: -3.64, z: -2}
   m_LocalScale: {x: 11, y: 11, z: 1}
   m_Children:
   - {fileID: 3768327094271045545}
@@ -5107,12 +5107,12 @@ PrefabInstance:
     - target: {fileID: 3177677849509139478, guid: 950c2c207f7f87b468dbd52f9fa233eb,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.03700957
+      value: -0.03869129
       objectReference: {fileID: 0}
     - target: {fileID: 3177677849509139478, guid: 950c2c207f7f87b468dbd52f9fa233eb,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.026403876
+      value: 0.024755977
       objectReference: {fileID: 0}
     - target: {fileID: 3177677849721799147, guid: 950c2c207f7f87b468dbd52f9fa233eb,
         type: 3}
@@ -5257,12 +5257,12 @@ PrefabInstance:
     - target: {fileID: 3177677849509139478, guid: 950c2c207f7f87b468dbd52f9fa233eb,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.026735682
+      value: -0.027458148
       objectReference: {fileID: 0}
     - target: {fileID: 3177677849509139478, guid: 950c2c207f7f87b468dbd52f9fa233eb,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.039991237
+      value: -0.040434737
       objectReference: {fileID: 0}
     - target: {fileID: 3177677849721799147, guid: 950c2c207f7f87b468dbd52f9fa233eb,
         type: 3}

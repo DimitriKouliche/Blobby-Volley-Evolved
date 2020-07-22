@@ -14,6 +14,8 @@ public class GameLogics : MonoBehaviourPun
     public GameObject gameOver;
     public GameObject blob1Prefab;
     public GameObject blob2Prefab;
+    public GameObject blob3Prefab;
+    public GameObject blob4Prefab;
     public GameObject blobOnline1Prefab;
     public GameObject blobOnline2Prefab;
     public GameObject ball;
@@ -21,9 +23,12 @@ public class GameLogics : MonoBehaviourPun
     public bool isPlaying = false;
     public bool isOnline = true;
     public float timeScale = 0.5f;
+    public int maxPlayers = 2;
 
     GameObject blob1;
     GameObject blob2;
+    GameObject blob3;
+    GameObject blob4;
     Vector3[] blobPosition;
     Vector3[] blobScale;
     Vector3 ballPosition;
@@ -41,11 +46,8 @@ public class GameLogics : MonoBehaviourPun
 
     public void ResetPositions(string winner)
     {
-        ResetVelocity(blob1);
-        ResetVelocity(blob2);
+        ResetBlobs();
         ResetVelocity(ball);
-        blob1.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-        blob2.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
         if (winner == "Blob 2")
         {
             ball.transform.position = new Vector3(-ballPosition.x, ballPosition.y, -2);
@@ -54,10 +56,30 @@ public class GameLogics : MonoBehaviourPun
         {
             ball.transform.position = ballPosition;
         }
+    }
+
+    public void ResetBlobs()
+    {
+        blob1.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+        blob2.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+        ResetVelocity(blob1);
+        ResetVelocity(blob2);
         blob1.transform.position = blobPosition[0];
         blob2.transform.position = blobPosition[1];
         blob1.transform.localScale = blobScale[0];
         blob2.transform.localScale = blobScale[1];
+        if (maxPlayers == 4)
+        {
+            ResetVelocity(blob3);
+            ResetVelocity(blob4);
+            blob3.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            blob4.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            blob3.transform.position = blobPosition[2];
+            blob4.transform.position = blobPosition[3];
+            blob3.transform.localScale = blobScale[2];
+            blob4.transform.localScale = blobScale[3];
+        }
+
     }
 
     public void UpdateMessage(string message)
@@ -73,7 +95,8 @@ public class GameLogics : MonoBehaviourPun
 
     public void PlayerWins(string player)
     {
-        if (player == "Blob 1")
+
+        if (player == "Blob 1" || player == "Blob 3")
         {
             blob1Score++;
         }
@@ -81,8 +104,7 @@ public class GameLogics : MonoBehaviourPun
         {
             blob2Score++;
         }
-        ResetVelocity(blob1);
-        ResetVelocity(blob2);
+        ResetBlobs();
         DisplayScore();
         isStarting = false;
         isPlaying = false;
@@ -104,8 +126,8 @@ public class GameLogics : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        blobPosition = new Vector3[2];
-        blobScale = new Vector3[2];
+        blobPosition = new Vector3[4];
+        blobScale = new Vector3[4];
         PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate = 0;
         PhotonNetwork.SendRate = 15;
         PhotonNetwork.SerializationRate = 15;
@@ -126,16 +148,17 @@ public class GameLogics : MonoBehaviourPun
                     return;
                 }
 
-                    // Ignore anything but button presses.
-                    if (!(control is ButtonControl))
+                // Ignore anything but button presses.
+                if (!(control is ButtonControl))
                     return;
 
                 if (isOnline && GameObject.Find("Blob 1(Clone)") != null)
                 {
-                    if(PhotonNetwork.IsMasterClient)
+                    if (PhotonNetwork.IsMasterClient)
                     {
                         blob1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("GamePad", control.device);
-                    } else
+                    }
+                    else
                     {
                         blob2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("GamePad", control.device);
                     }
@@ -150,6 +173,14 @@ public class GameLogics : MonoBehaviourPun
                 else if (nbPlayer == 1)
                 {
                     blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
+                }
+                else if (nbPlayer == 2)
+                {
+                    blob3 = PlayerInput.Instantiate(blob3Prefab, pairWithDevice: control.device).gameObject;
+                }
+                else if (nbPlayer == 3)
+                {
+                    blob4 = PlayerInput.Instantiate(blob4Prefab, pairWithDevice: control.device).gameObject;
                 }
                 nbPlayer++;
             };
@@ -179,7 +210,8 @@ public class GameLogics : MonoBehaviourPun
         if (!isOnline)
         {
             blob.GetComponent<PlayerController>().gameLogics = gameObject;
-        } else
+        }
+        else
         {
             blob.GetComponent<OnlinePlayerController>().gameLogics = gameObject;
         }
@@ -190,13 +222,24 @@ public class GameLogics : MonoBehaviourPun
 
     IEnumerator PlayersReady()
     {
-        if(!isOnline)
+        if (!isOnline)
         {
-            while (GameObject.Find("Blob 1(Clone)") == null || GameObject.Find("Blob 2(Clone)") == null)
+            if (maxPlayers == 2)
             {
-                yield return null;
+                while (GameObject.Find("Blob 1(Clone)") == null || GameObject.Find("Blob 2(Clone)") == null)
+                {
+                    yield return null;
+                }
             }
-        } else
+            if (maxPlayers == 4)
+            {
+                while (GameObject.Find("Blob 1(Clone)") == null || GameObject.Find("Blob 2(Clone)") == null || GameObject.Find("Blob 3(Clone)") == null || GameObject.Find("Blob 4(Clone)") == null)
+                {
+                    yield return null;
+                }
+            }
+        }
+        else
         {
             while (GameObject.Find("BlobOnline 1(Clone)") == null || GameObject.Find("BlobOnline 2(Clone)") == null)
             {
@@ -210,6 +253,14 @@ public class GameLogics : MonoBehaviourPun
         blob2 = GameObject.Find("Blob 2(Clone)");
         InitBlob(blob1, 0);
         InitBlob(blob2, 1);
+
+        if (maxPlayers == 4)
+        {
+            blob3 = GameObject.Find("Blob 3(Clone)");
+            blob4 = GameObject.Find("Blob 4(Clone)");
+            InitBlob(blob3, 2);
+            InitBlob(blob4, 3);
+        }
         ball.SetActive(true);
         BeginGame();
     }
