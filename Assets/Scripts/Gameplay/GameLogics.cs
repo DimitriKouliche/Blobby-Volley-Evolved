@@ -172,11 +172,17 @@ public class GameLogics : MonoBehaviourPun
                 }
                 else if (nbPlayer == 1)
                 {
-                    blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
+                    if(maxPlayers == 2)
+                    {
+                        blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
+                    } else
+                    {
+                        blob2 = PlayerInput.Instantiate(blob3Prefab, pairWithDevice: control.device).gameObject;
+                    }
                 }
                 else if (nbPlayer == 2)
                 {
-                    blob3 = PlayerInput.Instantiate(blob3Prefab, pairWithDevice: control.device).gameObject;
+                    blob3 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
                 }
                 else if (nbPlayer == 3)
                 {
