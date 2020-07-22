@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 4
-  jumpHeight: 22
+  jumpHeight: 25
   dashDistance: 3
   gravityScale: 4
   gameLogics: {fileID: 0}
