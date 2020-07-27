@@ -18,7 +18,7 @@ TagManager:
   - Player
   - Ball
   - Tentacles
-  - 
+  - Blob
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tentacules
+    uniqueID: 311353281
+    locked: 0
+  - name: Blob
+    uniqueID: 3375762299
+    locked: 0
+  - name: Eyes
+    uniqueID: 563834519
     locked: 0
