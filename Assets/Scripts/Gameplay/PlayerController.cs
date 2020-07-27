@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
         isGrounded = Physics2D.OverlapCircle(groundCheckPos, 0.23f, layerMask);
+        Debug.Log(isGrounded);
 
         // Apply movement velocity
         if(!isDashing)
