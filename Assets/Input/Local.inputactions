@@ -1,5 +1,5 @@
 {
-    "name": "Blobby Volley Evolved",
+    "name": "Local",
     "maps": [
         {
             "name": "Player",
@@ -41,6 +41,14 @@
                     "name": "Start",
                     "type": "Button",
                     "id": "7370abdd-e471-468b-8bea-20395d084c2f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Smash",
+                    "type": "Button",
+                    "id": "f9f22ad5-5d46-47c5-96b3-5d7f1c117fca",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -198,6 +206,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eae7aaf6-2e3b-4910-a2b7-6357a920fba5",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Smash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90f00f26-b00f-4091-840b-bf88b663157a",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Smash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

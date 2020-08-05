@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,14 +13,16 @@ public class PlayerController : MonoBehaviour
     public float gravityScale = 4f;
     public GameObject gameLogics;
     public bool isDashing = false;
+    public bool isSmashing = false;
     public static GameObject LocalPlayerInstance;
-    public GameObject animator;
+    public GameObject dashAnimation;
 
     PlayerInput playerInput;
     InputAction moveAction;
     InputAction jumpAction;
     InputAction dashAction;
     InputAction chargeJumpAction;
+    InputAction smashAction;
     InputAction startAction;
     float moveDirection = 0;
     bool isGrounded = false;
@@ -30,16 +33,13 @@ public class PlayerController : MonoBehaviour
     float jumpSpeed = 0;
     bool chargingJump = false;
     bool needsSparks = true;
-    Animator m_Animator;
 
 
     // Use this for initialization
     void Start()
     {
-        m_Animator = animator.GetComponent<Animator>();
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
-        r2d.freezeRotation = true;
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         gameObject.layer = 8;
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         dashAction = playerInput.actions["Dash"];
         chargeJumpAction = playerInput.actions["Charge Jump"];
+        smashAction = playerInput.actions["Smash"];
         startAction = playerInput.actions["Start"];
 
         startAction.started += ctx =>
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
             if(isGrounded && !isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
             {
                 r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight / 1.5f);
-                m_Animator.SetTrigger("Jump");
+                
             }
             
         };
@@ -73,8 +74,20 @@ public class PlayerController : MonoBehaviour
             if(!isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
             {
                 chargingJump = true;
-                m_Animator.SetTrigger("Charge");
             }
+        };
+
+        // Smashing
+        smashAction.started += ctx =>
+        {
+            if (isGrounded || isDashing || !gameLogics.GetComponent<GameLogics>().isPlaying)
+            {
+                return;
+            }
+            isSmashing = true;
+            StartCoroutine(Smash(0.5f));
+            GetComponent<CapsuleCollider2D>().offset = new Vector2(1, 0);
+
         };
 
         // Releasing charged jump
@@ -121,15 +134,7 @@ public class PlayerController : MonoBehaviour
         {
             if (moveDirectionVector.x != 0 || moveDirectionVector.y != 0)
             {
-                if (moveDirectionVector.x > 0)
-                {
-                    animator.transform.localScale = new Vector3(-2, 2, 1);
-                }
-                else
-                {
-                    animator.transform.localScale = new Vector3(2, 2, 1);
-                }
-                m_Animator.SetTrigger("Dash");
+                dashAnimation.GetComponent<Animation>().Play();
                 gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
                 isDashing = true;
                 r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
@@ -147,7 +152,7 @@ public class PlayerController : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        isGrounded = transform.position.y < -3.75;
+        isGrounded = transform.position.y < -3.6;
 
         // Apply movement velocity
         if(!isDashing)
@@ -174,5 +179,20 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         isDashing = false;
+    }
+
+    IEnumerator Smash(float duration)
+    {
+        float startRotation = transform.eulerAngles.y;
+        float endRotation = startRotation + 360.0f;
+        float t = 0.0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360.0f;
+            Debug.Log(zRotation);
+            r2d.rotation = zRotation;
+            yield return null;
+        }
     }
 }
