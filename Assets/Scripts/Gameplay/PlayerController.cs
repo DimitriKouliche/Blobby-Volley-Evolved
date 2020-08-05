@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     public bool isDashing = false;
     public bool isSmashing = false;
     public static GameObject LocalPlayerInstance;
-    public GameObject dashAnimation;
+    public GameObject dashRightAnimation;
+    public GameObject dashLefttAnimation;
+    public GameObject jumpAnimation;
 
     PlayerInput playerInput;
     InputAction moveAction;
@@ -60,18 +62,19 @@ public class PlayerController : MonoBehaviour
         // Jumping
         jumpAction.started += ctx =>
         {
-            if(isGrounded && !isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
+            if (isGrounded && !isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
             {
+                jumpAnimation.SetActive(true);
                 r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight / 1.5f);
-                
+
             }
-            
+
         };
 
         // Charging jump
         chargeJumpAction.started += ctx =>
         {
-            if(!isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
+            if (!isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
             {
                 chargingJump = true;
             }
@@ -101,8 +104,7 @@ public class PlayerController : MonoBehaviour
             jumpSpeed = 0;
             chargingJump = false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-            transform.GetChild(1).GetComponent<ParticleSystem>().Stop();
-            needsSparks = true;
+            transform.GetChild(1).GetComponent<ParticleSystem>().Play();
         };
     }
 
@@ -110,7 +112,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameLogics == null)
+        if (gameLogics == null)
         {
             return;
         }
@@ -132,13 +134,21 @@ public class PlayerController : MonoBehaviour
         // Dashing
         if (dashAction.triggered && !isDashing && isGrounded)
         {
-            if (moveDirectionVector.x != 0 || moveDirectionVector.y != 0)
+            if (moveDirectionVector.x != 0)
             {
-                dashAnimation.GetComponent<Animation>().Play();
                 gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
                 isDashing = true;
                 r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
-                StartCoroutine(DisableDash());
+                if (moveDirectionVector.x > 0)
+                {
+                    dashLefttAnimation.SetActive(true);
+                    StartCoroutine(DisableDash(0.4f, -70f));
+                }
+                else
+                {
+                    dashRightAnimation.SetActive(true);
+                    StartCoroutine(DisableDash(0.4f, 70f));
+                }
             }
         }
     }
@@ -152,11 +162,24 @@ public class PlayerController : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        isGrounded = transform.position.y < -3.6;
+        isGrounded = transform.position.y < -3.5;
 
         // Apply movement velocity
-        if(!isDashing)
+        if (!isDashing)
         {
+            if (moveDirection == 0)
+            {
+                r2d.rotation = 0;
+            }
+            else if (moveDirection > 0)
+            {
+                r2d.rotation = -3;
+            }
+            else
+            {
+                r2d.rotation = 3;
+
+            }
             r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
         }
 
@@ -166,32 +189,44 @@ public class PlayerController : MonoBehaviour
             {
                 jumpSpeed += 1f;
                 transform.GetChild(0).GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, Color.cyan);
-            } else if (needsSparks)
-            {
-                transform.GetChild(1).GetComponent<ParticleSystem>().Play();
-                needsSparks = false;
             }
         }
 
     }
 
-    IEnumerator DisableDash()
+    IEnumerator DisableDash(float duration, float rotationX)
     {
-        yield return new WaitForSeconds(0.7f);
+        float startRotation = transform.eulerAngles.y;
+        float endRotation = startRotation + rotationX;
+        float t = 0.0f;
+        float zRotation;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            if (t < duration / 3)
+            {
+                zRotation = Mathf.Lerp(startRotation, endRotation, 3*t / duration);
+            }
+            else if(t > 2 * duration / 3)
+            {
+                zRotation = Mathf.Lerp(endRotation, startRotation, 3*t / duration - 2 );
+            }
+            else
+            {
+                zRotation = rotationX;
+            }
+            r2d.rotation = zRotation;
+            yield return null;
+        }
         isDashing = false;
     }
 
     IEnumerator Smash(float duration)
     {
-        float startRotation = transform.eulerAngles.y;
-        float endRotation = startRotation + 360.0f;
         float t = 0.0f;
         while (t < duration)
         {
             t += Time.deltaTime;
-            float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360.0f;
-            Debug.Log(zRotation);
-            r2d.rotation = zRotation;
             yield return null;
         }
     }
