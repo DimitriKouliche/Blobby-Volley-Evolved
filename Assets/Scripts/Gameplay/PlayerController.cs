@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
     LayerMask layerMask = ~(1 << 2 | 1 << 8);
     float jumpSpeed = 0;
     bool chargingJump = false;
-    bool needsSparks = true;
 
 
     // Use this for initialization
