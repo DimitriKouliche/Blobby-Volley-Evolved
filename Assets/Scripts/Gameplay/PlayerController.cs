@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        isGrounded = transform.position.y < -3.5;
+        isGrounded = transform.position.y < -3.89;
 
         // Apply movement velocity
         if (!isDashing)

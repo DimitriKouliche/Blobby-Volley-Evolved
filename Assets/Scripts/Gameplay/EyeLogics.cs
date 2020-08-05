@@ -31,7 +31,7 @@ public class EyeLogics : MonoBehaviour
         {
             heading.y = 0;
         }
-        transform.localPosition = new Vector3(heading.x * 0.005f, heading.y * 0.006f - 0.006f, -3);
+        transform.localPosition = new Vector3(heading.x * 0.2f-0.15f, heading.y * 0.2f + 0.5f, -3);
     }
 
     public void ChangeEyeColor(float intensity, Color startColor, Color endColor)
