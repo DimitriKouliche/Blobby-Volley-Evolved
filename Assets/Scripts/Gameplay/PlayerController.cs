@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CapsuleCollider2D))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject gameLogics;
     public bool isDashing = false;
     public static GameObject LocalPlayerInstance;
+    public GameObject animator;
 
     PlayerInput playerInput;
     InputAction moveAction;
@@ -30,11 +30,13 @@ public class PlayerController : MonoBehaviour
     float jumpSpeed = 0;
     bool chargingJump = false;
     bool needsSparks = true;
+    Animator m_Animator;
 
 
     // Use this for initialization
     void Start()
     {
+        m_Animator = animator.GetComponent<Animator>();
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
         r2d.freezeRotation = true;
@@ -60,7 +62,9 @@ public class PlayerController : MonoBehaviour
             if(isGrounded && !isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
             {
                 r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight / 1.5f);
+                m_Animator.SetTrigger("Jump");
             }
+            
         };
 
         // Charging jump
@@ -69,6 +73,7 @@ public class PlayerController : MonoBehaviour
             if(!isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
             {
                 chargingJump = true;
+                m_Animator.SetTrigger("Charge");
             }
         };
 
@@ -116,10 +121,19 @@ public class PlayerController : MonoBehaviour
         {
             if (moveDirectionVector.x != 0 || moveDirectionVector.y != 0)
             {
+                if (moveDirectionVector.x > 0)
+                {
+                    animator.transform.localScale = new Vector3(-2, 2, 1);
+                }
+                else
+                {
+                    animator.transform.localScale = new Vector3(2, 2, 1);
+                }
+                m_Animator.SetTrigger("Dash");
                 gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
-                StartCoroutine(DisableDash());
                 isDashing = true;
                 r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 1000, 0, transform.position.z));
+                StartCoroutine(DisableDash());
             }
         }
     }
@@ -133,8 +147,7 @@ public class PlayerController : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        isGrounded = Physics2D.OverlapCircle(groundCheckPos, 0.23f, layerMask);
-        Debug.Log(isGrounded);
+        isGrounded = transform.position.y < -3.75;
 
         // Apply movement velocity
         if(!isDashing)
