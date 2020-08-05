@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
                 m_Animator.SetTrigger("Dash");
                 gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
                 isDashing = true;
-                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 1000, 0, transform.position.z));
+                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
                 StartCoroutine(DisableDash());
             }
         }
