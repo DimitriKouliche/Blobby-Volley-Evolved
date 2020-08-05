@@ -1,40 +1,34 @@
 fileFormatVersion: 2
-guid: 0bead600df97a1146b750d2a6d496210
+guid: 6f991202700dc024686c0a4c735acae6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 788601202510982343
-    second: DashSS_0
+      213: 4267962237978483815
+    second: JumpSS_0
   - first:
-      213: 2993658137332503029
-    second: DashSS_1
+      213: 7269742616198632576
+    second: JumpSS_1
   - first:
-      213: 8329341689598569992
-    second: DashSS_2
+      213: 2224072530162203196
+    second: JumpSS_2
   - first:
-      213: 2936003306992951654
-    second: DashSS_3
+      213: -4075334308813412791
+    second: JumpSS_3
   - first:
-      213: -2505457711919754778
-    second: DashSS_4
+      213: 7465010785082946809
+    second: JumpSS_4
   - first:
-      213: 1753310157371974621
-    second: DashSS_0
+      213: -428411513330907983
+    second: JumpSS_5
   - first:
-      213: 7745538870399763181
-    second: DashSS_1
+      213: -2460365934010286271
+    second: JumpSS_6
   - first:
-      213: -4813279368525600777
-    second: DashSS_2
+      213: 4685437912452746117
+    second: JumpSS_7
   - first:
-      213: -918231502560384591
-    second: DashSS_3
-  - first:
-      213: 4660916099272859478
-    second: DashSS_4
-  - first:
-      213: -8239913903202896270
-    second: DashSS_5
+      213: -3256342235687057583
+    second: JumpSS_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -156,13 +150,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DashSS_0
+      name: JumpSS_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 978
-        width: 370
-        height: 192
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd3ad377c42055810800000000000000
-      internalID: 1753310157371974621
+      spriteID: 76c1d75fa09da3b30800000000000000
+      internalID: 4267962237978483815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DashSS_1
+      name: JumpSS_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 786
-        width: 370
-        height: 192
+        x: 500
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de28824a09ead7b60800000000000000
-      internalID: 7745538870399763181
+      spriteID: 084d907846053e460800000000000000
+      internalID: 7269742616198632576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DashSS_2
+      name: JumpSS_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 594
-        width: 370
-        height: 192
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f7a05a8aebc33db0800000000000000
-      internalID: -4813279368525600777
+      spriteID: c3ab50bbe2e7dde10800000000000000
+      internalID: 2224072530162203196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DashSS_3
+      name: JumpSS_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 402
-        width: 370
-        height: 192
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b9a05c3059c143f0800000000000000
-      internalID: -918231502560384591
+      spriteID: 946e636c9018177c0800000000000000
+      internalID: -4075334308813412791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DashSS_4
+      name: JumpSS_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 210
-        width: 370
-        height: 192
+        x: 2000
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,20 +248,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65fde096f76eea040800000000000000
-      internalID: 4660916099272859478
+      spriteID: 9f43459f1cb099760800000000000000
+      internalID: 7465010785082946809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DashSS_5
+      name: JumpSS_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 18
-        width: 370
-        height: 192
+        y: 0
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,8 +269,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 276f9c346f1f5ad80800000000000000
-      internalID: -8239913903202896270
+      spriteID: 1b4493a9ff9fd0af0800000000000000
+      internalID: -428411513330907983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpSS_6
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f38d5f7360bddd0800000000000000
+      internalID: -2460365934010286271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpSS_7
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58bc4e4f4f4060140800000000000000
+      internalID: 4685437912452746117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpSS_8
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 4
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15785ce4df52fc2d0800000000000000
+      internalID: -3256342235687057583
       vertices: []
       indices: 
       edges: []
