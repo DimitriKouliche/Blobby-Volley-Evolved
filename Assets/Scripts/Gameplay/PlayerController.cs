@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
             jumpSpeed = 0;
             chargingJump = false;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
             transform.GetChild(1).GetComponent<ParticleSystem>().Play();
         };
     }
@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
             if (jumpSpeed < jumpHeight)
             {
                 jumpSpeed += 1f;
-                transform.GetChild(0).GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, Color.cyan);
+                transform.GetChild(0).GetChild(0).GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, Color.cyan);
             }
         }
 

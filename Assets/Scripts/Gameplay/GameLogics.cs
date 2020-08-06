@@ -60,8 +60,8 @@ public class GameLogics : MonoBehaviourPun
 
     public void ResetBlobs()
     {
-        blob1.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-        blob2.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+        blob1.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+        blob2.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
         ResetVelocity(blob1);
         ResetVelocity(blob2);
         blob1.transform.position = blobPosition[0];
@@ -72,8 +72,8 @@ public class GameLogics : MonoBehaviourPun
         {
             ResetVelocity(blob3);
             ResetVelocity(blob4);
-            blob3.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-            blob4.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            blob3.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            blob4.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
             blob3.transform.position = blobPosition[2];
             blob4.transform.position = blobPosition[3];
             blob3.transform.localScale = blobScale[2];
@@ -221,7 +221,7 @@ public class GameLogics : MonoBehaviourPun
         {
             blob.GetComponent<OnlinePlayerController>().gameLogics = gameObject;
         }
-        blob.transform.GetChild(0).GetComponent<EyeLogics>().ball = ball;
+        blob.transform.GetChild(0).GetChild(0).GetComponent<EyeLogics>().ball = ball;
         blobPosition[id] = blob.transform.position;
         blobScale[id] = blob.transform.localScale;
     }
