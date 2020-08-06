@@ -60,6 +60,8 @@ public class GameLogics : MonoBehaviourPun
         {
             ball.transform.position = ballPosition;
         }
+
+        Camera.main.transform.position = new Vector3(ball.transform.position.x / 17, 0, -10);
     }
 
     public void ResetBlobs()

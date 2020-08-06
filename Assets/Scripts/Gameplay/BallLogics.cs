@@ -25,14 +25,9 @@ public class BallLogics : MonoBehaviourPunCallbacks
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
         }
 
-        if (!photonView.IsMine)
-        {
-            return;
-        }
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)")
         {
-            if (gameLogics == null || (!gameLogics.GetComponent<GameLogics>().isOnline && collision.gameObject.GetComponent<PlayerController>().isDashing) ||
-                (gameLogics.GetComponent<GameLogics>().isOnline && collision.gameObject.GetComponent<OnlinePlayerController>().isDashing))
+            if (collision.gameObject.GetComponent<PlayerController>().isDashing)
             {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
             }
@@ -40,7 +35,16 @@ public class BallLogics : MonoBehaviourPunCallbacks
         Collider2D collider = collision.contacts[0].collider;
         if (collider.name == "Smash")
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -smashDownwardForce));
+            StartCoroutine(SmashFreeze(0.7f));
+            if (transform.position.x > collider.transform.position.x)
+            {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(smashDownwardForce, -smashDownwardForce));
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(-smashDownwardForce, -smashDownwardForce));
+            }
+            collider.gameObject.SetActive(false);
         }
     }
 
@@ -76,6 +80,7 @@ public class BallLogics : MonoBehaviourPunCallbacks
         {
             rigidBody.position = Vector3.MoveTowards(rigidBody.position, networkPosition, Time.fixedDeltaTime);
         }
+        Camera.main.transform.position = new Vector3(gameObject.transform.position.x / 17, 0, -10);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -94,6 +99,23 @@ public class BallLogics : MonoBehaviourPunCallbacks
             float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTimestamp));
             Vector3 velocity3D = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, 0);
             networkPosition += (velocity3D * lag);
+        }
+    }
+
+    IEnumerator SmashFreeze(float duration)
+    {
+        Time.timeScale = 0;
+        yield return StartCoroutine(WaitForRealSeconds(duration));
+        Time.timeScale = 1;
+        Camera.main.GetComponent<CameraShake>().Shake();
+    }
+
+    IEnumerator WaitForRealSeconds(float seconds)
+    {
+        float startTime = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup - startTime < seconds)
+        {
+            yield return null;
         }
     }
 }

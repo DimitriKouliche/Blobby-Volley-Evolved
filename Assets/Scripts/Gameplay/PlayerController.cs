@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 22f;
     public float dashDistance = 3f;
     public float gravityScale = 4f;
-    public float smashRadius = 15f;
+    public float smashRadius = 20f;
     public GameObject gameLogics;
     public bool isDashing = false;
     public bool isSmashing = false;
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public GameObject dashRightAnimation;
     public GameObject dashLefttAnimation;
     public GameObject jumpAnimation;
+    public GameObject smashAnimation;
     public GameObject smashCollider;
 
     PlayerInput playerInput;
@@ -95,8 +96,11 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
+
+            smashAnimation.SetActive(true);
             isSmashing = true;
-            StartCoroutine(Smash(0.5f));
+            smashCollider.SetActive(true);
+            StartCoroutine(Smash(0.7f));
         };
 
         // Releasing charged jump
@@ -170,7 +174,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = transform.position.y < -3.89;
 
         // Apply movement velocity
-        if (!isDashing)
+        if (!isDashing && !isSmashing)
         {
             if (moveDirection == 0)
             {
@@ -210,11 +214,11 @@ public class PlayerController : MonoBehaviour
             t += Time.deltaTime;
             if (t < duration / 3)
             {
-                zRotation = Mathf.Lerp(startRotation, endRotation, 3 * t / duration);
+                zRotation = Mathf.SmoothStep(startRotation, endRotation, 3 * t / duration);
             }
             else if (t > 2 * duration / 3)
             {
-                zRotation = Mathf.Lerp(endRotation, startRotation, 3 * t / duration - 2);
+                zRotation = Mathf.SmoothStep(endRotation, startRotation, 3 * t / duration - 2);
             }
             else
             {
@@ -233,16 +237,18 @@ public class PlayerController : MonoBehaviour
         {
             if (t < duration / 2)
             {
-                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.Lerp(0.0001f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+                r2d.rotation = Mathf.Lerp(0, 30, 2 * t / duration);
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(0.0001f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             else
             {
-                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.Lerp(smashRadius, 0.0001f, 2 * t / duration - 1), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+                r2d.rotation = Mathf.Lerp(30, 0, 2 * t / duration - 1);
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius, 0.0001f, 2 * t / duration - 1), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             t += Time.deltaTime;
             yield return null;
         }
-
+        smashCollider.SetActive(false);
         isSmashing = false;
     }
 }
