@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 22f;
     public float dashDistance = 3f;
     public float gravityScale = 4f;
+    public float smashRadius = 15f;
     public GameObject gameLogics;
     public bool isDashing = false;
     public bool isSmashing = false;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public GameObject dashRightAnimation;
     public GameObject dashLefttAnimation;
     public GameObject jumpAnimation;
+    public GameObject smashCollider;
 
     PlayerInput playerInput;
     InputAction moveAction;
@@ -59,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
         startAction.started += ctx =>
         {
-            if(gameLogics != null && gameLogics.GetComponent<GameLogics>().isStarting)
+            if (gameLogics != null && gameLogics.GetComponent<GameLogics>().isStarting)
             {
                 gameLogics.GetComponent<GameLogics>().SendStartRoundMessage();
             }
@@ -68,9 +70,6 @@ public class PlayerController : MonoBehaviour
         // Jumping
         jumpAction.started += ctx =>
         {
-            Debug.Log(isGrounded);
-            Debug.Log(jumpAnimation);
-            Debug.Log(isDashing);
             if (isGrounded && !isDashing && IsPlaying() && jumpAnimation != null)
             {
                 jumpAnimation.SetActive(true);
@@ -92,14 +91,12 @@ public class PlayerController : MonoBehaviour
         // Smashing
         smashAction.started += ctx =>
         {
-            if (isGrounded || isDashing || !IsPlaying())
+            if (this == null || isGrounded || isDashing || isSmashing || !IsPlaying())
             {
                 return;
             }
             isSmashing = true;
             StartCoroutine(Smash(0.5f));
-            GetComponent<CapsuleCollider2D>().offset = new Vector2(1, 0);
-
         };
 
         // Releasing charged jump
@@ -210,11 +207,11 @@ public class PlayerController : MonoBehaviour
             t += Time.deltaTime;
             if (t < duration / 3)
             {
-                zRotation = Mathf.Lerp(startRotation, endRotation, 3*t / duration);
+                zRotation = Mathf.Lerp(startRotation, endRotation, 3 * t / duration);
             }
-            else if(t > 2 * duration / 3)
+            else if (t > 2 * duration / 3)
             {
-                zRotation = Mathf.Lerp(endRotation, startRotation, 3*t / duration - 2 );
+                zRotation = Mathf.Lerp(endRotation, startRotation, 3 * t / duration - 2);
             }
             else
             {
@@ -231,8 +228,18 @@ public class PlayerController : MonoBehaviour
         float t = 0.0f;
         while (t < duration)
         {
+            if (t < duration / 2)
+            {
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.Lerp(0.0001f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+            }
+            else
+            {
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.Lerp(smashRadius, 0.0001f, 2 * t / duration - 1), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+            }
             t += Time.deltaTime;
             yield return null;
         }
+
+        isSmashing = false;
     }
 }

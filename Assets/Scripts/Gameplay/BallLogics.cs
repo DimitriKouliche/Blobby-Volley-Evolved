@@ -7,6 +7,7 @@ public class BallLogics : MonoBehaviourPunCallbacks
     public GameObject ballIndicator;
     public GameObject gameLogics;
     public float dashUpwardForce = 9000;
+    public float smashDownwardForce = 5000;
     bool isScaling;
     Vector3 initialScale = new Vector3(-1, -1, -1);
     Rigidbody2D rigidBody;
@@ -35,6 +36,12 @@ public class BallLogics : MonoBehaviourPunCallbacks
             {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
             }
+        }
+        Collider2D collider = collision.contacts[0].collider;
+        if (collider.name == "Smash")
+        {
+            Debug.Log("SMASH");
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -smashDownwardForce));
         }
     }
 
