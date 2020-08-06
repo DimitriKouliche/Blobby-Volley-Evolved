@@ -7,7 +7,7 @@ public class BallLogics : MonoBehaviourPunCallbacks
     public GameObject ballIndicator;
     public GameObject gameLogics;
     public float dashUpwardForce = 9000;
-    public float smashDownwardForce = 5000;
+    public float smashDownwardForce = 7000;
     bool isScaling;
     Vector3 initialScale = new Vector3(-1, -1, -1);
     Rigidbody2D rigidBody;
@@ -15,12 +15,12 @@ public class BallLogics : MonoBehaviourPunCallbacks
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
+        if (gameLogics != null && collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
         }
 
-        if (collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
+        if (gameLogics != null && collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
         }
@@ -31,7 +31,7 @@ public class BallLogics : MonoBehaviourPunCallbacks
         }
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)")
         {
-            if ((!gameLogics.GetComponent<GameLogics>().isOnline && collision.gameObject.GetComponent<PlayerController>().isDashing) ||
+            if (gameLogics == null || (!gameLogics.GetComponent<GameLogics>().isOnline && collision.gameObject.GetComponent<PlayerController>().isDashing) ||
                 (gameLogics.GetComponent<GameLogics>().isOnline && collision.gameObject.GetComponent<OnlinePlayerController>().isDashing))
             {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
@@ -40,7 +40,6 @@ public class BallLogics : MonoBehaviourPunCallbacks
         Collider2D collider = collision.contacts[0].collider;
         if (collider.name == "Smash")
         {
-            Debug.Log("SMASH");
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -smashDownwardForce));
         }
     }
@@ -53,7 +52,7 @@ public class BallLogics : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (ballIndicator.activeSelf)
+        if (ballIndicator!= null && ballIndicator.activeSelf)
         {
             ballIndicator.transform.position = new Vector3(transform.position.x, 4.5f, -2);
         }
@@ -61,12 +60,14 @@ public class BallLogics : MonoBehaviourPunCallbacks
 
     void OnBecameInvisible()
     {
-        ballIndicator.SetActive(true);
+        if (ballIndicator != null)
+          ballIndicator.SetActive(true);
     }
 
     void OnBecameVisible()
     {
-        ballIndicator.SetActive(false);
+        if (ballIndicator != null)
+          ballIndicator.SetActive(false);
     }
 
     public void FixedUpdate()

@@ -138,7 +138,10 @@ public class PlayerController : MonoBehaviour
         {
             if (moveDirectionVector.x != 0)
             {
-                gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
+                if(gameLogics != null)
+                {
+                    gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
+                }
                 isDashing = true;
                 r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
                 if (moveDirectionVector.x > 0)
