@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Boo.Lang;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,6 +36,10 @@ public class PlayerController : MonoBehaviour
     float jumpSpeed = 0;
     bool chargingJump = false;
 
+    bool IsPlaying()
+    {
+        return gameLogics == null || gameLogics.GetComponent<GameLogics>().isPlaying;
+    }
 
     // Use this for initialization
     void Start()
@@ -54,7 +59,6 @@ public class PlayerController : MonoBehaviour
 
         startAction.started += ctx =>
         {
-            Debug.Log("starting game");
             if(gameLogics != null && gameLogics.GetComponent<GameLogics>().isStarting)
             {
                 gameLogics.GetComponent<GameLogics>().SendStartRoundMessage();
@@ -64,7 +68,10 @@ public class PlayerController : MonoBehaviour
         // Jumping
         jumpAction.started += ctx =>
         {
-            if (isGrounded && !isDashing && gameLogics.GetComponent<GameLogics>().isPlaying && jumpAnimation != null)
+            Debug.Log(isGrounded);
+            Debug.Log(jumpAnimation);
+            Debug.Log(isDashing);
+            if (isGrounded && !isDashing && IsPlaying() && jumpAnimation != null)
             {
                 jumpAnimation.SetActive(true);
                 r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight / 1.5f);
@@ -76,7 +83,7 @@ public class PlayerController : MonoBehaviour
         // Charging jump
         chargeJumpAction.started += ctx =>
         {
-            if (!isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
+            if (!isDashing && IsPlaying())
             {
                 chargingJump = true;
             }
@@ -85,7 +92,7 @@ public class PlayerController : MonoBehaviour
         // Smashing
         smashAction.started += ctx =>
         {
-            if (isGrounded || isDashing || !gameLogics.GetComponent<GameLogics>().isPlaying)
+            if (isGrounded || isDashing || !IsPlaying())
             {
                 return;
             }
@@ -98,7 +105,7 @@ public class PlayerController : MonoBehaviour
         // Releasing charged jump
         chargeJumpAction.canceled += ctx =>
         {
-            if (!isGrounded || isDashing || !gameLogics.GetComponent<GameLogics>().isPlaying || r2d == null)
+            if (!isGrounded || isDashing || !IsPlaying() || r2d == null)
             {
                 return;
             }
@@ -114,11 +121,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameLogics == null)
-        {
-            return;
-        }
-        if (!gameLogics.GetComponent<GameLogics>().isPlaying)
+        if (gameLogics != null && !IsPlaying())
         {
             return;
         }
@@ -157,7 +160,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!gameLogics.GetComponent<GameLogics>().isPlaying)
+        if (!IsPlaying())
         {
             return;
         }
