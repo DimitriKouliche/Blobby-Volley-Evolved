@@ -6,7 +6,7 @@ public class BallLogics : MonoBehaviourPunCallbacks
 {
     public GameObject ballIndicator;
     public GameObject gameLogics;
-    public float dashUpwardForce = 250;
+    public float dashUpwardForce = 9000;
     bool isScaling;
     Vector3 initialScale = new Vector3(-1, -1, -1);
     Rigidbody2D rigidBody;

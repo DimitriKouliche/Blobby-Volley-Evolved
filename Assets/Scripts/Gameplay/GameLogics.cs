@@ -36,6 +36,10 @@ public class GameLogics : MonoBehaviourPun
     int blob2Score = 0;
     int nbPlayer = 0;
     bool applicationQuit = false;
+    InputDevice player1Device;
+    InputDevice player2Device;
+    InputDevice player3Device;
+    InputDevice player4Device;
 
     public void ResetVelocity(GameObject target)
     {
@@ -60,26 +64,27 @@ public class GameLogics : MonoBehaviourPun
 
     public void ResetBlobs()
     {
-        blob1.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-        blob2.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-        ResetVelocity(blob1);
-        ResetVelocity(blob2);
-        blob1.transform.position = blobPosition[0];
-        blob2.transform.position = blobPosition[1];
-        blob1.transform.localScale = blobScale[0];
-        blob2.transform.localScale = blobScale[1];
-        if (maxPlayers == 4)
+        Destroy(blob1);
+        blob1 = PlayerInput.Instantiate(blob1Prefab, pairWithDevice: player1Device).gameObject;
+        InitBlob(blob1, 0);
+        if (maxPlayers == 2)
         {
-            ResetVelocity(blob3);
-            ResetVelocity(blob4);
-            blob3.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-            blob4.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-            blob3.transform.position = blobPosition[2];
-            blob4.transform.position = blobPosition[3];
-            blob3.transform.localScale = blobScale[2];
-            blob4.transform.localScale = blobScale[3];
+            Destroy(blob2);
+            blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: player2Device).gameObject;
+            InitBlob(blob2, 1);
         }
-
+        else
+        {
+            Destroy(blob2);
+            blob2 = PlayerInput.Instantiate(blob3Prefab, pairWithDevice: player2Device).gameObject;
+            InitBlob(blob2, 1);
+            Destroy(blob3);
+            blob3 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: player3Device).gameObject;
+            InitBlob(blob3, 2);
+            Destroy(blob4);
+            blob4 = PlayerInput.Instantiate(blob4Prefab, pairWithDevice: player4Device).gameObject;
+            InitBlob(blob4, 3);
+        }
     }
 
     public void UpdateMessage(string message)
@@ -104,7 +109,6 @@ public class GameLogics : MonoBehaviourPun
         {
             blob2Score++;
         }
-        ResetBlobs();
         DisplayScore();
         isStarting = false;
         isPlaying = false;
@@ -169,24 +173,30 @@ public class GameLogics : MonoBehaviourPun
                 if (nbPlayer == 0)
                 {
                     blob1 = PlayerInput.Instantiate(blob1Prefab, pairWithDevice: control.device).gameObject;
+                    player1Device = control.device;
                 }
                 else if (nbPlayer == 1)
                 {
-                    if(maxPlayers == 2)
+                    if (maxPlayers == 2)
                     {
                         blob2 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
-                    } else
+                        player2Device = control.device;
+                    }
+                    else
                     {
                         blob2 = PlayerInput.Instantiate(blob3Prefab, pairWithDevice: control.device).gameObject;
+                        player2Device = control.device;
                     }
                 }
                 else if (nbPlayer == 2)
                 {
                     blob3 = PlayerInput.Instantiate(blob2Prefab, pairWithDevice: control.device).gameObject;
+                    player3Device = control.device;
                 }
                 else if (nbPlayer == 3)
                 {
                     blob4 = PlayerInput.Instantiate(blob4Prefab, pairWithDevice: control.device).gameObject;
+                    player4Device = control.device;
                 }
                 nbPlayer++;
             };
@@ -273,6 +283,10 @@ public class GameLogics : MonoBehaviourPun
 
     public void SendStartRoundMessage()
     {
+        if(nbPlayer != maxPlayers)
+        {
+            return;
+        }
         if (!isOnline)
         {
             StartRound();

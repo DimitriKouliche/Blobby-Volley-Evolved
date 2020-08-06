@@ -55,13 +55,16 @@ public class PlayerController : MonoBehaviour
         startAction.started += ctx =>
         {
             Debug.Log("starting game");
-            gameLogics.GetComponent<GameLogics>().SendStartRoundMessage();
+            if(gameLogics != null && gameLogics.GetComponent<GameLogics>().isStarting)
+            {
+                gameLogics.GetComponent<GameLogics>().SendStartRoundMessage();
+            }
         };
 
         // Jumping
         jumpAction.started += ctx =>
         {
-            if (isGrounded && !isDashing && gameLogics.GetComponent<GameLogics>().isPlaying)
+            if (isGrounded && !isDashing && gameLogics.GetComponent<GameLogics>().isPlaying && jumpAnimation != null)
             {
                 jumpAnimation.SetActive(true);
                 r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight / 1.5f);
@@ -95,7 +98,7 @@ public class PlayerController : MonoBehaviour
         // Releasing charged jump
         chargeJumpAction.canceled += ctx =>
         {
-            if (!isGrounded || isDashing || !gameLogics.GetComponent<GameLogics>().isPlaying)
+            if (!isGrounded || isDashing || !gameLogics.GetComponent<GameLogics>().isPlaying || r2d == null)
             {
                 return;
             }
