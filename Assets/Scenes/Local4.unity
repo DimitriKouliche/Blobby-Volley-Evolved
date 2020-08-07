@@ -155,16 +155,8 @@ MonoBehaviour:
   uiMessage: {fileID: 693886599}
   uiScore: {fileID: 693886598}
   gameOver: {fileID: 693886600}
-  blob1Prefab: {fileID: 8330191615473064848, guid: e251638492faba04aa2f41a1035cf2ff,
+  blobPrefab: {fileID: 8330191615473064848, guid: e251638492faba04aa2f41a1035cf2ff,
     type: 3}
-  blob2Prefab: {fileID: 8330191615473064848, guid: ec790f24b1ea958419d86816b7ec8259,
-    type: 3}
-  blob3Prefab: {fileID: 8330191615473064848, guid: 40cb05cc27dc8ff4aad915543a862d65,
-    type: 3}
-  blob4Prefab: {fileID: 8330191615473064848, guid: c3849b3e5b60ad941a64451a4740179b,
-    type: 3}
-  blobOnline1Prefab: {fileID: 0}
-  blobOnline2Prefab: {fileID: 0}
   ball: {fileID: 1247051197}
   isStarting: 0
   isPlaying: 1
