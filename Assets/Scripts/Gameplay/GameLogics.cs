@@ -41,7 +41,8 @@ public class GameLogics : MonoBehaviourPun
     InputDevice player2Device;
     InputDevice player3Device;
     InputDevice player4Device;
-    int[] ballTouches = new int[4];
+    int[] teamBallTouches = new int[2];
+    int[] playerBallTouches = new int[4];
 
     public void ResetVelocity(GameObject target)
     {
@@ -104,9 +105,15 @@ public class GameLogics : MonoBehaviourPun
 
     public void PlayerWins(string player)
     {
+        isStarting = false;
+        isPlaying = false;
         for (int i = 0; i < 4; i++)
         {
-            ballTouches[i] = 0;
+            playerBallTouches[i] = 0;
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            teamBallTouches[i] = 0;
         }
         if (player == "Blob 1" || player == "Blob 3")
         {
@@ -117,8 +124,6 @@ public class GameLogics : MonoBehaviourPun
             blob2Score++;
         }
         DisplayScore();
-        isStarting = false;
-        isPlaying = false;
         if (blob1Score >= 15 || blob2Score >= 15)
         {
             UpdateMessage("CONGRATULATIONS, " + player + ", you have won the GAME");
@@ -340,10 +345,30 @@ public class GameLogics : MonoBehaviourPun
 
     public void PlayerTouchesBall(GameObject player)
     {
+        if(!isStarting || !isPlaying)
+        {
+            return;
+        }
         int playerId = ExtractIDFromName(player.name) - 1;
-        ballTouches[playerId]++;
-        if(ballTouches[playerId] > 3) {
-            if(playerId == 0)
+        int teamId = playerId % 2 == 0 ? 0 : 1;
+        playerBallTouches[playerId]++;
+        teamBallTouches[teamId]++;
+        if(maxPlayers == 4)
+        {
+            if (playerBallTouches[playerId] > 1)
+            {
+                if (teamId == 0)
+                {
+                    PlayerWins("Blob 2");
+                }
+                else
+                {
+                    PlayerWins("Blob 1");
+                }
+            }
+        }
+        if (teamBallTouches[teamId] > 3) {
+            if(teamId == 0)
             {
                 PlayerWins("Blob 2");
             } else

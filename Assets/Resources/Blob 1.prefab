@@ -5779,7 +5779,7 @@ GameObject:
   - component: {fileID: 8330191615473064850}
   - component: {fileID: 8330191615473064851}
   m_Layer: 10
-  m_Name: Blob 1(Clone)
+  m_Name: Blob 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
