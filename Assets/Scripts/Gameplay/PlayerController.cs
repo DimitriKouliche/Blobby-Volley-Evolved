@@ -233,16 +233,24 @@ public class PlayerController : MonoBehaviour
     IEnumerator Smash(float duration)
     {
         float t = 0.0f;
+        int angle;
+        if(transform.position.x > 0)
+        {
+            angle = -30;
+        } else
+        {
+            angle = 30;
+        }
         while (t < duration)
         {
             if (t < duration / 2)
             {
-                r2d.rotation = Mathf.Lerp(0, 30, 2 * t / duration);
+                r2d.rotation = Mathf.Lerp(0, angle, 2 * t / duration);
                 smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(0.0001f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             else
             {
-                r2d.rotation = Mathf.Lerp(30, 0, 2 * t / duration - 1);
+                r2d.rotation = Mathf.Lerp(angle, 0, 2 * t / duration - 1);
                 smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius, 0.0001f, 2 * t / duration - 1), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             t += Time.deltaTime;

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem.Users;
 using UnityEngine.InputSystem.Controls;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 
 public class GameLogics : MonoBehaviourPun
 {
@@ -40,6 +41,7 @@ public class GameLogics : MonoBehaviourPun
     InputDevice player2Device;
     InputDevice player3Device;
     InputDevice player4Device;
+    int[] ballTouches = new int[4];
 
     public void ResetVelocity(GameObject target)
     {
@@ -102,7 +104,10 @@ public class GameLogics : MonoBehaviourPun
 
     public void PlayerWins(string player)
     {
-
+        for (int i = 0; i < 4; i++)
+        {
+            ballTouches[i] = 0;
+        }
         if (player == "Blob 1" || player == "Blob 3")
         {
             blob1Score++;
@@ -331,5 +336,25 @@ public class GameLogics : MonoBehaviourPun
         yield return new WaitForSeconds(3);
         EraseMessage();
         gameOver.SetActive(true);
+    }
+
+    public void PlayerTouchesBall(GameObject player)
+    {
+        int playerId = ExtractIDFromName(player.name) - 1;
+        ballTouches[playerId]++;
+        if(ballTouches[playerId] > 3) {
+            if(playerId == 0)
+            {
+                PlayerWins("Blob 2");
+            } else
+            {
+                PlayerWins("Blob 1");
+            }
+        }
+    }
+
+    int ExtractIDFromName(string name)
+    {
+        return Convert.ToInt32(new string(name[5], 1));
     }
 }

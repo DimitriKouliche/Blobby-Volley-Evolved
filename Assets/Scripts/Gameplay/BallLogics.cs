@@ -25,8 +25,12 @@ public class BallLogics : MonoBehaviourPunCallbacks
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
         }
 
-        if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)")
+        if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
         {
+            if(gameLogics != null)
+            {
+                gameLogics.GetComponent<GameLogics>().PlayerTouchesBall(collision.gameObject);
+            }
             if (collision.gameObject.GetComponent<PlayerController>().isDashing)
             {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dashUpwardForce));
