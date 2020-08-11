@@ -4,6 +4,7 @@ public class SpriteAnimator : MonoBehaviour
 {
     public bool stayInPlace = false;
     public float framerate = .1f;
+    public bool loop;
     [SerializeField] private Sprite[] frameArray;
     private int currentFrame;
     private float timer;
@@ -27,7 +28,10 @@ public class SpriteAnimator : MonoBehaviour
         if (currentFrame >= frameArray.Length - 1)
         {
             currentFrame = 0;
-            gameObject.SetActive(false);
+            if(!loop)
+            {
+                gameObject.SetActive(false);
+            }
         }
         timer += Time.deltaTime;
         if (timer >= framerate)
