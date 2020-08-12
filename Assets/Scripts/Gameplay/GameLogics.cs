@@ -333,7 +333,13 @@ public class GameLogics : MonoBehaviour
 
     public int GetTeamFromPlayer(int playerId)
     {
-        return playerId < 2 ? 0 : 1;
+        if(maxPlayers == 4)
+        {
+            return playerId < 2 ? 0 : 1;
+        } else
+        {
+            return playerId;
+        }
     }
 
     public void PlayerTouchesBall(GameObject player)
@@ -344,7 +350,7 @@ public class GameLogics : MonoBehaviour
         }
         int playerId = ExtractIDFromName(player.name) - 1;
         int teamId = GetTeamFromPlayer(playerId);
-        int otherTeamId = playerId < 2 ? 1 : 0;
+        int otherTeamId = teamId == 0 ? 1 : 0;
         playerBallTouches[playerId]++;
         teamBallTouches[teamId]++;
         teamBallTouches[otherTeamId] = 0;
