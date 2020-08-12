@@ -58,13 +58,6 @@ public class PlayerController : MonoBehaviour
         smashAction = playerInput.actions["Smash"];
         startAction = playerInput.actions["Start"];
 
-        startAction.started += ctx =>
-        {
-            if (gameLogics != null && gameLogics.GetComponent<GameLogics>().isStarting)
-            {
-                gameLogics.GetComponent<GameLogics>().SendStartRoundMessage();
-            }
-        };
 
         // Jumping
         jumpAction.started += ctx =>

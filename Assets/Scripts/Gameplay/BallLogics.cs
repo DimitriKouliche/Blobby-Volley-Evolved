@@ -25,6 +25,7 @@ public class BallLogics : MonoBehaviour
         {
             if(gameLogics != null)
             {
+                gameLogics.GetComponent<GameLogics>().PlayerServes(collision.gameObject);
                 gameLogics.GetComponent<GameLogics>().PlayerTouchesBall(collision.gameObject);
             }
             if (collision.gameObject.GetComponent<PlayerController>().isDashing)

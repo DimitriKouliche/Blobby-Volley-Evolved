@@ -13,10 +13,10 @@ public class GameLogics : MonoBehaviour
     public GameObject gameOver;
     public GameObject blobPrefab;
     public GameObject ball;
+    public GameObject ballSupport;
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;
-    public float timeScale = 0.5f;
     public int maxPlayers = 2;
 
     GameObject blob1;
@@ -36,6 +36,7 @@ public class GameLogics : MonoBehaviour
     InputDevice player4Device;
     int[] teamBallTouches = new int[2];
     int[] playerBallTouches = new int[4];
+    private bool serve = true;
 
     public void ResetVelocity(GameObject target)
     {
@@ -64,23 +65,33 @@ public class GameLogics : MonoBehaviour
     {
         Destroy(blob1);
         blob1 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player1Device).gameObject;
+        Debug.Log("Resetting player 1");
+        Debug.Log(player1Device);
         InitBlob(blob1, 0);
         if (maxPlayers == 2)
         {
             Destroy(blob2);
             blob2 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player2Device).gameObject;
+            Debug.Log("Resetting player 2");
+            Debug.Log(player2Device);
             InitBlob(blob2, 1);
         }
         else
         {
             Destroy(blob2);
             blob2 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player2Device).gameObject;
+            Debug.Log("Resetting player 2");
+            Debug.Log(player2Device);
             InitBlob(blob2, 1);
             Destroy(blob3);
             blob3 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player3Device).gameObject;
+            Debug.Log("Resetting player 3");
+            Debug.Log(player3Device);
             InitBlob(blob3, 2);
             Destroy(blob4);
             blob4 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player4Device).gameObject;
+            Debug.Log("Resetting player 4");
+            Debug.Log(player4Device);
             InitBlob(blob4, 3);
         }
         ReplaceBlobs();
@@ -180,9 +191,6 @@ public class GameLogics : MonoBehaviour
             smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
             smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
         }
-
-        Time.timeScale = 1f;
-
     }
 
     // Start is called before the first frame update
@@ -190,7 +198,7 @@ public class GameLogics : MonoBehaviour
     {
         blobPosition = new Vector3[4];
         blobScale = new Vector3[4];
-        Time.timeScale = 0;
+        ToggleMovement(false);
 
         ++InputUser.listenForUnpairedDeviceActivity;
         // Example of how to spawn a new player automatically when a button
@@ -203,9 +211,6 @@ public class GameLogics : MonoBehaviour
                     return;
                 }
 
-                // Ignore anything but button presses.
-                if (!(control is ButtonControl))
-                    return;
 
                 if (nbPlayer == maxPlayers)
                     return;
@@ -215,21 +220,29 @@ public class GameLogics : MonoBehaviour
                 if (nbPlayer == 0)
                 {
                     blob1 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
+                    Debug.Log("Spawning player 1");
+                    Debug.Log(control.device);
                     player1Device = control.device;
                 }
                 else if (nbPlayer == 1)
                 {
                     blob2 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
+                    Debug.Log("Spawning player 2");
+                    Debug.Log(control.device);
                     player2Device = control.device;
                 }
                 else if (nbPlayer == 2)
                 {
                     blob3 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
+                    Debug.Log("Spawning player 3");
+                    Debug.Log(control.device);
                     player3Device = control.device;
                 }
                 else if (nbPlayer == 3)
                 {
                     blob4 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
+                    Debug.Log("Spawning player 4");
+                    Debug.Log(control.device);
                     player4Device = control.device;
                 }
                 nbPlayer++;
@@ -279,17 +292,23 @@ public class GameLogics : MonoBehaviour
 
     public void StartRound()
     {
-        Time.timeScale = timeScale;
         isPlaying = true;
         uiMessage.SetActive(false);
+    }
+
+    void ToggleMovement(bool shouldMove)
+    {
+        ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
     void BeginGame()
     {
         Debug.Log("Beginning Game");
-        Time.timeScale = 0;
+        ToggleMovement(false);
+        serve = true;
+        ballSupport.SetActive(true);
         isStarting = true;
-        UpdateMessage("Press Enter / Start to begin round");
+        SendStartRoundMessage();
     }
 
     void EraseMessage()
@@ -320,8 +339,10 @@ public class GameLogics : MonoBehaviour
         }
         int playerId = ExtractIDFromName(player.name) - 1;
         int teamId = playerId % 2 == 0 ? 0 : 1;
+        int otherTeamId = playerId % 2 == 0 ? 1 : 0;
         playerBallTouches[playerId]++;
         teamBallTouches[teamId]++;
+        teamBallTouches[otherTeamId] = 0;
         if(maxPlayers == 4)
         {
             if (playerBallTouches[playerId] > 1)
@@ -345,6 +366,21 @@ public class GameLogics : MonoBehaviour
                 PlayerWins("Blob 1");
             }
         }
+    }
+    public void PlayerServes(GameObject player)
+    {
+        if (!isStarting || !isPlaying || !serve)
+        {
+            return;
+        }
+        int playerId = ExtractIDFromName(player.name) - 1;
+        int teamId = playerId % 2 == 0 ? 0 : 1;
+        if (serve)
+        {
+            teamBallTouches[teamId] = 2;
+        }
+        serve = false;
+        ballSupport.SetActive(false);
     }
 
     int ExtractIDFromName(string name)
