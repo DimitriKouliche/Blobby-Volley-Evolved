@@ -51,3 +51,9 @@ TagManager:
   - name: Eyes
     uniqueID: 563834519
     locked: 0
+  - name: RayYellow
+    uniqueID: 2419435613
+    locked: 0
+  - name: RayWhite
+    uniqueID: 17918683
+    locked: 0
