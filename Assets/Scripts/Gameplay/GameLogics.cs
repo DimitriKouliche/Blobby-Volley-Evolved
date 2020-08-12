@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.InputSystem.Controls;
-using Photon.Pun;
-using Photon.Realtime;
 using System;
 
-public class GameLogics : MonoBehaviourPun
+public class GameLogics : MonoBehaviour
 {
     public GameObject uiMessage;
     public GameObject uiScore;
@@ -183,6 +181,8 @@ public class GameLogics : MonoBehaviourPun
             smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
         }
 
+        Time.timeScale = 1f;
+
     }
 
     // Start is called before the first frame update
@@ -190,10 +190,6 @@ public class GameLogics : MonoBehaviourPun
     {
         blobPosition = new Vector3[4];
         blobScale = new Vector3[4];
-        PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate = 0;
-        PhotonNetwork.SendRate = 15;
-        PhotonNetwork.SerializationRate = 15;
-        PhotonNetwork.OfflineMode = true;
         Time.timeScale = 0;
 
         ++InputUser.listenForUnpairedDeviceActivity;
@@ -281,7 +277,6 @@ public class GameLogics : MonoBehaviourPun
         StartRound();
     }
 
-    [PunRPC]
     public void StartRound()
     {
         Time.timeScale = timeScale;

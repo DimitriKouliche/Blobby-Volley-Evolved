@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6f991202700dc024686c0a4c735acae6
+guid: c780c38d532a08046ba5be8ed587f79b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -20,15 +20,6 @@ TextureImporter:
   - first:
       213: -428411513330907983
     second: JumpSS_5
-  - first:
-      213: -2460365934010286271
-    second: JumpSS_6
-  - first:
-      213: 4685437912452746117
-    second: JumpSS_7
-  - first:
-      213: -3256342235687057583
-    second: JumpSS_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -154,9 +145,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 500
-        width: 500
-        height: 500
+        y: 0
+        width: 250
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +165,10 @@ TextureImporter:
       name: JumpSS_1
       rect:
         serializedVersion: 2
-        x: 500
-        y: 500
-        width: 500
-        height: 500
+        x: 250
+        y: 0
+        width: 250
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +186,10 @@ TextureImporter:
       name: JumpSS_2
       rect:
         serializedVersion: 2
-        x: 1000
-        y: 500
-        width: 500
-        height: 500
+        x: 500
+        y: 0
+        width: 250
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +207,10 @@ TextureImporter:
       name: JumpSS_3
       rect:
         serializedVersion: 2
-        x: 1500
-        y: 500
-        width: 500
-        height: 500
+        x: 750
+        y: 0
+        width: 250
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +228,10 @@ TextureImporter:
       name: JumpSS_4
       rect:
         serializedVersion: 2
-        x: 2000
-        y: 500
-        width: 500
-        height: 500
+        x: 1000
+        y: 0
+        width: 250
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,10 +249,10 @@ TextureImporter:
       name: JumpSS_5
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1250
         y: 0
-        width: 500
-        height: 500
+        width: 250
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,69 +262,6 @@ TextureImporter:
       bones: []
       spriteID: 1b4493a9ff9fd0af0800000000000000
       internalID: -428411513330907983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JumpSS_6
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14f38d5f7360bddd0800000000000000
-      internalID: -2460365934010286271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JumpSS_7
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58bc4e4f4f4060140800000000000000
-      internalID: 4685437912452746117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JumpSS_8
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 4
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 15785ce4df52fc2d0800000000000000
-      internalID: -3256342235687057583
       vertices: []
       indices: 
       edges: []
