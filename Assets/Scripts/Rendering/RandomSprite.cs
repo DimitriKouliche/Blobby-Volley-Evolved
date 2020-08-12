@@ -12,6 +12,11 @@ public class RandomSprite : MonoBehaviour
 
     void Awake()
     {
+        if(frameArray.Length == 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         int randomIndex = Random.Range(0, frameArray.Length - 1);
         spriteRenderer.sprite = frameArray[randomIndex];

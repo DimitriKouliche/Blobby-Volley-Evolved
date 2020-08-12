@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public GameObject jumpAnimation;
     public GameObject smashAnimation;
     public GameObject smashCollider;
+    public Color eyeChargeColor = new Color(233, 208, 118);
 
     PlayerInput playerInput;
     InputAction moveAction;
@@ -57,13 +58,6 @@ public class PlayerController : MonoBehaviour
         smashAction = playerInput.actions["Smash"];
         startAction = playerInput.actions["Start"];
 
-        startAction.started += ctx =>
-        {
-            if (gameLogics != null && gameLogics.GetComponent<GameLogics>().isStarting)
-            {
-                gameLogics.GetComponent<GameLogics>().SendStartRoundMessage();
-            }
-        };
 
         // Jumping
         jumpAction.started += ctx =>
@@ -111,7 +105,6 @@ public class PlayerController : MonoBehaviour
             jumpSpeed = 0;
             chargingJump = false;
             transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
-            transform.GetChild(1).GetComponent<ParticleSystem>().Play();
         };
     }
 
@@ -194,7 +187,7 @@ public class PlayerController : MonoBehaviour
             if (jumpSpeed < jumpHeight)
             {
                 jumpSpeed += 1f;
-                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, Color.cyan);
+                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, eyeChargeColor);
             }
         }
 
