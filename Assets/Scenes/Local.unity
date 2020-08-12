@@ -1047,6 +1047,7 @@ MonoBehaviour:
   stayInPlace: 0
   framerate: 0.2
   loop: 0
+  rotate: 0
   frameArray:
   - {fileID: 5256188618851123195, guid: b0352ab516ae438448bdf59d240ababc, type: 3}
   - {fileID: 8452463385355966413, guid: b0352ab516ae438448bdf59d240ababc, type: 3}
@@ -1387,6 +1388,7 @@ MonoBehaviour:
   stayInPlace: 1
   framerate: 0.15
   loop: 1
+  rotate: 0
   frameArray:
   - {fileID: 1253345645225013204, guid: 5b13baa851ce0b748bf7f933f842c668, type: 3}
   - {fileID: -9058495254662394139, guid: 5b13baa851ce0b748bf7f933f842c668, type: 3}
@@ -1554,6 +1556,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 236572991}
     m_Modifications:
+    - target: {fileID: 1528928718501154826, guid: b7f3754474503e244ab36948e5e56de9,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -919204997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528928718501154826, guid: b7f3754474503e244ab36948e5e56de9,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1528928718501154827, guid: b7f3754474503e244ab36948e5e56de9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1562,7 +1574,7 @@ PrefabInstance:
     - target: {fileID: 1528928718501154827, guid: b7f3754474503e244ab36948e5e56de9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 7.09
       objectReference: {fileID: 0}
     - target: {fileID: 1528928718501154827, guid: b7f3754474503e244ab36948e5e56de9,
         type: 3}
@@ -1641,12 +1653,12 @@ PrefabInstance:
     - target: {fileID: 7064730849100351873, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7064730849100351873, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}
       propertyPath: m_LinearDrag
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7064730849100351874, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}

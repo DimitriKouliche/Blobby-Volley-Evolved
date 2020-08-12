@@ -132,7 +132,7 @@ public class GameLogics : MonoBehaviour
         {
             if (maxPlayers == 4)
             {
-                UpdateMessage("CONGRATULATIONS, Team " + ((ExtractIDFromName(player) + 1) % 2 + 1) + ", you have won the GAME");
+                UpdateMessage("CONGRATULATIONS, Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + ", you have won the GAME");
 
             }
             else
@@ -142,11 +142,12 @@ public class GameLogics : MonoBehaviour
             StartCoroutine(GameOverCoroutine());
             return;
         }
-        if(maxPlayers == 4)
+        if (maxPlayers == 4)
         {
-            UpdateMessage("Team " + ((ExtractIDFromName(player) + 1) % 2 + 1) + " wins the round");
+            UpdateMessage("Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + " wins the round");
 
-        } else
+        }
+        else
         {
             UpdateMessage(player + " wins the round");
         }
@@ -254,7 +255,7 @@ public class GameLogics : MonoBehaviour
 
     void InitBlob(GameObject blob, int id)
     {
-        blob.name = "Blob " + (id+1) + "(Clone)";
+        blob.name = "Blob " + (id + 1) + "(Clone)";
         blob.GetComponent<PlayerController>().gameLogics = gameObject;
         blob.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<EyeLogics>().ball = ball;
         blobPosition[id] = blob.transform.position;
@@ -282,7 +283,7 @@ public class GameLogics : MonoBehaviour
 
     public void SendStartRoundMessage()
     {
-        if(nbPlayer != maxPlayers)
+        if (nbPlayer != maxPlayers)
         {
             return;
         }
@@ -330,20 +331,32 @@ public class GameLogics : MonoBehaviour
         gameOver.SetActive(true);
     }
 
+    public int GetTeamFromPlayer(int playerId)
+    {
+        return playerId < 2 ? 0 : 1;
+    }
+
     public void PlayerTouchesBall(GameObject player)
     {
-        if(!isStarting || !isPlaying)
+        if (!isStarting || !isPlaying)
         {
             return;
         }
         int playerId = ExtractIDFromName(player.name) - 1;
-        int teamId = playerId % 2 == 0 ? 0 : 1;
-        int otherTeamId = playerId % 2 == 0 ? 1 : 0;
+        int teamId = GetTeamFromPlayer(playerId);
+        int otherTeamId = playerId < 2 ? 1 : 0;
         playerBallTouches[playerId]++;
         teamBallTouches[teamId]++;
         teamBallTouches[otherTeamId] = 0;
-        if(maxPlayers == 4)
+        if (maxPlayers == 4)
         {
+            for (int i = 0; i < 4; i++)
+            {
+                if (i != playerId)
+                {
+                    playerBallTouches[i] = 0;
+                }
+            }
             if (playerBallTouches[playerId] > 1)
             {
                 if (teamId == 0)
@@ -356,11 +369,13 @@ public class GameLogics : MonoBehaviour
                 }
             }
         }
-        if (teamBallTouches[teamId] > 3) {
-            if(teamId == 0)
+        if (teamBallTouches[teamId] > 3)
+        {
+            if (teamId == 0)
             {
                 PlayerWins("Blob 2");
-            } else
+            }
+            else
             {
                 PlayerWins("Blob 1");
             }
@@ -373,7 +388,7 @@ public class GameLogics : MonoBehaviour
             return;
         }
         int playerId = ExtractIDFromName(player.name) - 1;
-        int teamId = playerId % 2 == 0 ? 0 : 1;
+        int teamId = GetTeamFromPlayer(playerId);
         if (serve)
         {
             teamBallTouches[teamId] = 2;

@@ -37,6 +37,7 @@ public class BallLogics : MonoBehaviour
         if (collider.name == "Smash")
         {
             StartCoroutine(SmashFreeze(0.7f));
+            rigidBody.velocity = Vector3.zero;
             if (transform.position.x > collider.transform.position.x)
             {
                 rigidBody.AddForce(new Vector2(smashDownwardForce, -smashDownwardForce));
@@ -59,7 +60,7 @@ public class BallLogics : MonoBehaviour
     {
         if (ballIndicator!= null && ballIndicator.activeSelf)
         {
-            ballIndicator.transform.position = new Vector3(transform.position.x, 4.5f, -2);
+            ballIndicator.transform.position = new Vector3(transform.position.x, 7.5f, -2);
         }
     }
 
