@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballIndicator: {fileID: 0}
   gameLogics: {fileID: 0}
-  dashUpwardForce: 9000
+  dashUpwardForce: 12000
   smashDownwardForce: 7000
 --- !u!114 &7381654740526808017
 MonoBehaviour:

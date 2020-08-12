@@ -5872,7 +5872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c37b1d213b8b644bc5f4f44ded9071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 4
+  maxSpeed: 6
   jumpHeight: 35
   dashDistance: 10
   gravityScale: 4
@@ -18469,6 +18469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stayInPlace: 0
   framerate: 0.03
+  loop: 0
   frameArray:
   - {fileID: 8151940554481538903, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: -4997493425987890737, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
@@ -19010,6 +19011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stayInPlace: 1
   framerate: 0.04
+  loop: 0
   frameArray:
   - {fileID: 4267962237978483815, guid: 6f991202700dc024686c0a4c735acae6, type: 3}
   - {fileID: 7269742616198632576, guid: 6f991202700dc024686c0a4c735acae6, type: 3}
@@ -19611,6 +19613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stayInPlace: 1
   framerate: 0.08
+  loop: 0
   frameArray:
   - {fileID: -7507972885053434927, guid: 18d447f756de92646a231ceb67164e9d, type: 3}
   - {fileID: -2952727988875350769, guid: 18d447f756de92646a231ceb67164e9d, type: 3}
@@ -19983,6 +19986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stayInPlace: 1
   framerate: 0.08
+  loop: 0
   frameArray:
   - {fileID: -7507972885053434927, guid: 18d447f756de92646a231ceb67164e9d, type: 3}
   - {fileID: -2952727988875350769, guid: 18d447f756de92646a231ceb67164e9d, type: 3}
