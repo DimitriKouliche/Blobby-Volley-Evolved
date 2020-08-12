@@ -9,18 +9,23 @@ public class RandomSprite : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector3 startingPosition;
     private Quaternion startingRotation;
+    private Vector3 localPosition;
 
 
+    void Awake()
+    {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        localPosition = transform.localPosition;
+    }
     void OnEnable()
     {
-        startingPosition = transform.position;
-        startingRotation = transform.rotation;
+        startingPosition = transform.parent.position + localPosition;
+        startingRotation = transform.parent.rotation;
         if (frameArray.Length == 0)
         {
             gameObject.SetActive(false);
             return;
         }
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         int randomIndex = Random.Range(0, frameArray.Length - 1);
         spriteRenderer.sprite = frameArray[randomIndex];
         StartCoroutine(Deactivate());

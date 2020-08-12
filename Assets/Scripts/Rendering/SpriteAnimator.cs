@@ -12,16 +12,18 @@ public class SpriteAnimator : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector3 startingPosition;
     private Quaternion startingRotation;
+    private Vector3 localPosition;
 
     void Awake()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        localPosition = transform.localPosition;
     }
 
     void OnEnable()
     {
-        startingPosition = transform.position;
-        startingRotation = transform.rotation;
+        startingPosition = transform.parent.position + localPosition;
+        startingRotation = transform.parent.rotation;
     }
 
     void Update()
@@ -49,7 +51,7 @@ public class SpriteAnimator : MonoBehaviour
             transform.position = startingPosition;
         }
 
-        if(rotate)
+        if(!rotate)
         {
             transform.rotation = startingRotation;
         }
