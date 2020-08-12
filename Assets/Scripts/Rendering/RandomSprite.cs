@@ -10,9 +10,12 @@ public class RandomSprite : MonoBehaviour
     private Vector3 startingPosition;
     private Quaternion startingRotation;
 
-    void Awake()
+
+    void OnEnable()
     {
-        if(frameArray.Length == 0)
+        startingPosition = transform.position;
+        startingRotation = transform.rotation;
+        if (frameArray.Length == 0)
         {
             gameObject.SetActive(false);
             return;
@@ -21,12 +24,6 @@ public class RandomSprite : MonoBehaviour
         int randomIndex = Random.Range(0, frameArray.Length - 1);
         spriteRenderer.sprite = frameArray[randomIndex];
         StartCoroutine(Deactivate());
-    }
-
-    void OnEnable()
-    {
-        startingPosition = transform.parent.position;
-        startingRotation = transform.parent.rotation;
     }
 
     void Update()

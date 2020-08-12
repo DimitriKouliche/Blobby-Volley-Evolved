@@ -47,7 +47,6 @@ public class GameLogics : MonoBehaviour
 
     public void ResetPositions(string winner)
     {
-        ResetBlobs();
         ResetVelocity(ball);
         if (winner == "Blob 2")
         {
@@ -161,32 +160,32 @@ public class GameLogics : MonoBehaviour
 
     void ReplaceBlobs()
     {
-        blob1.transform.position = new Vector3(-6, blob1.transform.position.y, blob1.transform.position.z);
+        blob1.transform.position = new Vector3(-10, blob1.transform.position.y, blob1.transform.position.z);
         if (blob2 != null)
         {
             if (maxPlayers == 2)
             {
-                blob2.transform.position = new Vector3(6, blob2.transform.position.y, blob2.transform.position.z);
+                blob2.transform.position = new Vector3(10, blob2.transform.position.y, blob2.transform.position.z);
                 Transform smash = blob2.transform.Find("Smash").transform;
                 smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
                 smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
             }
             else
             {
-                blob2.transform.position = new Vector3(-3, blob2.transform.position.y, blob2.transform.position.z);
+                blob2.transform.position = new Vector3(-5, blob2.transform.position.y, blob2.transform.position.z);
             }
 
         }
         if (blob3 != null)
         {
-            blob3.transform.position = new Vector3(3, blob3.transform.position.y, blob3.transform.position.z);
+            blob3.transform.position = new Vector3(5, blob3.transform.position.y, blob3.transform.position.z);
             Transform smash = blob3.transform.Find("Smash").transform;
             smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
             smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
         }
         if (blob4 != null)
         {
-            blob4.transform.position = new Vector3(6, blob4.transform.position.y, blob4.transform.position.z);
+            blob4.transform.position = new Vector3(10, blob4.transform.position.y, blob4.transform.position.z);
             Transform smash = blob4.transform.Find("Smash").transform;
             smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
             smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
