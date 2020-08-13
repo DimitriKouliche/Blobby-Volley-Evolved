@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
-using UnityEngine.InputSystem.Controls;
+using Cubequad.Tentacles2D;
 using System;
 
 public class GameLogics : MonoBehaviour
@@ -40,6 +40,8 @@ public class GameLogics : MonoBehaviour
     int[] playerBallTouches = new int[4];
     private bool serve = true;
     bool[] playerReady = { false, false, false, false };
+    Color[] blobColor = new Color[4];
+    Sprite[] blobSprite = new Sprite[4];
 
     public void ResetVelocity(GameObject target)
     {
@@ -291,6 +293,8 @@ public class GameLogics : MonoBehaviour
         blob.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<EyeLogics>().ball = ball;
         blobPosition[id] = blob.transform.position;
         blobScale[id] = blob.transform.localScale;
+        ApplyColor(id + 1, blob);
+        ApplyShape(id + 1, blob);
     }
 
     IEnumerator PlayersReady()
@@ -309,7 +313,7 @@ public class GameLogics : MonoBehaviour
                 yield return null;
             }
         }
-        ReplaceBlobs();
+        ResetBlobs();
         uiMessage.transform.parent.parent.gameObject.SetActive(true);
         selectionMenu.SetActive(false);
         blob1.SetActive(true);
@@ -456,8 +460,26 @@ public class GameLogics : MonoBehaviour
         return Convert.ToInt32(new string(name[5], 1));
     }
 
-    public void PlayerReady(int id)
+    public void PlayerReady(int id, Color c, Sprite s)
     {
         playerReady[id - 1] = true;
+        blobSprite[id - 1] = s;
+        blobColor[id - 1] = c;
+    }
+
+    void ApplyColor(int id, GameObject blob)
+    {
+        FindChild(blob, "SpriteBlob").GetComponent<SpriteRenderer>().color = blobColor[id-1];
+
+        foreach (Transform child in FindChild(FindChild(blob, "SpriteBlob"), "Tentacles").transform)
+        {
+            child.gameObject.GetComponent<Tentacle>().Color = blobColor[id-1];
+        }
+        FindChild(FindChild(blob, "Smash"), "SmashAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+    }
+
+    void ApplyShape(int id, GameObject blob)
+    {
+        FindChild(blob, "SpriteBlob").GetComponent<SpriteRenderer>().sprite = blobSprite[id-1];
     }
 }

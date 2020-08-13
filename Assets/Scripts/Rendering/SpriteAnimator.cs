@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class SpriteAnimator : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class SpriteAnimator : MonoBehaviour
 
     void OnEnable()
     {
-        startingPosition = transform.parent.position + localPosition;
+        startingPosition = transform.parent.position;
         startingRotation = transform.parent.rotation;
     }
 

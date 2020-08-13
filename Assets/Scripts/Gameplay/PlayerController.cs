@@ -62,11 +62,10 @@ public class PlayerController : MonoBehaviour
         // Jumping
         jumpAction.started += ctx =>
         {
-            if (isGrounded && !isDashing && IsPlaying() && jumpAnimation != null)
+            if ((isGrounded || IsTouchingPlayer()) && !isDashing && IsPlaying() && jumpAnimation != null)
             {
                 jumpAnimation.SetActive(true);
                 r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight / 1.5f);
-
             }
 
         };
@@ -88,6 +87,8 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
+            FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
+            FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
             smashAnimation.SetActive(true);
             isSmashing = true;
             smashCollider.SetActive(true);
@@ -97,14 +98,15 @@ public class PlayerController : MonoBehaviour
         // Releasing charged jump
         chargeJumpAction.canceled += ctx =>
         {
-            if (!isGrounded || isDashing || !IsPlaying() || r2d == null)
+            if ((!isGrounded && !IsTouchingPlayer()) || isDashing || !IsPlaying() || r2d == null)
             {
                 return;
             }
+            FindChild(gameObject, "Charge").SetActive(false);
             r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
             jumpSpeed = 0;
             chargingJump = false;
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<SpriteRenderer>().color = Color.black;
         };
     }
 
@@ -136,6 +138,8 @@ public class PlayerController : MonoBehaviour
                 {
                     gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
                 }
+                FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
+                FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
                 isDashing = true;
                 r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
                 if (moveDirectionVector.x > 0)
@@ -152,6 +156,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    bool IsTouchingWall()
+    {
+        return gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Left Wall").GetComponent<Collider2D>()) || gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Right Wall").GetComponent<Collider2D>());
+    }
+    
+
+    bool IsTouchingPlayer()
+    {
+        if (GameObject.Find("Blob 1(Clone)") && gameObject.name != "Blob 1(Clone)" && gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Blob 1(Clone)").GetComponent<Collider2D>()))
+        {
+            return true;
+        }
+        if (GameObject.Find("Blob 2(Clone)") && gameObject.name != "Blob 2(Clone)" && gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Blob 2(Clone)").GetComponent<Collider2D>()))
+        {
+            return true;
+        }
+        if (GameObject.Find("Blob 3(Clone)") && gameObject.name != "Blob 3(Clone)" && gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Blob 3(Clone)").GetComponent<Collider2D>()))
+        {
+            return true;
+        }
+        if (GameObject.Find("Blob 4(Clone)") && gameObject.name != "Blob 4(Clone)" && gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Blob 4(Clone)").GetComponent<Collider2D>()))
+        {
+            return true;
+        }
+        return false;
+    }
+
     void FixedUpdate()
     {
         if (!IsPlaying())
@@ -161,23 +192,22 @@ public class PlayerController : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        isGrounded = transform.position.y < -6.38;
+        isGrounded = transform.position.y < -6.35;
 
         // Apply movement velocity
         if (!isDashing && !isSmashing)
         {
             if (moveDirection == 0)
             {
-                r2d.rotation = 0;
+                FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             else if (moveDirection > 0)
             {
-                r2d.rotation = -3;
+                FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, -3);
             }
             else
             {
-                r2d.rotation = 3;
-
+                FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 3);
             }
             r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
         }
@@ -187,7 +217,10 @@ public class PlayerController : MonoBehaviour
             if (jumpSpeed < jumpHeight)
             {
                 jumpSpeed += 1f;
-                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, eyeChargeColor);
+                FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, eyeChargeColor);
+            } else
+            {
+                FindChild(gameObject, "Charge").SetActive(true);
             }
         }
 
@@ -214,9 +247,11 @@ public class PlayerController : MonoBehaviour
             {
                 zRotation = rotationX;
             }
-            r2d.rotation = zRotation;
+            FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, zRotation);
             yield return null;
         }
+        FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(true);
+        FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
         isDashing = false;
     }
 
@@ -246,7 +281,20 @@ public class PlayerController : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+        FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(true);
+        FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
         smashCollider.SetActive(false);
         isSmashing = false;
+    }
+    GameObject FindChild(GameObject parent, string name)
+    {
+        foreach (Transform t in parent.transform)
+        {
+            if (t.name == name)
+            {
+                return t.gameObject;
+            }
+        }
+        return null;
     }
 }

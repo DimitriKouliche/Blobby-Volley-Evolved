@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class RandomSprite : MonoBehaviour
 {
@@ -15,11 +16,14 @@ public class RandomSprite : MonoBehaviour
     void Awake()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        localPosition = transform.localPosition;
+        localPosition = transform.TransformPoint(transform.localPosition);
     }
     void OnEnable()
     {
-        startingPosition = transform.parent.position + localPosition;
+        startingPosition = new Vector3(transform.parent.position.x, localPosition.y, 0);
+        Debug.Log("enable");
+        Debug.Log(startingPosition);
+        Debug.Log(localPosition);
         startingRotation = transform.parent.rotation;
         if (frameArray.Length == 0)
         {
@@ -35,6 +39,8 @@ public class RandomSprite : MonoBehaviour
     {
         if (stayInPlace)
         {
+            Debug.Log("update");
+            Debug.Log(startingPosition);
             transform.position = startingPosition;
             transform.rotation = startingRotation;
         }

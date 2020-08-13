@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Runtime.Remoting;
 using Cubequad.Tentacles2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -52,7 +51,7 @@ public class UIController : MonoBehaviour
             {
                 playerReady = true;
                 ActivateTentacles();
-                gameLogics.GetComponent<GameLogics>().PlayerReady(id);
+                gameLogics.GetComponent<GameLogics>().PlayerReady(id, colorPool[currentColorIndex], shapes[currentSpriteIndex]);
             } else if (isSelectingShape) {
                 SelectColor();
             } else if (isSelectingColor) {
@@ -157,7 +156,6 @@ public class UIController : MonoBehaviour
         }
         if (moveDirectionVector.y < -0.9f)
         {
-            Debug.Log(isSelectingShape);
             StartCoroutine(EnableInput(0.3f));
             inputOnCooldown = true;
             if (isHoveringReady)
