@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     PlayerInput playerInput;
     InputAction moveAction;
-    InputAction jumpAction;
     InputAction dashAction;
     InputAction chargeJumpAction;
     InputAction smashAction;
@@ -52,7 +51,6 @@ public class PlayerController : MonoBehaviour
         gameObject.layer = 8;
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
-        jumpAction = playerInput.actions["Jump"];
         dashAction = playerInput.actions["Dash"];
         chargeJumpAction = playerInput.actions["Charge Jump"];
         smashAction = playerInput.actions["Smash"];
