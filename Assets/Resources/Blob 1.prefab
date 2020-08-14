@@ -11749,9 +11749,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 8
-  jumpHeight: 45
-  dashDistance: 20
-  gravityScale: 4
+  jumpHeight: 40
+  dashDistance: 15
+  gravityScale: 2
   smashRadius: 10
   gameLogics: {fileID: 0}
   isDashing: 0

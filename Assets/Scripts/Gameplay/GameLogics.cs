@@ -78,6 +78,10 @@ public class GameLogics : MonoBehaviour
         {
             Destroy(blob2);
             blob2 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player2Device).gameObject;
+            if (blob2.GetComponent<PlayerInput>().currentControlScheme == null)
+            {
+                blob2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse");
+            }
             Debug.Log(blob2.GetComponent<PlayerInput>().currentControlScheme);
             InitBlob(blob2, 1);
         }
@@ -85,12 +89,24 @@ public class GameLogics : MonoBehaviour
         {
             Destroy(blob2);
             blob2 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player2Device).gameObject;
+            if (blob2.GetComponent<PlayerInput>().currentControlScheme == null)
+            {
+                blob2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse");
+            }
             InitBlob(blob2, 1);
             Destroy(blob3);
             blob3 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player3Device).gameObject;
+            if (blob3.GetComponent<PlayerInput>().currentControlScheme == null)
+            {
+                blob3.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse");
+            }
             InitBlob(blob3, 2);
             Destroy(blob4);
             blob4 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player4Device).gameObject;
+            if (blob4.GetComponent<PlayerInput>().currentControlScheme == null)
+            {
+                blob4.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse");
+            }
             InitBlob(blob4, 3);
         }
         ReplaceBlobs();
@@ -161,12 +177,12 @@ public class GameLogics : MonoBehaviour
 
     void ReplaceBlobs()
     {
-        blob1.transform.position = new Vector3(-10, blob1.transform.position.y, blob1.transform.position.z);
+        blob1.transform.position = new Vector3(-9.5f, blob1.transform.position.y, blob1.transform.position.z);
         if (blob2 != null)
         {
             if (maxPlayers == 2)
             {
-                blob2.transform.position = new Vector3(10, blob2.transform.position.y, blob2.transform.position.z);
+                blob2.transform.position = new Vector3(9.5f, blob2.transform.position.y, blob2.transform.position.z);
                 InvertSmash(blob2);
             }
             else
@@ -182,7 +198,7 @@ public class GameLogics : MonoBehaviour
         }
         if (blob4 != null)
         {
-            blob4.transform.position = new Vector3(10, blob4.transform.position.y, blob4.transform.position.z);
+            blob4.transform.position = new Vector3(9.5f, blob4.transform.position.y, blob4.transform.position.z);
             InvertSmash(blob4);
         }
     }
@@ -286,7 +302,7 @@ public class GameLogics : MonoBehaviour
                     blob4 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
                     blob4.SetActive(false);
                     player4Device = control.device;
-                    InstantiateSelectionMenu(4, player4Device, new Vector3(10, 0, 0), blob4);
+                    InstantiateSelectionMenu(4, player4Device, new Vector3(10f, 0, 0), blob4);
                 }
                 nbPlayer++;
             };

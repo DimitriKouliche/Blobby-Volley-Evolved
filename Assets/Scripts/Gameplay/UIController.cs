@@ -42,7 +42,7 @@ public class UIController : MonoBehaviour
         {
             if(!active)
             {
-                transform.localScale = new Vector3(2.7f, 2.7f, 2.7f);
+                transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
                 active = true;
                 GameObject.Find("PlayerPressLabel" + id).transform.localScale = new Vector3(0, 0, 0);
                 return;
@@ -64,6 +64,7 @@ public class UIController : MonoBehaviour
             if (isHoveringReady && playerReady)
             {
                 playerReady = false;
+                StopTentacles();
             }
             else if (isHoveringReady)
             {
@@ -85,7 +86,7 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        if (inputOnCooldown)
+        if (inputOnCooldown || playerReady)
         {
             return;
         }
@@ -179,6 +180,14 @@ public class UIController : MonoBehaviour
         foreach (Transform child in FindChild(blobPreview, "Tentacles").transform)
         {
             child.gameObject.GetComponent<Tentacle>().Animation = Tentacle.Animations.wave;
+        }
+    }
+
+    void StopTentacles()
+    {
+        foreach (Transform child in FindChild(blobPreview, "Tentacles").transform)
+        {
+            child.gameObject.GetComponent<Tentacle>().Animation = Tentacle.Animations.none;
         }
     }
 

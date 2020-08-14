@@ -81,7 +81,7 @@ public class BallLogics : MonoBehaviour
         Camera.main.transform.position = new Vector3(gameObject.transform.position.x / 17, 0, -10);
         if(transform.position.y > 10)
         {
-            rigidBody.AddForce(new Vector2(0, -50));
+            rigidBody.AddForce(new Vector2(0, -5));
         }
     }
 
