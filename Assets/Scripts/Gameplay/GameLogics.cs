@@ -69,11 +69,16 @@ public class GameLogics : MonoBehaviour
     {
         Destroy(blob1);
         blob1 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player1Device).gameObject;
+        if(blob1.GetComponent<PlayerInput>().currentControlScheme == null)
+        {
+            blob1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse");
+        }
         InitBlob(blob1, 0);
         if (maxPlayers == 2)
         {
             Destroy(blob2);
             blob2 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player2Device).gameObject;
+            Debug.Log(blob2.GetComponent<PlayerInput>().currentControlScheme);
             InitBlob(blob2, 1);
         }
         else
@@ -156,7 +161,6 @@ public class GameLogics : MonoBehaviour
 
     void ReplaceBlobs()
     {
-        Transform smash;
         blob1.transform.position = new Vector3(-10, blob1.transform.position.y, blob1.transform.position.z);
         if (blob2 != null)
         {
