@@ -6,24 +6,32 @@ public class BallLogics : MonoBehaviour
     public GameObject ballIndicator;
     public GameObject gameLogics;
     public float dashUpwardForce = 9000;
+    public float serviceForce = 2000;
     public float smashDownwardForce = 7000;
     Rigidbody2D rigidBody;
 
+    bool service = true;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Collider2D collider = collision.contacts[0].collider;
         if (gameLogics != null && collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
+            service = true;
         }
 
         if (gameLogics != null && collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
+            service = true;
+            Debug.Log(service);
         }
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
         {
-            if(gameLogics != null)
+            Debug.Log(service);
+            if (gameLogics != null)
             {
                 gameLogics.GetComponent<GameLogics>().PlayerServes(collision.gameObject);
                 gameLogics.GetComponent<GameLogics>().PlayerTouchesBall(collision.gameObject);
@@ -32,21 +40,45 @@ public class BallLogics : MonoBehaviour
             {
                 rigidBody.AddForce(new Vector2(0, dashUpwardForce));
             }
+            if(service)
+            {
+                rigidBody.AddForce(new Vector2(serviceForce, serviceForce));
+            }
+            if (collider.name != "Smash")
+            {
+                service = false;
+            }
         }
-        Collider2D collider = collision.contacts[0].collider;
         if (collider.name == "Smash")
         {
+            Debug.Log(service);
             StartCoroutine(SmashFreeze(0.7f, collider.gameObject));
             rigidBody.velocity = Vector3.zero;
-            if (transform.position.x > collider.transform.position.x)
+            if (collision.gameObject.transform.position.x < 0)
             {
-                rigidBody.AddForce(new Vector2(smashDownwardForce, -smashDownwardForce));
+                if (service)
+                {
+                    rigidBody.AddForce(new Vector2(smashDownwardForce, serviceForce));
+
+                } else
+                {
+                    rigidBody.AddForce(new Vector2(smashDownwardForce, -smashDownwardForce));
+                }
             }
             else
             {
-                rigidBody.AddForce(new Vector2(-smashDownwardForce, -smashDownwardForce));
+                if (service)
+                {
+                    rigidBody.AddForce(new Vector2(-smashDownwardForce, serviceForce));
+
+                }
+                else
+                {
+                    rigidBody.AddForce(new Vector2(-smashDownwardForce, -smashDownwardForce));
+                }
             }
             collider.gameObject.SetActive(false);
+            service = false;
         }
     }
 

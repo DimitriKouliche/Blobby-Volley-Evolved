@@ -96,10 +96,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
-  m_LinearDrag: 0.5
+  m_Mass: 15
+  m_LinearDrag: 0.6
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.2
   m_Material: {fileID: 0}
   m_Interpolate: 2
   m_SleepingMode: 1
@@ -135,5 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballIndicator: {fileID: 0}
   gameLogics: {fileID: 0}
-  dashUpwardForce: 12000
+  dashUpwardForce: 9000
+  serviceForce: 3000
   smashDownwardForce: 20000
