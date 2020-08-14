@@ -163,9 +163,7 @@ public class GameLogics : MonoBehaviour
             if (maxPlayers == 2)
             {
                 blob2.transform.position = new Vector3(10, blob2.transform.position.y, blob2.transform.position.z);
-                smash = blob2.transform.Find("Smash").transform;
-                smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
-                smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
+                InvertSmash(blob2);
             }
             else
             {
@@ -176,17 +174,24 @@ public class GameLogics : MonoBehaviour
         if (blob3 != null)
         {
             blob3.transform.position = new Vector3(5, blob3.transform.position.y, blob3.transform.position.z);
-            smash = blob3.transform.Find("Smash").transform;
-            smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
-            smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
+            InvertSmash(blob3);
         }
         if (blob4 != null)
         {
             blob4.transform.position = new Vector3(10, blob4.transform.position.y, blob4.transform.position.z);
-            smash = blob4.transform.Find("Smash").transform;
-            smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
-            smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
+            InvertSmash(blob4);
         }
+    }
+
+    void InvertSmash(GameObject blob)
+    {
+        Transform smash;
+        smash = blob.transform.Find("Smash").transform;
+        smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
+        smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
+        smash = blob.transform.Find("SmashFreezeFrame").transform;
+        smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
+        smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
     }
 
     GameObject FindChild(GameObject parent, string name)
@@ -476,6 +481,7 @@ public class GameLogics : MonoBehaviour
             child.gameObject.GetComponent<Tentacle>().Color = blobColor[id-1];
         }
         FindChild(FindChild(blob, "Smash"), "SmashAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+        FindChild(blob, "SmashFreezeFrame").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
     }
 
     void ApplyShape(int id, GameObject blob)
