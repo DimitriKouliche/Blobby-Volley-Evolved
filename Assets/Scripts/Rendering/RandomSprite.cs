@@ -21,9 +21,6 @@ public class RandomSprite : MonoBehaviour
     void OnEnable()
     {
         startingPosition = new Vector3(transform.parent.position.x, localPosition.y, 0);
-        Debug.Log("enable");
-        Debug.Log(startingPosition);
-        Debug.Log(localPosition);
         startingRotation = transform.parent.rotation;
         if (frameArray.Length == 0)
         {
@@ -39,8 +36,6 @@ public class RandomSprite : MonoBehaviour
     {
         if (stayInPlace)
         {
-            Debug.Log("update");
-            Debug.Log(startingPosition);
             transform.position = startingPosition;
             transform.rotation = startingRotation;
         }

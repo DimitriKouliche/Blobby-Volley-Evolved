@@ -36,7 +36,7 @@ public class BallLogics : MonoBehaviour
         Collider2D collider = collision.contacts[0].collider;
         if (collider.name == "Smash")
         {
-            StartCoroutine(SmashFreeze(0.7f));
+            StartCoroutine(SmashFreeze(0.7f, collider.gameObject));
             rigidBody.velocity = Vector3.zero;
             if (transform.position.x > collider.transform.position.x)
             {
@@ -79,13 +79,19 @@ public class BallLogics : MonoBehaviour
     public void FixedUpdate()
     {
         Camera.main.transform.position = new Vector3(gameObject.transform.position.x / 17, 0, -10);
+        if(transform.position.y > 10)
+        {
+            rigidBody.AddForce(new Vector2(0, -50));
+        }
     }
 
 
-    IEnumerator SmashFreeze(float duration)
+    IEnumerator SmashFreeze(float duration, GameObject smash)
     {
         Time.timeScale = 0;
+        FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);
         yield return StartCoroutine(WaitForRealSeconds(duration));
+        FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(false);
         Time.timeScale = 1;
         Camera.main.GetComponent<CameraShake>().Shake();
     }
@@ -97,5 +103,17 @@ public class BallLogics : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    GameObject FindChild(GameObject parent, string name)
+    {
+        foreach (Transform t in parent.transform)
+        {
+            if (t.name == name)
+            {
+                return t.gameObject;
+            }
+        }
+        return null;
     }
 }

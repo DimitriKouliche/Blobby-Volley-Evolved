@@ -14,14 +14,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "41511eaf-aecd-482a-9642-4ae0f8e35cc4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Dash",
                     "type": "Button",
                     "id": "08fe525e-0ba8-4995-b2c9-4efe482ce8bd",
@@ -123,28 +115,6 @@
                 },
                 {
                     "name": "",
-                    "id": "0b087dea-7a93-47d7-8c7f-8b5f41ce5857",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9f2bf871-bf83-4120-81e8-9f09b5fd21c3",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3e191f9f-11e5-4ab8-be35-ab9c0e385c94",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -168,7 +138,7 @@
                 {
                     "name": "",
                     "id": "d99021af-e359-45d6-9953-551ff33d2b3c",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/w",
                     "interactions": "Hold(duration=500)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -179,7 +149,7 @@
                 {
                     "name": "",
                     "id": "185f3e7b-940d-46e5-955e-f1682e7e6216",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "Hold(duration=500)",
                     "processors": "",
                     "groups": "Gamepad",
