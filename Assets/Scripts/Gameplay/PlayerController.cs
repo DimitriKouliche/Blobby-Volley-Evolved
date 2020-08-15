@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
         {
             if ((!isGrounded && !IsTouchingPlayer()) || isDashing || !IsPlaying() || r2d == null)
             {
+                CancelCharge();
                 return;
             }
             r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour
         };
     }
 
-    void CancelCharge()
+    public void CancelCharge()
     {
         jumpSpeed = jumpHeight / 1.5f;
         chargingJump = false;
@@ -191,7 +192,7 @@ public class PlayerController : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        isGrounded = transform.position.y < -6.3;
+        isGrounded = transform.position.y < -6.17;
 
         // Apply movement velocity
         if (!isDashing && !isSmashing)
@@ -270,18 +271,19 @@ public class PlayerController : MonoBehaviour
             if (t < duration / 2)
             {
                 r2d.rotation = Mathf.Lerp(0, angle, 2 * t / duration);
-                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(0.0001f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius/1.5f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             else
             {
                 r2d.rotation = Mathf.Lerp(angle, 0, 2 * t / duration - 1);
-                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius, 0.0001f, 2 * t / duration - 1), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius, smashRadius / 1.5f, 2 * t / duration - 1), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             t += Time.deltaTime;
             yield return null;
         }
         FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(true);
         FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
+        smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(0.00001f, smashCollider.GetComponent<CapsuleCollider2D>().size.y);
         smashCollider.SetActive(false);
         isSmashing = false;
     }

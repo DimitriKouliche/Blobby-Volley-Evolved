@@ -268,7 +268,6 @@ public class GameLogics : MonoBehaviour
                 // defined in them, PlayerInput will look for a compatible scheme automatically.
                 if (nbPlayer == 0)
                 {
-                    Debug.Log(control.name);
                     blob1 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
                     blob1.SetActive(false);
                     player1Device = control.device;
@@ -385,11 +384,33 @@ public class GameLogics : MonoBehaviour
     void BeginGame()
     {
         Debug.Log("Beginning Game");
+        ResetBlobCharge();
         ToggleMovement(false);
         serve = true;
         ballSupport.SetActive(true);
         isStarting = true;
+        ball.GetComponent<BallLogics>().service = true;
         SendStartRoundMessage();
+    }
+
+    void ResetBlobCharge()
+    {
+        if(blob1 != null)
+        {
+            blob1.GetComponent<PlayerController>().CancelCharge();
+        }
+        if(blob2 != null)
+        {
+            blob2.GetComponent<PlayerController>().CancelCharge();
+        }
+        if(blob3 != null)
+        {
+            blob3.GetComponent<PlayerController>().CancelCharge();
+        }
+        if(blob4 != null)
+        {
+            blob4.GetComponent<PlayerController>().CancelCharge();
+        }
     }
 
     void EraseMessage()

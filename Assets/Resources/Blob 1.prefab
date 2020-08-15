@@ -591,7 +591,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 8330191615473064879}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6019780995262802746
 SpriteRenderer:
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.03
+  framerate: 0.02
   loop: 0
   rotate: 0
   frameArray:
@@ -750,6 +750,7 @@ MonoBehaviour:
   - {fileID: -4796155241437078706, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: 8432880642426557039, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: 929481973172222749, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: 929481973172222749, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: 5997966181096568567, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: 5997966181096568567, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
@@ -758,9 +759,18 @@ MonoBehaviour:
   - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
+  - {fileID: -2648130768084797137, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: 7373315091619760838, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
-  - {fileID: 7373315091619760838, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
-  - {fileID: -4001882799317440615, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: -4001882799317440615, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: -3002831291128439242, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
   - {fileID: 8470712162939790292, guid: 32826f4205adea84fa6d6fe0abdc7713, type: 3}
@@ -796,6 +806,53 @@ Transform:
   m_Father: {fileID: 338909851427616284}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4579693506726895186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3697387123602595902}
+  - component: {fileID: 6527219246520419108}
+  m_Layer: 10
+  m_Name: DashPhysics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3697387123602595902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579693506726895186}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8330191615473064879}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &6527219246520419108
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579693506726895186}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &5019427907003017776
 GameObject:
   m_ObjectHideFlags: 0
@@ -5580,7 +5637,7 @@ Transform:
   m_LocalScale: {x: 0.55867827, y: 0.5595617, z: 0.55912}
   m_Children: []
   m_Father: {fileID: 8330191615473064879}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 124.364006}
 --- !u!198 &8146000895879350779
 ParticleSystem:
@@ -11653,6 +11710,7 @@ GameObject:
   - component: {fileID: 8330191615473064877}
   - component: {fileID: 8330191615473064850}
   - component: {fileID: 5422128184509652005}
+  - component: {fileID: 8945340054560532738}
   m_Layer: 10
   m_Name: Blob 1
   m_TagString: Player
@@ -11678,6 +11736,7 @@ Transform:
   - {fileID: 8330191616769580017}
   - {fileID: 1476111614347850984}
   - {fileID: 7698632748817319578}
+  - {fileID: 3697387123602595902}
   - {fileID: 226619947161037055}
   - {fileID: 8330191616249306961}
   - {fileID: 3133871454972152576}
@@ -11778,6 +11837,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
+--- !u!70 &8945340054560532738
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330191615473064848}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.8}
+  m_Size: {x: 4, y: 6}
+  m_Direction: 0
 --- !u!1 &8330191615639919765
 GameObject:
   m_ObjectHideFlags: 0
@@ -14028,7 +14103,7 @@ Transform:
   - {fileID: 338909851427616284}
   - {fileID: 3926548672392568320}
   m_Father: {fileID: 8330191615473064879}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &8330191616249306966
 CapsuleCollider2D:
@@ -14043,7 +14118,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0280675, y: -0.717218}
+  m_Offset: {x: -1, y: -2}
   m_Size: {x: 0.0001, y: 15}
   m_Direction: 0
 --- !u!1 &8330191616251377281
