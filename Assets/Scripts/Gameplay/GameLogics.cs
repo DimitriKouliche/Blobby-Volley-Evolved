@@ -255,6 +255,10 @@ public class GameLogics : MonoBehaviour
                 {
                     return;
                 }
+                if (control.name != "enter" && control.name != "start")
+                {
+                    return;
+                }
 
 
                 if (nbPlayer == maxPlayers)
@@ -264,6 +268,7 @@ public class GameLogics : MonoBehaviour
                 // defined in them, PlayerInput will look for a compatible scheme automatically.
                 if (nbPlayer == 0)
                 {
+                    Debug.Log(control.name);
                     blob1 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
                     blob1.SetActive(false);
                     player1Device = control.device;
