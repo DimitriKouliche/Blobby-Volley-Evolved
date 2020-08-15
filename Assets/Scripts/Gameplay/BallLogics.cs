@@ -51,7 +51,6 @@ public class BallLogics : MonoBehaviour
         }
         if (collider.name == "Smash")
         {
-            Debug.Log(service);
             StartCoroutine(SmashFreeze(0.7f, collider.gameObject));
             rigidBody.velocity = Vector3.zero;
             if (collision.gameObject.transform.position.x < 0)
