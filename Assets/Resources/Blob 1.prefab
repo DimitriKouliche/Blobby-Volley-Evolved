@@ -15186,7 +15186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8330191616769580017}
   - component: {fileID: 8330191616769580023}
-  - component: {fileID: 4611865424838386977}
+  - component: {fileID: 4658727358174271030}
   m_Layer: 10
   m_Name: Jump
   m_TagString: Untagged
@@ -15202,7 +15202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8330191616769580020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8330191615473064879}
@@ -15247,7 +15247,7 @@ SpriteRenderer:
   m_SortingLayerID: -919204997
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4267962237978483815, guid: c780c38d532a08046ba5be8ed587f79b,
+  m_Sprite: {fileID: -4603436836591362098, guid: 32e14c218c501bc43873109352fe1729,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15259,7 +15259,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4611865424838386977
+--- !u!114 &4658727358174271030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15268,18 +15268,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8330191616769580020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bc8f89fc950514ba47bc59121ec4cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 615d462dc60ef7645baf572703f665d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 1
-  duration: 0.2
+  framerate: 0.15
+  loop: 0
+  rotate: 0
   frameArray:
-  - {fileID: 4267962237978483815, guid: c780c38d532a08046ba5be8ed587f79b, type: 3}
-  - {fileID: 7269742616198632576, guid: c780c38d532a08046ba5be8ed587f79b, type: 3}
-  - {fileID: 2224072530162203196, guid: c780c38d532a08046ba5be8ed587f79b, type: 3}
-  - {fileID: -4075334308813412791, guid: c780c38d532a08046ba5be8ed587f79b, type: 3}
-  - {fileID: 7465010785082946809, guid: c780c38d532a08046ba5be8ed587f79b, type: 3}
-  - {fileID: -428411513330907983, guid: c780c38d532a08046ba5be8ed587f79b, type: 3}
+  - {fileID: -4603436836591362098, guid: 32e14c218c501bc43873109352fe1729, type: 3}
+  - {fileID: -3249566385563501892, guid: 32e14c218c501bc43873109352fe1729, type: 3}
 --- !u!1 &8330191616819223038
 GameObject:
   m_ObjectHideFlags: 0

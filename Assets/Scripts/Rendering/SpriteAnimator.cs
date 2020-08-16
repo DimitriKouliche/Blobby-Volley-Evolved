@@ -8,7 +8,7 @@ public class SpriteAnimator : MonoBehaviour
     public bool loop;
     public bool rotate = false;
     [SerializeField] private Sprite[] frameArray;
-    private int currentFrame;
+    private int currentFrame = 0;
     private float timer;
     private SpriteRenderer spriteRenderer;
     private Vector3 startingPosition;
@@ -36,10 +36,12 @@ public class SpriteAnimator : MonoBehaviour
 
     void Update()
     {
-        if (currentFrame >= frameArray.Length - 1)
+        if (currentFrame >= frameArray.Length)
         {
             currentFrame = 0;
-            if(!loop)
+            timer = 0f;
+            spriteRenderer.sprite = frameArray[0];
+            if (!loop)
             {
                 gameObject.SetActive(false);
             }
@@ -51,7 +53,8 @@ public class SpriteAnimator : MonoBehaviour
         {
             timer -= framerate;
             currentFrame = (currentFrame + 1);
-            spriteRenderer.sprite = frameArray[currentFrame];
+            if(currentFrame < frameArray.Length)
+                spriteRenderer.sprite = frameArray[currentFrame];
         }
 
         if (stayInPlace)
