@@ -1,15 +1,17 @@
 ﻿using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    bool duel = false;
-    bool foursome = false;
+    public GameObject[] arrows;
+    public string[] scenes;
+    int menuId = 0;
     PlayerInput playerInput;
     InputAction moveAction;
     InputAction confirmAction;
-    InputAction cancelAction;
     bool inputOnCooldown = false;
 
     // Use this for initialization
@@ -18,14 +20,28 @@ public class MainMenuController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         confirmAction = playerInput.actions["Confirm"];
-        cancelAction = playerInput.actions["Cancel"];
 
         confirmAction.started += ctx =>
         {
-        };
-
-        cancelAction.started += ctx =>
-        {
+            if (inputOnCooldown)
+            {
+                return;
+            }
+            inputOnCooldown = true;
+            StartCoroutine(EnableInput(0.2f));
+            if(FindChild(gameObject, "StartScreen").activeSelf)
+            {
+                FindChild(gameObject, "StartScreen").SetActive(false);
+                FindChild(gameObject, "MenuContent").SetActive(true);
+                return;
+            }
+            if (menuId == 5)
+            {
+                Application.Quit();
+            } else
+            {
+                SceneManager.LoadScene(scenes[menuId], LoadSceneMode.Single);
+            }
         };
     }
 
@@ -39,13 +55,44 @@ public class MainMenuController : MonoBehaviour
         var moveDirectionVector = moveAction.ReadValue<Vector2>();
         if (moveDirectionVector.y > 0.9f)
         {
-            StartCoroutine(EnableInput(0.3f));
+            MoveToPrevious();
+            inputOnCooldown = true;
+            StartCoroutine(EnableInput(0.2f));
         }
         if (moveDirectionVector.y < -0.9f)
         {
-            StartCoroutine(EnableInput(0.3f));
+            MoveToNext();
+            inputOnCooldown = true;
+            StartCoroutine(EnableInput(0.2f));
         }
+    }
 
+    void MoveToNext()
+    {
+        if (menuId >= 5)
+        {
+            return;
+        }
+        for (int i = 0; i < arrows.Length; i++)
+        {
+            arrows[i].SetActive(false);
+        }
+        menuId++;
+        transform.GetChild(menuId).GetChild(0).gameObject.SetActive(true);
+    }
+
+    void MoveToPrevious()
+    {
+        if (menuId <= 0)
+        {
+            return;
+        }
+        for (int i = 0; i < arrows.Length; i++)
+        {
+            arrows[i].SetActive(false);
+        }
+        menuId--;
+        transform.GetChild(menuId).GetChild(0).gameObject.SetActive(true);
     }
 
     IEnumerator EnableInput(float duration)

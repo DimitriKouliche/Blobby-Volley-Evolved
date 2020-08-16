@@ -127,6 +127,8 @@ public class BallLogics : MonoBehaviour
     {
         Time.timeScale = 0;
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);
+        FindChild(smash.transform.parent.gameObject, "SmashImpact").transform.position = transform.position;
+        FindChild(smash.transform.parent.gameObject, "SmashImpact").SetActive(true);
         yield return StartCoroutine(WaitForRealSeconds(duration));
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(false);
         Time.timeScale = 1;

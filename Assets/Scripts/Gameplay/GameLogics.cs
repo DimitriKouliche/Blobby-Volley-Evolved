@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using Cubequad.Tentacles2D;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameLogics : MonoBehaviour
 {
@@ -82,7 +83,6 @@ public class GameLogics : MonoBehaviour
             {
                 blob2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse");
             }
-            Debug.Log(blob2.GetComponent<PlayerInput>().currentControlScheme);
             InitBlob(blob2, 1);
         }
         else
@@ -212,6 +212,9 @@ public class GameLogics : MonoBehaviour
         smash = blob.transform.Find("SmashFreezeFrame").transform;
         smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
         smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
+        smash = blob.transform.Find("SmashImpact").transform;
+        smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
+        smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
     }
 
     GameObject FindChild(GameObject parent, string name)
@@ -244,7 +247,6 @@ public class GameLogics : MonoBehaviour
         blobPosition = new Vector3[4];
         blobScale = new Vector3[4];
         ToggleMovement(false);
-
         ++InputUser.listenForUnpairedDeviceActivity;
         // Example of how to spawn a new player automatically when a button
         // is pressed on an unpaired device.
@@ -260,10 +262,13 @@ public class GameLogics : MonoBehaviour
                     return;
                 }
 
-
                 if (nbPlayer == maxPlayers)
                     return;
 
+                if(this == null)
+                {
+                    return;
+                }
                 // Spawn player and pair device. If the player's actions have control schemes
                 // defined in them, PlayerInput will look for a compatible scheme automatically.
                 if (nbPlayer == 0)

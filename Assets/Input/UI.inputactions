@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "MainMenu",
+                    "type": "Button",
+                    "id": "7e559407-f550-451c-919d-a9ca5b3b48ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -270,6 +278,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc705c49-3685-47d6-9176-378fb06e4f91",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Hold(duration=1,pressPoint=0.5)",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "MainMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02f71f83-b242-442f-b22a-e689193f6fc8",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MainMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

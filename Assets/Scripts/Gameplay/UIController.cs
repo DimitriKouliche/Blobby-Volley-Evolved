@@ -2,6 +2,7 @@
 using Cubequad.Tentacles2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class UIController : MonoBehaviour
 
         confirmAction.started += ctx =>
         {
+            if(this == null)
+            {
+                return;
+            }
             if(!active)
             {
                 transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
@@ -61,6 +66,10 @@ public class UIController : MonoBehaviour
 
         cancelAction.started += ctx =>
         {
+            if (this == null)
+            {
+                return;
+            }
             if (isHoveringReady && playerReady)
             {
                 playerReady = false;
@@ -80,7 +89,15 @@ public class UIController : MonoBehaviour
                 GameObject.Find("PlayerPressLabel" + id).transform.localScale = new Vector3(1, 1, 1);
                 active = false;
             }
+        };
 
+        playerInput.actions["MainMenu"].performed += ctx =>
+        {
+            if (this == null)
+            {
+                return;
+            }
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         };
     }
 

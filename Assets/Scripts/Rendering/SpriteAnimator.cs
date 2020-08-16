@@ -23,8 +23,15 @@ public class SpriteAnimator : MonoBehaviour
 
     void OnEnable()
     {
-        startingPosition = transform.parent.position;
-        startingRotation = transform.parent.rotation;
+        if(transform.parent != null)
+        {
+            startingPosition = transform.parent.position;
+            startingRotation = transform.parent.rotation;
+        } else
+        {
+            startingPosition = transform.position;
+            startingRotation = transform.rotation;
+        }
     }
 
     void Update()

@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        jumpSpeed = jumpHeight / 1.5f;
+        jumpSpeed = jumpHeight / 1.8f;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
                 CancelCharge();
                 return;
             }
+            FindChild(gameObject, "Jump").SetActive(true);
             r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
             CancelCharge();
         };
@@ -98,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     public void CancelCharge()
     {
-        jumpSpeed = jumpHeight / 1.5f;
+        jumpSpeed = jumpHeight / 1.8f;
         chargingJump = false;
         FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<SpriteRenderer>().color = Color.black;
         FindChild(gameObject, "Charge").SetActive(false);
