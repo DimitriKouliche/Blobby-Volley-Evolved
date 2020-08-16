@@ -78,7 +78,8 @@ public class MainMenuController : MonoBehaviour
             arrows[i].SetActive(false);
         }
         menuId++;
-        transform.GetChild(menuId).GetChild(0).gameObject.SetActive(true);
+        Debug.Log(menuId);
+        transform.GetChild(0).GetChild(menuId).GetChild(0).gameObject.SetActive(true);
     }
 
     void MoveToPrevious()
@@ -92,7 +93,7 @@ public class MainMenuController : MonoBehaviour
             arrows[i].SetActive(false);
         }
         menuId--;
-        transform.GetChild(menuId).GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(0).GetChild(menuId).GetChild(0).gameObject.SetActive(true);
     }
 
     IEnumerator EnableInput(float duration)
