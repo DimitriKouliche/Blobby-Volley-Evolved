@@ -269,8 +269,6 @@ public class GameLogics : MonoBehaviour
                 {
                     return;
                 }
-                Debug.LogError(control.name);
-                Debug.LogError(control.device);
                 // Spawn player and pair device. If the player's actions have control schemes
                 // defined in them, PlayerInput will look for a compatible scheme automatically.
                 if (nbPlayer == 0)
