@@ -215,6 +215,9 @@ public class GameLogics : MonoBehaviour
         smash = blob.transform.Find("SmashImpact").transform;
         smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
         smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
+        smash = blob.transform.Find("Bump").transform;
+        smash.localPosition = new Vector3(-smash.localPosition.x, smash.localPosition.y, smash.localPosition.z);
+        smash.localScale = new Vector3(-smash.localScale.x, smash.localScale.y, smash.localScale.z);
     }
 
     GameObject FindChild(GameObject parent, string name)

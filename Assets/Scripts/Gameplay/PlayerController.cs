@@ -12,15 +12,19 @@ public class PlayerController : MonoBehaviour
     public float dashDistance = 3f;
     public float gravityScale = 4f;
     public float smashRadius = 20f;
+    public float bumpRadius = 20f;
     public GameObject gameLogics;
     public bool isDashing = false;
     public bool isSmashing = false;
+    public bool isBumping = true;
     public static GameObject LocalPlayerInstance;
     public GameObject dashRightAnimation;
     public GameObject dashLefttAnimation;
     public GameObject jumpAnimation;
     public GameObject smashAnimation;
+    public GameObject bumpAnimation;
     public GameObject smashCollider;
+    public GameObject bumpCollider;
     public Color eyeChargeColor = new Color(233, 208, 118);
 
     PlayerInput playerInput;
@@ -28,6 +32,7 @@ public class PlayerController : MonoBehaviour
     InputAction dashAction;
     InputAction chargeJumpAction;
     InputAction smashAction;
+    InputAction bumpAction;
     InputAction startAction;
     float moveDirection = 0;
     bool isGrounded = false;
@@ -55,6 +60,7 @@ public class PlayerController : MonoBehaviour
         dashAction = playerInput.actions["Dash"];
         chargeJumpAction = playerInput.actions["Charge Jump"];
         smashAction = playerInput.actions["Smash"];
+        bumpAction = playerInput.actions["Bump"];
         startAction = playerInput.actions["Start"];
 
 
@@ -80,7 +86,20 @@ public class PlayerController : MonoBehaviour
             smashAnimation.SetActive(true);
             isSmashing = true;
             smashCollider.SetActive(true);
-            StartCoroutine(Smash(0.7f));
+            StartCoroutine(Smash(0.5f));
+        };
+
+        // Bumping
+        bumpAction.started += ctx =>
+        {
+            if (this == null || isDashing || isSmashing || !IsPlaying())
+            {
+                return;
+            }
+            bumpAnimation.SetActive(true);
+            isBumping = true;
+            bumpCollider.SetActive(true);
+            StartCoroutine(Bump(0.5f));
         };
 
         // Releasing charged jump
@@ -293,6 +312,38 @@ public class PlayerController : MonoBehaviour
         smashCollider.SetActive(false);
         isSmashing = false;
     }
+
+    IEnumerator Bump(float duration)
+    {
+        float t = 0.0f;
+        int angle;
+        if(transform.position.x > 0)
+        {
+            angle = -30;
+        } else
+        {
+            angle = 30;
+        }
+        while (t < duration)
+        {
+            if (t < duration / 2)
+            {
+                r2d.rotation = Mathf.Lerp(0, angle, 2 * t / duration);
+                bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(bumpRadius/1.5f, bumpRadius, 2 * t / duration), bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
+            }
+            else
+            {
+                r2d.rotation = Mathf.Lerp(angle, 0, 2 * t / duration - 1);
+                bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(bumpRadius, bumpRadius / 1.5f, 2 * t / duration - 1), bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
+            }
+            t += Time.deltaTime;
+            yield return null;
+        }
+        bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(0.00001f, bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
+        bumpCollider.SetActive(false);
+        isBumping = false;
+    }
+
     GameObject FindChild(GameObject parent, string name)
     {
         foreach (Transform t in parent.transform)

@@ -6,6 +6,7 @@ public class BallLogics : MonoBehaviour
     public GameObject ballIndicator;
     public GameObject gameLogics;
     public float dashUpwardForce = 9000;
+    public float bumpUpwardForce = 9000;
     public float serviceForce = 2000;
     public float smashDownwardForce = 7000;
     public bool service = true;
@@ -99,6 +100,11 @@ public class BallLogics : MonoBehaviour
             }
             collider.gameObject.SetActive(false);
             service = false;
+        }
+
+        if (collider.name == "Bump")
+        {
+            rigidBody.AddForce(new Vector2(0, bumpUpwardForce));
         }
     }
 
