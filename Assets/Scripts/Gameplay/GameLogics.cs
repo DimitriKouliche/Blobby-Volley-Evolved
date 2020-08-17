@@ -379,6 +379,8 @@ public class GameLogics : MonoBehaviour
 
     public void StartRound()
     {
+        ball.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        FindChild(ball, "Serve").SetActive(true);
         isPlaying = true;
         uiMessage.SetActive(false);
     }
@@ -503,6 +505,7 @@ public class GameLogics : MonoBehaviour
         {
             return;
         }
+        FindChild(ball, "Serve").SetActive(false);
         int playerId = ExtractIDFromName(player.name) - 1;
         int teamId = GetTeamFromPlayer(playerId);
         if (serve)
