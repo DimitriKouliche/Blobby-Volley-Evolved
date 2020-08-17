@@ -540,6 +540,7 @@ public class GameLogics : MonoBehaviour
             child.gameObject.GetComponent<Tentacle>().Color = blobColor[id-1];
         }
         FindChild(FindChild(blob, "Smash"), "SmashAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+        FindChild(FindChild(blob, "Bump"), "BumpAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
         FindChild(blob, "SmashFreezeFrame").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
 
         ParticleSystem.MainModule settings = FindChild(blob, "ParticleContact").GetComponent<ParticleSystem>().main;
