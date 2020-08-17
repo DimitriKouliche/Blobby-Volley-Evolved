@@ -120,9 +120,9 @@ public class PlayerController : MonoBehaviour
         moveDirection = moveDirectionVector.x;
 
         // Fast falling
-        if (moveDirectionVector.y < 0 && !isGrounded)
+        if (moveDirectionVector.y < 0 && !isGrounded && !isSmashing)
         {
-            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y);
+            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.3f);
         }
 
         // Dashing
@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        isGrounded = transform.position.y < -6.17;
+        isGrounded = transform.position.y < -6.1;
 
         // Apply movement velocity
         if (!isDashing && !isSmashing)
@@ -211,6 +211,11 @@ public class PlayerController : MonoBehaviour
                 FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 3);
             }
             r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        }
+
+        if(isSmashing)
+        {
+            r2d.velocity = new Vector2((moveDirection/2) * maxSpeed, r2d.velocity.y);
         }
 
         if (chargingJump)

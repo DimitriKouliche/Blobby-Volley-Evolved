@@ -244,6 +244,8 @@ public class GameLogics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = -1;
+        QualitySettings.vSyncCount = 0;
         blobPosition = new Vector3[4];
         blobScale = new Vector3[4];
         ToggleMovement(false);
@@ -533,6 +535,11 @@ public class GameLogics : MonoBehaviour
         }
         FindChild(FindChild(blob, "Smash"), "SmashAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
         FindChild(blob, "SmashFreezeFrame").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+
+        ParticleSystem.MainModule settings = FindChild(blob, "ParticleContact").GetComponent<ParticleSystem>().main;
+        settings.startColor = new ParticleSystem.MinMaxGradient(blobColor[id - 1]);
+        settings = FindChild(blob, "InkStains").GetComponent<ParticleSystem>().main;
+        settings.startColor = new ParticleSystem.MinMaxGradient(blobColor[id - 1]);
     }
 
     void ApplyShape(int id, GameObject blob)

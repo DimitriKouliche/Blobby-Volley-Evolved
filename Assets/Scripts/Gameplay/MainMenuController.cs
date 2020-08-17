@@ -35,7 +35,7 @@ public class MainMenuController : MonoBehaviour
                 FindChild(gameObject, "MenuContent").SetActive(true);
                 return;
             }
-            if (menuId == 5)
+            if (menuId == 3)
             {
                 Application.Quit();
             } else
@@ -69,7 +69,7 @@ public class MainMenuController : MonoBehaviour
 
     void MoveToNext()
     {
-        if (menuId >= 5)
+        if (menuId >= 3)
         {
             return;
         }

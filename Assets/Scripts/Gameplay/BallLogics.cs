@@ -25,11 +25,15 @@ public class BallLogics : MonoBehaviour
         if (gameLogics != null && collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
+            FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
+            FindChild(gameObject, "ParticleStars").transform.position = transform.position;
         }
 
         if (gameLogics != null && collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
+            FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
+            FindChild(gameObject, "ParticleStars").transform.position = transform.position;
         }
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
@@ -46,16 +50,26 @@ public class BallLogics : MonoBehaviour
             }
             if(service)
             {
-                rigidBody.AddForce(new Vector2(serviceForce, serviceForce));
+                if(collision.gameObject.transform.position.x < 0)
+                {
+                    rigidBody.AddForce(new Vector2(serviceForce, serviceForce));
+                } else
+                {
+                    rigidBody.AddForce(new Vector2(-serviceForce, serviceForce));
+                }
             }
             if (collider.name != "Smash" && gameLogics.GetComponent<GameLogics>().isStarting)
             {
                 service = false;
             }
+
+            FindChild(collision.gameObject, "ParticleContact").GetComponent<ParticleSystem>().Play();
+            FindChild(collision.gameObject, "ParticleContact").transform.position = collision.gameObject.transform.position;
+
         }
         if (collider.name == "Smash")
         {
-            StartCoroutine(SmashFreeze(0.7f, collider.gameObject));
+            StartCoroutine(SmashFreeze(0.5f, collider.gameObject));
             rigidBody.velocity = Vector3.zero;
             float positionFactor = transform.position.y - collision.gameObject.transform.position.y;
             float yForce = positionFactor * smashDownwardForce / 3;
@@ -128,7 +142,9 @@ public class BallLogics : MonoBehaviour
         Time.timeScale = 0;
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);
         FindChild(smash.transform.parent.gameObject, "SmashImpact").transform.position = transform.position;
-        FindChild(smash.transform.parent.gameObject, "SmashImpact").SetActive(true);
+        FindChild(smash.transform.parent.gameObject, "SmashImpact").SetActive(false);
+        FindChild(smash.transform.parent.gameObject, "InkStains").transform.position = transform.position;
+        FindChild(smash.transform.parent.gameObject, "InkStains").GetComponent<ParticleSystem>().Play();
         yield return StartCoroutine(WaitForRealSeconds(duration));
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(false);
         Time.timeScale = 1;

@@ -47,7 +47,7 @@ public class SpriteAnimator : MonoBehaviour
             }
         }
 
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
 
         if (timer >= framerate)
         {
