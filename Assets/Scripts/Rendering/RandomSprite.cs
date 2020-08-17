@@ -20,7 +20,16 @@ public class RandomSprite : MonoBehaviour
     }
     void OnEnable()
     {
-        startingPosition = new Vector3(transform.parent.position.x, localPosition.y, 0);
+        if (transform.parent != null)
+        {
+            startingPosition = new Vector3(transform.parent.position.x, localPosition.y, 0);
+            startingRotation = transform.parent.rotation;
+        }
+        else
+        {
+            startingPosition = transform.position;
+            startingRotation = transform.rotation;
+        }
         startingRotation = transform.parent.rotation;
         if (frameArray.Length == 0)
         {

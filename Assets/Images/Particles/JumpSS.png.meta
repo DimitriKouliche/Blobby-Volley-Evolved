@@ -20,6 +20,159 @@ TextureImporter:
   - first:
       213: -428411513330907983
     second: JumpSS_5
+  - first:
+      213: -1379001634749402661
+    second: JumpSS_0
+  - first:
+      213: -3727526917711480076
+    second: JumpSS_1
+  - first:
+      213: -1416663330844637977
+    second: JumpSS_2
+  - first:
+      213: 3018704776276071678
+    second: JumpSS_3
+  - first:
+      213: 4483421232792638561
+    second: JumpSS_4
+  - first:
+      213: 1733503397228459734
+    second: JumpSS_5
+  - first:
+      213: -2460365934010286271
+    second: JumpSS_6
+  - first:
+      213: 4685437912452746117
+    second: JumpSS_7
+  - first:
+      213: -3256342235687057583
+    second: JumpSS_8
+  - first:
+      213: 5282382816234444369
+    second: JumpSS_9
+  - first:
+      213: 7299296023125672709
+    second: JumpSS_10
+  - first:
+      213: -6808772598426995255
+    second: JumpSS_11
+  - first:
+      213: -2934959480332610399
+    second: JumpSS_12
+  - first:
+      213: -8200551421054512663
+    second: JumpSS_13
+  - first:
+      213: -7930982611706639585
+    second: JumpSS_14
+  - first:
+      213: 1702579713902152677
+    second: JumpSS_15
+  - first:
+      213: -1640566180633198206
+    second: JumpSS_16
+  - first:
+      213: 767027817910952706
+    second: JumpSS_17
+  - first:
+      213: -1661998186596588551
+    second: JumpSS_18
+  - first:
+      213: 1256973689748678361
+    second: JumpSS_19
+  - first:
+      213: -2415156038041472539
+    second: JumpSS_20
+  - first:
+      213: -36142561708037593
+    second: JumpSS_21
+  - first:
+      213: 6419798694599678589
+    second: JumpSS_22
+  - first:
+      213: 1255812988723914738
+    second: JumpSS_23
+  - first:
+      213: -83176225514688045
+    second: JumpSS_24
+  - first:
+      213: -445642091778117300
+    second: JumpSS_25
+  - first:
+      213: -6356109170915024883
+    second: JumpSS_26
+  - first:
+      213: -5232956717573970943
+    second: JumpSS_27
+  - first:
+      213: 2707610897358437812
+    second: JumpSS_28
+  - first:
+      213: -31368201088556669
+    second: JumpSS_29
+  - first:
+      213: -7971105626208352330
+    second: JumpSS_30
+  - first:
+      213: -7970346683853067950
+    second: JumpSS_31
+  - first:
+      213: -312845292773514059
+    second: JumpSS_32
+  - first:
+      213: 2479767337097257552
+    second: JumpSS_33
+  - first:
+      213: 4497903125277354205
+    second: JumpSS_34
+  - first:
+      213: 2815456570862834044
+    second: JumpSS_35
+  - first:
+      213: 3864863682249948669
+    second: JumpSS_36
+  - first:
+      213: 1735426693988198197
+    second: JumpSS_37
+  - first:
+      213: 1052392817343919493
+    second: JumpSS_38
+  - first:
+      213: -7952052039393739362
+    second: JumpSS_39
+  - first:
+      213: 4901373483681094974
+    second: JumpSS_40
+  - first:
+      213: 6540115258720268405
+    second: JumpSS_41
+  - first:
+      213: 7701156448436745529
+    second: JumpSS_42
+  - first:
+      213: 4032367255204238729
+    second: JumpSS_43
+  - first:
+      213: 3859777466781973677
+    second: JumpSS_44
+  - first:
+      213: -827342283796830567
+    second: JumpSS_45
+  - first:
+      213: 8927004273606591779
+    second: JumpSS_46
+  - first:
+      213: -4529176125620724892
+    second: JumpSS_47
+  - first:
+      213: -2373946596047169201
+    second: JumpSS_48
+  - first:
+      213: 6136346967905597967
+    second: JumpSS_49
+  - first:
+      213: -2079216378337587772
+    second: JumpSS_50
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -149,7 +302,7 @@ TextureImporter:
         width: 250
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,7 +323,7 @@ TextureImporter:
         width: 250
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,7 +344,7 @@ TextureImporter:
         width: 250
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,7 +365,7 @@ TextureImporter:
         width: 250
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,7 +386,7 @@ TextureImporter:
         width: 250
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,7 +407,7 @@ TextureImporter:
         width: 250
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
