@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.IO.IsolatedStorage;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -64,10 +65,19 @@ public class PlayerController : MonoBehaviour
         startAction = playerInput.actions["Start"];
 
 
+        startAction.started += ctx =>
+        {
+            Debug.Log("in player start");
+            Time.timeScale = 0;
+            FindChild(GameObject.Find("UI"), "MenuContent").GetComponent<PauseMenuController>().playerInput = playerInput;
+            FindChild(GameObject.Find("UI"), "MenuContent").SetActive(true);
+        };
+
+
         // Charging jump
         chargeJumpAction.started += ctx =>
         {
-            if (!isDashing && IsPlaying())
+            if (IsPlaying() && Time.timeScale != 0)
             {
                 chargingJump = true;
             }
@@ -76,7 +86,7 @@ public class PlayerController : MonoBehaviour
         // Smashing
         smashAction.started += ctx =>
         {
-            if (this == null || isGrounded || isDashing || isSmashing || !IsPlaying())
+            if (this == null || isGrounded || isDashing || isSmashing || !IsPlaying() || Time.timeScale == 0)
             {
                 return;
             }
@@ -92,7 +102,7 @@ public class PlayerController : MonoBehaviour
         // Bumping
         bumpAction.started += ctx =>
         {
-            if (this == null || isDashing || isSmashing || !IsPlaying())
+            if (this == null || isDashing || isSmashing || !IsPlaying() || Time.timeScale == 0)
             {
                 return;
             }
@@ -105,10 +115,14 @@ public class PlayerController : MonoBehaviour
         // Releasing charged jump
         chargeJumpAction.canceled += ctx =>
         {
-            if ((!isGrounded && !IsTouchingPlayer()) || isDashing || !IsPlaying() || r2d == null)
+            if ((!isGrounded && !IsTouchingPlayer()) || !IsPlaying() || r2d == null || Time.timeScale == 0)
             {
                 CancelCharge();
                 return;
+            }
+            if (isDashing)
+            {
+                isDashing = false;
             }
             FindChild(gameObject, "Jump").SetActive(true);
             r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
@@ -130,6 +144,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (gameLogics != null && !IsPlaying())
+        {
+            return;
+        }
+
+        if (Time.timeScale == 0)
         {
             return;
         }
@@ -156,7 +175,6 @@ public class PlayerController : MonoBehaviour
                 FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
                 FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
                 isDashing = true;
-                CancelCharge();
                 r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
                 if (moveDirectionVector.x > 0)
                 {
@@ -230,6 +248,11 @@ public class PlayerController : MonoBehaviour
                 FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 3);
             }
             r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        }
+
+        if(isDashing)
+        {
+            r2d.velocity = new Vector2(r2d.velocity.x, 0);
         }
 
         if(isSmashing)
