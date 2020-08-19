@@ -50,7 +50,6 @@ public class PauseMenuController : MonoBehaviour
                 justWokeUp = false;
                 return;
             }
-            inputOnCooldown = true;
             StartCoroutine(EnableInput(0.2f));
             gameObject.SetActive(false);
             Time.timeScale = 1;
@@ -59,13 +58,10 @@ public class PauseMenuController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(inputOnCooldown);
         if (moveAction == null)
         {
             return;
         }
-        Debug.Log("Move");
-        Debug.Log(inputOnCooldown);
         // Moving
         var moveDirectionVector = moveAction.ReadValue<Vector2>();
         if (moveDirectionVector.y > 0.9f)
