@@ -4,53 +4,68 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour
+public class PauseMenuController : MonoBehaviour
 {
+    public PlayerInput playerInput;
     public GameObject[] arrows;
     public string[] scenes;
     int menuId = 0;
-    PlayerInput playerInput;
     InputAction moveAction;
-    InputAction confirmAction;
     bool inputOnCooldown = false;
+    bool justWokeUp = true;
+
 
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
-        playerInput = GetComponent<PlayerInput>();
+        justWokeUp = true;
         moveAction = playerInput.actions["Move"];
-        confirmAction = playerInput.actions["Confirm"];
 
-        confirmAction.started += ctx =>
+        playerInput.actions["Charge Jump"].started += ctx =>
         {
-            if (inputOnCooldown)
+            if (playerInput == null)
             {
-                return;
-            }
-            inputOnCooldown = true;
-            StartCoroutine(EnableInput(0.2f));
-            if(FindChild(gameObject, "StartScreen").activeSelf)
-            {
-                FindChild(gameObject, "StartScreen").SetActive(false);
-                FindChild(gameObject, "MenuContent").SetActive(true);
                 return;
             }
             if (menuId == 3)
             {
                 Application.Quit();
-            } else
-            {
-                SceneManager.LoadScene(scenes[menuId], LoadSceneMode.Single);
             }
+            if (menuId == 1)
+            {
+                gameObject.SetActive(false);
+                Time.timeScale = 1;
+            }
+        };
+
+        playerInput.actions["Start"].started += ctx =>
+        {
+            if (playerInput == null)
+            {
+                return;
+            }
+            playerInput = null;
+            if(justWokeUp)
+            {
+                justWokeUp = false;
+                return;
+            }
+            inputOnCooldown = true;
+            StartCoroutine(EnableInput(0.2f));
+            gameObject.SetActive(false);
+            Time.timeScale = 1;
         };
     }
 
     void Update()
     {
-        if (inputOnCooldown)
+        Debug.Log(inputOnCooldown);
+        if (moveAction == null)
         {
             return;
         }
+        Debug.Log("Move");
+        Debug.Log(inputOnCooldown);
         // Moving
         var moveDirectionVector = moveAction.ReadValue<Vector2>();
         if (moveDirectionVector.y > 0.9f)
@@ -78,7 +93,7 @@ public class MainMenuController : MonoBehaviour
             arrows[i].SetActive(false);
         }
         menuId++;
-        transform.GetChild(0).GetChild(menuId).GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(menuId).GetChild(0).gameObject.SetActive(true);
     }
 
     void MoveToPrevious()
@@ -92,12 +107,12 @@ public class MainMenuController : MonoBehaviour
             arrows[i].SetActive(false);
         }
         menuId--;
-        transform.GetChild(0).GetChild(menuId).GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(menuId).GetChild(0).gameObject.SetActive(true);
     }
 
     IEnumerator EnableInput(float duration)
     {
-        yield return new WaitForSeconds(duration);
+        yield return StartCoroutine(WaitForRealSeconds(duration));
         inputOnCooldown = false;
     }
 
@@ -111,5 +126,13 @@ public class MainMenuController : MonoBehaviour
             }
         }
         return null;
+    }
+    IEnumerator WaitForRealSeconds(float seconds)
+    {
+        float startTime = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup - startTime < seconds)
+        {
+            yield return null;
+        }
     }
 }
