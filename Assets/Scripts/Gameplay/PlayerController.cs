@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public GameObject jumpAnimation;
     public GameObject smashAnimation;
     public GameObject bumpAnimation;
+    public GameObject smashAnimationWhite;
+    public GameObject bumpAnimationWhite;
     public GameObject smashCollider;
     public GameObject bumpCollider;
     public Color eyeChargeColor = new Color(233, 208, 118);
@@ -94,6 +96,7 @@ public class PlayerController : MonoBehaviour
             FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
             FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
             smashAnimation.SetActive(true);
+            smashAnimationWhite.SetActive(true);
             isSmashing = true;
             smashCollider.SetActive(true);
             StartCoroutine(Smash(0.5f));
@@ -107,6 +110,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
             bumpAnimation.SetActive(true);
+            bumpAnimationWhite.SetActive(true);
             isBumping = true;
             bumpCollider.SetActive(true);
             StartCoroutine(Bump(0.5f));

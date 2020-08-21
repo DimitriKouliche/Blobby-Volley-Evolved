@@ -745,7 +745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1891437578499863953
 Transform:
   m_ObjectHideFlags: 0
@@ -754,7 +754,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4673082437985335062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.47, y: 0.8, z: -3.4190702}
+  m_LocalPosition: {x: -1.11, y: -1.51, z: 0}
   m_LocalScale: {x: 1.892853, y: 1.892853, z: 0.9464265}
   m_Children: []
   m_Father: {fileID: 5034832536875003685}
@@ -796,10 +796,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -919204997
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3157865541068544624, guid: cbc1a09d362ec7248b15e721dde0a29f,
+  m_Sprite: {fileID: 8579368522172473650, guid: 44efe02ad80c132419cabd7dfc08b1e3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.1
+  framerate: 0.03
   loop: 0
   rotate: 0
   frameArray:
@@ -10425,7 +10425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9160339987670381881
 Transform:
   m_ObjectHideFlags: 0
@@ -10434,7 +10434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6796914625867600853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.05, y: -3.76, z: 0}
+  m_LocalPosition: {x: -2.06, y: -3.48, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1.8709}
   m_Children: []
   m_Father: {fileID: 8330191616249306961}
@@ -10479,7 +10479,7 @@ SpriteRenderer:
   m_SortingLayerID: -919204997
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3231941947845621409, guid: a75851fd404695f4cbca12d0084d51a0,
+  m_Sprite: {fileID: 8579368522172473650, guid: 44efe02ad80c132419cabd7dfc08b1e3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10504,7 +10504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.015
+  framerate: 0.013
   loop: 0
   rotate: 0
   frameArray:
@@ -11668,6 +11668,8 @@ MonoBehaviour:
   jumpAnimation: {fileID: 8330191616769580020}
   smashAnimation: {fileID: 1403162170100504454}
   bumpAnimation: {fileID: 250246249508778158}
+  smashAnimationWhite: {fileID: 6796914625867600853}
+  bumpAnimationWhite: {fileID: 4673082437985335062}
   smashCollider: {fileID: 8330191616249306967}
   bumpCollider: {fileID: 2090721728518390165}
   eyeChargeColor: {r: 0.9137255, g: 0.8156863, b: 0.4627451, a: 1}
