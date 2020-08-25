@@ -275,11 +275,23 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpSpeed < jumpHeight)
             {
-                jumpSpeed += 1f;
+                jumpSpeed += 5f;
                 FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, eyeChargeColor);
             } else
             {
-                FindChild(gameObject, "Charge").SetActive(true);
+                if ((!isGrounded && !IsTouchingPlayer()) || !IsPlaying() || r2d == null || Time.timeScale == 0)
+                {
+                    CancelCharge();
+                    return;
+                }
+                if (isDashing)
+                {
+                    isDashing = false;
+                }
+                playerSounds.JumpSound();
+                FindChild(gameObject, "Jump").SetActive(true);
+                r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
+                CancelCharge();
             }
         }
 
