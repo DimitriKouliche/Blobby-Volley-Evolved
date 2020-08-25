@@ -63,6 +63,10 @@ public class BallLogics : MonoBehaviour
             {
                 service = false;
             }
+            if (collider.name != "Smash")
+            {
+                collision.gameObject.GetComponent<PlayerSounds>().BallContactSound();
+            }
 
             FindChild(collision.gameObject, "ParticleContact").GetComponent<ParticleSystem>().Play();
             FindChild(collision.gameObject, "ParticleContact").transform.position = collision.gameObject.transform.position;

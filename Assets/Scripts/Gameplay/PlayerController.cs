@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     Collider2D mainCollider;
     float jumpSpeed = 0;
     bool chargingJump = false;
+    PlayerSounds playerSounds;
 
     bool IsPlaying()
     {
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        playerSounds = GetComponent<PlayerSounds>();
         jumpSpeed = jumpHeight / 1.8f;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
@@ -81,6 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             if (IsPlaying() && Time.timeScale != 0)
             {
+                playerSounds.ChargeJumpSound();
                 chargingJump = true;
             }
         };
@@ -92,7 +95,7 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
-
+            playerSounds.SmashSound();
             FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
             FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
             smashAnimation.SetActive(true);
@@ -109,6 +112,7 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
+            playerSounds.BumpSound();
             bumpAnimation.SetActive(true);
             bumpAnimationWhite.SetActive(true);
             isBumping = true;
@@ -128,6 +132,7 @@ public class PlayerController : MonoBehaviour
             {
                 isDashing = false;
             }
+            playerSounds.JumpSound();
             FindChild(gameObject, "Jump").SetActive(true);
             r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
             CancelCharge();
@@ -179,6 +184,7 @@ public class PlayerController : MonoBehaviour
                 FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
                 FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
                 isDashing = true;
+                playerSounds.DashSound();
                 r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
                 if (moveDirectionVector.x > 0)
                 {
@@ -191,6 +197,7 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(DisableDash(0.4f, 70f));
                 }
             }
+
         }
     }
 
