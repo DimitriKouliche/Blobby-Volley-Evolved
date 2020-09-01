@@ -119,10 +119,10 @@ MonoBehaviour:
   loop: 1
   rotate: 0
   frameArray:
-  - {fileID: 1253345645225013204, guid: 5b13baa851ce0b748bf7f933f842c668, type: 3}
-  - {fileID: -9058495254662394139, guid: 5b13baa851ce0b748bf7f933f842c668, type: 3}
-  - {fileID: 2309186452338599124, guid: 5b13baa851ce0b748bf7f933f842c668, type: 3}
-  - {fileID: 5267823273289190492, guid: 5b13baa851ce0b748bf7f933f842c668, type: 3}
+  - {fileID: 2201637679077101918, guid: e7ec7075e044fb644a012f633a9879a2, type: 3}
+  - {fileID: -5466994505851833155, guid: e7ec7075e044fb644a012f633a9879a2, type: 3}
+  - {fileID: -3742804735678059318, guid: e7ec7075e044fb644a012f633a9879a2, type: 3}
+  - {fileID: -4314410267707484457, guid: e7ec7075e044fb644a012f633a9879a2, type: 3}
 --- !u!212 &6056774846356824537
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1253345645225013204, guid: 5b13baa851ce0b748bf7f933f842c668,
+  m_Sprite: {fileID: 2201637679077101918, guid: e7ec7075e044fb644a012f633a9879a2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
   - {x: -0.07973127, y: 1.5192132, z: 0}
   m_ShapePathHash: 683642768
   m_Mesh: {fileID: 0}
-  m_InstanceId: -429336
+  m_InstanceId: 23896
 --- !u!1 &4615230067520491196
 GameObject:
   m_ObjectHideFlags: 0

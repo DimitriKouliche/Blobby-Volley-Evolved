@@ -779,6 +779,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cf0cc03e4255c4341a50182d9ee280cf, type: 3}
   - {fileID: 21300000, guid: 0b539651e0f1e574291d8b05a5cd09bc, type: 3}
   - {fileID: 21300000, guid: 34c8f7d3d49260642b6ceccbea5da1b8, type: 3}
+  - {fileID: 21300000, guid: 420fb9f002808ba4394135f928015ae9, type: 3}
+  - {fileID: 21300000, guid: a8f2682fd6b3f074c86597fe794eff26, type: 3}
+  - {fileID: 21300000, guid: 64643daffa3285b42acd54109dbb30f0, type: 3}
+  - {fileID: 21300000, guid: be8c1dafb91c2e442914c818243d5703, type: 3}
   id: 0
   blob: {fileID: 0}
   gameLogics: {fileID: 0}

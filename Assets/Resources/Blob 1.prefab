@@ -11807,19 +11807,24 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5e4cebeea4e37d14db6960e256e1d5d4, type: 3}
   - {fileID: 8300000, guid: ccac38752bd6d9d40bfccae288be5166, type: 3}
   - {fileID: 8300000, guid: 13dcf648fd0dd5a41ac974da92e4de47, type: 3}
-  dashVolume: 3
+  dashVolume: 1
   jumpClips:
-  - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
+  - {fileID: 8300000, guid: 7f6f4757aa0aa4c4dab64e57be420e42, type: 3}
+  - {fileID: 8300000, guid: 4c25958ec35befd42bbdf2bf5081aad5, type: 3}
+  - {fileID: 8300000, guid: 9236d62b2c148bd4a89f3ab1cee183b5, type: 3}
   jumpVolume: 1
   bumpClips:
   - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
   bumpVolume: 1
   ballContactClips:
-  - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
+  - {fileID: 8300000, guid: a6c6e0489962c694b911c208390965f3, type: 3}
+  - {fileID: 8300000, guid: 31c7ce632cf289c48b873f2e0d342e0d, type: 3}
+  - {fileID: 8300000, guid: b31ebf033219ff7438c5a2ae2738c189, type: 3}
+  - {fileID: 8300000, guid: 0df98de2c244715489189c693f9f8012, type: 3}
   ballContactVolume: 1
   chargeJumpClips:
   - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
-  chargeJumpVolume: 1
+  chargeJumpVolume: 0
   smashClips:
   - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
   smashVolume: 1
