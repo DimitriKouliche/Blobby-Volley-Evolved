@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class BallLogics : MonoBehaviour
 {
@@ -120,6 +121,13 @@ public class BallLogics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float opacity = Mathf.Min((rigidBody.velocity.magnitude - 10) / 20, 1);
+        if(opacity < 0)
+        {
+            opacity = 0;
+        }
+        MainModule particles = FindChild(gameObject, "ParticleTrail02").GetComponent<ParticleSystem>().main;
+        particles.startColor = new Color(255f, 255f, 255f, opacity);
         if (ballIndicator!= null && ballIndicator.activeSelf)
         {
             ballIndicator.transform.position = new Vector3(transform.position.x, 7.5f, -2);
@@ -151,14 +159,24 @@ public class BallLogics : MonoBehaviour
     {
         Time.timeScale = 0;
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);
+        FindChild(smash.transform.parent.gameObject, "SmashFreezeFrameWhite").SetActive(true);
         FindChild(smash.transform.parent.gameObject, "SmashImpact").transform.position = transform.position;
         FindChild(smash.transform.parent.gameObject, "SmashImpact").SetActive(false);
         FindChild(smash.transform.parent.gameObject, "InkStains").transform.position = transform.position;
         FindChild(smash.transform.parent.gameObject, "InkStains").GetComponent<ParticleSystem>().Play();
         yield return StartCoroutine(WaitForRealSeconds(duration));
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(false);
+        FindChild(smash.transform.parent.gameObject, "SmashFreezeFrameWhite").SetActive(false);
         Time.timeScale = 1;
         Camera.main.GetComponent<CameraShake>().Shake();
+        StartCoroutine(SmashParticleTrail(0.7f));
+    }
+
+    IEnumerator SmashParticleTrail(float duration)
+    {
+        FindChild(gameObject, "ParticleTrail03").GetComponent<ParticleSystem>().Play();
+        yield return new WaitForSeconds(duration);
+        FindChild(gameObject, "ParticleTrail03").GetComponent<ParticleSystem>().Stop();
     }
 
     IEnumerator EnableHit(float duration)
