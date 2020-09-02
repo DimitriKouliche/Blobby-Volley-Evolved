@@ -18,7 +18,8 @@ public class BallLogics : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!canHit)
+        FindChild(gameObject, "ParticleTrail03").GetComponent<ParticleSystem>().Stop();
+        if (!canHit)
         {
             return;
         }
