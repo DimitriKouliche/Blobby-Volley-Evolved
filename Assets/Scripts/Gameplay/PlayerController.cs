@@ -213,19 +213,19 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
-        if (GameObject.Find("Blob 1(Clone)") && gameObject.name != "Blob 1(Clone)" && gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Blob 1(Clone)").GetComponent<Collider2D>()))
+        if (GameObject.Find("Blob 1(Clone)") && gameObject.name != "Blob 1(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 1(Clone)").GetComponent<CircleCollider2D>()))
         {
             return true;
         }
-        if (GameObject.Find("Blob 2(Clone)") && gameObject.name != "Blob 2(Clone)" && gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Blob 2(Clone)").GetComponent<Collider2D>()))
+        if (GameObject.Find("Blob 2(Clone)") && gameObject.name != "Blob 2(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 2(Clone)").GetComponent<CircleCollider2D>()))
         {
             return true;
         }
-        if (GameObject.Find("Blob 3(Clone)") && gameObject.name != "Blob 3(Clone)" && gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Blob 3(Clone)").GetComponent<Collider2D>()))
+        if (GameObject.Find("Blob 3(Clone)") && gameObject.name != "Blob 3(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 3(Clone)").GetComponent<CircleCollider2D>()))
         {
             return true;
         }
-        if (GameObject.Find("Blob 4(Clone)") && gameObject.name != "Blob 4(Clone)" && gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Blob 4(Clone)").GetComponent<Collider2D>()))
+        if (GameObject.Find("Blob 4(Clone)") && gameObject.name != "Blob 4(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 4(Clone)").GetComponent<CircleCollider2D>()))
         {
             return true;
         }

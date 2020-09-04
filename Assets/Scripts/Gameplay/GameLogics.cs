@@ -15,8 +15,10 @@ public class GameLogics : MonoBehaviour
     public GameObject blobPrefab;
     public GameObject playerSelectionPrefab;
     public GameObject ball;
+    public GameObject level;
     public GameObject ballSupport;
     public GameObject selectionMenu;
+    public GameObject startAnimation;
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;
@@ -189,7 +191,6 @@ public class GameLogics : MonoBehaviour
             {
                 blob2.transform.position = new Vector3(-5, blob2.transform.position.y, blob2.transform.position.z);
             }
-
         }
         if (blob3 != null)
         {
@@ -355,13 +356,93 @@ public class GameLogics : MonoBehaviour
                 yield return null;
             }
         }
-        ResetBlobs();
-        uiMessage.transform.parent.parent.gameObject.SetActive(true);
+
+        startAnimation.SetActive(true);
+        FindChild(level, "Pole").SetActive(true);
         selectionMenu.SetActive(false);
+
+        yield return new WaitForSeconds(1);
+
         blob1.SetActive(true);
         blob2.SetActive(true);
+        if (maxPlayers == 4)
+        {
+            blob3.SetActive(true);
+            blob4.SetActive(true);
+            InitBlob(blob3, 2);
+            InitBlob(blob4, 3);
+        }
+        ResetBlobs();
         InitBlob(blob1, 0);
         InitBlob(blob2, 1);
+        blob1.GetComponent<PlayerController>().enabled = false;
+        blob2.GetComponent<PlayerController>().enabled = false;
+        if (maxPlayers == 4)
+        {
+            InitBlob(blob3, 2);
+            InitBlob(blob4, 3);
+            blob3.GetComponent<PlayerController>().enabled = false;
+            blob4.GetComponent<PlayerController>().enabled = false;
+        }
+        if (maxPlayers == 2)
+        {
+            blob1.transform.position = FindChild(startAnimation, "CanonRight").transform.position;
+            blob2.transform.position = FindChild(startAnimation, "CanonLeft").transform.position;
+            blob1.transform.Rotate(new Vector3(0, 0, 0));
+            blob2.transform.Rotate(new Vector3(0, 0, -90));
+            blob1.GetComponent<Rigidbody2D>().AddForce(new Vector2(-160000, 160000));
+            blob2.GetComponent<Rigidbody2D>().AddForce(new Vector2(160000, 160000));
+        } else
+        {
+            blob1.transform.position = FindChild(startAnimation, "CanonRight").transform.position;
+            blob2.transform.position = FindChild(startAnimation, "CanonRight").transform.position;
+            blob3.transform.position = FindChild(startAnimation, "CanonLeft").transform.position;
+            blob4.transform.position = FindChild(startAnimation, "CanonLeft").transform.position;
+            blob1.transform.Rotate(new Vector3(0, 0, 0));
+            blob2.transform.Rotate(new Vector3(0, 0, 0));
+            blob3.transform.Rotate(new Vector3(0, 0, -90));
+            blob4.transform.Rotate(new Vector3(0, 0, -90));
+            blob1.GetComponent<Rigidbody2D>().AddForce(new Vector2(-160000, 160000));
+            blob2.GetComponent<Rigidbody2D>().AddForce(new Vector2(-120000, 190000));
+            blob3.GetComponent<Rigidbody2D>().AddForce(new Vector2(160000, 160000));
+            blob4.GetComponent<Rigidbody2D>().AddForce(new Vector2(120000, 190000));
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        float t = 0.0f;
+        while (t < 1.6f)
+        {
+            blob1.transform.Rotate(Vector3.Lerp(new Vector3(0,0,0), new Vector3(0,0,-2), t / 0.5f));
+            blob2.transform.Rotate(Vector3.Lerp(new Vector3(0,0,0), new Vector3(0,0,-2), t / 0.5f));
+            if (maxPlayers == 4)
+            {
+                blob3.transform.Rotate(Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, -2), t / 0.5f));
+                blob4.transform.Rotate(Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, -2), t / 0.5f));
+            }
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        blob1.transform.rotation = Quaternion.identity;
+        blob2.transform.rotation = Quaternion.identity;
+        if (maxPlayers == 4)
+        {
+            blob3.transform.rotation = Quaternion.identity;
+            blob4.transform.rotation = Quaternion.identity;
+        }
+        FindChild(level, "PlayerBounds").SetActive(true);
+        blob1.GetComponent<PlayerController>().enabled = true;
+        blob2.GetComponent<PlayerController>().enabled = true;
+        if (maxPlayers == 4)
+        {
+            blob3.GetComponent<PlayerController>().enabled = true;
+            blob4.GetComponent<PlayerController>().enabled = true;
+        }
+        startAnimation.SetActive(false);
+
+        ball.SetActive(true);
+
+        uiMessage.transform.parent.parent.gameObject.SetActive(true);
 
         if (maxPlayers == 4)
         {
