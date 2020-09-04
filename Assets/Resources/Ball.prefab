@@ -4896,7 +4896,7 @@ MonoBehaviour:
   ballIndicator: {fileID: 0}
   gameLogics: {fileID: 0}
   dashUpwardForce: 15000
-  bumpUpwardForce: 9000
+  bumpUpwardForce: 12000
   serviceForce: 3000
   smashDownwardForce: 20000
   service: 1

@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public GameObject gameLogics;
     public bool isDashing = false;
     public bool isSmashing = false;
-    public bool isBumping = true;
+    public bool isBumping = false;
     public static GameObject LocalPlayerInstance;
     public GameObject dashRightAnimation;
     public GameObject dashLefttAnimation;
@@ -108,16 +108,31 @@ public class PlayerController : MonoBehaviour
         // Bumping
         bumpAction.started += ctx =>
         {
-            if (this == null || isDashing || isSmashing || !IsPlaying() || Time.timeScale == 0)
+            int invert = 1;
+            if (this == null || isDashing || isSmashing || isBumping || !IsPlaying() || Time.timeScale == 0)
             {
                 return;
+            }
+            var moveDirectionVector = moveAction.ReadValue<Vector2>();
+            moveDirection = moveDirectionVector.x;
+            if (moveDirection > 0 && transform.position.x > 0)
+            {
+                InvertBump();
+                StartCoroutine(RestoreBump(0.5f));
+                invert = -1;
+            }
+            if (moveDirection < 0 && transform.position.x < 0)
+            {
+                InvertBump();
+                StartCoroutine(RestoreBump(0.5f));
+                invert = -1;
             }
             playerSounds.BumpSound();
             bumpAnimation.SetActive(true);
             bumpAnimationWhite.SetActive(true);
-            isBumping = true;
             bumpCollider.SetActive(true);
-            StartCoroutine(Bump(0.5f));
+            isBumping = true;
+            StartCoroutine(Bump(0.5f, invert));
         };
 
         // Releasing charged jump
@@ -347,16 +362,16 @@ public class PlayerController : MonoBehaviour
         isSmashing = false;
     }
 
-    IEnumerator Bump(float duration)
+    IEnumerator Bump(float duration, int invert)
     {
         float t = 0.0f;
         int angle;
         if(transform.position.x > 0)
         {
-            angle = -30;
+            angle = -30 * invert;
         } else
         {
-            angle = 30;
+            angle = 30 * invert;
         }
         while (t < duration)
         {
@@ -376,6 +391,19 @@ public class PlayerController : MonoBehaviour
         bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(0.00001f, bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
         bumpCollider.SetActive(false);
         isBumping = false;
+    }
+
+    void InvertBump()
+    {
+        Transform bumpTransform = transform.Find("Bump").transform;
+        bumpTransform.localPosition = new Vector3(-bumpTransform.localPosition.x, bumpTransform.localPosition.y, bumpTransform.localPosition.z);
+        bumpTransform.localScale = new Vector3(-bumpTransform.localScale.x, bumpTransform.localScale.y, bumpTransform.localScale.z);
+    }
+    
+    IEnumerator RestoreBump(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        InvertBump();
     }
 
     GameObject FindChild(GameObject parent, string name)

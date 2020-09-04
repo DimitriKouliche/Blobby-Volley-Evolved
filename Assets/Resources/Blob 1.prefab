@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250246249508778158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.11, y: -1.51, z: 0}
+  m_LocalPosition: {x: -3, y: -2.5, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 5034832536875003685}
@@ -836,7 +836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4673082437985335062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.24, y: -1.23, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.892853, y: 1.892853, z: 0.9464265}
   m_Children: []
   m_Father: {fileID: 5034832536875003685}
@@ -11747,7 +11747,7 @@ MonoBehaviour:
   gameLogics: {fileID: 0}
   isDashing: 0
   isSmashing: 0
-  isBumping: 1
+  isBumping: 0
   dashRightAnimation: {fileID: 8330191617031472486}
   dashLefttAnimation: {fileID: 8330191617226879573}
   jumpAnimation: {fileID: 8330191616769580020}
