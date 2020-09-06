@@ -3878,7 +3878,7 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 1
-    mode: 0
+    mode: 1
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -4011,7 +4011,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.63
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4766,7 +4766,7 @@ GameObject:
   - component: {fileID: 1613465283508190275}
   - component: {fileID: 4363969950662369032}
   m_Layer: 0
-  m_Name: "ParticleS\xE9lection"
+  m_Name: ParticleSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8633,7 +8633,7 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 1
-    mode: 0
+    mode: 1
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -8766,7 +8766,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.63
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
