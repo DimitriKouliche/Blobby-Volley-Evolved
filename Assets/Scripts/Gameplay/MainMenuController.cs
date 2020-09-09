@@ -69,7 +69,7 @@ public class MainMenuController : MonoBehaviour
 
     void MoveToNext()
     {
-        if (menuId >= 3)
+        if (menuId >= 4)
         {
             return;
         }

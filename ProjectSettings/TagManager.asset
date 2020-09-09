@@ -67,3 +67,6 @@ TagManager:
   - name: UI Eyes
     uniqueID: 277677237
     locked: 0
+  - name: UI titles
+    uniqueID: 1841588255
+    locked: 0
