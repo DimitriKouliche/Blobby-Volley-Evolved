@@ -58,7 +58,7 @@ public class PauseMenuController : MonoBehaviour
 
     void Update()
     {
-        if (moveAction == null)
+        if (moveAction == null || inputOnCooldown)
         {
             return;
         }
@@ -80,7 +80,7 @@ public class PauseMenuController : MonoBehaviour
 
     void MoveToNext()
     {
-        if (menuId >= 3)
+        if (menuId >= 4)
         {
             return;
         }
