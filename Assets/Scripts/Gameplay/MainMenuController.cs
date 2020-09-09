@@ -16,6 +16,8 @@ public class MainMenuController : MonoBehaviour
     InputAction confirmAction;
     bool inputOnCooldown = false;
     bool splashScreen = true;
+    bool isOnControl = false;
+    bool isOnSound = false;
 
     // Use this for initialization
     void Start()
@@ -84,11 +86,11 @@ public class MainMenuController : MonoBehaviour
     {
         soundManager.SetActive(false);
         credits.SetActive(false);
-        if (menuId == 2)
+        if (menuId == 3)
         {
             soundManager.SetActive(true);
         }
-        if (menuId == 3)
+        if (menuId == 4)
         {
             credits.SetActive(true);
         }
@@ -96,7 +98,7 @@ public class MainMenuController : MonoBehaviour
 
     void MoveToNext()
     {
-        if (menuId >= 4)
+        if (menuId >= 5)
         {
             return;
         }

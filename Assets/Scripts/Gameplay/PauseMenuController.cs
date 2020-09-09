@@ -80,7 +80,7 @@ public class PauseMenuController : MonoBehaviour
 
     void MoveToNext()
     {
-        if (menuId >= 4)
+        if (menuId >= 5)
         {
             return;
         }
