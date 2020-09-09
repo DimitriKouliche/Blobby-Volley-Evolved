@@ -10156,7 +10156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1191488677
 Transform:
   m_ObjectHideFlags: 0
@@ -20157,7 +20157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1760196213
 Transform:
   m_ObjectHideFlags: 0
@@ -49351,6 +49351,8 @@ MonoBehaviour:
   - {fileID: 2239317107528940681}
   - {fileID: 1230198382}
   - {fileID: 1921123570920921478}
+  soundManager: {fileID: 0}
+  credits: {fileID: 0}
   scenes:
   - Local2
   - Local4

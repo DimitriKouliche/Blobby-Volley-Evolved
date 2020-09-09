@@ -266,6 +266,10 @@ public class GameLogics : MonoBehaviour
                 {
                     return;
                 }
+                if (control.name == "buttonEast" || control.name == "escape")
+                {
+                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                }
                 if (control.name != "enter" && control.name != "start")
                 {
                     return;
@@ -301,11 +305,11 @@ public class GameLogics : MonoBehaviour
                     player2Device = control.device;
                     if (maxPlayers == 2)
                     {
-                        InstantiateSelectionMenu(2, player2Device, new Vector3(5f, 0, 0), blob2);
+                        InstantiateSelectionMenu(2, player2Device, new Vector3(4f, 0, 0), blob2);
                     }
                     if (maxPlayers == 4)
                     {
-                        InstantiateSelectionMenu(2, player2Device, new Vector3(-3.5f, 0, 0), blob2);
+                        InstantiateSelectionMenu(2, player2Device, new Vector3(-4f, 0, 0), blob2);
                     }
                 }
                 else if (nbPlayer == 2)
@@ -313,14 +317,14 @@ public class GameLogics : MonoBehaviour
                     blob3 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
                     blob3.SetActive(false);
                     player3Device = control.device;
-                    InstantiateSelectionMenu(3, player3Device, new Vector3(3.5f, 0, 0), blob3);
+                    InstantiateSelectionMenu(3, player3Device, new Vector3(2.25f, 0, 0), blob3);
                 }
                 else if (nbPlayer == 3)
                 {
                     blob4 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
                     blob4.SetActive(false);
                     player4Device = control.device;
-                    InstantiateSelectionMenu(4, player4Device, new Vector3(10f, 0, 0), blob4);
+                    InstantiateSelectionMenu(4, player4Device, new Vector3(8.5f, 0, 0), blob4);
                 }
                 nbPlayer++;
             };

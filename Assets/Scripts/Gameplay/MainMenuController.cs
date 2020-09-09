@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject[] arrows;
+    public GameObject soundManager;
+    public GameObject credits;
     public string[] scenes;
     int menuId = 0;
     PlayerInput playerInput;
     InputAction moveAction;
     InputAction confirmAction;
     bool inputOnCooldown = false;
+    bool splashScreen = true;
 
     // Use this for initialization
     void Start()
@@ -23,31 +26,41 @@ public class MainMenuController : MonoBehaviour
 
         confirmAction.started += ctx =>
         {
-            if (inputOnCooldown)
+            if (this == null || inputOnCooldown)
             {
                 return;
             }
             inputOnCooldown = true;
-            StartCoroutine(EnableInput(0.2f));
+            StartCoroutine(EnableInput(0.15f));
             if(FindChild(gameObject, "StartScreen").activeSelf)
             {
                 FindChild(gameObject, "StartScreen").SetActive(false);
                 FindChild(gameObject, "MenuContent").SetActive(true);
+                splashScreen = false;
                 return;
             }
-            if (menuId == 3)
+            if(splashScreen)
             {
-                Application.Quit();
-            } else
+                return;
+            }
+            switch (menuId)
             {
-                SceneManager.LoadScene(scenes[menuId], LoadSceneMode.Single);
+                case 0:
+                    SceneManager.LoadScene("Local4", LoadSceneMode.Single);
+                    break;
+                case 1:
+                    SceneManager.LoadScene("Local2", LoadSceneMode.Single);
+                    break;
+                case 4:
+                    Application.Quit();
+                    break;
             }
         };
     }
 
     void Update()
     {
-        if (inputOnCooldown)
+        if (inputOnCooldown || splashScreen)
         {
             return;
         }
@@ -57,13 +70,27 @@ public class MainMenuController : MonoBehaviour
         {
             MoveToPrevious();
             inputOnCooldown = true;
-            StartCoroutine(EnableInput(0.2f));
+            StartCoroutine(EnableInput(0.15f));
         }
         if (moveDirectionVector.y < -0.9f)
         {
             MoveToNext();
             inputOnCooldown = true;
-            StartCoroutine(EnableInput(0.2f));
+            StartCoroutine(EnableInput(0.15f));
+        }
+    }
+
+    void DisplayRightPanel()
+    {
+        soundManager.SetActive(false);
+        credits.SetActive(false);
+        if (menuId == 2)
+        {
+            soundManager.SetActive(true);
+        }
+        if (menuId == 3)
+        {
+            credits.SetActive(true);
         }
     }
 
@@ -78,6 +105,7 @@ public class MainMenuController : MonoBehaviour
             arrows[i].SetActive(false);
         }
         menuId++;
+        DisplayRightPanel();
         transform.GetChild(0).GetChild(menuId).GetChild(0).gameObject.SetActive(true);
     }
 
@@ -92,6 +120,7 @@ public class MainMenuController : MonoBehaviour
             arrows[i].SetActive(false);
         }
         menuId--;
+        DisplayRightPanel();
         transform.GetChild(0).GetChild(menuId).GetChild(0).gameObject.SetActive(true);
     }
 

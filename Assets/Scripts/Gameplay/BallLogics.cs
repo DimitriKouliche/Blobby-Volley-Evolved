@@ -132,7 +132,7 @@ public class BallLogics : MonoBehaviour
         particles.startColor = new Color(255f, 255f, 255f, opacity);
         if (ballIndicator!= null && ballIndicator.activeSelf)
         {
-            ballIndicator.transform.position = new Vector3(transform.position.x, 7.5f, -2);
+            ballIndicator.transform.position = new Vector3(transform.position.x, 7f, -2);
         }
     }
 
