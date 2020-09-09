@@ -11,6 +11,7 @@ public class BallLogics : MonoBehaviour
     public float serviceForce = 2000;
     public float smashDownwardForce = 7000;
     public bool service = true;
+    bool follow = false;
 
     bool canHit = true;
     Rigidbody2D rigidBody;
@@ -149,14 +150,31 @@ public class BallLogics : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Camera.main.transform.position = new Vector3(gameObject.transform.position.x / 17, 0, -10);
-        if(transform.position.y > 10)
+        if(!follow)
+        {
+            float originX = Camera.main.transform.position.x;
+            StartCoroutine(SmoothFollow(0.3f, originX));
+            follow = true;
+        }
+        if (transform.position.y > 10)
         {
             rigidBody.AddForce(new Vector2(0, -5));
         }
     }
+    IEnumerator SmoothFollow(float duration, float originX)
+    {
+        float targetX = gameObject.transform.position.x / 17;
+        float t = 0.0f;
+        while (t < duration)
+        {
+            Camera.main.transform.position = new Vector3(Mathf.Lerp(originX, targetX, t / duration), 0, -10);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        follow = false;
+    }
 
-    IEnumerator SmashFreeze(float duration, GameObject smash)
+        IEnumerator SmashFreeze(float duration, GameObject smash)
     {
         Time.timeScale = 0;
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);
