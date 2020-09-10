@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
         moveDirection = moveDirectionVector.x;
 
         // Fast falling
-        if (moveDirectionVector.y < 0 && !isGrounded && !isSmashing)
+        if (moveDirectionVector.y < -0.7 && !isGrounded && !isSmashing)
         {
             r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.3f);
         }
