@@ -21,11 +21,6 @@ public class BallLogics : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         FindChild(gameObject, "ParticleTrail03").GetComponent<ParticleSystem>().Stop();
-        if (!canHit)
-        {
-            return;
-        }
-        StartCoroutine(EnableHit(0.1f));
         Collider2D collider = collision.contacts[0].collider;
         if (gameLogics != null && collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
@@ -40,6 +35,11 @@ public class BallLogics : MonoBehaviour
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
         }
+        if (!canHit)
+        {
+            return;
+        }
+        StartCoroutine(EnableHit(0.1f));
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
         {
