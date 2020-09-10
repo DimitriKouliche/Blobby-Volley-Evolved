@@ -170,6 +170,7 @@ public class GameLogics : MonoBehaviour
             UpdateMessage(player + " wins the round");
         }
         StartCoroutine(PlayerWinsCorountine(player));
+        ball.GetComponent<BallLogics>().UpdateBall(2);
     }
 
     void OnApplicationQuit()
@@ -545,11 +546,11 @@ public class GameLogics : MonoBehaviour
         }
     }
 
-    public void PlayerTouchesBall(GameObject player)
+    public int PlayerTouchesBall(GameObject player)
     {
         if (!isStarting || !isPlaying)
         {
-            return;
+            return 0;
         }
         int playerId = ExtractIDFromName(player.name) - 1;
         int teamId = GetTeamFromPlayer(playerId);
@@ -589,6 +590,7 @@ public class GameLogics : MonoBehaviour
                 PlayerWins("Blob 1");
             }
         }
+        return teamBallTouches[teamId];
     }
     public void PlayerServes(GameObject player)
     {

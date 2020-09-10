@@ -17,6 +17,7 @@ public class BallLogics : MonoBehaviour
     Rigidbody2D rigidBody;
 
 
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         FindChild(gameObject, "ParticleTrail03").GetComponent<ParticleSystem>().Stop();
@@ -46,7 +47,8 @@ public class BallLogics : MonoBehaviour
             if (gameLogics != null)
             {
                 gameLogics.GetComponent<GameLogics>().PlayerServes(collision.gameObject);
-                gameLogics.GetComponent<GameLogics>().PlayerTouchesBall(collision.gameObject);
+                int touches = gameLogics.GetComponent<GameLogics>().PlayerTouchesBall(collision.gameObject);
+                UpdateBall(touches);
             }
             if (collision.gameObject.GetComponent<PlayerController>().isDashing)
             {
@@ -129,7 +131,7 @@ public class BallLogics : MonoBehaviour
             opacity = 0;
         }
         MainModule particles = FindChild(gameObject, "ParticleTrail02").GetComponent<ParticleSystem>().main;
-        particles.startColor = new Color(255f, 255f, 255f, opacity);
+        particles.startColor = new Color(1, 1, 1, opacity);
         if (ballIndicator!= null && ballIndicator.activeSelf)
         {
             ballIndicator.transform.position = new Vector3(transform.position.x, 7f, -2);
@@ -161,6 +163,28 @@ public class BallLogics : MonoBehaviour
             rigidBody.AddForce(new Vector2(0, -5));
         }
     }
+
+    public void UpdateBall(int touches)
+    {
+        if(touches == 1)
+        {
+            MainModule particles = FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().main;
+            particles.startColor = new Color(233f / 255f, 208f / 255f, 118f / 255f);
+        }
+        if(touches == 2)
+        {
+            MainModule particles = FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().main;
+            particles.startColor = new Color(203f / 255f, 119f / 255f, 52f / 255f);
+        }
+        if(touches == 3)
+        {
+            MainModule particles = FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().main;
+            particles.startColor = new Color(172f / 255f, 49f / 255f, 39f / 255f);
+        }
+        FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().Stop();
+        FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().Play();
+    }
+
     IEnumerator SmoothFollow(float duration, float originX)
     {
         float targetX = gameObject.transform.position.x / 17;
