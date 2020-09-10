@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     float jumpSpeed = 0;
     bool chargingJump = false;
     PlayerSounds playerSounds;
+    Vector2 moveDirectionVector;
 
     bool IsPlaying()
     {
@@ -115,18 +116,6 @@ public class PlayerController : MonoBehaviour
             }
             var moveDirectionVector = moveAction.ReadValue<Vector2>();
             moveDirection = moveDirectionVector.x;
-            if (moveDirection > 0 && transform.position.x > 0)
-            {
-                InvertBump();
-                StartCoroutine(RestoreBump(0.5f));
-                invert = -1;
-            }
-            if (moveDirection < 0 && transform.position.x < 0)
-            {
-                InvertBump();
-                StartCoroutine(RestoreBump(0.5f));
-                invert = -1;
-            }
             playerSounds.BumpSound();
             bumpAnimation.SetActive(true);
             bumpAnimationWhite.SetActive(true);
@@ -151,6 +140,38 @@ public class PlayerController : MonoBehaviour
             FindChild(gameObject, "Jump").SetActive(true);
             r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
             CancelCharge();
+        };
+
+        // Dashing
+        dashAction.started += ctx =>
+        {
+            Debug.Log(isDashing);
+            if (this == null || !isGrounded || isDashing || !IsPlaying() || Time.timeScale == 0)
+            {
+                return;
+            }
+            if (moveDirectionVector.x != 0)
+            {
+                if (gameLogics != null)
+                {
+                    gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
+                }
+                FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
+                FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
+                isDashing = true;
+                playerSounds.DashSound();
+                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
+                if (moveDirectionVector.x > 0)
+                {
+                    dashLefttAnimation.SetActive(true);
+                    StartCoroutine(DisableDash(0.45f, -70f));
+                }
+                else
+                {
+                    dashRightAnimation.SetActive(true);
+                    StartCoroutine(DisableDash(0.45f, 70f));
+                }
+            }
         };
     }
 
@@ -178,41 +199,13 @@ public class PlayerController : MonoBehaviour
         }
 
         // Moving
-        var moveDirectionVector = moveAction.ReadValue<Vector2>();
+        moveDirectionVector = moveAction.ReadValue<Vector2>();
         moveDirection = moveDirectionVector.x;
 
         // Fast falling
         if (moveDirectionVector.y < -0.7 && !isGrounded && !isSmashing)
         {
-            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.3f);
-        }
-
-        // Dashing
-        if (dashAction.triggered && !isDashing && isGrounded)
-        {
-            if (moveDirectionVector.x != 0)
-            {
-                if(gameLogics != null)
-                {
-                    gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
-                }
-                FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
-                FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
-                isDashing = true;
-                playerSounds.DashSound();
-                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
-                if (moveDirectionVector.x > 0)
-                {
-                    dashLefttAnimation.SetActive(true);
-                    StartCoroutine(DisableDash(0.4f, -70f));
-                }
-                else
-                {
-                    dashRightAnimation.SetActive(true);
-                    StartCoroutine(DisableDash(0.4f, 70f));
-                }
-            }
-
+            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.2f);
         }
     }
 
@@ -360,6 +353,7 @@ public class PlayerController : MonoBehaviour
         smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(0.00001f, smashCollider.GetComponent<CapsuleCollider2D>().size.y);
         smashCollider.SetActive(false);
         isSmashing = false;
+        isDashing = false;
     }
 
     IEnumerator Bump(float duration, int invert)
@@ -392,19 +386,7 @@ public class PlayerController : MonoBehaviour
         bumpCollider.SetActive(false);
         isBumping = false;
     }
-
-    void InvertBump()
-    {
-        Transform bumpTransform = transform.Find("Bump").transform;
-        bumpTransform.localPosition = new Vector3(-bumpTransform.localPosition.x, bumpTransform.localPosition.y, bumpTransform.localPosition.z);
-        bumpTransform.localScale = new Vector3(-bumpTransform.localScale.x, bumpTransform.localScale.y, bumpTransform.localScale.z);
-    }
-    
-    IEnumerator RestoreBump(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        InvertBump();
-    }
+   
 
     GameObject FindChild(GameObject parent, string name)
     {
