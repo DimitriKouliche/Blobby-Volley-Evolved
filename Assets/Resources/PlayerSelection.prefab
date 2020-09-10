@@ -5234,9 +5234,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 1000
-  frequency: 10
-  amplitude: 50
-  animationDelay: 4
+  frequency: 8
+  amplitude: 15
+  animationDelay: 1
   debugOutline: 0
   debugTriangles: 0
   debugUVs: 0
@@ -5707,9 +5707,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 1000
-  frequency: 10
-  amplitude: 50
-  animationDelay: 0
+  frequency: 8
+  amplitude: 15
+  animationDelay: 1
   debugOutline: 0
   debugTriangles: 0
   debugUVs: 0
@@ -7011,8 +7011,8 @@ MonoBehaviour:
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 1000
-  frequency: 10
-  amplitude: 50
+  frequency: 8
+  amplitude: 15
   animationDelay: 1
   debugOutline: 0
   debugTriangles: 0
@@ -7190,9 +7190,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 1000
-  frequency: 10
-  amplitude: 50
-  animationDelay: 2
+  frequency: 8
+  amplitude: 15
+  animationDelay: 1
   debugOutline: 0
   debugTriangles: 0
   debugUVs: 0
@@ -7384,9 +7384,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 1000
-  frequency: 10
-  amplitude: 50
-  animationDelay: 3
+  frequency: 8
+  amplitude: 15
+  animationDelay: 1
   debugOutline: 0
   debugTriangles: 0
   debugUVs: 0
@@ -7473,9 +7473,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 1000
-  frequency: 10
-  amplitude: 50
-  animationDelay: 6
+  frequency: 8
+  amplitude: 15
+  animationDelay: 1
   debugOutline: 0
   debugTriangles: 0
   debugUVs: 0
@@ -8287,9 +8287,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 1000
-  frequency: 10
-  amplitude: 50
-  animationDelay: 7
+  frequency: 8
+  amplitude: 15
+  animationDelay: 1
   debugOutline: 0
   debugTriangles: 0
   debugUVs: 0
@@ -9122,9 +9122,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 1000
-  frequency: 10
-  amplitude: 50
-  animationDelay: 5
+  frequency: 8
+  amplitude: 15
+  animationDelay: 1
   debugOutline: 0
   debugTriangles: 0
   debugUVs: 0
