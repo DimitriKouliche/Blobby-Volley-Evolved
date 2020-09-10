@@ -15600,7 +15600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &564293580
 Transform:
   m_ObjectHideFlags: 0
@@ -30854,6 +30854,21 @@ PrefabInstance:
         type: 3}
       propertyPath: playOnAwake
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5175067018707088062, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.31245267
+      objectReference: {fileID: 0}
+    - target: {fileID: 5175067018707088062, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.2214756
+      objectReference: {fileID: 0}
+    - target: {fileID: 5175067018707088062, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.745283
       objectReference: {fileID: 0}
     - target: {fileID: 5495310198743506820, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}
@@ -60227,7 +60242,7 @@ PrefabInstance:
     - target: {fileID: 7389253322185801146, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7389253322709019276, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
         type: 3}
@@ -60755,7 +60770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4654657745141663944
 MonoBehaviour:
   m_ObjectHideFlags: 0

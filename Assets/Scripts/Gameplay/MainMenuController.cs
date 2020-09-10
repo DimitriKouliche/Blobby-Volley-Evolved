@@ -249,6 +249,10 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.SetFloat("musicVolume", musicVolume);
             return;
         }
+        if (menuId <= 0)
+        {
+            return;
+        }
         for (int i = 0; i < arrows.Length; i++)
         {
             arrows[i].SetActive(false);
