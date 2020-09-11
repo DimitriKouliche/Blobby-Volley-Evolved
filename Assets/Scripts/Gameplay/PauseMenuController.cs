@@ -84,6 +84,10 @@ public class PauseMenuController : MonoBehaviour
         // Dashing
         playerInput.actions["Dash"].started += ctx =>
         {
+            if (this == null || !gameObject.activeSelf)
+            {
+                return;
+            }
             Time.timeScale = 1;
             gameObject.SetActive(false);
         };
