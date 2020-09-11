@@ -109,7 +109,7 @@ public class UIController : MonoBehaviour
         }
         // Moving
         var moveDirectionVector = moveAction.ReadValue<Vector2>();
-        if (moveDirectionVector.x > 0.9f)
+        if (moveDirectionVector.x > 0.9f || moveDirectionVector.y < -0.9f)
         {
             StartCoroutine(EnableInput(0.3f));
             inputOnCooldown = true;
@@ -132,7 +132,7 @@ public class UIController : MonoBehaviour
                 ApplyColor();
             }
         }
-        if (moveDirectionVector.x < -0.9f)
+        if (moveDirectionVector.x < -0.9f || moveDirectionVector.y > 0.9f)
         {
             StartCoroutine(EnableInput(0.3f));
             inputOnCooldown = true;
@@ -153,40 +153,6 @@ public class UIController : MonoBehaviour
                     currentColorIndex = colorPool.Length - 1;
                 }
                 ApplyColor();
-            }
-        }
-        if (moveDirectionVector.y > 0.9f)
-        {
-            StartCoroutine(EnableInput(0.3f));
-            inputOnCooldown = true;
-            if (isSelectingShape)
-            {
-                return;
-            }
-            if (isSelectingColor)
-            {
-                SelectShape();
-            }
-            else if (isHoveringReady)
-            {
-                SelectColor();
-            }
-        }
-        if (moveDirectionVector.y < -0.9f)
-        {
-            StartCoroutine(EnableInput(0.3f));
-            inputOnCooldown = true;
-            if (isHoveringReady)
-            {
-                return;
-            }
-            if (isSelectingColor)
-            {
-                HoverReady();
-            }
-            else if (isSelectingShape)
-            {
-                SelectColor();
             }
         }
 
@@ -210,6 +176,9 @@ public class UIController : MonoBehaviour
 
     void ApplyColor()
     {
+        FindChild(FindChild(gameObject, "SquidCustomizer"), "ColorPicker").GetComponent<SpriteRenderer>().color = colorPool[currentColorIndex];
+        FindChild(FindChild(FindChild(gameObject, "SquidCustomizer"), "ColorPicker"), "Arrows").GetComponent<SpriteRenderer>().color = colorPool[currentColorIndex];
+        FindChild(FindChild(FindChild(FindChild(gameObject, "SquidCustomizer"), "ColorPicker"), "Arrows"), "Arrows (3)").GetComponent<SpriteRenderer>().color = colorPool[currentColorIndex];
         blobPreview.GetComponent<SpriteRenderer>().color = colorPool[currentColorIndex];
         blobSprite.GetComponent<SpriteRenderer>().color = colorPool[currentColorIndex];
         

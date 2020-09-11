@@ -11835,7 +11835,7 @@ MonoBehaviour:
   keyboardControls: {fileID: 1010459832}
   gamepadControls: {fileID: 960749370}
   soundMenu: {fileID: 167115107}
-  gameLogics: {fileID: 0}
+  gameLogics: {fileID: 236572989}
 --- !u!1 &739169149
 GameObject:
   m_ObjectHideFlags: 0
