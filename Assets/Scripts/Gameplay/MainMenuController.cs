@@ -72,7 +72,7 @@ public class MainMenuController : MonoBehaviour
                 case 1:
                     SceneManager.LoadScene("Local2", LoadSceneMode.Single);
                     break;
-                case 4:
+                case 5:
                     Application.Quit();
                     break;
             }
