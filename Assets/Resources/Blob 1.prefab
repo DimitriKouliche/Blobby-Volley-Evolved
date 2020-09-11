@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.015
+  framerate: 0.013
   loop: 0
   rotate: 0
   frameArray:
@@ -629,6 +629,8 @@ MonoBehaviour:
   - {fileID: -2471327026024105994, guid: 7cfb467ecab61414c90336dca7061162, type: 3}
   - {fileID: -2471327026024105994, guid: 7cfb467ecab61414c90336dca7061162, type: 3}
   - {fileID: -2471327026024105994, guid: 7cfb467ecab61414c90336dca7061162, type: 3}
+  - {fileID: -8912393674633129879, guid: 7cfb467ecab61414c90336dca7061162, type: 3}
+  - {fileID: -8912393674633129879, guid: 7cfb467ecab61414c90336dca7061162, type: 3}
   - {fileID: -8912393674633129879, guid: 7cfb467ecab61414c90336dca7061162, type: 3}
   - {fileID: -8912393674633129879, guid: 7cfb467ecab61414c90336dca7061162, type: 3}
   - {fileID: -8912393674633129879, guid: 7cfb467ecab61414c90336dca7061162, type: 3}
