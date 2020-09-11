@@ -64,8 +64,21 @@ public class GameLogics : MonoBehaviour
         {
             ball.transform.position = ballPosition;
         }
+    }
+    
 
-        Camera.main.transform.position = new Vector3(ball.transform.position.x / 17, 0, -10);
+    public void ResetBlobPositions()
+    {
+        blob1.transform.position = new Vector3(-10, -6.3f, 2);
+        if (maxPlayers == 2)
+        {
+            blob2.transform.position = new Vector3(10, -6.3f, 2);
+        } else
+        {
+            blob2.transform.position = new Vector3(-5, -6.3f, 2);
+            blob3.transform.position = new Vector3(5, -6.3f, 2);
+            blob4.transform.position = new Vector3(10, -6.3f, 2);
+        }
     }
 
     public void ResetBlobs()
@@ -151,7 +164,6 @@ public class GameLogics : MonoBehaviour
             if (maxPlayers == 4)
             {
                 UpdateMessage("CONGRATULATIONS, Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + ", you have won the GAME");
-
             }
             else
             {
@@ -162,15 +174,54 @@ public class GameLogics : MonoBehaviour
         }
         if (maxPlayers == 4)
         {
-            UpdateMessage("Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + " wins the round");
-
+            if (blob1Score == 14)
+            {
+                UpdateMessage("Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + " wins the round! Match point for team 1!");
+            } else if (blob2Score == 14)
+            {
+                UpdateMessage("Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + " wins the round! Match point for team 2!");
+            } else
+            {
+                UpdateMessage("Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + " wins the round");
+            }
         }
         else
         {
-            UpdateMessage(player + " wins the round");
+            if (blob1Score == 14)
+            {
+                UpdateMessage(player + " wins the round! Match point for player 1!");
+            }
+            else if (blob2Score == 14)
+            {
+                UpdateMessage(player + " wins the round! Match point for player 2!");
+            }
+            else
+            {
+                UpdateMessage(player + " wins the round");
+            }
+        }
+
+        if (blob1Score == 14 || blob2Score == 14)
+        {
+            FindChild(level, "Background").SetActive(false);
+            FindChild(level, "RedBackground").SetActive(true);
         }
         StartCoroutine(PlayerWinsCorountine(player));
         ball.GetComponent<BallLogics>().UpdateBall(2);
+    }
+
+    public void RestartGame()
+    {
+        ResetPositions("Blob 1");
+        ResetBlobPositions();
+        isStarting = false;
+        isPlaying = false;
+        ball.GetComponent<BallLogics>().UpdateBall(2);
+        blob1Score = 0;
+        blob2Score = 0;
+        DisplayScore();
+        EraseMessage();
+        BeginGame();
     }
 
     void OnApplicationQuit()

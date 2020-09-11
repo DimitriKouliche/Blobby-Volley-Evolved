@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsPlaying()
     {
-        return gameLogics == null || gameLogics.GetComponent<GameLogics>().isPlaying;
+        return (gameLogics == null || gameLogics.GetComponent<GameLogics>().isPlaying) && !FindChild(GameObject.Find("UI"), "MenuContent").activeSelf;
     }
 
     // Use this for initialization
@@ -72,7 +72,10 @@ public class PlayerController : MonoBehaviour
 
         startAction.started += ctx =>
         {
-            Debug.Log("in player start");
+            if(isSmashing || !IsPlaying() || this == null)
+            {
+                return;
+            }
             Time.timeScale = 0;
             FindChild(GameObject.Find("UI"), "MenuContent").GetComponent<PauseMenuController>().playerInput = playerInput;
             FindChild(GameObject.Find("UI"), "MenuContent").SetActive(true);
@@ -82,6 +85,10 @@ public class PlayerController : MonoBehaviour
         // Charging jump
         chargeJumpAction.started += ctx =>
         {
+            if (this == null)
+            {
+                return;
+            }
             if (IsPlaying() && Time.timeScale != 0)
             {
                 playerSounds.ChargeJumpSound();
@@ -127,7 +134,11 @@ public class PlayerController : MonoBehaviour
         // Releasing charged jump
         chargeJumpAction.canceled += ctx =>
         {
-            if ((!isGrounded && !IsTouchingPlayer()) || !IsPlaying() || r2d == null || Time.timeScale == 0)
+            if(this == null)
+            {
+                return;
+            }
+            if ((!isGrounded && !IsTouchingPlayer()) || !IsPlaying() || r2d == null || Time.timeScale == 0 || !chargingJump )
             {
                 CancelCharge();
                 return;
@@ -145,7 +156,6 @@ public class PlayerController : MonoBehaviour
         // Dashing
         dashAction.started += ctx =>
         {
-            Debug.Log(isDashing);
             if (this == null || !isGrounded || isDashing || !IsPlaying() || Time.timeScale == 0)
             {
                 return;
@@ -188,7 +198,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameLogics != null && !IsPlaying())
+        if (gameLogics != null && !IsPlaying() || this == null)
         {
             return;
         }
