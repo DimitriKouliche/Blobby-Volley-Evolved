@@ -964,7 +964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiMessage: {fileID: 1618964311}
   uiScore: {fileID: 1437185525}
-  gameOver: {fileID: 0}
+  gameOver: {fileID: 66597885}
   blobPrefab: {fileID: 8330191615473064848, guid: a647e902abd18ab49aeb6ffcfb884bc6,
     type: 3}
   playerSelectionPrefab: {fileID: 5362717922218213883, guid: cb21d18b32e463c41b5d0c91e7b5c6c9,
@@ -11857,12 +11857,12 @@ PrefabInstance:
         type: 3}
       propertyPath: ballIndicator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1109192594}
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: gameLogics
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 236572989}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af61e9e66ace66469e9cd06af4c42e5, type: 3}
 --- !u!1 &904157981
