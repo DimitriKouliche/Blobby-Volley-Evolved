@@ -42,7 +42,7 @@ public class PauseMenuController : MonoBehaviour
 
         playerInput.actions["Charge Jump"].started += ctx =>
         {
-            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().ConfirmSound();
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
             if (this == null || ! gameObject.activeSelf)
             {
                 return;

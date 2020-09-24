@@ -19,6 +19,7 @@ public class GameLogics : MonoBehaviour
     public GameObject ballSupport;
     public GameObject selectionMenu;
     public GameObject startAnimation;
+    public GameObject UISound;
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;
@@ -161,15 +162,7 @@ public class GameLogics : MonoBehaviour
         DisplayScore();
         if (blob1Score >= 1 || blob2Score >= 1)
         {
-            if (maxPlayers == 4)
-            {
-                UpdateMessage("CONGRATULATIONS, Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + ", you have won the GAME");
-            }
-            else
-            {
-                UpdateMessage("CONGRATULATIONS, " + player + ", you have won the GAME");
-            }
-            StartCoroutine(GameOverCoroutine());
+            GameOver(player);
             return;
         }
         if (maxPlayers == 4)
@@ -303,6 +296,11 @@ public class GameLogics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject uiSound = GameObject.Find("UISound(Clone)");
+        if (uiSound == null)
+        {
+            GameObject.Instantiate(UISound);
+        }
         Application.targetFrameRate = -1;
         QualitySettings.vSyncCount = 0;
         blobPosition = new Vector3[4];
@@ -578,11 +576,19 @@ public class GameLogics : MonoBehaviour
         BeginGame();
     }
 
-    IEnumerator GameOverCoroutine()
+    void GameOver(string player)
     {
-        yield return new WaitForSeconds(3);
-        EraseMessage();
+        Destroy(ball);
         gameOver.SetActive(true);
+        if (player == "Blob 1" || player == "Blob 3")
+        {
+            FindChild(gameOver, "Cup").transform.position = new Vector3(-5, 5, 0);
+        }
+        else
+        {
+            FindChild(gameOver, "Cup").transform.position = new Vector3(5, 5, 0);
+        }
+        isPlaying = true;
     }
 
     public int GetTeamFromPlayer(int playerId)
