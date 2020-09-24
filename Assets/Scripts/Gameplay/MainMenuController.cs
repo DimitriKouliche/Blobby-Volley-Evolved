@@ -38,7 +38,11 @@ public class MainMenuController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GameObject.Instantiate(UISound);
+        GameObject uiSound = GameObject.Find("UISound(Clone)");
+        if(uiSound == null)
+        {
+            GameObject.Instantiate(UISound);
+        }
         musicVolume = PlayerPrefs.GetFloat("musicVolume", 100f);
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         FindChild(FindChild(soundMenu, "ABoutonSFX"), "SFXJaugeA").transform.localPosition = Vector3.Lerp(SFXJaugeOrigin, SFXJaugeDestination, 1 - sfxVolume / 100f);
