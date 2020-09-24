@@ -74537,6 +74537,7 @@ MonoBehaviour:
   keyboardControls: {fileID: 757813941}
   gamepadControls: {fileID: 771826305}
   soundMenu: {fileID: 1080067681}
+  UISound: {fileID: 7286459353985764521, guid: 299d9ed39d82e18479a10ec2c03560a7, type: 3}
   scenes:
   - Local2
   - Local4

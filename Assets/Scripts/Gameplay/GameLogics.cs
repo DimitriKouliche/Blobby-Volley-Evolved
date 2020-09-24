@@ -19,6 +19,7 @@ public class GameLogics : MonoBehaviour
     public GameObject ballSupport;
     public GameObject selectionMenu;
     public GameObject startAnimation;
+    public GameObject menuSound;
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;
@@ -303,6 +304,7 @@ public class GameLogics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Instantiate(menuSound);
         Application.targetFrameRate = -1;
         QualitySettings.vSyncCount = 0;
         blobPosition = new Vector3[4];

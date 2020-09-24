@@ -968,6 +968,8 @@ MonoBehaviour:
   ballSupport: {fileID: 201937013}
   selectionMenu: {fileID: 564293579}
   startAnimation: {fileID: 6592149074164561692}
+  menuSound: {fileID: 7286459353985764521, guid: 299d9ed39d82e18479a10ec2c03560a7,
+    type: 3}
   isStarting: 0
   isPlaying: 1
   isOnline: 0

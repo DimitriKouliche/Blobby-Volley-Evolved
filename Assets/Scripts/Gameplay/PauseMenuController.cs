@@ -42,6 +42,7 @@ public class PauseMenuController : MonoBehaviour
 
         playerInput.actions["Charge Jump"].started += ctx =>
         {
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().ConfirmSound();
             if (this == null || ! gameObject.activeSelf)
             {
                 return;
@@ -73,9 +74,11 @@ public class PauseMenuController : MonoBehaviour
             playerInput = null;
             if(justWokeUp)
             {
+                GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().AppearSound();
                 justWokeUp = false;
                 return;
             }
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().CancelSound();
             StartCoroutine(EnableInput(0.2f));
             gameObject.SetActive(false);
             Time.timeScale = 1;
@@ -84,6 +87,7 @@ public class PauseMenuController : MonoBehaviour
         // Dashing
         playerInput.actions["Dash"].started += ctx =>
         {
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().CancelSound();
             if (this == null || !gameObject.activeSelf)
             {
                 return;
@@ -129,6 +133,7 @@ public class PauseMenuController : MonoBehaviour
 
     void MoveToNext()
     {
+        GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
         if (isOnSFX)
         {
             if (sfxVolume <= 0)
@@ -168,6 +173,7 @@ public class PauseMenuController : MonoBehaviour
 
     void MoveToPrevious()
     {
+        GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
         if (isOnSFX)
         {
             if (sfxVolume >= 100)
@@ -232,6 +238,7 @@ public class PauseMenuController : MonoBehaviour
     }
     void HandleXMovement(bool isRight)
     {
+        GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
         if (isOnControl)
         {
             if (isOnGamePad && isRight)

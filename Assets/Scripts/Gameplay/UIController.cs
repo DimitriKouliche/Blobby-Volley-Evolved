@@ -45,7 +45,8 @@ public class UIController : MonoBehaviour
             {
                 return;
             }
-            if(!active)
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().ConfirmSound();
+            if (!active)
             {
                 transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
                 active = true;
@@ -70,6 +71,7 @@ public class UIController : MonoBehaviour
             {
                 return;
             }
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().CancelSound();
             if (isHoveringReady && playerReady)
             {
                 playerReady = false;
@@ -93,6 +95,7 @@ public class UIController : MonoBehaviour
 
         playerInput.actions["MainMenu"].performed += ctx =>
         {
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().CancelSound();
             if (this == null)
             {
                 return;
@@ -111,6 +114,7 @@ public class UIController : MonoBehaviour
         var moveDirectionVector = moveAction.ReadValue<Vector2>();
         if (moveDirectionVector.x > 0.9f || moveDirectionVector.y < -0.9f)
         {
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
             StartCoroutine(EnableInput(0.3f));
             inputOnCooldown = true;
             if(isSelectingShape)
@@ -134,6 +138,7 @@ public class UIController : MonoBehaviour
         }
         if (moveDirectionVector.x < -0.9f || moveDirectionVector.y > 0.9f)
         {
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
             StartCoroutine(EnableInput(0.3f));
             inputOnCooldown = true;
             if (isSelectingShape)

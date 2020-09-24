@@ -14,6 +14,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject keyboardControls;
     public GameObject gamepadControls;
     public GameObject soundMenu;
+    public GameObject UISound;
     public string[] scenes;
     int menuId = 0;
     PlayerInput playerInput;
@@ -37,6 +38,7 @@ public class MainMenuController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GameObject.Instantiate(UISound);
         musicVolume = PlayerPrefs.GetFloat("musicVolume", 100f);
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         FindChild(FindChild(soundMenu, "ABoutonSFX"), "SFXJaugeA").transform.localPosition = Vector3.Lerp(SFXJaugeOrigin, SFXJaugeDestination, 1 - sfxVolume / 100f);
@@ -51,6 +53,7 @@ public class MainMenuController : MonoBehaviour
             {
                 return;
             }
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().ConfirmSound();
             inputOnCooldown = true;
             StartCoroutine(EnableInput(0.15f));
             if(FindChild(gameObject, "StartScreen").activeSelf)
@@ -115,6 +118,7 @@ public class MainMenuController : MonoBehaviour
 
     void HandleXMovement(bool isRight)
     {
+        GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
         if(isOnControl)
         {
             if(isOnGamePad && isRight)
@@ -190,6 +194,7 @@ public class MainMenuController : MonoBehaviour
 
     void MoveToNext()
     {
+        GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
         if (isOnSFX)
         {
             if(sfxVolume <= 0)
@@ -227,6 +232,7 @@ public class MainMenuController : MonoBehaviour
 
     void MoveToPrevious()
     {
+        GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
         if (isOnSFX)
         {
             if (sfxVolume >= 100)
