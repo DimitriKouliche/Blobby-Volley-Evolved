@@ -45,19 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectClips:
-  - {fileID: 8300000, guid: bca3c8df7f344954fae975e8047ccd63, type: 3}
+  - {fileID: 8300000, guid: f5c04c8fca232494286a2aa2050d6d45, type: 3}
   selectVolume: 1
   confirmClips:
-  - {fileID: 8300000, guid: 283e7cb9266726247a310d792782f9a4, type: 3}
+  - {fileID: 8300000, guid: 8d77a47d359dc6f4ab2fa75fcc1716eb, type: 3}
   confirmVolume: 1
   cancelClips:
   - {fileID: 8300000, guid: 196c55c1f54af6c4f878e812a834834d, type: 3}
   cancelVolume: 1
   appearClips:
-  - {fileID: 8300000, guid: 95faaae164cf5c044b2bc16fc705f704, type: 3}
+  - {fileID: 8300000, guid: 9f69696ee895db74aa375f16fa6e1383, type: 3}
   appearVolume: 1
   appearEndClips:
-  - {fileID: 8300000, guid: 8043eb455a872854bbca03f9314de0e5, type: 3}
+  - {fileID: 8300000, guid: 045f1fd9960bb6c4bab4461da4f058ff, type: 3}
   appearEndVolume: 1
 --- !u!82 &3047366901440474539
 AudioSource:

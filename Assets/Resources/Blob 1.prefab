@@ -11816,25 +11816,32 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9236d62b2c148bd4a89f3ab1cee183b5, type: 3}
   jumpVolume: 1
   bumpClips:
-  - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
+  - {fileID: 8300000, guid: 949897a67f9b22e4ca57ea0e3af611c1, type: 3}
+  - {fileID: 8300000, guid: 3464f695f2add6444b6be320bf31e5b3, type: 3}
+  - {fileID: 8300000, guid: 463b98f6f9f774d4a85e2be5eccbc3b0, type: 3}
   bumpVolume: 1
   bumpImpactClips:
-  - {fileID: 8300000, guid: 4c25958ec35befd42bbdf2bf5081aad5, type: 3}
+  - {fileID: 8300000, guid: c9505aae20182a044b65d68fcfc72064, type: 3}
+  - {fileID: 8300000, guid: 4e21fbb97b544d5459f3f806ed616140, type: 3}
+  - {fileID: 8300000, guid: 271a5c7c0cce7724781d18a27f0bba81, type: 3}
   bumpImpactVolume: 1
   ballContactClips:
-  - {fileID: 8300000, guid: a6c6e0489962c694b911c208390965f3, type: 3}
-  - {fileID: 8300000, guid: 31c7ce632cf289c48b873f2e0d342e0d, type: 3}
-  - {fileID: 8300000, guid: b31ebf033219ff7438c5a2ae2738c189, type: 3}
-  - {fileID: 8300000, guid: 0df98de2c244715489189c693f9f8012, type: 3}
+  - {fileID: 8300000, guid: 14c07d5e1df31e742aa94a0904f22fc9, type: 3}
+  - {fileID: 8300000, guid: 1d7a4935e3f23a5429228d22c8ec1c9d, type: 3}
+  - {fileID: 8300000, guid: b78e45e06409aac478f2ff66a4e5d2ed, type: 3}
+  - {fileID: 8300000, guid: f3803c833ab4ba445b15409c5f43be6c, type: 3}
+  - {fileID: 8300000, guid: f8917f3b11332004ebdd871ce28e225d, type: 3}
   ballContactVolume: 1
   chargeJumpClips:
   - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
   chargeJumpVolume: 0
   smashClips:
-  - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
+  - {fileID: 8300000, guid: e2ba671a28668fe4788487cff108c5db, type: 3}
+  - {fileID: 8300000, guid: aeff457c3387e754d9fb0add4202e32d, type: 3}
+  - {fileID: 8300000, guid: 7e9a53a48b2013f41a4663f1ebe31b76, type: 3}
   smashVolume: 1
   smashImpactClips:
-  - {fileID: 8300000, guid: 7f6f4757aa0aa4c4dab64e57be420e42, type: 3}
+  - {fileID: 8300000, guid: dcbd0a7da4aa36f4b8cc7bce146eb57e, type: 3}
   smashImpactVolume: 1
 --- !u!82 &4257713565909593064
 AudioSource:
