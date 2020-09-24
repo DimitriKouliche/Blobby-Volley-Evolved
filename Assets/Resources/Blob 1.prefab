@@ -11818,6 +11818,9 @@ MonoBehaviour:
   bumpClips:
   - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
   bumpVolume: 1
+  bumpImpactClips:
+  - {fileID: 8300000, guid: 4c25958ec35befd42bbdf2bf5081aad5, type: 3}
+  bumpImpactVolume: 1
   ballContactClips:
   - {fileID: 8300000, guid: a6c6e0489962c694b911c208390965f3, type: 3}
   - {fileID: 8300000, guid: 31c7ce632cf289c48b873f2e0d342e0d, type: 3}
@@ -11830,6 +11833,9 @@ MonoBehaviour:
   smashClips:
   - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
   smashVolume: 1
+  smashImpactClips:
+  - {fileID: 8300000, guid: 7f6f4757aa0aa4c4dab64e57be420e42, type: 3}
+  smashImpactVolume: 1
 --- !u!82 &4257713565909593064
 AudioSource:
   m_ObjectHideFlags: 0

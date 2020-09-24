@@ -79,6 +79,7 @@ public class BallLogics : MonoBehaviour
         }
         if (collider.name == "Smash")
         {
+            collision.gameObject.GetComponent<PlayerSounds>().SmashImpactSound();
             StartCoroutine(SmashFreeze(0.5f, collider.gameObject));
             rigidBody.velocity = Vector3.zero;
             float positionFactor = transform.position.y - collision.gameObject.transform.position.y;
@@ -113,6 +114,7 @@ public class BallLogics : MonoBehaviour
 
         if (collider.name == "Bump")
         {
+            collision.gameObject.GetComponent<PlayerSounds>().BumpImpactSound();
             rigidBody.AddForce(new Vector2(0, bumpUpwardForce));
         }
     }

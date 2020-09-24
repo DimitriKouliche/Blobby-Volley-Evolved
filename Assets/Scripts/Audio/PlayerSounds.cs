@@ -12,6 +12,9 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip[] bumpClips;
     [Range(0f, 5f)]
     public float bumpVolume = 1f;
+    public AudioClip[] bumpImpactClips;
+    [Range(0f, 5f)]
+    public float bumpImpactVolume = 1f;
     public AudioClip[] ballContactClips;
     [Range(0f, 5f)]
     public float ballContactVolume = 1f;
@@ -21,6 +24,9 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip[] smashClips;
     [Range(0f, 5f)]
     public float smashVolume = 1f;
+    public AudioClip[] smashImpactClips;
+    [Range(0f, 5f)]
+    public float smashImpactVolume = 1f;
 
     public void DashSound()
     {
@@ -40,6 +46,12 @@ public class PlayerSounds : MonoBehaviour
         audioSource.PlayOneShot(bumpClips[index], bumpVolume);
     }
 
+    public void BumpImpactSound()
+    {
+        int index = Random.Range(0, bumpImpactClips.Length);
+        audioSource.PlayOneShot(bumpImpactClips[index], bumpImpactVolume);
+    }
+
     public void BallContactSound()
     {
         int index = Random.Range(0, ballContactClips.Length);
@@ -56,6 +68,12 @@ public class PlayerSounds : MonoBehaviour
     {
         int index = Random.Range(0, smashClips.Length);
         audioSource.PlayOneShot(smashClips[index], smashVolume);
+    }
+
+    public void SmashImpactSound()
+    {
+        int index = Random.Range(0, smashImpactClips.Length);
+        audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume);
     }
 
     private void Start()
