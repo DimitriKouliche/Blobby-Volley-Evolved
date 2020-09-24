@@ -19,7 +19,6 @@ public class GameLogics : MonoBehaviour
     public GameObject ballSupport;
     public GameObject selectionMenu;
     public GameObject startAnimation;
-    public GameObject menuSound;
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;
@@ -160,7 +159,7 @@ public class GameLogics : MonoBehaviour
             blob2Score++;
         }
         DisplayScore();
-        if (blob1Score >= 15 || blob2Score >= 15)
+        if (blob1Score >= 1 || blob2Score >= 1)
         {
             if (maxPlayers == 4)
             {
@@ -304,7 +303,6 @@ public class GameLogics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Instantiate(menuSound);
         Application.targetFrameRate = -1;
         QualitySettings.vSyncCount = 0;
         blobPosition = new Vector3[4];

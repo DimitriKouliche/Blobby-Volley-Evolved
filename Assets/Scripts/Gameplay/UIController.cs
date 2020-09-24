@@ -45,7 +45,6 @@ public class UIController : MonoBehaviour
             {
                 return;
             }
-            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().ConfirmSound();
             if (!active)
             {
                 transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
@@ -55,13 +54,16 @@ public class UIController : MonoBehaviour
             }
             if(isHoveringReady)
             {
+                GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().ConfirmSound();
                 playerReady = true;
                 ActivateTentacles();
                 gameLogics.GetComponent<GameLogics>().PlayerReady(id, colorPool[currentColorIndex], shapes[currentSpriteIndex]);
             } else if (isSelectingShape) {
                 SelectColor();
+                GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
             } else if (isSelectingColor) {
                 HoverReady();
+                GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
             }
         };
 
@@ -71,7 +73,7 @@ public class UIController : MonoBehaviour
             {
                 return;
             }
-            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().CancelSound();
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
             if (isHoveringReady && playerReady)
             {
                 playerReady = false;

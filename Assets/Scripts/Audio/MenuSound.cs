@@ -51,6 +51,7 @@ public class MenuSound : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(transform.gameObject);
         audioSource = GetComponent<AudioSource>();
     }
 }
