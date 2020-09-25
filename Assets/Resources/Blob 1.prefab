@@ -12563,7 +12563,7 @@ MonoBehaviour:
   targetRigidbody: {fileID: 0}
   speed: 10000
   frequency: 1
-  amplitude: 50
+  amplitude: 40
   animationDelay: 0
   debugOutline: 0
   debugTriangles: 0
@@ -13282,7 +13282,7 @@ MonoBehaviour:
   targetRigidbody: {fileID: 0}
   speed: 10000
   frequency: 1
-  amplitude: 50
+  amplitude: 30
   animationDelay: 0
   debugOutline: 0
   debugTriangles: 0
@@ -13938,7 +13938,7 @@ MonoBehaviour:
   targetRigidbody: {fileID: 0}
   speed: 10000
   frequency: 1
-  amplitude: 50
+  amplitude: 70
   animationDelay: 0
   debugOutline: 0
   debugTriangles: 0
@@ -14027,7 +14027,7 @@ MonoBehaviour:
   targetRigidbody: {fileID: 0}
   speed: 10000
   frequency: 1
-  amplitude: 50
+  amplitude: 60
   animationDelay: 0
   debugOutline: 0
   debugTriangles: 0
@@ -14435,7 +14435,7 @@ MonoBehaviour:
   targetRigidbody: {fileID: 0}
   speed: 10000
   frequency: 1
-  amplitude: 50
+  amplitude: 120
   animationDelay: 0
   debugOutline: 0
   debugTriangles: 0
@@ -15393,7 +15393,7 @@ MonoBehaviour:
   targetRigidbody: {fileID: 0}
   speed: 10000
   frequency: 1
-  amplitude: 50
+  amplitude: 100
   animationDelay: 0
   debugOutline: 0
   debugTriangles: 0
@@ -15910,7 +15910,7 @@ MonoBehaviour:
   targetRigidbody: {fileID: 0}
   speed: 10000
   frequency: 1
-  amplitude: 50
+  amplitude: 70
   animationDelay: 0
   debugOutline: 0
   debugTriangles: 0
