@@ -15,6 +15,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject gamepadControls;
     public GameObject soundMenu;
     public GameObject UISound;
+    public GameObject musicMixerPrefab;
     public string[] scenes;
     int menuId = 0;
     PlayerInput playerInput;
@@ -30,6 +31,7 @@ public class MainMenuController : MonoBehaviour
     bool isOnSFX = false;
     float musicVolume;
     float sfxVolume;
+    GameObject musicMixer;
     Vector3 SFXJaugeOrigin = new Vector3(0.19f, -6.94f, 0);
     Vector3 SFXJaugeDestination = new Vector3(0.22f, -15.87f, 0);
     Vector3 musicJaugeOrigin = new Vector3(0.58f, -7f, 0);
@@ -41,8 +43,14 @@ public class MainMenuController : MonoBehaviour
         GameObject uiSound = GameObject.Find("UISound(Clone)");
         if(uiSound == null)
         {
-            GameObject.Instantiate(UISound);
+            uiSound = GameObject.Instantiate(UISound);
         }
+        musicMixer = GameObject.Find("Music(Clone)");
+        if(musicMixer == null)
+        {
+            musicMixer = GameObject.Instantiate(musicMixerPrefab);
+        }
+        musicMixer.GetComponent<MusicMixer>().MenuMusic();
         musicVolume = PlayerPrefs.GetFloat("musicVolume", 100f);
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         FindChild(FindChild(soundMenu, "ABoutonSFX"), "SFXJaugeA").transform.localPosition = Vector3.Lerp(SFXJaugeOrigin, SFXJaugeDestination, 1 - sfxVolume / 100f);
@@ -217,6 +225,7 @@ public class MainMenuController : MonoBehaviour
                 return;
             }
             musicVolume -= 5;
+            GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             FindChild(FindChild(soundMenu, "ABoutonMusic"), "MusicJaugeA").transform.localPosition = Vector3.Lerp(musicJaugeOrigin, musicJaugeDestination, 1 - musicVolume / 100f);
             PlayerPrefs.SetFloat("musicVolume", musicVolume);
             return;
@@ -255,6 +264,7 @@ public class MainMenuController : MonoBehaviour
                 return;
             }
             musicVolume += 5;
+            GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             FindChild(FindChild(soundMenu, "ABoutonMusic"), "MusicJaugeA").transform.localPosition = Vector3.Lerp(musicJaugeOrigin, musicJaugeDestination, 1 - musicVolume / 100f);
             PlayerPrefs.SetFloat("musicVolume", musicVolume);
             return;

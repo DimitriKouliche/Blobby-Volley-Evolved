@@ -11,15 +11,21 @@ public class BallLogics : MonoBehaviour
     public float serviceForce = 2000;
     public float smashDownwardForce = 7000;
     public bool service = true;
-    bool follow = false;
+    public AudioClip[] ballHitClips;
+    [Range(0f, 5f)]
+    public float ballHitVolume = 1f;
 
+    bool follow = false;
     bool canHit = true;
     Rigidbody2D rigidBody;
+    AudioSource audioSource;
 
 
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        float intensity = Mathf.Min((rigidBody.velocity.magnitude) / 10, 2);
+        BallHitSound(intensity);
         FindChild(gameObject, "ParticleTrail03").GetComponent<ParticleSystem>().Stop();
         Collider2D collider = collision.contacts[0].collider;
         if (gameLogics != null && collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
@@ -39,7 +45,7 @@ public class BallLogics : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(EnableHit(0.1f));
+        StartCoroutine(EnableHit(0.07f));
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
         {
@@ -84,7 +90,11 @@ public class BallLogics : MonoBehaviour
         }
         if (collider.name == "Smash")
         {
-            collision.gameObject.GetComponent<PlayerSounds>().SmashImpactSound();
+            if (!service)
+            {
+                intensity = Mathf.Min((collision.gameObject.transform.position.y - transform.position.y + 2) / 2, 3);
+                collision.gameObject.GetComponent<PlayerSounds>().SmashImpactSound(intensity);
+            }
             StartCoroutine(SmashFreeze(0.5f, collider.gameObject));
             rigidBody.velocity = Vector3.zero;
             float positionFactor = transform.position.y - collision.gameObject.transform.position.y;
@@ -127,6 +137,7 @@ public class BallLogics : MonoBehaviour
     private void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -169,6 +180,13 @@ public class BallLogics : MonoBehaviour
         {
             rigidBody.AddForce(new Vector2(0, -5));
         }
+    }
+
+    public void BallHitSound(float intensity)
+    {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
+        int index = Random.Range(0, ballHitClips.Length);
+        audioSource.PlayOneShot(ballHitClips[index], ballHitVolume * intensity * sfxVolume / 100);
     }
 
     public void UpdateBall(int touches)

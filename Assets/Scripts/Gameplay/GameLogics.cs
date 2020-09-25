@@ -20,6 +20,7 @@ public class GameLogics : MonoBehaviour
     public GameObject selectionMenu;
     public GameObject startAnimation;
     public GameObject UISound;
+    public GameObject musicMixerPrefab;
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;
@@ -46,6 +47,7 @@ public class GameLogics : MonoBehaviour
     bool[] playerReady = { false, false, false, false };
     Color[] blobColor = new Color[4];
     Sprite[] blobSprite = new Sprite[4];
+    GameObject musicMixer;
 
     public void ResetVelocity(GameObject target)
     {
@@ -160,7 +162,7 @@ public class GameLogics : MonoBehaviour
             blob2Score++;
         }
         DisplayScore();
-        if (blob1Score >= 1 || blob2Score >= 1)
+        if (blob1Score >= 15 || blob2Score >= 15)
         {
             GameOver(player);
             return;
@@ -301,6 +303,12 @@ public class GameLogics : MonoBehaviour
         {
             GameObject.Instantiate(UISound);
         }
+        GameObject musicMixer = GameObject.Find("Music(Clone)");
+        if (musicMixer == null)
+        {
+            musicMixer = GameObject.Instantiate(musicMixerPrefab);
+        }
+        musicMixer.GetComponent<MusicMixer>().MenuMusic();
         Application.targetFrameRate = -1;
         QualitySettings.vSyncCount = 0;
         blobPosition = new Vector3[4];
@@ -411,6 +419,7 @@ public class GameLogics : MonoBehaviour
             }
         }
 
+        GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().GameMusic();
         startAnimation.SetActive(true);
         FindChild(level, "Pole").SetActive(true);
         selectionMenu.SetActive(false);

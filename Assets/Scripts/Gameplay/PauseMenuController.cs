@@ -152,6 +152,7 @@ public class PauseMenuController : MonoBehaviour
                 return;
             }
             musicVolume -= 5;
+            GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             FindChild(FindChild(soundMenu, "ABoutonMusic"), "MusicJaugeA").transform.localPosition = Vector3.Lerp(musicJaugeOrigin, musicJaugeDestination, 1 - musicVolume / 100f);
             PlayerPrefs.SetFloat("musicVolume", musicVolume);
             return;
@@ -192,6 +193,7 @@ public class PauseMenuController : MonoBehaviour
                 return;
             }
             musicVolume += 5;
+            GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             FindChild(FindChild(soundMenu, "ABoutonMusic"), "MusicJaugeA").transform.localPosition = Vector3.Lerp(musicJaugeOrigin, musicJaugeDestination, 1 - musicVolume / 100f);
             PlayerPrefs.SetFloat("musicVolume", musicVolume);
             return;
@@ -256,8 +258,6 @@ public class PauseMenuController : MonoBehaviour
         }
         if (isOnSound)
         {
-            Debug.Log(isOnMusic);
-            Debug.Log(isOnSFX);
             if (!isOnMusic && !isOnSFX && isRight)
             {
                 isOnMusic = true;
