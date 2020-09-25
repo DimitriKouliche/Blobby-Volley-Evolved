@@ -15,6 +15,10 @@ public class BallLogics : MonoBehaviour
     [Range(0f, 5f)]
     public float ballHitVolume = 1f;
 
+    public Color firstHitColor = new Color(233f / 255f, 208f / 255f, 118f / 255f);
+    public Color secondHitColor = new Color(203f / 255f, 119f / 255f, 52f / 255f);
+    public Color thirdHitColor = new Color(172f / 255f, 49f / 255f, 39f / 255f);
+
     bool follow = false;
     bool canHit = true;
     Rigidbody2D rigidBody;
@@ -194,17 +198,17 @@ public class BallLogics : MonoBehaviour
         if(touches == 1)
         {
             MainModule particles = FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().main;
-            particles.startColor = new Color(233f / 255f, 208f / 255f, 118f / 255f);
+            particles.startColor = firstHitColor;
         }
         if(touches == 2)
         {
             MainModule particles = FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().main;
-            particles.startColor = new Color(203f / 255f, 119f / 255f, 52f / 255f);
+            particles.startColor = secondHitColor;
         }
         if(touches == 3)
         {
             MainModule particles = FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().main;
-            particles.startColor = new Color(172f / 255f, 49f / 255f, 39f / 255f);
+            particles.startColor = thirdHitColor;
         }
         FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().Stop();
         FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().Play();

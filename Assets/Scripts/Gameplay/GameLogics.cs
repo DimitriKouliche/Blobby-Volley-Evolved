@@ -424,7 +424,7 @@ public class GameLogics : MonoBehaviour
         FindChild(level, "Pole").SetActive(true);
         selectionMenu.SetActive(false);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.8f);
 
         blob1.SetActive(true);
         blob2.SetActive(true);

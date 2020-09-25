@@ -22,13 +22,14 @@ public class StartAnimation : MonoBehaviour
     IEnumerator MainAnimation(float duration)
     {
         float t = 0.0f;
-        while (t < duration)
+        while (t < duration * 1.5f)
         {
-            canonLeft.transform.position = Vector3.Lerp(canonLeftInitialPosition, canonLeftPosition, t / duration);
-            canonRight.transform.position = Vector3.Lerp(canonRightInitialPosition, canonRightPosition, t / duration);
+            canonLeft.transform.position = Vector3.Lerp(canonLeftInitialPosition, canonLeftPosition, t / (duration * 1.5f));
+            canonRight.transform.position = Vector3.Lerp(canonRightInitialPosition, canonRightPosition, t / (duration * 1.5f));
             t += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(0.3f);
 
         FindChild(canonLeft, "Shot").SetActive(true);
         FindChild(canonRight, "Shot").SetActive(true);
@@ -51,10 +52,10 @@ public class StartAnimation : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
         t = 0.0f;
-        while (t < duration)
+        while (t < duration/3f)
         {
-            canonLeft.transform.position = Vector3.Lerp(canonLeftPosition, canonLeftInitialPosition, t / duration);
-            canonRight.transform.position = Vector3.Lerp(canonRightPosition, canonRightInitialPosition, t / duration);
+            canonLeft.transform.position = Vector3.Lerp(canonLeftPosition, new Vector3(-12, -15, 2), t / (duration / 3f));
+            canonRight.transform.position = Vector3.Lerp(canonRightPosition, new Vector3(12, -15, 2), t / (duration / 3f));
             t += Time.deltaTime;
             yield return null;
         }
