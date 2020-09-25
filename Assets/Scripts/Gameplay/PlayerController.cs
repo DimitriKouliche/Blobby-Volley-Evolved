@@ -48,6 +48,10 @@ public class PlayerController : MonoBehaviour
 
     bool IsPlaying()
     {
+        if(this == null || !gameObject.activeSelf)
+        {
+            return false;
+        }
         return (gameLogics == null || gameLogics.GetComponent<GameLogics>().isPlaying) && !FindChild(GameObject.Find("UI"), "MenuContent").activeSelf;
     }
 
