@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour
                 GameObject.Find("PlayerPressLabel" + id).transform.localScale = new Vector3(0, 0, 0);
                 return;
             }
-            if(isHoveringReady)
+            if(isHoveringReady && !playerReady)
             {
                 GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().ConfirmSound();
                 playerReady = true;

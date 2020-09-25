@@ -38425,7 +38425,7 @@ MonoBehaviour:
   service: 1
   ballHitClips:
   - {fileID: 8300000, guid: d8e884f421354fd4a90bd91d418fc284, type: 3}
-  ballHitVolume: 1
+  ballHitVolume: 0.5
   firstHitColor: {r: 0.9137255, g: 0.8156863, b: 0.4627451, a: 1}
   secondHitColor: {r: 0.79607844, g: 0.46666667, b: 0.20392157, a: 1}
   thirdHitColor: {r: 0.6745098, g: 0.19215687, b: 0.15294118, a: 1}

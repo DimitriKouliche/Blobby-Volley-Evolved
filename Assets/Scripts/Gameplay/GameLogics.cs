@@ -162,7 +162,7 @@ public class GameLogics : MonoBehaviour
             blob2Score++;
         }
         DisplayScore();
-        if (blob1Score >= 1 || blob2Score >= 1)
+        if (blob1Score >= 15 || blob2Score >= 15)
         {
             StartCoroutine(GameOver(player));
             return;
@@ -595,12 +595,12 @@ public class GameLogics : MonoBehaviour
         if (player == "Blob 1" || player == "Blob 3")
         {
             FindChild(gameOver, "Cup").transform.position = new Vector3(-5, 5, 0);
-            FindChild(gameOver, "Confetti").transform.position = new Vector3(-7, 15, -20);
+            FindChild(gameOver, "Confetti").transform.position = new Vector3(-9, 12, -20);
         }
         else
         {
             FindChild(gameOver, "Cup").transform.position = new Vector3(5, 5, 0);
-            FindChild(gameOver, "Confetti").transform.position = new Vector3(7, 15, -20);
+            FindChild(gameOver, "Confetti").transform.position = new Vector3(9, 12, -20);
         }
         isPlaying = true;
     }

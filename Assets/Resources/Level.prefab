@@ -435,7 +435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4074349311530875972
 Transform:
   m_ObjectHideFlags: 0
@@ -501,7 +501,7 @@ MonoBehaviour:
   - {x: -0.07973127, y: 1.5192132, z: 0}
   m_ShapePathHash: 683642768
   m_Mesh: {fileID: 0}
-  m_InstanceId: 63720
+  m_InstanceId: -430192
 --- !u!1 &4269916166094277997
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +811,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
+  near clip plane: -100
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -903,7 +903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7930815164093153114
 Transform:
   m_ObjectHideFlags: 0
@@ -976,14 +976,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8854777694321459820}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615d462dc60ef7645baf572703f665d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
   framerate: 0.2
-  loop: 0
+  loop: 1
   rotate: 0
   frameArray:
   - {fileID: 5256188618851123195, guid: b0352ab516ae438448bdf59d240ababc, type: 3}
