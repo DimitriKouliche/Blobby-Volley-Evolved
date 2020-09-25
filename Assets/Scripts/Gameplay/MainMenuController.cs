@@ -225,9 +225,9 @@ public class MainMenuController : MonoBehaviour
                 return;
             }
             musicVolume -= 5;
-            GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             FindChild(FindChild(soundMenu, "ABoutonMusic"), "MusicJaugeA").transform.localPosition = Vector3.Lerp(musicJaugeOrigin, musicJaugeDestination, 1 - musicVolume / 100f);
             PlayerPrefs.SetFloat("musicVolume", musicVolume);
+            GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             return;
         }
         if (menuId >= 5)
@@ -264,9 +264,9 @@ public class MainMenuController : MonoBehaviour
                 return;
             }
             musicVolume += 5;
-            GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             FindChild(FindChild(soundMenu, "ABoutonMusic"), "MusicJaugeA").transform.localPosition = Vector3.Lerp(musicJaugeOrigin, musicJaugeDestination, 1 - musicVolume / 100f);
             PlayerPrefs.SetFloat("musicVolume", musicVolume);
+            GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             return;
         }
         if (menuId <= 0)
