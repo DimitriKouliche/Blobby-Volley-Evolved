@@ -4908,6 +4908,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f994e1ab75cae4940a93e60fe1658f94, type: 3}
   - {fileID: 8300000, guid: d71f216a415be0a4f8bea2d262c26b72, type: 3}
   ballHitVolume: 1
+  firstHitColor: {r: 0.9137255, g: 0.8156863, b: 0.4627451, a: 1}
+  secondHitColor: {r: 0.8962264, g: 0.488896, b: 0.07186722, a: 1}
+  thirdHitColor: {r: 0.7924528, g: 0.09344961, b: 0.2472305, a: 1}
 --- !u!82 &7085884920643644097
 AudioSource:
   m_ObjectHideFlags: 0

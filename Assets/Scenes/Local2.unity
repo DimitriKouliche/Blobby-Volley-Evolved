@@ -60938,7 +60938,6 @@ GameObject:
   - component: {fileID: 7731192580598195633}
   - component: {fileID: 5676883192280797926}
   - component: {fileID: 6139447580506744636}
-  - component: {fileID: 5802169522321047808}
   m_Layer: 5
   m_Name: FondSelection1
   m_TagString: Untagged
@@ -60946,25 +60945,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &5802169522321047808
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5802169522321047807}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1a5d7a53f48a3342b6ca76b078f65b7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6139447579896842173
 MonoBehaviour:
   m_ObjectHideFlags: 0
