@@ -11842,7 +11842,7 @@ MonoBehaviour:
   smashVolume: 1
   smashImpactClips:
   - {fileID: 8300000, guid: dcbd0a7da4aa36f4b8cc7bce146eb57e, type: 3}
-  smashImpactVolume: 1
+  smashImpactVolume: 0.5
 --- !u!82 &4257713565909593064
 AudioSource:
   m_ObjectHideFlags: 0

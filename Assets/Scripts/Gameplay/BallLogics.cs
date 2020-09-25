@@ -90,9 +90,11 @@ public class BallLogics : MonoBehaviour
         }
         if (collider.name == "Smash")
         {
-            intensity = Mathf.Min((collision.gameObject.transform.position.y - transform.position.y + 2)/2, 3);
-            Debug.Log(intensity);
-            collision.gameObject.GetComponent<PlayerSounds>().SmashImpactSound(intensity);
+            if (!service)
+            {
+                intensity = Mathf.Min((collision.gameObject.transform.position.y - transform.position.y + 2) / 2, 3);
+                collision.gameObject.GetComponent<PlayerSounds>().SmashImpactSound(intensity);
+            }
             StartCoroutine(SmashFreeze(0.5f, collider.gameObject));
             rigidBody.velocity = Vector3.zero;
             float positionFactor = transform.position.y - collision.gameObject.transform.position.y;
