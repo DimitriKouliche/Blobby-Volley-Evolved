@@ -366,6 +366,7 @@ public class PlayerController : MonoBehaviour
         FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
         smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(0.00001f, smashCollider.GetComponent<CapsuleCollider2D>().size.y);
         smashCollider.SetActive(false);
+        yield return new WaitForSeconds(0.15f);
         isSmashing = false;
         isDashing = false;
     }
