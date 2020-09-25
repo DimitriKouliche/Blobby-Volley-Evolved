@@ -15,6 +15,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject gamepadControls;
     public GameObject soundMenu;
     public GameObject UISound;
+    public GameObject musicMixerPrefab;
     public string[] scenes;
     int menuId = 0;
     PlayerInput playerInput;
@@ -41,8 +42,14 @@ public class MainMenuController : MonoBehaviour
         GameObject uiSound = GameObject.Find("UISound(Clone)");
         if(uiSound == null)
         {
-            GameObject.Instantiate(UISound);
+            uiSound = GameObject.Instantiate(UISound);
         }
+        GameObject musicMixer = GameObject.Find("Music(Clone)");
+        if(musicMixer == null)
+        {
+            musicMixer = GameObject.Instantiate(musicMixerPrefab);
+        }
+        musicMixer.GetComponent<MusicMixer>().MenuMusic();
         musicVolume = PlayerPrefs.GetFloat("musicVolume", 100f);
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         FindChild(FindChild(soundMenu, "ABoutonSFX"), "SFXJaugeA").transform.localPosition = Vector3.Lerp(SFXJaugeOrigin, SFXJaugeDestination, 1 - sfxVolume / 100f);
