@@ -162,9 +162,9 @@ public class GameLogics : MonoBehaviour
             blob2Score++;
         }
         DisplayScore();
-        if (blob1Score >= 15 || blob2Score >= 15)
+        if (blob1Score >= 1 || blob2Score >= 1)
         {
-            GameOver(player);
+            StartCoroutine(GameOver(player));
             return;
         }
         if (maxPlayers == 4)
@@ -585,17 +585,22 @@ public class GameLogics : MonoBehaviour
         BeginGame();
     }
 
-    void GameOver(string player)
+    IEnumerator GameOver(string player)
     {
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 1f;
         Destroy(ball);
         gameOver.SetActive(true);
         if (player == "Blob 1" || player == "Blob 3")
         {
             FindChild(gameOver, "Cup").transform.position = new Vector3(-5, 5, 0);
+            FindChild(gameOver, "Confetti").transform.position = new Vector3(-7, 15, -20);
         }
         else
         {
             FindChild(gameOver, "Cup").transform.position = new Vector3(5, 5, 0);
+            FindChild(gameOver, "Confetti").transform.position = new Vector3(7, 15, -20);
         }
         isPlaying = true;
     }
