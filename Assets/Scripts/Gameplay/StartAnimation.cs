@@ -17,6 +17,8 @@ public class StartAnimation : MonoBehaviour
         canonLeft = FindChild(gameObject, "CanonLeft");
         canonRight = FindChild(gameObject, "CanonRight");
         StartCoroutine(MainAnimation(1));
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
+        gameObject.GetComponent<AudioSource>().volume = 0.3f * sfxVolume / 100;
     }
 
     IEnumerator MainAnimation(float duration)
