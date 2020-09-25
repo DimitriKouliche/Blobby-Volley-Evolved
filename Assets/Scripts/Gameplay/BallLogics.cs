@@ -184,8 +184,9 @@ public class BallLogics : MonoBehaviour
 
     public void BallHitSound(float intensity)
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, ballHitClips.Length);
-        audioSource.PlayOneShot(ballHitClips[index], ballHitVolume * intensity);
+        audioSource.PlayOneShot(ballHitClips[index], ballHitVolume * intensity * sfxVolume / 100);
     }
 
     public void UpdateBall(int touches)

@@ -30,50 +30,58 @@ public class PlayerSounds : MonoBehaviour
 
     public void DashSound()
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, dashClips.Length);
-        audioSource.PlayOneShot(dashClips[index], dashVolume);
+        audioSource.PlayOneShot(dashClips[index], dashVolume * sfxVolume / 100);
     }
 
     public void JumpSound()
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, jumpClips.Length);
-        audioSource.PlayOneShot(jumpClips[index], jumpVolume);
+        audioSource.PlayOneShot(jumpClips[index], jumpVolume * sfxVolume / 100);
     }
 
     public void BumpSound()
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, bumpClips.Length);
-        audioSource.PlayOneShot(bumpClips[index], bumpVolume);
+        audioSource.PlayOneShot(bumpClips[index], bumpVolume * sfxVolume / 100);
     }
 
     public void BumpImpactSound()
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, bumpImpactClips.Length);
-        audioSource.PlayOneShot(bumpImpactClips[index], bumpImpactVolume);
+        audioSource.PlayOneShot(bumpImpactClips[index], bumpImpactVolume * sfxVolume / 100);
     }
 
     public void BallContactSound()
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, ballContactClips.Length);
-        audioSource.PlayOneShot(ballContactClips[index], ballContactVolume);
+        audioSource.PlayOneShot(ballContactClips[index], ballContactVolume * sfxVolume / 100);
     }
 
     public void ChargeJumpSound()
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, chargeJumpClips.Length);
-        audioSource.PlayOneShot(chargeJumpClips[index], chargeJumpVolume);
+        audioSource.PlayOneShot(chargeJumpClips[index], chargeJumpVolume * sfxVolume / 100);
     }
 
     public void SmashSound()
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, smashClips.Length);
-        audioSource.PlayOneShot(smashClips[index], smashVolume);
+        audioSource.PlayOneShot(smashClips[index], smashVolume * sfxVolume / 100);
     }
 
     public void SmashImpactSound(float intensity)
     {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, smashImpactClips.Length);
-        audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume * intensity);
+        audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume * intensity * sfxVolume / 100);
     }
 
     private void Start()
