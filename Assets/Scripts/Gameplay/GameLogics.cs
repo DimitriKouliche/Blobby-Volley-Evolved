@@ -160,7 +160,7 @@ public class GameLogics : MonoBehaviour
             blob2Score++;
         }
         DisplayScore();
-        if (blob1Score >= 1 || blob2Score >= 1)
+        if (blob1Score >= 15 || blob2Score >= 15)
         {
             GameOver(player);
             return;

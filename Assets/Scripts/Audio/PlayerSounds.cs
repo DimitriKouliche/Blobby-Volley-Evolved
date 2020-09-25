@@ -70,10 +70,10 @@ public class PlayerSounds : MonoBehaviour
         audioSource.PlayOneShot(smashClips[index], smashVolume);
     }
 
-    public void SmashImpactSound()
+    public void SmashImpactSound(float intensity)
     {
         int index = Random.Range(0, smashImpactClips.Length);
-        audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume);
+        audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume * intensity);
     }
 
     private void Start()
