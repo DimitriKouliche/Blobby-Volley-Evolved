@@ -42,11 +42,11 @@ public class PauseMenuController : MonoBehaviour
 
         playerInput.actions["Charge Jump"].started += ctx =>
         {
-            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
             if (this == null || ! gameObject.activeSelf)
             {
                 return;
             }
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().SelectSound();
             switch (menuId)
             {
                 case 0:
@@ -87,11 +87,11 @@ public class PauseMenuController : MonoBehaviour
         // Dashing
         playerInput.actions["Dash"].started += ctx =>
         {
-            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().CancelSound();
             if (this == null || !gameObject.activeSelf)
             {
                 return;
             }
+            GameObject.Find("UISound(Clone)").GetComponent<MenuSound>().CancelSound();
             Time.timeScale = 1;
             gameObject.SetActive(false);
         };
