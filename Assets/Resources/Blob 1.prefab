@@ -11128,13 +11128,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.00000011920929, y: -3.0000005}
-      - {x: -0.09722948, y: -1.7142829}
       - {x: -0.22687846, y: 0.00000333786}
-      - {x: -0.17379892, y: 0.14583755}
-      - {x: -0.039396524, y: 0.22343183}
-      - {x: 0.17380011, y: 0.14582992}
-      - {x: 0.22688031, y: -0.0000059604645}
-      - {x: 0.12964618, y: -1.2857168}
+      - {x: 0.0000019073486, y: 0.22687721}
       - {x: -0.00000011920929, y: -3.0000005}
 --- !u!58 &8330191615270734291
 CircleCollider2D:
@@ -11278,13 +11273,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.00000017881393, y: -3.0000005}
-      - {x: -0.09723005, y: -1.7142844}
       - {x: -0.2268796, y: 0.000004529953}
-      - {x: -0.17379996, y: 0.14583826}
-      - {x: -0.039397538, y: 0.22343302}
-      - {x: 0.17379928, y: 0.14583135}
-      - {x: 0.22687924, y: -0.0000047683716}
-      - {x: 0.12964499, y: -1.285716}
+      - {x: 0.0000008940697, y: 0.22687817}
       - {x: 0.00000017881393, y: -3.0000005}
 --- !u!58 &8330191615294359096
 CircleCollider2D:
@@ -12065,13 +12055,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.0000005066395, y: -3.000001}
-      - {x: -0.09723127, y: -1.7142824}
       - {x: -0.22687936, y: 0.0000042915344}
-      - {x: -0.17379963, y: 0.14583826}
-      - {x: -0.03939727, y: 0.22343302}
-      - {x: 0.17379962, y: 0.14583111}
-      - {x: 0.22687949, y: -0.00000500679}
-      - {x: 0.1296454, y: -1.285716}
+      - {x: -0.0000003874302, y: 0.22688007}
       - {x: 0.0000005066395, y: -3.000001}
 --- !u!58 &8330191615639919767
 CircleCollider2D:
@@ -12215,13 +12200,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.00000028348143, y: -3.000002}
-      - {x: -0.09722851, y: -1.7142841}
       - {x: -0.22687744, y: 0.0000026226044}
-      - {x: -0.17379877, y: 0.14583588}
-      - {x: -0.03939803, y: 0.2234323}
-      - {x: 0.17379725, y: 0.14583206}
-      - {x: 0.22687821, y: -0.0000023841858}
-      - {x: 0.12964658, y: -1.2857151}
+      - {x: -0.0000020870625, y: 0.2268784}
       - {x: -0.00000028348143, y: -3.000002}
 --- !u!58 &8330191615689052562
 CircleCollider2D:
@@ -12365,13 +12345,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.00000035762787, y: -3.000002}
-      - {x: -0.097228855, y: -1.7142849}
       - {x: -0.22687936, y: 0.0000038146973}
-      - {x: -0.17379972, y: 0.1458373}
-      - {x: -0.039397374, y: 0.22343206}
-      - {x: 0.17379946, y: 0.14582992}
-      - {x: 0.22687948, y: -0.0000059604645}
-      - {x: 0.12964618, y: -1.2857163}
+      - {x: 0.0000010579824, y: 0.22687721}
       - {x: 0.00000035762787, y: -3.000002}
 --- !u!58 &8330191615704819814
 CircleCollider2D:
@@ -12530,8 +12505,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eb10951f3d69a6b44ac687f3f5986101, type: 2}
   textureType: 2
   smoothness: 8
-  pivotCapSmoothness: 0
-  tipCapSmoothness: 8
+  pivotCapSmoothness: 1
+  tipCapSmoothness: 1
   width: 0.1
   shape:
     serializedVersion: 2
@@ -12557,11 +12532,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reduction: 2
+  reduction: 32
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 10000
+  speed: 20000
   frequency: 1
   amplitude: 40
   animationDelay: 0
@@ -12874,13 +12849,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.000000834465, y: -3.0000012}
-      - {x: -0.09722954, y: -1.7142861}
       - {x: -0.22687906, y: 0.0000026226044}
-      - {x: -0.17380035, y: 0.14583611}
-      - {x: -0.039399743, y: 0.22343206}
-      - {x: 0.17379549, y: 0.14583254}
-      - {x: 0.22687647, y: -0.0000026226044}
-      - {x: 0.12964559, y: -1.2857182}
+      - {x: -0.0000037550926, y: 0.22687888}
       - {x: -0.000000834465, y: -3.0000012}
 --- !u!58 &8330191615879132861
 CircleCollider2D:
@@ -13024,13 +12994,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.0000017881393, y: -3.0000012}
-      - {x: -0.09723091, y: -1.714284}
       - {x: -0.22687888, y: 0.0000035762787}
-      - {x: -0.17379946, y: 0.14583755}
-      - {x: -0.039397, y: 0.22343206}
-      - {x: 0.17379993, y: 0.14582992}
-      - {x: 0.2268799, y: -0.0000059604645}
-      - {x: 0.12964457, y: -1.2857178}
+      - {x: 0, y: 0.22687936}
       - {x: 0.0000017881393, y: -3.0000012}
 --- !u!58 &8330191615919220602
 CircleCollider2D:
@@ -13174,13 +13139,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.0000010728836, y: -3.0000012}
-      - {x: -0.09723008, y: -1.7142863}
       - {x: -0.2268802, y: 0.0000054836273}
-      - {x: -0.17380059, y: 0.14583945}
-      - {x: -0.039398253, y: 0.2234335}
-      - {x: 0.17379862, y: 0.14583206}
-      - {x: 0.22687858, y: -0.000004053116}
-      - {x: 0.12964505, y: -1.285718}
+      - {x: 0.00000029802322, y: 0.22687888}
       - {x: 0.0000010728836, y: -3.0000012}
 --- !u!58 &8330191615941114107
 CircleCollider2D:
@@ -13249,8 +13209,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eb10951f3d69a6b44ac687f3f5986101, type: 2}
   textureType: 2
   smoothness: 8
-  pivotCapSmoothness: 0
-  tipCapSmoothness: 8
+  pivotCapSmoothness: 1
+  tipCapSmoothness: 1
   width: 0.1
   shape:
     serializedVersion: 2
@@ -13276,11 +13236,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reduction: 2
+  reduction: 32
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 10000
+  speed: 20000
   frequency: 1
   amplitude: 30
   animationDelay: 0
@@ -13905,8 +13865,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eb10951f3d69a6b44ac687f3f5986101, type: 2}
   textureType: 2
   smoothness: 8
-  pivotCapSmoothness: 0
-  tipCapSmoothness: 8
+  pivotCapSmoothness: 1
+  tipCapSmoothness: 1
   width: 0.1
   shape:
     serializedVersion: 2
@@ -13932,11 +13892,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reduction: 2
+  reduction: 32
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 10000
+  speed: 20000
   frequency: 1
   amplitude: 70
   animationDelay: 0
@@ -13994,8 +13954,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eb10951f3d69a6b44ac687f3f5986101, type: 2}
   textureType: 2
   smoothness: 8
-  pivotCapSmoothness: 0
-  tipCapSmoothness: 8
+  pivotCapSmoothness: 1
+  tipCapSmoothness: 1
   width: 0.1
   shape:
     serializedVersion: 2
@@ -14021,11 +13981,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reduction: 2
+  reduction: 32
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 10000
+  speed: 20000
   frequency: 1
   amplitude: 60
   animationDelay: 0
@@ -14402,8 +14362,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eb10951f3d69a6b44ac687f3f5986101, type: 2}
   textureType: 2
   smoothness: 8
-  pivotCapSmoothness: 0
-  tipCapSmoothness: 8
+  pivotCapSmoothness: 1
+  tipCapSmoothness: 1
   width: 0.1
   shape:
     serializedVersion: 2
@@ -14429,11 +14389,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reduction: 2
+  reduction: 32
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 10000
+  speed: 20000
   frequency: 1
   amplitude: 120
   animationDelay: 0
@@ -15360,8 +15320,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eb10951f3d69a6b44ac687f3f5986101, type: 2}
   textureType: 2
   smoothness: 8
-  pivotCapSmoothness: 0
-  tipCapSmoothness: 8
+  pivotCapSmoothness: 1
+  tipCapSmoothness: 1
   width: 0.1
   shape:
     serializedVersion: 2
@@ -15387,11 +15347,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reduction: 2
+  reduction: 32
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 10000
+  speed: 20000
   frequency: 1
   amplitude: 100
   animationDelay: 0
@@ -15877,8 +15837,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eb10951f3d69a6b44ac687f3f5986101, type: 2}
   textureType: 2
   smoothness: 8
-  pivotCapSmoothness: 0
-  tipCapSmoothness: 8
+  pivotCapSmoothness: 1
+  tipCapSmoothness: 1
   width: 0.1
   shape:
     serializedVersion: 2
@@ -15904,11 +15864,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reduction: 2
+  reduction: 32
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 10000
+  speed: 20000
   frequency: 1
   amplitude: 70
   animationDelay: 0
@@ -16056,8 +16016,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: eb10951f3d69a6b44ac687f3f5986101, type: 2}
   textureType: 2
   smoothness: 8
-  pivotCapSmoothness: 0
-  tipCapSmoothness: 8
+  pivotCapSmoothness: 1
+  tipCapSmoothness: 1
   width: 0.1
   shape:
     serializedVersion: 2
@@ -16083,11 +16043,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reduction: 2
+  reduction: 32
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 10000
+  speed: 20000
   frequency: 1
   amplitude: 50
   animationDelay: 0
