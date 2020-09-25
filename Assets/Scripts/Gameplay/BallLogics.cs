@@ -226,7 +226,6 @@ public class BallLogics : MonoBehaviour
         IEnumerator SmashFreeze(float duration, GameObject smash)
     {
         Time.timeScale = 0;
-        GameObject.Find("Music(Clone)").GetComponent<AudioSource>().pitch = 0.7f;
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrameWhite").SetActive(true);
         FindChild(smash.transform.parent.gameObject, "SmashImpact").transform.position = transform.position;
@@ -237,7 +236,6 @@ public class BallLogics : MonoBehaviour
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(false);
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrameWhite").SetActive(false);
         Time.timeScale = 1;
-        GameObject.Find("Music(Clone)").GetComponent<AudioSource>().pitch = 1f;
         Camera.main.GetComponent<CameraShake>().Shake();
         StartCoroutine(SmashParticleTrail(0.7f));
     }
