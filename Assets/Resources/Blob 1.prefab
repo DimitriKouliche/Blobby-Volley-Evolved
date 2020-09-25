@@ -12558,7 +12558,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reduction: 2
-  animation: 0
+  animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 10000
@@ -13277,7 +13277,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reduction: 2
-  animation: 0
+  animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 10000
@@ -13933,7 +13933,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reduction: 2
-  animation: 0
+  animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 10000
@@ -14022,7 +14022,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reduction: 2
-  animation: 0
+  animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 10000
@@ -14430,7 +14430,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reduction: 2
-  animation: 0
+  animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 10000
@@ -15388,7 +15388,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reduction: 2
-  animation: 0
+  animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 10000
@@ -15905,7 +15905,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reduction: 2
-  animation: 0
+  animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 10000
@@ -16084,7 +16084,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reduction: 2
-  animation: 0
+  animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
   speed: 10000

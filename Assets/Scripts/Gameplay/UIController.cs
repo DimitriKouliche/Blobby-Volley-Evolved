@@ -69,7 +69,7 @@ public class UIController : MonoBehaviour
 
         cancelAction.started += ctx =>
         {
-            if (this == null)
+            if (this == null || isSelectingShape)
             {
                 return;
             }
@@ -87,12 +87,6 @@ public class UIController : MonoBehaviour
             {
                 SelectShape();
             }
-            else if (isSelectingShape)
-            {
-                transform.localScale = new Vector3(0, 0, 0);
-                GameObject.Find("PlayerPressLabel" + id).transform.localScale = new Vector3(1, 1, 1);
-                active = false;
-            }
         };
 
         playerInput.actions["MainMenu"].performed += ctx =>
@@ -108,7 +102,7 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        if (inputOnCooldown || playerReady)
+        if (inputOnCooldown || playerReady || isHoveringReady)
         {
             return;
         }
