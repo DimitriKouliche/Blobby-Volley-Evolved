@@ -1368,7 +1368,7 @@ ParticleSystem:
     frameOverTime:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 0.9166667
+      scalar: 0.8888889
       minScalar: 0.9999
       maxCurve:
         serializedVersion: 2
@@ -1473,10 +1473,10 @@ ParticleSystem:
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
     tilesX: 4
-    tilesY: 9
+    tilesY: 8
     animationType: 0
     rowIndex: 0
-    cycles: 3
+    cycles: 5
     uvChannelMask: -1
     rowMode: 1
     sprites:
@@ -4709,7 +4709,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 345b5002a2d91b446966054e954df224, type: 2}
+  - {fileID: 2100000, guid: c88622b5dc647c345a56805058d0f4f3, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
