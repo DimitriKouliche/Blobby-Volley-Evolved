@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 21261792}
   m_Layer: 0
   m_Name: Party
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 234237279}
   m_Layer: 0
   m_Name: Credits
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 322060562}
   m_Layer: 0
   m_Name: Controls
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 463936728}
   m_Layer: 0
   m_Name: Duel
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 629693494}
   m_Layer: 0
   m_Name: Quit
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10807,7 +10807,7 @@ GameObject:
   - component: {fileID: 908711764}
   m_Layer: 0
   m_Name: Credits
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10889,7 +10889,7 @@ GameObject:
   - component: {fileID: 1007539202}
   m_Layer: 0
   m_Name: Controls
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25581,7 +25581,7 @@ GameObject:
   - component: {fileID: 1452849044}
   m_Layer: 0
   m_Name: Party
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25662,7 +25662,7 @@ GameObject:
   - component: {fileID: 1508882767}
   m_Layer: 0
   m_Name: Sound
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26041,7 +26041,7 @@ GameObject:
   - component: {fileID: 1787343033}
   m_Layer: 0
   m_Name: Duel
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40468,7 +40468,7 @@ GameObject:
   - component: {fileID: 8996888395433718472}
   m_Layer: 0
   m_Name: Sound
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50496,7 +50496,7 @@ GameObject:
   - component: {fileID: 1019125317416871884}
   m_Layer: 0
   m_Name: Quit
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65038,7 +65038,7 @@ GameObject:
   - component: {fileID: 150094416675920159}
   m_Layer: 0
   m_Name: ParticleSelection
-  m_TagString: Untagged
+  m_TagString: MenuParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69748,7 +69748,7 @@ GameObject:
   - component: {fileID: 3732031629462675192}
   m_Layer: 0
   m_Name: ParticleSelection
-  m_TagString: Untagged
+  m_TagString: MenuParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

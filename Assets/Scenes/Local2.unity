@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 9797536}
   m_Layer: 0
   m_Name: PlayerPressLabel2
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a643f73fdb1aadc4da1fefef71be4eab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10311,7 +10311,7 @@ GameObject:
   - component: {fileID: 396574277}
   m_Layer: 0
   m_Name: PlayerPressLabel1
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10370,7 +10370,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a643f73fdb1aadc4da1fefef71be4eab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15447,6 +15447,7 @@ GameObject:
   - component: {fileID: 564293580}
   - component: {fileID: 564293582}
   - component: {fileID: 564293581}
+  - component: {fileID: 564293583}
   m_Layer: 0
   m_Name: SelectionMenu
   m_TagString: Untagged
@@ -15546,6 +15547,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &564293583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564293579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e5b7b4a32cba7479e5ddcdb495d0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &594911236
 GameObject:
   m_ObjectHideFlags: 0
@@ -30852,7 +30865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1280701146
 Transform:
   m_ObjectHideFlags: 0
@@ -60501,6 +60514,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 576962854551591718, guid: 11644c1a3d0c12d40acd9eca669e3417,
+        type: 3}
+      propertyPath: m_Text
+      value: '
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 576962855454261640, guid: 11644c1a3d0c12d40acd9eca669e3417,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -61894,7 +61914,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5802169520656556158}
   m_LocalRotation: {x: -0, y: -0, z: 0.12420288, w: 0.9922569}
-  m_LocalPosition: {x: 2.6, y: 0.040000018, z: -0.63917065}
+  m_LocalPosition: {x: 0.2, y: 9.33, z: -0.63917065}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.5659746}
   m_Children: []
   m_Father: {fileID: 564293580}
@@ -61908,7 +61928,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5802169522321047807}
   m_LocalRotation: {x: -0, y: -0, z: 0.12420288, w: 0.9922569}
-  m_LocalPosition: {x: -1.86, y: 0.04000002, z: -0.63917065}
+  m_LocalPosition: {x: -4.33, y: 9.66, z: -0.63917065}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.5659746}
   m_Children: []
   m_Father: {fileID: 564293580}
