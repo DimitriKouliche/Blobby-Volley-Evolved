@@ -15,6 +15,7 @@ public class MusicMixer : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
         DontDestroyOnLoad(transform.gameObject);
         audioSource = GetComponent<AudioSource>();
     }

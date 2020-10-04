@@ -98,6 +98,9 @@ public class BallLogics : MonoBehaviour
             {
                 intensity = Mathf.Min((collision.gameObject.transform.position.y - transform.position.y + 2) / 2, 3);
                 collision.gameObject.GetComponent<PlayerSounds>().SmashImpactSound(intensity);
+            } else
+            {
+                collision.gameObject.GetComponent<PlayerSounds>().SmashServiceSound();
             }
             StartCoroutine(SmashFreeze(0.5f, collider.gameObject));
             rigidBody.velocity = Vector3.zero;

@@ -109,8 +109,6 @@ public class MainMenuController : MonoBehaviour
             foreach (var particle in particles)
             {
                 particle.SetActive(false);
-                //ParticleSystem.MainModule settings = particle.GetComponent<ParticleSystem>().main;
-                //settings.startColor = new Color(settings.startColor.color.r, settings.startColor.color.g, settings.startColor.color.b, alpha);
             }
             t += Time.deltaTime;
             yield return null;

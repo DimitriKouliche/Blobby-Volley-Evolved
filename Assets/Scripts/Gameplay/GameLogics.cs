@@ -162,7 +162,7 @@ public class GameLogics : MonoBehaviour
             blob2Score++;
         }
         DisplayScore();
-        if (blob1Score >= 15 || blob2Score >= 15)
+        if (blob1Score >= 2 || blob2Score >= 2)
         {
             StartCoroutine(GameOver(player));
             return;
@@ -590,7 +590,7 @@ public class GameLogics : MonoBehaviour
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(1f);
         Time.timeScale = 1f;
-        Destroy(ball);
+        ball.SetActive(false);
         gameOver.SetActive(true);
         if (player == "Blob 1" || player == "Blob 3")
         {

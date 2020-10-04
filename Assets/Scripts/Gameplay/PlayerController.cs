@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
             smashAnimationWhite.SetActive(true);
             isSmashing = true;
             smashCollider.SetActive(true);
-            StartCoroutine(Smash(0.5f));
+            StartCoroutine(Smash(0.7f));
         };
 
         // Bumping

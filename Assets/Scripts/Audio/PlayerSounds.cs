@@ -27,6 +27,9 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip[] smashImpactClips;
     [Range(0f, 5f)]
     public float smashImpactVolume = 1f;
+    public AudioClip[] smashServiceClips;
+    [Range(0f, 5f)]
+    public float smashServiceVolume = 1f;
 
     public void DashSound()
     {
@@ -82,6 +85,13 @@ public class PlayerSounds : MonoBehaviour
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, smashImpactClips.Length);
         audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume * intensity * sfxVolume / 100);
+    }
+
+    public void SmashServiceSound()
+    {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
+        int index = Random.Range(0, smashServiceClips.Length);
+        audioSource.PlayOneShot(smashServiceClips[index], smashServiceVolume * sfxVolume / 100);
     }
 
     private void Start()
