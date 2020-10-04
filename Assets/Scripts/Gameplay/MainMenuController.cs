@@ -82,16 +82,52 @@ public class MainMenuController : MonoBehaviour
             switch (menuId)
             {
                 case 0:
-                    SceneManager.LoadScene("Local4", LoadSceneMode.Single);
+                    StartCoroutine(ConfirmAnimation("Local4"));
                     break;
                 case 1:
-                    SceneManager.LoadScene("Local2", LoadSceneMode.Single);
+                    StartCoroutine(ConfirmAnimation("Local2"));
                     break;
                 case 5:
                     Application.Quit();
                     break;
             }
         };
+    }
+
+    IEnumerator ConfirmAnimation(string scene)
+    {
+        float t = 0.0f;
+        var objects = GameObject.FindGameObjectsWithTag("MenuText");
+        var particles = GameObject.FindGameObjectsWithTag("MenuParticle");
+        while (t < 0.1f)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, t*10);
+            foreach (var obj in objects)
+            {
+                obj.GetComponent<SpriteRenderer>().color = new Color(obj.GetComponent<SpriteRenderer>().color.r, obj.GetComponent<SpriteRenderer>().color.g, obj.GetComponent<SpriteRenderer>().color.b, alpha);
+            }
+            foreach (var particle in particles)
+            {
+                particle.SetActive(false);
+                //ParticleSystem.MainModule settings = particle.GetComponent<ParticleSystem>().main;
+                //settings.startColor = new Color(settings.startColor.color.r, settings.startColor.color.g, settings.startColor.color.b, alpha);
+            }
+            t += Time.deltaTime;
+            yield return null;
+        }
+        foreach (var obj in objects)
+        {
+            obj.GetComponent<SpriteRenderer>().color = new Color(obj.GetComponent<SpriteRenderer>().color.r, obj.GetComponent<SpriteRenderer>().color.g, obj.GetComponent<SpriteRenderer>().color.b, 0);
+        }
+        t = 0;
+        while (t < 0.2f)
+        {
+            float x = Mathf.Lerp(-3.2f, -8.8f, t * 5);
+            FindChild(gameObject, "Black").transform.localPosition = new Vector3(x, FindChild(gameObject, "Black").transform.localPosition.y, FindChild(gameObject, "Black").transform.localPosition.z);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
     void Update()

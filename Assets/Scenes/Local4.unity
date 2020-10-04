@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 19257028}
   m_Layer: 0
   m_Name: PlayerPressLabel3
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a643f73fdb1aadc4da1fefef71be4eab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 32428719}
   m_Layer: 0
   m_Name: PlayerPressLabel1
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a643f73fdb1aadc4da1fefef71be4eab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 353829887}
   m_Layer: 0
   m_Name: PlayerPressLabel4
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1232,7 +1232,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a643f73fdb1aadc4da1fefef71be4eab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10925,6 +10925,7 @@ GameObject:
   - component: {fileID: 564293580}
   - component: {fileID: 564293582}
   - component: {fileID: 564293581}
+  - component: {fileID: 564293583}
   m_Layer: 0
   m_Name: SelectionMenu
   m_TagString: Untagged
@@ -11028,6 +11029,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &564293583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564293579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e5b7b4a32cba7479e5ddcdb495d0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPlayers: 4
 --- !u!1 &643780745
 GameObject:
   m_ObjectHideFlags: 0
@@ -11257,7 +11271,7 @@ GameObject:
   - component: {fileID: 739169151}
   m_Layer: 0
   m_Name: PlayerPressLabel2
-  m_TagString: Untagged
+  m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11316,7 +11330,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a643f73fdb1aadc4da1fefef71be4eab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -21443,7 +21457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939310634}
   m_LocalRotation: {x: -0, y: -0, z: 0.12420288, w: 0.9922569}
-  m_LocalPosition: {x: -1.29, y: 0.030000027, z: -0.63917065}
+  m_LocalPosition: {x: -3.75, y: 9.76, z: -0.63917065}
   m_LocalScale: {x: 0.70000005, y: 0.70000005, z: 0.5659746}
   m_Children: []
   m_Father: {fileID: 564293580}
@@ -41521,7 +41535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584543098}
   m_LocalRotation: {x: -0, y: -0, z: 0.12420288, w: 0.9922569}
-  m_LocalPosition: {x: 4.9, y: 0.030000027, z: -0.63917065}
+  m_LocalPosition: {x: 2.33, y: 10.15, z: -0.63917065}
   m_LocalScale: {x: 0.70000005, y: 0.70000005, z: 0.5659746}
   m_Children: []
   m_Father: {fileID: 564293580}
@@ -51327,7 +51341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810083785}
   m_LocalRotation: {x: -0, y: -0, z: 0.12420288, w: 0.9922569}
-  m_LocalPosition: {x: -4.43, y: 0.090000026, z: -0.63917065}
+  m_LocalPosition: {x: -6.93, y: 9.85, z: -0.63917065}
   m_LocalScale: {x: 0.70000005, y: 0.70000005, z: 0.5659746}
   m_Children: []
   m_Father: {fileID: 564293580}
@@ -51699,7 +51713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043905289}
   m_LocalRotation: {x: -0, y: -0, z: 0.12420288, w: 0.9922569}
-  m_LocalPosition: {x: 1.8, y: 0.090000026, z: -0.63917065}
+  m_LocalPosition: {x: -0.67, y: 9.8, z: -0.63917065}
   m_LocalScale: {x: 0.70000005, y: 0.70000005, z: 0.5659746}
   m_Children: []
   m_Father: {fileID: 564293580}

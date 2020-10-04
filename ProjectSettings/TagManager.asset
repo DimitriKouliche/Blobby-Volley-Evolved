@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TentacleTip
   - Arrow
+  - MenuText
+  - MenuParticle
   layers:
   - Default
   - TransparentFX
