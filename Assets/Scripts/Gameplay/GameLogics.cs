@@ -25,6 +25,7 @@ public class GameLogics : MonoBehaviour
     public bool isPlaying = false;
     public bool isOnline = true;
     public int maxPlayers = 2;
+    public int winningScore = 15;
 
     GameObject blob1;
     GameObject blob2;
@@ -162,7 +163,7 @@ public class GameLogics : MonoBehaviour
             blob2Score++;
         }
         DisplayScore();
-        if (blob1Score >= 2 || blob2Score >= 2)
+        if (blob1Score >= winningScore || blob2Score >= winningScore)
         {
             StartCoroutine(GameOver(player));
             return;
