@@ -109,8 +109,11 @@ public class PlayerController : MonoBehaviour
                 return;
             }
             playerSounds.SmashSound();
-            FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
-            FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
+            if(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
+            {
+                FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
+                FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
+            }
             smashAnimation.SetActive(true);
             smashAnimationWhite.SetActive(true);
             isSmashing = true;
@@ -159,8 +162,11 @@ public class PlayerController : MonoBehaviour
             {
                 gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
             }
-            FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
-            FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
+            if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
+            {
+                FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
+                FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
+            }
             isDashing = true;
             playerSounds.DashSound();
             r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
@@ -352,8 +358,11 @@ public class PlayerController : MonoBehaviour
             FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, zRotation);
             yield return null;
         }
-        FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(true);
-        FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
+        if (FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").activeSelf)
+        {
+            FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(true);
+            FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
+        }
         isDashing = false;
     }
     IEnumerator DisableJumpDash(float duration)
@@ -389,8 +398,11 @@ public class PlayerController : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-        FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(true);
-        FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
+        if (FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").activeSelf)
+        {
+            FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(true);
+            FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
+        }
         smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(0.00001f, smashCollider.GetComponent<CapsuleCollider2D>().size.y);
         smashCollider.SetActive(false);
         yield return new WaitForSeconds(0.15f);
