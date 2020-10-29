@@ -19,6 +19,8 @@ public class GameLogics : MonoBehaviour
     public GameObject ballAnimation;
     public GameObject flipGAnimation;
     public GameObject flipDAnimation;
+    public GameObject matchMessage;
+    public GameObject pointMessage;
     public GameObject readyMessage;
     public GameObject setMessage;
     public GameObject goMessage;
@@ -209,6 +211,7 @@ public class GameLogics : MonoBehaviour
 
         if (blob1Score == winningScore - 1 || blob2Score == winningScore - 1)
         {
+            StartCoroutine(MatchPoint(player));
             FindChild(level, "Background").SetActive(false);
             FindChild(level, "RedBackground").SetActive(true);
         }
@@ -535,6 +538,27 @@ public class GameLogics : MonoBehaviour
         setMessage.SetActive(true);
         yield return new WaitForSeconds(0.9f);
         goMessage.SetActive(true);
+    }
+
+    IEnumerator MatchPoint(string player)
+    {
+        float xMatch = -9, xPoint = -5.5f;
+        if (player == "Blob 2" || player == "Blob 2")
+        {
+            xMatch = 5.5f;
+            xPoint = 9;
+        }
+        matchMessage.GetComponent<MessageAnimation>().startingPosition = new Vector3(xMatch, 20, 0);
+        pointMessage.GetComponent<MessageAnimation>().startingPosition = new Vector3(xPoint, 20, 0);
+        matchMessage.GetComponent<MessageAnimation>().middleFirstPosition = new Vector3(xMatch, 3, 0);
+        pointMessage.GetComponent<MessageAnimation>().middleFirstPosition = new Vector3(xPoint, 3, 0);
+        matchMessage.GetComponent<MessageAnimation>().middleLastPosition = new Vector3(xMatch, -3, 0);
+        pointMessage.GetComponent<MessageAnimation>().middleLastPosition = new Vector3(xPoint, -3, 0);
+        matchMessage.GetComponent<MessageAnimation>().endingPosition = new Vector3(xMatch, -20, 0);
+        pointMessage.GetComponent<MessageAnimation>().endingPosition = new Vector3(xPoint, -20, 0);
+        matchMessage.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        pointMessage.SetActive(true);
     }
 
     public void SendStartRoundMessage()
