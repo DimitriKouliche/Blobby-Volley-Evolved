@@ -7,14 +7,15 @@ public class MessageAnimation : MonoBehaviour
     public Vector3 middleFirstPosition = new Vector3(3, -4.5f, 0);
     public Vector3 middleLastPosition = new Vector3(-3, -4.5f, 0);
     public Vector3 endingPosition = new Vector3(-30, -4.5f, 0);
+    public float duration = 0.4f;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(PassByAnimation(0.3f));
+        StartCoroutine(PassByAnimation());
     }
 
-    IEnumerator PassByAnimation(float duration)
+    IEnumerator PassByAnimation()
     {
         float t = 0.0f;
         while (t < duration)

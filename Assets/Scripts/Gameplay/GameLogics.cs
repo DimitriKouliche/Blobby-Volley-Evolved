@@ -542,11 +542,11 @@ public class GameLogics : MonoBehaviour
 
     IEnumerator MatchPoint(string player)
     {
-        float xMatch = -9, xPoint = -5.5f;
+        float xMatch = -11.76f, xPoint = -8.8f;
         if (player == "Blob 2" || player == "Blob 2")
         {
-            xMatch = 5.5f;
-            xPoint = 9;
+            xMatch = 8.8f;
+            xPoint = 11.76f;
         }
         matchMessage.GetComponent<MessageAnimation>().startingPosition = new Vector3(xMatch, 20, 0);
         pointMessage.GetComponent<MessageAnimation>().startingPosition = new Vector3(xPoint, 20, 0);
@@ -557,7 +557,7 @@ public class GameLogics : MonoBehaviour
         matchMessage.GetComponent<MessageAnimation>().endingPosition = new Vector3(xMatch, -20, 0);
         pointMessage.GetComponent<MessageAnimation>().endingPosition = new Vector3(xPoint, -20, 0);
         matchMessage.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         pointMessage.SetActive(true);
     }
 
