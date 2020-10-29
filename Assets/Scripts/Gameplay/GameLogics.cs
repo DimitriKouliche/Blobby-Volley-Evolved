@@ -15,6 +15,12 @@ public class GameLogics : MonoBehaviour
     public GameObject blobPrefab;
     public GameObject playerSelectionPrefab;
     public GameObject ball;
+    public GameObject ballAnimation;
+    public GameObject flipGAnimation;
+    public GameObject flipDAnimation;
+    public GameObject readyMessage;
+    public GameObject setMessage;
+    public GameObject goMessage;
     public GameObject level;
     public GameObject ballSupport;
     public GameObject selectionMenu;
@@ -156,10 +162,12 @@ public class GameLogics : MonoBehaviour
         }
         if (player == "Blob 1" || player == "Blob 3")
         {
+            flipGAnimation.SetActive(true);
             blob1Score++;
         }
         else
         {
+            flipDAnimation.SetActive(true);
             blob2Score++;
         }
         DisplayScore();
@@ -170,10 +178,10 @@ public class GameLogics : MonoBehaviour
         }
         if (maxPlayers == 4)
         {
-            if (blob1Score == 14)
+            if (blob1Score == winningScore - 1)
             {
                 UpdateMessage("Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + " wins the round! Match point for team 1!");
-            } else if (blob2Score == 14)
+            } else if (blob2Score == winningScore - 1)
             {
                 UpdateMessage("Team " + (GetTeamFromPlayer(ExtractIDFromName(player)) + 1) + " wins the round! Match point for team 2!");
             } else
@@ -183,11 +191,11 @@ public class GameLogics : MonoBehaviour
         }
         else
         {
-            if (blob1Score == 14)
+            if (blob1Score == winningScore - 1)
             {
                 UpdateMessage(player + " wins the round! Match point for player 1!");
             }
-            else if (blob2Score == 14)
+            else if (blob2Score == winningScore - 1)
             {
                 UpdateMessage(player + " wins the round! Match point for player 2!");
             }
@@ -197,7 +205,7 @@ public class GameLogics : MonoBehaviour
             }
         }
 
-        if (blob1Score == 14 || blob2Score == 14)
+        if (blob1Score == winningScore - 1 || blob2Score == winningScore - 1)
         {
             FindChild(level, "Background").SetActive(false);
             FindChild(level, "RedBackground").SetActive(true);
@@ -504,7 +512,10 @@ public class GameLogics : MonoBehaviour
         }
         startAnimation.SetActive(false);
 
+        ballAnimation.SetActive(true);
+        yield return new WaitForSeconds(0.9f);
         ball.SetActive(true);
+
 
         uiMessage.transform.parent.parent.gameObject.SetActive(true);
 
@@ -517,6 +528,11 @@ public class GameLogics : MonoBehaviour
         }
         ball.SetActive(true);
         BeginGame();
+        readyMessage.SetActive(true);
+        yield return new WaitForSeconds(0.9f);
+        setMessage.SetActive(true);
+        yield return new WaitForSeconds(0.9f);
+        goMessage.SetActive(true);
     }
 
     public void SendStartRoundMessage()
