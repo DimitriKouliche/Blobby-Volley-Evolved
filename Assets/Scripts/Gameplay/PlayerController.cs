@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsPlaying()
     {
-        if(this == null || !gameObject.activeSelf)
+        if (this == null || !gameObject.activeSelf)
         {
             return false;
         }
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
         startAction.started += ctx =>
         {
-            if(isSmashing || !IsPlaying() || this == null)
+            if (isSmashing || !IsPlaying() || this == null)
             {
                 return;
             }
@@ -138,55 +138,60 @@ public class PlayerController : MonoBehaviour
         // Releasing charged jump
         chargeJumpAction.canceled += ctx =>
         {
-            if(this == null)
+            if (this == null)
             {
                 return;
             }
-            if ((!isGrounded && !IsTouchingPlayer()) || !IsPlaying() || r2d == null || Time.timeScale == 0 || !chargingJump )
-            {
-                CancelCharge();
-                return;
-            }
-            if (isDashing)
-            {
-                isDashing = false;
-            }
-            playerSounds.JumpSound();
-            FindChild(gameObject, "Jump").SetActive(true);
-            r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
-            CancelCharge();
+            Jump();
         };
 
         // Dashing
         dashAction.started += ctx =>
+    {
+        if (this == null || !isGrounded || isDashing || !IsPlaying() || Time.timeScale == 0)
         {
-            if (this == null || !isGrounded || isDashing || !IsPlaying() || Time.timeScale == 0)
+            return;
+        }
+        if (moveDirectionVector.x != 0)
+        {
+            if (gameLogics != null)
             {
-                return;
+                gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
             }
-            if (moveDirectionVector.x != 0)
+            FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
+            FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
+            isDashing = true;
+            playerSounds.DashSound();
+            r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
+            if (moveDirectionVector.x > 0)
             {
-                if (gameLogics != null)
-                {
-                    gameLogics.GetComponent<GameLogics>().ResetVelocity(gameObject);
-                }
-                FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(false);
-                FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
-                isDashing = true;
-                playerSounds.DashSound();
-                r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
-                if (moveDirectionVector.x > 0)
-                {
-                    dashLefttAnimation.SetActive(true);
-                    StartCoroutine(DisableDash(0.45f, -70f));
-                }
-                else
-                {
-                    dashRightAnimation.SetActive(true);
-                    StartCoroutine(DisableDash(0.45f, 70f));
-                }
+                dashLefttAnimation.SetActive(true);
+                StartCoroutine(DisableDash(0.45f, -70f));
             }
-        };
+            else
+            {
+                dashRightAnimation.SetActive(true);
+                StartCoroutine(DisableDash(0.45f, 70f));
+            }
+        }
+    };
+    }
+
+    void Jump()
+    {
+        if ((!isGrounded && !IsTouchingPlayer()) || !IsPlaying() || r2d == null || Time.timeScale == 0 || !chargingJump)
+        {
+            CancelCharge();
+            return;
+        }
+        if (isDashing)
+        {
+            isDashing = false;
+        }
+        playerSounds.JumpSound();
+        FindChild(gameObject, "Jump").SetActive(true);
+        r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
+        CancelCharge();
     }
 
     public void CancelCharge()
@@ -227,11 +232,11 @@ public class PlayerController : MonoBehaviour
     {
         return gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Left Wall").GetComponent<Collider2D>()) || gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Right Wall").GetComponent<Collider2D>());
     }
-    
+
 
     bool IsTouchingPlayer()
     {
-        if(transform.position.y > 0)
+        if (transform.position.y > 0)
         {
             return false;
         }
@@ -283,25 +288,27 @@ public class PlayerController : MonoBehaviour
             r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
         }
 
-        if(isDashing)
+        if (isDashing)
         {
             r2d.velocity = new Vector2(r2d.velocity.x, 0);
         }
 
-        if(isSmashing)
+        if (isSmashing)
         {
-            r2d.velocity = new Vector2((moveDirection/2) * maxSpeed, r2d.velocity.y);
+            r2d.velocity = new Vector2((moveDirection / 2) * maxSpeed, r2d.velocity.y);
         }
 
         if (chargingJump)
         {
             if (jumpSpeed < jumpHeight)
             {
-                jumpSpeed += 1f;
+                jumpSpeed += 7f;
                 FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, eyeChargeColor);
-            } else
+            }
+            else
             {
                 FindChild(gameObject, "Charge").SetActive(true);
+                Jump();
             }
         }
 
@@ -340,10 +347,11 @@ public class PlayerController : MonoBehaviour
     {
         float t = 0.0f;
         int angle;
-        if(transform.position.x > 0)
+        if (transform.position.x > 0)
         {
             angle = -30;
-        } else
+        }
+        else
         {
             angle = 30;
         }
@@ -352,7 +360,7 @@ public class PlayerController : MonoBehaviour
             if (t < duration / 2)
             {
                 r2d.rotation = Mathf.Lerp(0, angle, 2 * t / duration);
-                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius/1.5f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius / 1.5f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             else
             {
@@ -375,10 +383,11 @@ public class PlayerController : MonoBehaviour
     {
         float t = 0.0f;
         int angle;
-        if(transform.position.x > 0)
+        if (transform.position.x > 0)
         {
             angle = -30 * invert;
-        } else
+        }
+        else
         {
             angle = 30 * invert;
         }
@@ -387,7 +396,7 @@ public class PlayerController : MonoBehaviour
             if (t < duration / 2)
             {
                 r2d.rotation = Mathf.Lerp(0, angle, 2 * t / duration);
-                bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(bumpRadius/1.5f, bumpRadius, 2 * t / duration), bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
+                bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(bumpRadius / 1.5f, bumpRadius, 2 * t / duration), bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             else
             {
@@ -401,7 +410,7 @@ public class PlayerController : MonoBehaviour
         bumpCollider.SetActive(false);
         isBumping = false;
     }
-   
+
 
     GameObject FindChild(GameObject parent, string name)
     {
