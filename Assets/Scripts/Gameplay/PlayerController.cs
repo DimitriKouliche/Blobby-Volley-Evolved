@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     bool chargingJump = false;
     PlayerSounds playerSounds;
     Vector2 moveDirectionVector;
+    bool isJumpDashing = false;
 
     bool IsPlaying()
     {
@@ -186,7 +187,9 @@ public class PlayerController : MonoBehaviour
         }
         if (isDashing)
         {
+            isJumpDashing = true;
             isDashing = false;
+            StartCoroutine(DisableJumpDash(0.3f));
         }
         playerSounds.JumpSound();
         FindChild(gameObject, "Jump").SetActive(true);
@@ -270,6 +273,11 @@ public class PlayerController : MonoBehaviour
         // Check if player is grounded
         isGrounded = transform.position.y < -6.1;
 
+        if(isGrounded)
+        {
+            isJumpDashing = false;
+        }
+
         // Apply movement velocity
         if (!isDashing && !isSmashing)
         {
@@ -285,7 +293,13 @@ public class PlayerController : MonoBehaviour
             {
                 FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 3);
             }
-            r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+            if(isJumpDashing)
+            {
+                r2d.velocity = new Vector2((moveDirection) * maxSpeed * 3, r2d.velocity.y);
+            } else
+            {
+                r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+            }
         }
 
         if (isDashing)
@@ -302,7 +316,7 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpSpeed < jumpHeight)
             {
-                jumpSpeed += 7f;
+                jumpSpeed += 5f;
                 FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, eyeChargeColor);
             }
             else
@@ -341,6 +355,11 @@ public class PlayerController : MonoBehaviour
         FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").SetActive(true);
         FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(false);
         isDashing = false;
+    }
+    IEnumerator DisableJumpDash(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isJumpDashing = false;
     }
 
     IEnumerator Smash(float duration)
