@@ -557,7 +557,7 @@ public class GameLogics : MonoBehaviour
         matchMessage.GetComponent<MessageAnimation>().endingPosition = new Vector3(xMatch, -20, 0);
         pointMessage.GetComponent<MessageAnimation>().endingPosition = new Vector3(xPoint, -20, 0);
         matchMessage.SetActive(true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.3f);
         pointMessage.SetActive(true);
     }
 
@@ -635,15 +635,36 @@ public class GameLogics : MonoBehaviour
         Time.timeScale = 1f;
         ball.SetActive(false);
         gameOver.SetActive(true);
+        FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(false);
+        FindChild(FindChild(blob2, "SpriteBlob"), "EyesWhite").SetActive(false);
+        if (maxPlayers == 4)
+        {
+            FindChild(FindChild(blob3, "SpriteBlob"), "EyesWhite").SetActive(false);
+            FindChild(FindChild(blob4, "SpriteBlob"), "EyesWhite").SetActive(false);
+        }
         if (player == "Blob 1" || player == "Blob 3")
         {
             FindChild(gameOver, "Cup").transform.position = new Vector3(-5, 5, 0);
             FindChild(gameOver, "Confetti").transform.position = new Vector3(-9, 12, -20);
+            FindChild(FindChild(blob1, "SpriteBlob"), "HappyEyes").SetActive(true);
+            FindChild(FindChild(blob2, "SpriteBlob"), "SadEyes").SetActive(true);
+            if(maxPlayers== 4)
+            {
+                FindChild(FindChild(blob3, "SpriteBlob"), "HappyEyes").SetActive(true);
+                FindChild(FindChild(blob4, "SpriteBlob"), "SadEyes").SetActive(true);
+            }
         }
         else
         {
             FindChild(gameOver, "Cup").transform.position = new Vector3(5, 5, 0);
             FindChild(gameOver, "Confetti").transform.position = new Vector3(9, 12, -20);
+            FindChild(FindChild(blob2, "SpriteBlob"), "HappyEyes").SetActive(true);
+            FindChild(FindChild(blob1, "SpriteBlob"), "SadEyes").SetActive(true);
+            if (maxPlayers == 4)
+            {
+                FindChild(FindChild(blob4, "SpriteBlob"), "HappyEyes").SetActive(true);
+                FindChild(FindChild(blob3, "SpriteBlob"), "SadEyes").SetActive(true);
+            }
         }
         isPlaying = true;
     }
