@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10134,7 +10134,7 @@ MonoBehaviour:
   isPlaying: 1
   isOnline: 0
   maxPlayers: 2
-  winningScore: 2
+  winningScore: 15
 --- !u!4 &236572991
 Transform:
   m_ObjectHideFlags: 0
@@ -15413,6 +15413,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -10.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2858511401168766194, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3633815609964939784, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15492,6 +15497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355733425544031062, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.9
       objectReference: {fileID: 0}
     - target: {fileID: 6545283780202111334, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
         type: 3}
