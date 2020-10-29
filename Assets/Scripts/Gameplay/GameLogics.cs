@@ -10,7 +10,8 @@ using UnityEngine.SceneManagement;
 public class GameLogics : MonoBehaviour
 {
     public GameObject uiMessage;
-    public GameObject uiScore;
+    public GameObject uiScoreLeft;
+    public GameObject uiScoreRight;
     public GameObject gameOver;
     public GameObject blobPrefab;
     public GameObject playerSelectionPrefab;
@@ -145,7 +146,8 @@ public class GameLogics : MonoBehaviour
 
     public void DisplayScore()
     {
-        uiScore.GetComponent<Text>().text = blob1Score + " - " + blob2Score;
+        uiScoreLeft.GetComponent<Text>().text = blob1Score.ToString();
+        uiScoreRight.GetComponent<Text>().text = blob2Score.ToString();
     }
 
     public void PlayerWins(string player)
