@@ -221,10 +221,29 @@ public class GameLogics : MonoBehaviour
 
     public void RestartGame()
     {
+        FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(true);
+        FindChild(FindChild(blob2, "SpriteBlob"), "EyesWhite").SetActive(true);
+        FindChild(FindChild(blob1, "SpriteBlob"), "SadEyes").SetActive(false);
+        FindChild(FindChild(blob2, "SpriteBlob"), "SadEyes").SetActive(false);
+        FindChild(FindChild(blob1, "SpriteBlob"), "HappyEyes").SetActive(false);
+        FindChild(FindChild(blob2, "SpriteBlob"), "HappyEyes").SetActive(false);
+        if(maxPlayers == 4)
+        {
+            FindChild(FindChild(blob3, "SpriteBlob"), "EyesWhite").SetActive(true);
+            FindChild(FindChild(blob4, "SpriteBlob"), "EyesWhite").SetActive(true);
+            FindChild(FindChild(blob3, "SpriteBlob"), "SadEyes").SetActive(false);
+            FindChild(FindChild(blob4, "SpriteBlob"), "SadEyes").SetActive(false);
+            FindChild(FindChild(blob3, "SpriteBlob"), "HappyEyes").SetActive(false);
+            FindChild(FindChild(blob4, "SpriteBlob"), "HappyEyes").SetActive(false);
+        }
+        FindChild(level, "Background").SetActive(true);
+        FindChild(level, "RedBackground").SetActive(false);
         ResetPositions("Blob 1");
         ResetBlobPositions();
         isStarting = false;
         isPlaying = false;
+        ball.SetActive(true);
+        gameOver.SetActive(false);
         ball.GetComponent<BallLogics>().UpdateBall(2);
         blob1Score = 0;
         blob2Score = 0;

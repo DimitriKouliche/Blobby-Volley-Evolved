@@ -209,6 +209,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1251582072099728878, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2858511401168766194, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -289,6 +294,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2141181625}
+    - target: {fileID: 8360095431300815976, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8854777694321459820, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
         type: 3}
       propertyPath: m_IsActive
@@ -1022,6 +1032,7 @@ MonoBehaviour:
   middleFirstPosition: {x: 3, y: -4.5, z: 0}
   middleLastPosition: {x: -3, y: -4.5, z: 0}
   endingPosition: {x: -30, y: -4.5, z: 0}
+  duration: 0.4
 --- !u!212 &267160838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16813,6 +16824,7 @@ MonoBehaviour:
   middleFirstPosition: {x: 3, y: -4.5, z: 0}
   middleLastPosition: {x: -3, y: -4.5, z: 0}
   endingPosition: {x: -30, y: -4.5, z: 0}
+  duration: 0.4
 --- !u!212 &917217211
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27569,6 +27581,7 @@ MonoBehaviour:
   middleFirstPosition: {x: 3, y: -4.5, z: 0}
   middleLastPosition: {x: -3, y: -4.5, z: 0}
   endingPosition: {x: -30, y: -4.5, z: 0}
+  duration: 0.4
 --- !u!212 &1355878084
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47339,6 +47352,7 @@ MonoBehaviour:
   middleFirstPosition: {x: 3, y: -4.5, z: 0}
   middleLastPosition: {x: -3, y: -4.5, z: 0}
   endingPosition: {x: -30, y: -4.5, z: 0}
+  duration: 0.4
 --- !u!212 &1688607157
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52734,6 +52748,7 @@ MonoBehaviour:
   middleFirstPosition: {x: 3, y: -4.5, z: 0}
   middleLastPosition: {x: -3, y: -4.5, z: 0}
   endingPosition: {x: -30, y: -4.5, z: 0}
+  duration: 0.4
 --- !u!212 &2009391233
 SpriteRenderer:
   m_ObjectHideFlags: 0
