@@ -142,8 +142,7 @@ public class GameLogics : MonoBehaviour
 
     public void UpdateMessage(string message)
     {
-        uiMessage.SetActive(true);
-        uiMessage.GetComponent<Text>().text = message;
+        return;
     }
 
     public void DisplayScore()
@@ -221,6 +220,8 @@ public class GameLogics : MonoBehaviour
 
     public void RestartGame()
     {
+        FindChild(gameOver, "Cup").GetComponent<Rigidbody2D>().gravityScale = 0.05f;
+        FindChild(gameOver, "Cup").transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(true);
         FindChild(FindChild(blob2, "SpriteBlob"), "EyesWhite").SetActive(true);
         FindChild(FindChild(blob1, "SpriteBlob"), "SadEyes").SetActive(false);
@@ -236,7 +237,10 @@ public class GameLogics : MonoBehaviour
             FindChild(FindChild(blob3, "SpriteBlob"), "HappyEyes").SetActive(false);
             FindChild(FindChild(blob4, "SpriteBlob"), "HappyEyes").SetActive(false);
         }
+
+        FindChild(level, "Ceiling").SetActive(false);
         FindChild(level, "Background").SetActive(true);
+        FindChild(gameOver, "PressToContinue").SetActive(false);
         FindChild(level, "RedBackground").SetActive(false);
         ResetPositions("Blob 1");
         ResetBlobPositions();
@@ -656,6 +660,7 @@ public class GameLogics : MonoBehaviour
         gameOver.SetActive(true);
         FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(false);
         FindChild(FindChild(blob2, "SpriteBlob"), "EyesWhite").SetActive(false);
+        FindChild(gameOver, "PressToContinue").SetActive(true);
         if (maxPlayers == 4)
         {
             FindChild(FindChild(blob3, "SpriteBlob"), "EyesWhite").SetActive(false);
