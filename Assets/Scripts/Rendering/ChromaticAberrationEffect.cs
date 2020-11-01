@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class ChromaticAbberationEffect : MonoBehaviour
+public class ChromaticAberrationEffect : MonoBehaviour
 {
     public Volume volume;
     ChromaticAberration chromatic;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,8 @@ public class ChromaticAbberationEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        chromatic.intensity.value = Mathf.PingPong(Time.time * 6, 1f);
+        { 
+            chromatic.intensity.value = Mathf.PingPong(Time.time * 6, 1f); 
+        }
     }
 }
