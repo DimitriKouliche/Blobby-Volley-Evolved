@@ -72,9 +72,7 @@ public class MusicMixer : MonoBehaviour
 
     IEnumerator ChangeMusic()
     {
-        Debug.Log("Changing music in ");
-        Debug.Log(audioSource.clip.length - audioSource.time);
-        yield return new WaitForSeconds(audioSource.clip.length - audioSource.time);
+        yield return StartCoroutine(WaitForRealSeconds(audioSource.clip.length - audioSource.time));
         audioSource.Stop();
         audioSource.clip = nextMusicClip;
         audioSource.Play();
@@ -89,6 +87,15 @@ public class MusicMixer : MonoBehaviour
         } else if (isInGame)
         {
             audioSource.volume = gameMusicVolume * musicVolume / 100;
+        }
+    }
+
+    IEnumerator WaitForRealSeconds(float seconds)
+    {
+        float startTime = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup - startTime < seconds)
+        {
+            yield return null;
         }
     }
 }

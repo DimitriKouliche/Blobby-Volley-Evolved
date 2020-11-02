@@ -8,14 +8,8 @@ public class AnimationPartyTitle : MonoBehaviour
     public float _frequency = 3F;
     public float _turnAmount = 0.08F;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float x = Mathf.Sin(Time.time) / _amplitude;
         float y = Mathf.Sin(Time.time) / _amplitude;

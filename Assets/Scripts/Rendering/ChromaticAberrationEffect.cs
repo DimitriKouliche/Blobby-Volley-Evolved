@@ -10,18 +10,13 @@ public class ChromaticAberrationEffect : MonoBehaviour
     public float SlowMo = 0.5f;
     ChromaticAberration chromatic;
    
-
-
-    // Start is called before the first frame update
     void Start()
     {
         volume.profile.TryGet<ChromaticAberration>(out chromatic);
-        StartCoroutine(MyUpdate());
+        StartCoroutine(SmashEffect());
     }
 
-
-    // Update is called once per frame
-    IEnumerator MyUpdate()
+    IEnumerator SmashEffect()
     {
         float timer = 0f;
         float time = 0.69f;
