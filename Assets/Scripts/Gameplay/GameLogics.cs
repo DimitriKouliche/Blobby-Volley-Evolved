@@ -347,8 +347,6 @@ public class GameLogics : MonoBehaviour
             musicMixer = GameObject.Instantiate(musicMixerPrefab);
         }
         musicMixer.GetComponent<MusicMixer>().MenuMusic();
-        Application.targetFrameRate = -1;
-        QualitySettings.vSyncCount = 0;
         blobPosition = new Vector3[4];
         blobScale = new Vector3[4];
         ToggleMovement(false);

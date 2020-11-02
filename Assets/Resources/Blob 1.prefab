@@ -12671,7 +12671,7 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 8
+  smoothness: 6
   pivotCapSmoothness: 1
   tipCapSmoothness: 1
   width: 0.1
@@ -13375,7 +13375,7 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 8
+  smoothness: 6
   pivotCapSmoothness: 1
   tipCapSmoothness: 1
   width: 0.1
@@ -14031,7 +14031,7 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 8
+  smoothness: 6
   pivotCapSmoothness: 1
   tipCapSmoothness: 1
   width: 0.1
@@ -14120,7 +14120,7 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 8
+  smoothness: 6
   pivotCapSmoothness: 1
   tipCapSmoothness: 1
   width: 0.1
@@ -14528,7 +14528,7 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 8
+  smoothness: 6
   pivotCapSmoothness: 1
   tipCapSmoothness: 1
   width: 0.1
@@ -15488,7 +15488,7 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 8
+  smoothness: 6
   pivotCapSmoothness: 1
   tipCapSmoothness: 1
   width: 0.1
@@ -16005,7 +16005,7 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 8
+  smoothness: 6
   pivotCapSmoothness: 1
   tipCapSmoothness: 1
   width: 0.1
@@ -16184,7 +16184,7 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 8
+  smoothness: 6
   pivotCapSmoothness: 1
   tipCapSmoothness: 1
   width: 0.1
