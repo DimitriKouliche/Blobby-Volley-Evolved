@@ -5,7 +5,11 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class ChromaticAberrationEffect : MonoBehaviour
+
+    
+
 {
+
     public Volume volume;
     public float SlowMo = 0.5f;
     ChromaticAberration chromatic;
@@ -30,5 +34,6 @@ public class ChromaticAberrationEffect : MonoBehaviour
         }
         chromatic.intensity.value = 0f;
         Time.timeScale = 1f;
+
     }
 }
