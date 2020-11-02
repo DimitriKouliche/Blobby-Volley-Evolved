@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MusicMixer : MonoBehaviour
 {
@@ -12,12 +13,19 @@ public class MusicMixer : MonoBehaviour
 
     bool isOnMenu = false;
     bool isInGame = false;
+    bool musicChange = false;
+    AudioClip nextMusicClip;
 
     private void Start()
     {
         Cursor.visible = false;
         DontDestroyOnLoad(transform.gameObject);
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        transform.position = Camera.main.transform.position;
     }
 
     public void MenuMusic()
@@ -44,12 +52,33 @@ public class MusicMixer : MonoBehaviour
         }
         float musicVolume = PlayerPrefs.GetFloat("musicVolume", 100f);
         audioSource = GetComponent<AudioSource>();
-        int index = Random.Range(0, gameMusicClips.Length);
-        audioSource.clip = gameMusicClips[index];
+        audioSource.clip = gameMusicClips[0];
         audioSource.volume = gameMusicVolume * musicVolume / 100;
         audioSource.Play();
         isOnMenu = false;
         isInGame = true;
+    }
+
+    public void SwitchMusic(int score)
+    {
+        nextMusicClip = gameMusicClips[Mathf.FloorToInt(score / 2)];
+        Debug.Log(nextMusicClip);
+        if (Mathf.FloorToInt(score / 2) < gameMusicClips.Length && !musicChange)
+        {
+            StartCoroutine(ChangeMusic());
+            musicChange = true;
+        }
+    }
+
+    IEnumerator ChangeMusic()
+    {
+        Debug.Log("Changing music in ");
+        Debug.Log(audioSource.clip.length - audioSource.time);
+        yield return new WaitForSeconds(audioSource.clip.length - audioSource.time);
+        audioSource.Stop();
+        audioSource.clip = nextMusicClip;
+        audioSource.Play();
+        musicChange = false;
     }
 
     public void UpdateVolume() { 

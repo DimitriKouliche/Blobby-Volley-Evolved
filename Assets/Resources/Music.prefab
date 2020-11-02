@@ -50,15 +50,15 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
+  Priority: 0
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1.01
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassEffects: 1
+  BypassListenerEffects: 1
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -118,7 +118,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -144,5 +144,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c86311df2320a4419b7e2feb7940b5d, type: 3}
   menuMusicVolume: 0.5
   gameMusicClips:
-  - {fileID: 8300000, guid: 6360e7440b952af44bd2728e05718cb2, type: 3}
+  - {fileID: 8300000, guid: 9acf181f2ae944e47b69e4b9973c32e7, type: 3}
+  - {fileID: 8300000, guid: 16deb63ab918b3b4d9db34ac9eae8520, type: 3}
+  - {fileID: 8300000, guid: 030bf381a5876714f9b620f191667871, type: 3}
+  - {fileID: 8300000, guid: 0e464b644b79e5c4f92683bd3aedef40, type: 3}
+  - {fileID: 8300000, guid: fa0ee092c5bc9e540bf0789aa48c6433, type: 3}
+  - {fileID: 8300000, guid: c1ab81d0d2e63dc4893c10620be78f96, type: 3}
+  - {fileID: 8300000, guid: d7eaa6828190af84cb8573fd96fab846, type: 3}
+  - {fileID: 8300000, guid: b883f250d36a8b842b3779b241ee476b, type: 3}
   gameMusicVolume: 0.5

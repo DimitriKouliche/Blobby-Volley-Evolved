@@ -173,6 +173,7 @@ public class GameLogics : MonoBehaviour
             flipDAnimation.SetActive(true);
             blob2Score++;
         }
+        GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().SwitchMusic(Mathf.Max(blob1Score, blob2Score));
         DisplayScore();
         if (blob1Score >= winningScore || blob2Score >= winningScore)
         {
