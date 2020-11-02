@@ -16,6 +16,7 @@ public class BallLogics : MonoBehaviour
     public AudioClip[] ballHitClips;
     [Range(0f, 5f)]
     public float ballHitVolume = 1f;
+    public float chromaticAberrationThreshold = 0.8f;
 
     public Color firstHitColor = new Color(233f / 255f, 208f / 255f, 118f / 255f);
     public Color secondHitColor = new Color(203f / 255f, 119f / 255f, 52f / 255f);
@@ -39,7 +40,7 @@ public class BallLogics : MonoBehaviour
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
-            if(intensity > 0.7)
+            if(intensity > chromaticAberrationThreshold)
             {
                 GameObject.Find("Global Volume").GetComponent<ChromaticAberrationEffect>().IntenseEffect();
             }
@@ -50,7 +51,7 @@ public class BallLogics : MonoBehaviour
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
-            if (intensity > 0.7)
+            if (intensity > chromaticAberrationThreshold)
             {
                 GameObject.Find("Global Volume").GetComponent<ChromaticAberrationEffect>().IntenseEffect();
             }
