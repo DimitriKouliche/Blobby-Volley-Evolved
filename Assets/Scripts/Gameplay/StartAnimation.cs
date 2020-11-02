@@ -35,6 +35,7 @@ public class StartAnimation : MonoBehaviour
 
         FindChild(canonLeft, "Shot").SetActive(true);
         FindChild(canonRight, "Shot").SetActive(true);
+
         t = 0.0f;
         while (t < duration/5)
         {
@@ -51,7 +52,6 @@ public class StartAnimation : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
-
         yield return new WaitForSeconds(0.2f);
         t = 0.0f;
         while (t < duration/3f)
