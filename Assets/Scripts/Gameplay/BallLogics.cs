@@ -39,6 +39,10 @@ public class BallLogics : MonoBehaviour
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
+            if(intensity > 0.7)
+            {
+                GameObject.Find("Global Volume").GetComponent<ChromaticAberrationEffect>().IntenseEffect();
+            }
         }
 
         if (gameLogics != null && collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
@@ -46,12 +50,16 @@ public class BallLogics : MonoBehaviour
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
+            if (intensity > 0.7)
+            {
+                GameObject.Find("Global Volume").GetComponent<ChromaticAberrationEffect>().IntenseEffect();
+            }
         }
         if (!canHit)
         {
             return;
         }
-        StartCoroutine(EnableHit(0.07f));
+        StartCoroutine(EnableHit(0.15f));
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
         {

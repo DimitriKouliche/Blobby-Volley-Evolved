@@ -62,7 +62,6 @@ public class MusicMixer : MonoBehaviour
     public void SwitchMusic(int score)
     {
         nextMusicClip = gameMusicClips[Mathf.FloorToInt(score / 2)];
-        Debug.Log(nextMusicClip);
         if (Mathf.FloorToInt(score / 2) < gameMusicClips.Length && !musicChange)
         {
             StartCoroutine(ChangeMusic());

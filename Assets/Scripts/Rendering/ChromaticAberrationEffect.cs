@@ -9,14 +9,15 @@ public class ChromaticAberrationEffect : MonoBehaviour
     public Volume volume;
     public float SlowMo = 0.5f;
     ChromaticAberration chromatic;
-   
-    void Start()
+
+    public void IntenseEffect()
     {
+        volume = GetComponent<Volume>();
         volume.profile.TryGet<ChromaticAberration>(out chromatic);
-        StartCoroutine(SmashEffect());
+        StartCoroutine(IntenseEffectCoroutine());
     }
 
-    IEnumerator SmashEffect()
+    IEnumerator IntenseEffectCoroutine()
     {
         float timer = 0f;
         float time = 0.69f;
