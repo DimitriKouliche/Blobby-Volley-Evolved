@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -53402,6 +53402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 1969300520}
+  SlowMo: 0.5
 --- !u!1 &1975444495
 GameObject:
   m_ObjectHideFlags: 0
@@ -64080,6 +64081,11 @@ PrefabInstance:
       propertyPath: gameLogics
       value: 
       objectReference: {fileID: 236572989}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: chromaticAberrationThreshold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1299431638664912145, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}
       propertyPath: m_IsActive
