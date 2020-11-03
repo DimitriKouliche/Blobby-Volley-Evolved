@@ -68,6 +68,12 @@ public class MusicMixer : MonoBehaviour
             musicChange = true;
         }
     }
+    public void RestartGameMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = gameMusicClips[0];
+        audioSource.Play();
+    }
 
     IEnumerator ChangeMusic()
     {

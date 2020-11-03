@@ -221,6 +221,7 @@ public class GameLogics : MonoBehaviour
 
     public void RestartGame()
     {
+        GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().RestartGameMusic();
         FindChild(gameOver, "Cup").GetComponent<Rigidbody2D>().gravityScale = 0.05f;
         FindChild(gameOver, "Cup").transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(true);
