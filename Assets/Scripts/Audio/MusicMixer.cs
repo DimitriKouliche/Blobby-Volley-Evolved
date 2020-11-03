@@ -10,6 +10,7 @@ public class MusicMixer : MonoBehaviour
     public AudioClip[] gameMusicClips;
     [Range(0f, 5f)]
     public float gameMusicVolume = 1f;
+    public bool gameOver = false;
 
     bool isOnMenu = false;
     bool isInGame = false;
@@ -78,6 +79,11 @@ public class MusicMixer : MonoBehaviour
     IEnumerator ChangeMusic()
     {
         yield return StartCoroutine(WaitForRealSeconds(audioSource.clip.length - audioSource.time));
+        if(gameOver)
+        {
+            gameOver = false;
+            yield break;
+        }
         audioSource.Stop();
         audioSource.clip = nextMusicClip;
         audioSource.Play();
