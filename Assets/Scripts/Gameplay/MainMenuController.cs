@@ -82,10 +82,12 @@ public class MainMenuController : MonoBehaviour
             switch (menuId)
             {
                 case 0:
-                    StartCoroutine(ConfirmAnimation("Local4"));
+                    PlayerPrefs.SetInt("numberPlayers", 4);
+                    StartCoroutine(ConfirmAnimation("SplashScreen"));
                     break;
                 case 1:
-                    StartCoroutine(ConfirmAnimation("Local2"));
+                    PlayerPrefs.SetInt("numberPlayers", 2);
+                    StartCoroutine(ConfirmAnimation("SplashScreen"));
                     break;
                 case 5:
                     Application.Quit();
