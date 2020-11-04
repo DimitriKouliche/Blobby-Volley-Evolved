@@ -512,12 +512,12 @@ public class GameLogics : MonoBehaviour
         float t = 0.0f;
         while (t < 1.6f)
         {
-            blob1.transform.Rotate(Vector3.Lerp(new Vector3(0,0,0), new Vector3(0,0,-2), t / 0.5f));
-            blob2.transform.Rotate(Vector3.Lerp(new Vector3(0,0,0), new Vector3(0,0,-2), t / 0.5f));
+            blob1.transform.Rotate(Vector3.Lerp(new Vector3(0,0,0), new Vector3(0,0,-20), t / 0.5f));
+            blob2.transform.Rotate(Vector3.Lerp(new Vector3(0,0,0), new Vector3(0,0,-20), t / 0.5f));
             if (maxPlayers == 4)
             {
-                blob3.transform.Rotate(Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, -2), t / 0.5f));
-                blob4.transform.Rotate(Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, -2), t / 0.5f));
+                blob3.transform.Rotate(Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, -20), t / 0.5f));
+                blob4.transform.Rotate(Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, -20), t / 0.5f));
             }
             t += Time.deltaTime;
             yield return null;
