@@ -153,3 +153,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d7eaa6828190af84cb8573fd96fab846, type: 3}
   - {fileID: 8300000, guid: b883f250d36a8b842b3779b241ee476b, type: 3}
   gameMusicVolume: 0.5
+  victoryMusicClips:
+  - {fileID: 8300000, guid: 98b25cc675cf6de44810538a2f019223, type: 3}
+  victoryMusicVolume: 1
+  gameOver: 0

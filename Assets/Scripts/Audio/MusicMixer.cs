@@ -10,6 +10,9 @@ public class MusicMixer : MonoBehaviour
     public AudioClip[] gameMusicClips;
     [Range(0f, 5f)]
     public float gameMusicVolume = 1f;
+    public AudioClip[] victoryMusicClips;
+    [Range(0f, 5f)]
+    public float victoryMusicVolume = 1f;
     public bool gameOver = false;
 
     bool isOnMenu = false;
@@ -22,11 +25,6 @@ public class MusicMixer : MonoBehaviour
         Cursor.visible = false;
         DontDestroyOnLoad(transform.gameObject);
         audioSource = GetComponent<AudioSource>();
-    }
-
-    private void Update()
-    {
-        transform.position = Camera.main.transform.position;
     }
 
     public void MenuMusic()
@@ -43,6 +41,7 @@ public class MusicMixer : MonoBehaviour
         audioSource.Play();
         isOnMenu = true;
         isInGame = false;
+        audioSource.loop = true;
     }
 
     public void GameMusic()
@@ -58,6 +57,23 @@ public class MusicMixer : MonoBehaviour
         audioSource.Play();
         isOnMenu = false;
         isInGame = true;
+        audioSource.loop = true;
+    }
+
+    public void VictoryMusic()
+    {
+        if (isOnMenu)
+        {
+            return;
+        }
+        float musicVolume = PlayerPrefs.GetFloat("musicVolume", 100f);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = victoryMusicClips[0];
+        audioSource.volume = victoryMusicVolume * musicVolume / 100;
+        audioSource.Play();
+        isOnMenu = false;
+        isInGame = true;
+        audioSource.loop = false;
     }
 
     public void SwitchMusic(int score)
