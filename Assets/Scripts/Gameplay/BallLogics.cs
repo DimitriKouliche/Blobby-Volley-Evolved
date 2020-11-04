@@ -16,6 +16,9 @@ public class BallLogics : MonoBehaviour
     public AudioClip[] ballHitClips;
     [Range(0f, 5f)]
     public float ballHitVolume = 1f;
+    public AudioClip[] ballHardHitClips;
+    [Range(0f, 5f)]
+    public float ballHardHitVolume = 1f;
     public float chromaticAberrationThreshold = 0.8f;
 
     public Color firstHitColor = new Color(233f / 255f, 208f / 255f, 118f / 255f);
@@ -37,23 +40,33 @@ public class BallLogics : MonoBehaviour
         Collider2D collider = collision.contacts[0].collider;
         if (gameLogics != null && collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
+            if (gameObject.name == "Cup")
+            {
+                GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
+            }
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
             if(intensity > chromaticAberrationThreshold)
             {
                 GameObject.Find("Global Volume").GetComponent<ChromaticAberrationEffect>().IntenseEffect();
+                BallHardHitSound();
             }
         }
 
         if (gameLogics != null && collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
+            if (gameObject.name == "Cup")
+            {
+                GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
+            }
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
             if (intensity > chromaticAberrationThreshold)
             {
                 GameObject.Find("Global Volume").GetComponent<ChromaticAberrationEffect>().IntenseEffect();
+                BallHardHitSound();
             }
         }
         if (!canHit)
@@ -68,6 +81,7 @@ public class BallLogics : MonoBehaviour
             {
                 rigidBody.gravityScale = 1.6f;
                 FindChild(GameObject.Find("Level"), "Ceiling").SetActive(true);
+                GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
             }
             canHit = false;
             if (gameLogics != null)
@@ -205,6 +219,13 @@ public class BallLogics : MonoBehaviour
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, ballHitClips.Length);
         audioSource.PlayOneShot(ballHitClips[index], ballHitVolume * intensity * sfxVolume / 100);
+    }
+
+    public void BallHardHitSound()
+    {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
+        int index = Random.Range(0, ballHardHitClips.Length);
+        audioSource.PlayOneShot(ballHardHitClips[index], ballHitVolume * sfxVolume / 100);
     }
 
     public void UpdateBall(int touches)

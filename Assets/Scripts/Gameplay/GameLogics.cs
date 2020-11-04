@@ -692,7 +692,7 @@ public class GameLogics : MonoBehaviour
         }
         isPlaying = true;
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().gameOver = true;
-        GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
+        GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().StopMusic();
     }
 
     public int GetTeamFromPlayer(int playerId)

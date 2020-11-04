@@ -62,7 +62,7 @@ public class MusicMixer : MonoBehaviour
 
     public void VictoryMusic()
     {
-        if (isOnMenu)
+        if (isOnMenu || audioSource.clip == victoryMusicClips[0])
         {
             return;
         }
@@ -74,6 +74,12 @@ public class MusicMixer : MonoBehaviour
         isOnMenu = false;
         isInGame = true;
         audioSource.loop = false;
+    }
+
+    public void StopMusic()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
     }
 
     public void SwitchMusic(int score)
