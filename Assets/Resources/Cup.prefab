@@ -38303,6 +38303,7 @@ GameObject:
   - component: {fileID: 8399981740947801551}
   - component: {fileID: 8399981740947801544}
   - component: {fileID: 689761688}
+  - component: {fileID: 1604102657431839616}
   m_Layer: 11
   m_Name: Cup
   m_TagString: Untagged
@@ -38426,6 +38427,9 @@ MonoBehaviour:
   ballHitClips:
   - {fileID: 8300000, guid: d8e884f421354fd4a90bd91d418fc284, type: 3}
   ballHitVolume: 0.5
+  ballHardHitClips: []
+  ballHardHitVolume: 1
+  chromaticAberrationThreshold: 0.8
   firstHitColor: {r: 0.9137255, g: 0.8156863, b: 0.4627451, a: 1}
   secondHitColor: {r: 0.79607844, g: 0.46666667, b: 0.20392157, a: 1}
   thirdHitColor: {r: 0.6745098, g: 0.19215687, b: 0.15294118, a: 1}
@@ -38565,6 +38569,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1604102657431839616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399981740947801546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ae147dedab875429a4d2c09009fbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 869de7e272d53e54ca79a92ef09e2f2d, type: 3}
+  volume: 1
 --- !u!1 &8399981741089298158
 GameObject:
   m_ObjectHideFlags: 0

@@ -69,6 +69,7 @@ public class MusicMixer : MonoBehaviour
         {
             return;
         }
+        GameObject.Find("Cup").GetComponent<AudioSource>().Stop();
         float musicVolume = PlayerPrefs.GetFloat("musicVolume", 100f);
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = victoryMusicClips[0];
