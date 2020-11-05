@@ -38,12 +38,12 @@ public class BallLogics : MonoBehaviour
         BallHitSound(intensity);
         FindChild(gameObject, "ParticleTrail03").GetComponent<ParticleSystem>().Stop();
         Collider2D collider = collision.contacts[0].collider;
+        if((collision.gameObject.name == "Left Ground" || collision.gameObject.name == "Right Ground") && gameObject.name == "Cup")
+        {
+            StartCoroutine(VictoryMusic());
+        }
         if (gameLogics != null && collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
-            if (gameObject.name == "Cup")
-            {
-                GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
-            }
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
@@ -56,10 +56,6 @@ public class BallLogics : MonoBehaviour
 
         if (gameLogics != null && collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
-            if (gameObject.name == "Cup")
-            {
-                GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
-            }
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
@@ -81,7 +77,7 @@ public class BallLogics : MonoBehaviour
             {
                 rigidBody.gravityScale = 1.6f;
                 FindChild(GameObject.Find("Level"), "Ceiling").SetActive(true);
-                GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
+                StartCoroutine(VictoryMusic());
             }
             canHit = false;
             if (gameLogics != null)
@@ -261,8 +257,15 @@ public class BallLogics : MonoBehaviour
         }
         follow = false;
     }
+    
 
-        IEnumerator SmashFreeze(float duration, GameObject smash)
+    IEnumerator VictoryMusic()
+    {
+        yield return new WaitForSeconds(3);
+        GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
+    }
+
+    IEnumerator SmashFreeze(float duration, GameObject smash)
     {
         Time.timeScale = 0;
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);

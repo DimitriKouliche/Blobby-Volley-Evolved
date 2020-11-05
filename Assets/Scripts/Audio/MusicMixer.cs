@@ -13,6 +13,9 @@ public class MusicMixer : MonoBehaviour
     public AudioClip[] victoryMusicClips;
     [Range(0f, 5f)]
     public float victoryMusicVolume = 1f;
+    public AudioClip fadeOutClip;
+    [Range(0f, 5f)]
+    public float fadeOutVolume = 1f;
     public bool gameOver = false;
 
     bool isOnMenu = false;
@@ -80,6 +83,11 @@ public class MusicMixer : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
+        float musicVolume = PlayerPrefs.GetFloat("musicVolume", 100f);
+        audioSource.volume = fadeOutVolume * musicVolume / 100;
+        audioSource.clip = fadeOutClip;
+        audioSource.Play();
+        audioSource.loop = false;
     }
 
     public void SwitchMusic(int score)

@@ -653,6 +653,7 @@ public class GameLogics : MonoBehaviour
 
     IEnumerator GameOver(string player)
     {
+        GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().StopMusic();
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(1f);
         Time.timeScale = 1f;
@@ -692,7 +693,6 @@ public class GameLogics : MonoBehaviour
         }
         isPlaying = true;
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().gameOver = true;
-        GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().StopMusic();
     }
 
     public int GetTeamFromPlayer(int playerId)

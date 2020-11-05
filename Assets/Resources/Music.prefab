@@ -156,4 +156,6 @@ MonoBehaviour:
   victoryMusicClips:
   - {fileID: 8300000, guid: 98b25cc675cf6de44810538a2f019223, type: 3}
   victoryMusicVolume: 1
+  fadeOutClip: {fileID: 8300000, guid: 72a394173b12af3408aebd9ac7897a73, type: 3}
+  fadeOutVolume: 1
   gameOver: 0
