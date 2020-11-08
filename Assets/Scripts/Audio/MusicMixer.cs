@@ -118,6 +118,7 @@ public class MusicMixer : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = nextMusicClip;
         audioSource.Play();
+        audioSource.loop = true;
         musicChange = false;
     }
 
