@@ -58,6 +58,7 @@ public class GameLogics : MonoBehaviour
     Color[] blobColor = new Color[4];
     Sprite[] blobSprite = new Sprite[4];
     GameObject musicMixer;
+    bool backgroundHasChanged = false;
 
     public void ResetVelocity(GameObject target)
     {
@@ -209,6 +210,12 @@ public class GameLogics : MonoBehaviour
             }
         }
 
+        if((blob1Score == 10 || blob2Score == 10) && !backgroundHasChanged)
+        {
+            ChangeBackground();
+            backgroundHasChanged = true;
+        }
+
         if (blob1Score == winningScore - 1 || blob2Score == winningScore - 1)
         {
             StartCoroutine(MatchPoint(player));
@@ -217,6 +224,20 @@ public class GameLogics : MonoBehaviour
         }
         StartCoroutine(PlayerWinsCorountine(player));
         ball.GetComponent<BallLogics>().UpdateBall(2);
+    }
+
+    void ChangeBackground()
+    {
+        int i = 0;
+        Transform[] childs = new Transform[50];
+        Transform alternativeBackground = FindChild(FindChild(level, "Background"), "BackgroundAlt").transform;
+        foreach (Transform child in alternativeBackground)
+        {
+            childs[i] = child;
+            i++;
+        }
+        Debug.Log(childs.Length);
+        childs[UnityEngine.Random.Range(0, i)].gameObject.SetActive(true);
     }
 
     public void RestartGame()

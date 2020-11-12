@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -64074,7 +64074,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 854927358}
     m_Modifications:
+    - target: {fileID: 550310193594003180, guid: 5716b6c5ae39fb24c94600efeec807a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 550310194270132367, guid: 5716b6c5ae39fb24c94600efeec807a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 550310194413739694, guid: 5716b6c5ae39fb24c94600efeec807a2,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -64323,6 +64333,16 @@ PrefabInstance:
       propertyPath: gameLogics
       value: 
       objectReference: {fileID: 236572989}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: smashDownwardForce
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: service
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8399981741089298158, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: m_Layer
