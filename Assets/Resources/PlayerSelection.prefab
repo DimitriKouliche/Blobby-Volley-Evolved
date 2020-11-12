@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1313684696304673387}
   - component: {fileID: 4899428297003532034}
   - component: {fileID: 5303300955625656846}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "ParticleS\xE9lection"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4930,7 +4930,7 @@ GameObject:
   - component: {fileID: 5362717922049919720}
   - component: {fileID: 5362717922049919722}
   - component: {fileID: 5362717922049919723}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5022,7 +5022,7 @@ GameObject:
   - component: {fileID: 5362717922053289509}
   - component: {fileID: 5362717922053289511}
   - component: {fileID: 5362717922053289508}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentaclePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5161,7 +5161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717922095365672}
   - component: {fileID: 5362717922095365675}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5254,7 +5254,7 @@ GameObject:
   - component: {fileID: 5362717922204099280}
   - component: {fileID: 5362717922204099282}
   - component: {fileID: 5362717922204099283}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentaclePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5397,7 +5397,7 @@ GameObject:
   - component: {fileID: 5362717922217389973}
   - component: {fileID: 5362717922217389975}
   - component: {fileID: 5362717922217389972}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentaclePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5634,7 +5634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717922253010299}
   - component: {fileID: 5362717922253010298}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5722,7 +5722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5362717922283690119}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5765,7 +5765,7 @@ GameObject:
   - component: {fileID: 5362717922301492439}
   - component: {fileID: 5362717922301492441}
   - component: {fileID: 5362717922301492438}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentaclePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5906,7 +5906,7 @@ GameObject:
   - component: {fileID: 5362717922384114357}
   - component: {fileID: 5362717922384114359}
   - component: {fileID: 5362717922384114356}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5996,7 +5996,7 @@ GameObject:
   - component: {fileID: 5362717922405608511}
   - component: {fileID: 5362717922405610433}
   - component: {fileID: 5362717922405608510}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6084,7 +6084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717922418963471}
   - component: {fileID: 5362717922418963470}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ready Active
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6168,7 +6168,7 @@ GameObject:
   - component: {fileID: 5362717922447643866}
   - component: {fileID: 5362717922447643868}
   - component: {fileID: 5362717922447643869}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6258,7 +6258,7 @@ GameObject:
   - component: {fileID: 5362717922487214930}
   - component: {fileID: 5362717922487214932}
   - component: {fileID: 5362717922487214933}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6415,7 +6415,7 @@ SpriteRenderer:
   m_Size: {x: 1.91, y: 0.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5362717922567601620
@@ -6428,7 +6428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717922567601623}
   - component: {fileID: 5362717922567601622}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: EyesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6548,7 +6548,7 @@ GameObject:
   - component: {fileID: 5362717922628729243}
   - component: {fileID: 5362717922628729240}
   - component: {fileID: 5362717922628729241}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleTip
   m_TagString: TentacleTip
   m_Icon: {fileID: 0}
@@ -6704,7 +6704,7 @@ GameObject:
   - component: {fileID: 5362717922633497822}
   - component: {fileID: 5362717922633497823}
   - component: {fileID: 5362717922633497820}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleTip
   m_TagString: TentacleTip
   m_Icon: {fileID: 0}
@@ -6938,7 +6938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717922783111451}
   - component: {fileID: 5362717922783111450}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7029,7 +7029,7 @@ GameObject:
   - component: {fileID: 5362717922795720643}
   - component: {fileID: 5362717922795720645}
   - component: {fileID: 5362717922795720642}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7117,7 +7117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717922798323218}
   - component: {fileID: 5362717922798323221}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7207,7 +7207,7 @@ GameObject:
   - component: {fileID: 5362717923354160839}
   - component: {fileID: 5362717922862096845}
   - component: {fileID: 6350223659154266779}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlobPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7311,7 +7311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717922949433567}
   - component: {fileID: 5362717922949433566}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7400,7 +7400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717922955230406}
   - component: {fileID: 5362717922955230409}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7493,7 +7493,7 @@ GameObject:
   - component: {fileID: 5362717922994653529}
   - component: {fileID: 5362717922994653531}
   - component: {fileID: 5362717922994653528}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentaclePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7634,7 +7634,7 @@ GameObject:
   - component: {fileID: 5362717923137994417}
   - component: {fileID: 5362717923137994419}
   - component: {fileID: 5362717923137994416}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7726,7 +7726,7 @@ GameObject:
   - component: {fileID: 5362717923149406871}
   - component: {fileID: 5362717923149406868}
   - component: {fileID: 5362717923149406869}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleTip
   m_TagString: TentacleTip
   m_Icon: {fileID: 0}
@@ -7880,7 +7880,7 @@ GameObject:
   - component: {fileID: 5362717923234190058}
   - component: {fileID: 5362717923234190060}
   - component: {fileID: 5362717923234190061}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7970,7 +7970,7 @@ GameObject:
   - component: {fileID: 5362717923239892336}
   - component: {fileID: 5362717923239892338}
   - component: {fileID: 5362717923239892339}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8062,7 +8062,7 @@ GameObject:
   - component: {fileID: 5362717923354315640}
   - component: {fileID: 5362717923354315641}
   - component: {fileID: 5362717923354315638}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleTip
   m_TagString: TentacleTip
   m_Icon: {fileID: 0}
@@ -8214,7 +8214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717923403915036}
   - component: {fileID: 5362717923403915039}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8304,7 +8304,7 @@ GameObject:
   - component: {fileID: 5362717923460707443}
   - component: {fileID: 5362717923460707445}
   - component: {fileID: 5362717923460707442}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8400,7 +8400,7 @@ GameObject:
   - component: {fileID: 5362717923490241172}
   - component: {fileID: 5362717923490241174}
   - component: {fileID: 5362717923490241175}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8490,7 +8490,7 @@ GameObject:
   - component: {fileID: 5362717923497829095}
   - component: {fileID: 5362717923497829097}
   - component: {fileID: 5362717923497829094}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8580,7 +8580,7 @@ GameObject:
   - component: {fileID: 5362717923521284898}
   - component: {fileID: 5362717923521284900}
   - component: {fileID: 5362717923521284901}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8672,7 +8672,7 @@ GameObject:
   - component: {fileID: 5362717923591145123}
   - component: {fileID: 5362717923591145125}
   - component: {fileID: 5362717923591145122}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentaclePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8897,7 +8897,7 @@ GameObject:
   - component: {fileID: 5362717923661125256}
   - component: {fileID: 5362717923661125257}
   - component: {fileID: 5362717923661125254}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleTip
   m_TagString: TentacleTip
   m_Icon: {fileID: 0}
@@ -9049,7 +9049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362717923736174872}
   - component: {fileID: 5362717923736174875}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Tentacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9142,7 +9142,7 @@ GameObject:
   - component: {fileID: 5362717923821273804}
   - component: {fileID: 5362717923821273806}
   - component: {fileID: 5362717923821273807}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentaclePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9283,7 +9283,7 @@ GameObject:
   - component: {fileID: 5362717923831084772}
   - component: {fileID: 5362717923831084774}
   - component: {fileID: 5362717923831084775}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9375,7 +9375,7 @@ GameObject:
   - component: {fileID: 5362717923837101959}
   - component: {fileID: 5362717923837101956}
   - component: {fileID: 5362717923837101957}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleTip
   m_TagString: TentacleTip
   m_Icon: {fileID: 0}
@@ -9529,7 +9529,7 @@ GameObject:
   - component: {fileID: 5362717923848890851}
   - component: {fileID: 5362717923848890853}
   - component: {fileID: 5362717923848890850}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9621,7 +9621,7 @@ GameObject:
   - component: {fileID: 5362717923962306896}
   - component: {fileID: 5362717923962306898}
   - component: {fileID: 5362717923962306899}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentaclePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9764,7 +9764,7 @@ GameObject:
   - component: {fileID: 5362717923962494435}
   - component: {fileID: 5362717923962494432}
   - component: {fileID: 5362717923962494433}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleTip
   m_TagString: TentacleTip
   m_Icon: {fileID: 0}
@@ -9918,7 +9918,7 @@ GameObject:
   - component: {fileID: 5362717923997907892}
   - component: {fileID: 5362717923997907894}
   - component: {fileID: 5362717923997907895}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10010,7 +10010,7 @@ GameObject:
   - component: {fileID: 5362717924066713786}
   - component: {fileID: 5362717924066713787}
   - component: {fileID: 5362717924066713784}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleTip
   m_TagString: TentacleTip
   m_Icon: {fileID: 0}
@@ -10164,7 +10164,7 @@ GameObject:
   - component: {fileID: 5362717924077235641}
   - component: {fileID: 5362717924077235643}
   - component: {fileID: 5362717924077235640}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: TentacleSegment2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10253,7 +10253,7 @@ GameObject:
   - component: {fileID: 2204035451887223177}
   - component: {fileID: 2143849657746224498}
   - component: {fileID: 3975475930366072377}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "ParticleS\xE9lection"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

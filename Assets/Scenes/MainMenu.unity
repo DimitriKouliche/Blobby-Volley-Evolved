@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 21261791}
   - component: {fileID: 21261792}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Party
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 69498145}
   - component: {fileID: 69498146}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AFleche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 143668329}
   - component: {fileID: 143668330}
   - component: {fileID: 143668331}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 234237278}
   - component: {fileID: 234237279}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Credits
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 322060561}
   - component: {fileID: 322060562}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Controls
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 389144213}
   - component: {fileID: 389144215}
   - component: {fileID: 389144214}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,6 +654,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1760196213}
     m_Modifications:
+    - target: {fileID: 3175944169881182731, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3954236492488991093, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -688,6 +693,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299749552025172183, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253321720015643, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253322102159859, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7389253322185801145, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
         type: 3}
@@ -769,10 +789,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7389253322185801146, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253322239632310, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7389253322709019276, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253322709019276, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7389253322709019283, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
         type: 3}
@@ -804,6 +839,36 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7389253322844113942, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253323062553781, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253323284484701, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253323379188486, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253323497482103, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389253323566681571, guid: 5161fa2ee0a7f8645b50cccfe1ba4939,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7389253321720015647, guid: 5161fa2ee0a7f8645b50cccfe1ba4939, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5161fa2ee0a7f8645b50cccfe1ba4939, type: 3}
@@ -823,7 +888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 463936727}
   - component: {fileID: 463936728}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Duel
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -905,7 +970,7 @@ GameObject:
   - component: {fileID: 553057556}
   - component: {fileID: 553057557}
   - component: {fileID: 553057558}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1001,7 +1066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 629693493}
   - component: {fileID: 629693494}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Quit
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -1083,7 +1148,7 @@ GameObject:
   - component: {fileID: 633837317}
   - component: {fileID: 633837319}
   - component: {fileID: 633837318}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParticleSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5838,7 +5903,7 @@ GameObject:
   - component: {fileID: 681384856}
   - component: {fileID: 681384858}
   - component: {fileID: 681384857}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParticleSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10592,7 +10657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 757813942}
   - component: {fileID: 757813943}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Clavier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10674,7 +10739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771826306}
   - component: {fileID: 771826307}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Manette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10756,7 +10821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 791325618}
   - component: {fileID: 791325619}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AFleche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10837,7 +10902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908711763}
   - component: {fileID: 908711764}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Credits
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -10919,7 +10984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1007539201}
   - component: {fileID: 1007539202}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Controls
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -11009,7 +11074,7 @@ GameObject:
   - component: {fileID: 1135868169}
   - component: {fileID: 1135868171}
   - component: {fileID: 1135868170}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "ParticleS\xE9lection"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15763,7 +15828,7 @@ GameObject:
   - component: {fileID: 1151379999}
   - component: {fileID: 1151380001}
   - component: {fileID: 1151380000}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: DuelRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16020,7 +16085,7 @@ GameObject:
   - component: {fileID: 1254977549}
   - component: {fileID: 1254977551}
   - component: {fileID: 1254977550}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "ParticleS\xE9lection"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20857,7 +20922,7 @@ GameObject:
   - component: {fileID: 1372409702}
   - component: {fileID: 1372409704}
   - component: {fileID: 1372409703}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParticleSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25611,7 +25676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1452849043}
   - component: {fileID: 1452849044}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Party
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -25692,7 +25757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1508882766}
   - component: {fileID: 1508882767}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sound
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -25774,7 +25839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1518667869}
   - component: {fileID: 1518667870}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: StartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25842,7 +25907,7 @@ SpriteRenderer:
   m_Size: {x: 1.91, y: 0.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1521471777
@@ -25856,7 +25921,7 @@ GameObject:
   - component: {fileID: 1521471780}
   - component: {fileID: 1521471779}
   - component: {fileID: 1521471778}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: PartyRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26030,7 +26095,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1760196213}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MenuContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26071,7 +26136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787343032}
   - component: {fileID: 1787343033}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Duel
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -26153,7 +26218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1928223549}
   - component: {fileID: 1928223550}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: StartScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26236,7 +26301,7 @@ GameObject:
   - component: {fileID: 1966010765}
   - component: {fileID: 1966010767}
   - component: {fileID: 1966010766}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "ParticleS\xE9lection"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30990,7 +31055,7 @@ GameObject:
   - component: {fileID: 2020266616}
   - component: {fileID: 2020266618}
   - component: {fileID: 2020266617}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "ParticleS\xE9lection"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35744,7 +35809,7 @@ GameObject:
   - component: {fileID: 2039997310}
   - component: {fileID: 2039997312}
   - component: {fileID: 2039997311}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParticleSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40498,7 +40563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5430564568890574545}
   - component: {fileID: 8996888395433718472}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sound
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -45443,7 +45508,7 @@ GameObject:
   - component: {fileID: 3295476751789706717}
   - component: {fileID: 408764307558670290}
   - component: {fileID: 636329502098233332}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Particle02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45525,7 +45590,7 @@ GameObject:
   - component: {fileID: 1646709911988185770}
   - component: {fileID: 5124859595261786051}
   - component: {fileID: 5582335618458737359}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "ParticleS\xE9lection"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50367,7 +50432,7 @@ GameObject:
   - component: {fileID: 5538554772915511419}
   - component: {fileID: 6947175199271373131}
   - component: {fileID: 1443778604218883565}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Particle03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50526,7 +50591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4215317566861839170}
   - component: {fileID: 1019125317416871884}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Quit
   m_TagString: MenuText
   m_Icon: {fileID: 0}
@@ -55234,7 +55299,7 @@ GameObject:
   - component: {fileID: 1980026740163912241}
   - component: {fileID: 271655373021769427}
   - component: {fileID: 8685462800634628558}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60201,7 +60266,7 @@ GameObject:
   - component: {fileID: 2811830690171219277}
   - component: {fileID: 8557050724575178788}
   - component: {fileID: 8982315412174118184}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "ParticleS\xE9lection"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65050,7 +65115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6210694894121202308}
   - component: {fileID: 1346765147710258074}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: CreditRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65068,7 +65133,7 @@ GameObject:
   - component: {fileID: 3145987304090373807}
   - component: {fileID: 2954079604155316820}
   - component: {fileID: 150094416675920159}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParticleSelection
   m_TagString: MenuParticle
   m_Icon: {fileID: 0}
@@ -69744,7 +69809,7 @@ GameObject:
   - component: {fileID: 1183087196466140443}
   - component: {fileID: 1025755071879772682}
   - component: {fileID: 8737507880404370451}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Particle01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69778,7 +69843,7 @@ GameObject:
   - component: {fileID: 1907030510466222408}
   - component: {fileID: 1810754167946263987}
   - component: {fileID: 3732031629462675192}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParticleSelection
   m_TagString: MenuParticle
   m_Icon: {fileID: 0}
