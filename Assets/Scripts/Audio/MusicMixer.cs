@@ -104,6 +104,7 @@ public class MusicMixer : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.clip = gameMusicClips[0];
+        audioSource.loop = true;
         audioSource.Play();
     }
 
