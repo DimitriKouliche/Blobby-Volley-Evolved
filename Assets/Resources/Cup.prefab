@@ -5038,8 +5038,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.02
-      minScalar: 0.01
+      scalar: 0.04
+      minScalar: 0.03
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5783,7 +5783,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 0.5
     - serializedVersion: 2
-      time: 0.02
+      time: 0
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -5838,14 +5838,14 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
       cycleCount: 0
-      repeatInterval: 0.01
+      repeatInterval: 0.1
       probability: 1
     - serializedVersion: 2
       time: 0.1
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5896,7 +5896,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
       cycleCount: 1
-      repeatInterval: 0.01
+      repeatInterval: 0.5
       probability: 1
   SizeModule:
     enabled: 0
@@ -14447,7 +14447,7 @@ GameObject:
   - component: {fileID: 8399981740110397427}
   - component: {fileID: 8399981740110397425}
   - component: {fileID: 8399981740110397426}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: ParticleStars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33546,7 +33546,7 @@ GameObject:
   - component: {fileID: 8399981740855010035}
   - component: {fileID: 8399981740855010033}
   - component: {fileID: 8399981740855010034}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: ParticleTrail02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38304,7 +38304,7 @@ GameObject:
   - component: {fileID: 8399981740947801544}
   - component: {fileID: 689761688}
   - component: {fileID: 1604102657431839616}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Cup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38425,9 +38425,17 @@ MonoBehaviour:
   smashDownwardForce: 20000
   service: 1
   ballHitClips:
-  - {fileID: 8300000, guid: d8e884f421354fd4a90bd91d418fc284, type: 3}
+  - {fileID: 8300000, guid: 69c44dff64830ac44b2d05bff5f2604c, type: 3}
+  - {fileID: 8300000, guid: 9bc97a5a70c1ca64e9eeccf80062aa21, type: 3}
+  - {fileID: 8300000, guid: bd5b770b6e0a03545a407a89ac348667, type: 3}
+  - {fileID: 8300000, guid: d88d6db55795f8f4dba26d95ec524262, type: 3}
+  - {fileID: 8300000, guid: 3ff1d2c40e6409944ab46a22c1d816b1, type: 3}
+  - {fileID: 8300000, guid: 33aabeef5504efe4ead2c5c53193e165, type: 3}
   ballHitVolume: 0.5
-  ballHardHitClips: []
+  ballHardHitClips:
+  - {fileID: 8300000, guid: 61bba61e5b396514d9a431eb5204d73f, type: 3}
+  - {fileID: 8300000, guid: e81a62c9b98d6824d8300117f90d562b, type: 3}
+  - {fileID: 8300000, guid: c9ca5ae17646adb48a7405eca49503ad, type: 3}
   ballHardHitVolume: 1
   chromaticAberrationThreshold: 0.8
   firstHitColor: {r: 0.9137255, g: 0.8156863, b: 0.4627451, a: 1}
