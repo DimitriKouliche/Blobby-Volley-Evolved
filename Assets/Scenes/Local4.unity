@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -11895,15 +11895,50 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8399981739321440240, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981739728285412, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740073934922, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8399981740110397436, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740327001971, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740542303373, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740570288312, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740810991174, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8399981740855010044, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8399981740947801545, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
@@ -11968,7 +12003,7 @@ PrefabInstance:
     - target: {fileID: 8399981740947801546, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
@@ -11980,6 +12015,11 @@ PrefabInstance:
       propertyPath: gameLogics
       value: 
       objectReference: {fileID: 236572989}
+    - target: {fileID: 8399981741089298158, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af61e9e66ace66469e9cd06af4c42e5, type: 3}
 --- !u!1 &760652078
