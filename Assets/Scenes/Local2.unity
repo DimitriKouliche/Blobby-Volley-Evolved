@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -16562,9 +16562,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayers: 2
   pocClip: {fileID: 8300000, guid: 9f69696ee895db74aa375f16fa6e1383, type: 3}
-  pocVolume: 3
+  pocVolume: 4
   blancClip: {fileID: 8300000, guid: 045f1fd9960bb6c4bab4461da4f058ff, type: 3}
-  blancVolume: 3
+  blancVolume: 4
 --- !u!82 &564293584
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32260,6 +32260,41 @@ PrefabInstance:
         type: 3}
       propertyPath: chromaticAberrationThreshold
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 24e578e718182a442a45e0e4dfd1e126, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e9daade7fc345d04a903b07ff7ffe3f7, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: dffe94ba0e9b690459ca1d4803159229, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 38a5edf988959ac41969737a53415152, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 69c1cf7bce28ddd4b87ad8396d2ef958, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHardHitVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitVolume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1299431638664912145, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}
@@ -64238,6 +64273,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 8399981740542303362, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740542303362, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 8399981740542303373, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: m_Layer
@@ -64342,6 +64387,11 @@ PrefabInstance:
         type: 3}
       propertyPath: service
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: ballHitVolume
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8399981741089298158, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}

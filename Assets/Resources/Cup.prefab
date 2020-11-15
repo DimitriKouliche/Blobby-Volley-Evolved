@@ -38431,7 +38431,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d88d6db55795f8f4dba26d95ec524262, type: 3}
   - {fileID: 8300000, guid: 3ff1d2c40e6409944ab46a22c1d816b1, type: 3}
   - {fileID: 8300000, guid: 33aabeef5504efe4ead2c5c53193e165, type: 3}
-  ballHitVolume: 0.5
+  ballHitVolume: 0.3
   ballHardHitClips:
   - {fileID: 8300000, guid: 61bba61e5b396514d9a431eb5204d73f, type: 3}
   - {fileID: 8300000, guid: e81a62c9b98d6824d8300117f90d562b, type: 3}

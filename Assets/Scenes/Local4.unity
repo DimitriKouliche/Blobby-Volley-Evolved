@@ -64311,6 +64311,41 @@ PrefabInstance:
       propertyPath: chromaticAberrationThreshold
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 24e578e718182a442a45e0e4dfd1e126, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e9daade7fc345d04a903b07ff7ffe3f7, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: dffe94ba0e9b690459ca1d4803159229, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 38a5edf988959ac41969737a53415152, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 69c1cf7bce28ddd4b87ad8396d2ef958, type: 3}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHitVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: ballHardHitVolume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1299431638664912145, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}
       propertyPath: m_IsActive
