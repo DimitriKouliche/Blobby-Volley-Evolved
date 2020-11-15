@@ -19203,7 +19203,7 @@ GameObject:
   - component: {fileID: 8399981740327001970}
   - component: {fileID: 8399981740327001968}
   - component: {fileID: 8399981740327001969}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38298,13 +38298,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8399981740947801545}
-  - component: {fileID: 8399981740947801549}
+  - component: {fileID: 4249598187943082925}
   - component: {fileID: 8399981740947801550}
   - component: {fileID: 8399981740947801551}
   - component: {fileID: 8399981740947801544}
   - component: {fileID: 689761688}
   - component: {fileID: 1604102657431839616}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38334,7 +38334,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8399981740947801549
+--- !u!212 &4249598187943082925
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38349,7 +38349,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 011ae314fc3ec54468e063ded047d40f, type: 2}
@@ -38364,7 +38364,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
+  m_StitchLightmapSeams: 1
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -38372,7 +38372,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -919204997
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: e1201823b3b12754499af15db80d9323, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
