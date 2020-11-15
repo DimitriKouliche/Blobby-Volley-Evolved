@@ -148,11 +148,11 @@ MonoBehaviour:
   smashDownwardForce: 20000
   service: 1
   ballHitClips:
-  - {fileID: 8300000, guid: 4396667111d659b469578b3d596f891f, type: 3}
-  - {fileID: 8300000, guid: 21650a7245016bf41bbd2ef3e3f44959, type: 3}
-  - {fileID: 8300000, guid: 1ff97ccf38842cc48ba236c6f2e08a59, type: 3}
-  - {fileID: 8300000, guid: f994e1ab75cae4940a93e60fe1658f94, type: 3}
-  - {fileID: 8300000, guid: d71f216a415be0a4f8bea2d262c26b72, type: 3}
+  - {fileID: 8300000, guid: 14c07d5e1df31e742aa94a0904f22fc9, type: 3}
+  - {fileID: 8300000, guid: 1d7a4935e3f23a5429228d22c8ec1c9d, type: 3}
+  - {fileID: 8300000, guid: b78e45e06409aac478f2ff66a4e5d2ed, type: 3}
+  - {fileID: 8300000, guid: f3803c833ab4ba445b15409c5f43be6c, type: 3}
+  - {fileID: 8300000, guid: f8917f3b11332004ebdd871ce28e225d, type: 3}
   ballHitVolume: 1
   ballHardHitClips:
   - {fileID: 8300000, guid: b42b86bbe23b1354a94917a6fe2aaf31, type: 3}

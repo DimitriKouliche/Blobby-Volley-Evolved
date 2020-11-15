@@ -11983,7 +11983,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b78e45e06409aac478f2ff66a4e5d2ed, type: 3}
   - {fileID: 8300000, guid: f3803c833ab4ba445b15409c5f43be6c, type: 3}
   - {fileID: 8300000, guid: f8917f3b11332004ebdd871ce28e225d, type: 3}
-  ballContactVolume: 0.3
+  ballContactVolume: 0.1
   chargeJumpClips:
   - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
   chargeJumpVolume: 0
