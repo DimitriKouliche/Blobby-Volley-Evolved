@@ -645,7 +645,6 @@ public class GameLogics : MonoBehaviour
 
     void BeginGame()
     {
-        Debug.Log("Beginning Game");
         ResetBlobCharge();
         ToggleMovement(false);
         serve = true;
@@ -693,7 +692,7 @@ public class GameLogics : MonoBehaviour
     {
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().StopMusic();
         Time.timeScale = 0.5f;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1f;
         ball.SetActive(false);
         FindChild(gameObject, "Ball Indicator").SetActive(false);
@@ -708,11 +707,11 @@ public class GameLogics : MonoBehaviour
         }
         if (player == "Blob 1" || player == "Blob 3")
         {
-            FindChild(FindChild(gameOver, "Blackout"), "Spotlight").transform.position = new Vector3(-6f, 0.1f, 0);
+            FindChild(FindChild(gameOver, "Blackout"), "Spotlight").transform.position = new Vector3(-6f, -1f, 0);
         }
         else
         {
-            FindChild(FindChild(gameOver, "Blackout"), "Spotlight").transform.position = new Vector3(6f, 0.1f, 0);
+            FindChild(FindChild(gameOver, "Blackout"), "Spotlight").transform.position = new Vector3(6f, -1f, 0);
         }
         FindChild(FindChild(gameOver, "Blackout"), "Spotlight").SetActive(true);
         yield return new WaitForSeconds(2f);
@@ -815,7 +814,6 @@ public class GameLogics : MonoBehaviour
     }
     public void PlayerServes(GameObject player)
     {
-        Debug.Log("serve");
         if (!isStarting || !isPlaying || !serve)
         {
             return;
