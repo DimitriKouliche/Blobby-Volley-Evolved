@@ -222,7 +222,7 @@ public class GameLogics : MonoBehaviour
     public void ChangeBackground()
     {
 
-        if ((blob1Score < 8 && blob2Score < 8) || backgroundHasChanged)
+        if ((blob1Score < 2 && blob2Score < 2) || backgroundHasChanged)
         {
             return;
         }
@@ -253,6 +253,12 @@ public class GameLogics : MonoBehaviour
 
     public void RestartGame()
     {
+        Transform alternativeBackground = FindChild(FindChild(level, "Background"), "BackgroundAlt").transform;
+        foreach (Transform child in alternativeBackground)
+        {
+            child.gameObject.SetActive(false);
+        }
+        FindChild(level, "Background").GetComponent<SpriteRenderer>().material.SetFloat("_Fade", 1);
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().RestartGameMusic();
         FindChild(gameOver, "Cup").GetComponent<Rigidbody2D>().gravityScale = 0.05f;
         FindChild(gameOver, "Cup").SetActive(false);
