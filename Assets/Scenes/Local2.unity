@@ -64415,6 +64415,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
+      propertyPath: smashImpactClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
       propertyPath: ballIndicator
       value: 
       objectReference: {fileID: 1109192594}
@@ -64438,6 +64443,11 @@ PrefabInstance:
       propertyPath: ballHitVolume
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: smashImpactClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 61bba61e5b396514d9a431eb5204d73f, type: 3}
     - target: {fileID: 8399981741089298158, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: m_Layer

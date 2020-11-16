@@ -121,6 +121,7 @@ public class MusicMixer : MonoBehaviour
         audioSource.Play();
         audioSource.loop = true;
         musicChange = false;
+        GameObject.Find("Gameplay").GetComponent<GameLogics>().ChangeBackground();
     }
 
     public void UpdateVolume() { 

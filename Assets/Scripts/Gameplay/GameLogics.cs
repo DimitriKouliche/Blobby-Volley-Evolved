@@ -210,12 +210,6 @@ public class GameLogics : MonoBehaviour
             }
         }
 
-        if((blob1Score == 10 || blob2Score == 10) && !backgroundHasChanged)
-        {
-            ChangeBackground();
-            backgroundHasChanged = true;
-        }
-
         if (blob1Score == winningScore - 1 || blob2Score == winningScore - 1)
         {
             StartCoroutine(MatchPoint(player));
@@ -225,8 +219,13 @@ public class GameLogics : MonoBehaviour
         StartCoroutine(PlayerWinsCorountine(player));
     }
 
-    void ChangeBackground()
+    public void ChangeBackground()
     {
+
+        if ((blob1Score < 10 && blob2Score < 10) || backgroundHasChanged)
+        {
+            return;
+        }
         int i = 0;
         Transform[] childs = new Transform[50];
         Transform alternativeBackground = FindChild(FindChild(level, "Background"), "BackgroundAlt").transform;
@@ -235,8 +234,21 @@ public class GameLogics : MonoBehaviour
             childs[i] = child;
             i++;
         }
-        Debug.Log(childs.Length);
         childs[UnityEngine.Random.Range(0, i)].gameObject.SetActive(true);
+        StartCoroutine(FadeBackground());
+        backgroundHasChanged = true;
+    }
+
+    IEnumerator FadeBackground()
+    {
+        Material mat = FindChild(level, "Background").GetComponent<SpriteRenderer>().material;
+        float t = 0.0f;
+        while (t < 2f)
+        {
+            mat.SetFloat("_Fade", Mathf.Lerp(1, 0, t / 2));
+            t += Time.deltaTime;
+            yield return null;
+        }
     }
 
     public void RestartGame()
