@@ -16198,6 +16198,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6056774846356824537, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76eafd096f27e6b48854ce73385b7780, type: 2}
+    - target: {fileID: 6056774846356824537, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6355733425544031062, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26681,6 +26691,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BackgroundAlt
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815722539960250992, guid: 7179426c28d3b6540979627884eef43f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815722540085831426, guid: 7179426c28d3b6540979627884eef43f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815722540783157810, guid: 7179426c28d3b6540979627884eef43f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7815722541187027307, guid: 7179426c28d3b6540979627884eef43f,
         type: 3}
