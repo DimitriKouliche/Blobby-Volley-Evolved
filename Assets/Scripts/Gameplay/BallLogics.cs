@@ -22,6 +22,9 @@ public class BallLogics : MonoBehaviour
     public AudioClip[] ballHardHitClips;
     [Range(0f, 5f)]
     public float ballHardHitVolume = 1f;
+    public AudioClip[] tooManyTouchesClips;
+    [Range(0f, 5f)]
+    public float tooManyTouchesVolume = 1f;
     public float chromaticAberrationThreshold = 0.8f;
 
     public Color firstHitColor = new Color(233f / 255f, 208f / 255f, 118f / 255f);
@@ -218,6 +221,13 @@ public class BallLogics : MonoBehaviour
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, ballHitClips.Length);
         audioSource.PlayOneShot(ballHitClips[index], ballHitVolume * intensity * sfxVolume / 100);
+    }
+
+    public void TooManyTouchesSound()
+    {
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
+        int index = Random.Range(0, tooManyTouchesClips.Length);
+        audioSource.PlayOneShot(tooManyTouchesClips[index], tooManyTouchesVolume * sfxVolume / 100);
     }
 
     public void BallHardHitSound()

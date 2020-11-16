@@ -160,6 +160,9 @@ MonoBehaviour:
   ballHardHitClips:
   - {fileID: 8300000, guid: b42b86bbe23b1354a94917a6fe2aaf31, type: 3}
   ballHardHitVolume: 1
+  tooManyTouchesClips:
+  - {fileID: 8300000, guid: 0a25ff5f57eebff49a8539fa1a666908, type: 3}
+  tooManyTouchesVolume: 1
   chromaticAberrationThreshold: 0.8
   firstHitColor: {r: 0.9137255, g: 0.8156863, b: 0.4627451, a: 1}
   secondHitColor: {r: 0.8962264, g: 0.488896, b: 0.07186722, a: 1}
