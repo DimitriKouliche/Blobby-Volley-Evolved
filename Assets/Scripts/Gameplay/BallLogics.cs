@@ -32,7 +32,7 @@ public class BallLogics : MonoBehaviour
     public Color thirdHitColor = new Color(172f / 255f, 49f / 255f, 39f / 255f);
 
     bool follow = false;
-    bool canHit = true;
+    public bool canHit = true;
     Rigidbody2D rigidBody;
     AudioSource audioSource;
 
@@ -301,6 +301,7 @@ public class BallLogics : MonoBehaviour
     
     IEnumerator VictoryMusic()
     {
+        FindChild(GameObject.Find("GameOver"), "Confetti").GetComponent<ParticleSystem>().Stop();
         SpriteRenderer blackSpriteRenderer = FindChild(FindChild(GameObject.Find("GameOver"), "Blackout"), "Black").GetComponent<SpriteRenderer>();
         float t = 0.0f;
         if(blackSpriteRenderer.color.a == 0)

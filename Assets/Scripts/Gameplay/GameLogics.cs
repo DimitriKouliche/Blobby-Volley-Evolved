@@ -256,6 +256,7 @@ public class GameLogics : MonoBehaviour
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().RestartGameMusic();
         FindChild(gameOver, "Cup").GetComponent<Rigidbody2D>().gravityScale = 0.05f;
         FindChild(gameOver, "Cup").SetActive(false);
+        FindChild(GameObject.Find("GameOver"), "Confetti").GetComponent<ParticleSystem>().Play();
         FindChild(gameOver, "Confetti").SetActive(false);
         FindChild(gameOver, "Cup").transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(true);
@@ -288,6 +289,7 @@ public class GameLogics : MonoBehaviour
         matchMessage.SetActive(false);
         pointMessage.SetActive(false);
         ball.GetComponent<BallLogics>().UpdateBall(2);
+        ball.GetComponent<BallLogics>().canHit = true;
         blob1Score = 0;
         blob2Score = 0;
         DisplayScore();
