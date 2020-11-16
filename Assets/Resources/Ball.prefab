@@ -155,9 +155,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f8917f3b11332004ebdd871ce28e225d, type: 3}
   ballHitVolume: 1
   smashImpactClips:
-  - {fileID: 8300000, guid: 1feccaed02a4f6e49aada95430195961, type: 3}
-  - {fileID: 8300000, guid: d8e884f421354fd4a90bd91d418fc284, type: 3}
-  - {fileID: 8300000, guid: 5942737ce5ef5294bbdc53f7b4695763, type: 3}
+  - {fileID: 8300000, guid: dcbd0a7da4aa36f4b8cc7bce146eb57e, type: 3}
   smashImpactVolume: 1
   ballHardHitClips:
   - {fileID: 8300000, guid: b42b86bbe23b1354a94917a6fe2aaf31, type: 3}
