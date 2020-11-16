@@ -267,6 +267,7 @@ public class BallLogics : MonoBehaviour
     }
     IEnumerator BallFlash()
     {
+        GetComponent<Rigidbody2D>().velocity /= 3;
         float t = 0.0f;
         while (t < 0.5f)
         {
