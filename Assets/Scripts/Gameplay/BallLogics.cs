@@ -16,6 +16,9 @@ public class BallLogics : MonoBehaviour
     public AudioClip[] ballHitClips;
     [Range(0f, 5f)]
     public float ballHitVolume = 1f;
+    public AudioClip[] smashImpactClips;
+    [Range(0f, 5f)]
+    public float smashImpactVolume = 1f;
     public AudioClip[] ballHardHitClips;
     [Range(0f, 5f)]
     public float ballHardHitVolume = 1f;
@@ -118,7 +121,7 @@ public class BallLogics : MonoBehaviour
             if (!service)
             {
                 intensity = Mathf.Min((collision.gameObject.transform.position.y - transform.position.y + 2) / 2, 3);
-                collision.gameObject.GetComponent<PlayerSounds>().SmashImpactSound(intensity);
+                SmashImpactSound(intensity);
             } else
             {
                 collision.gameObject.GetComponent<PlayerSounds>().SmashServiceSound();
@@ -222,6 +225,14 @@ public class BallLogics : MonoBehaviour
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, ballHardHitClips.Length);
         audioSource.PlayOneShot(ballHardHitClips[index], ballHitVolume * sfxVolume / 100);
+    }
+
+    void SmashImpactSound(float intensity)
+    {
+        Debug.Log("smash");
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
+        int index = Random.Range(0, smashImpactClips.Length);
+        audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume * intensity * sfxVolume / 100);
     }
 
     public void UpdateBall(int touches)

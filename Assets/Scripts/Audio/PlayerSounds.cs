@@ -80,13 +80,6 @@ public class PlayerSounds : MonoBehaviour
         audioSource.PlayOneShot(smashClips[index], smashVolume * sfxVolume / 100);
     }
 
-    public void SmashImpactSound(float intensity)
-    {
-        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
-        int index = Random.Range(0, smashImpactClips.Length);
-        audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume * intensity * sfxVolume / 100);
-    }
-
     public void SmashServiceSound()
     {
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
