@@ -229,7 +229,6 @@ public class BallLogics : MonoBehaviour
 
     void SmashImpactSound(float intensity)
     {
-        Debug.Log("smash");
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, smashImpactClips.Length);
         audioSource.PlayOneShot(smashImpactClips[index], smashImpactVolume * intensity * sfxVolume / 100);
