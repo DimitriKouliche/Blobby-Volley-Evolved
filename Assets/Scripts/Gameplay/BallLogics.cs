@@ -228,6 +228,7 @@ public class BallLogics : MonoBehaviour
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
         int index = Random.Range(0, tooManyTouchesClips.Length);
         audioSource.PlayOneShot(tooManyTouchesClips[index], tooManyTouchesVolume * sfxVolume / 100);
+        StartCoroutine(BallFlash());
     }
 
     public void BallHardHitSound()
@@ -263,6 +264,27 @@ public class BallLogics : MonoBehaviour
         }
         FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().Stop();
         FindChild(gameObject, "ParticleBall").GetComponent<ParticleSystem>().Play();
+    }
+    IEnumerator BallFlash()
+    {
+        float t = 0.0f;
+        while (t < 0.5f)
+        {
+            Material mat = GetComponent<SpriteRenderer>().material;
+            mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0.75f, 0, t * 2)));
+            Debug.Log(mat.color);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        t = 0.0f;
+        while (t < 0.5f)
+        {
+            Material mat = GetComponent<SpriteRenderer>().material;
+            mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0, 1, t * 2)));
+            Debug.Log(mat.color);
+            t += Time.deltaTime;
+            yield return null;
+        }
     }
 
     IEnumerator SmoothFollow(float duration, float originX)
