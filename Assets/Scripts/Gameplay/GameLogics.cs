@@ -255,6 +255,8 @@ public class GameLogics : MonoBehaviour
     {
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().RestartGameMusic();
         FindChild(gameOver, "Cup").GetComponent<Rigidbody2D>().gravityScale = 0.05f;
+        FindChild(gameOver, "Cup").SetActive(false);
+        FindChild(gameOver, "Confetti").SetActive(false);
         FindChild(gameOver, "Cup").transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(true);
         FindChild(FindChild(blob2, "SpriteBlob"), "EyesWhite").SetActive(true);
@@ -276,12 +278,15 @@ public class GameLogics : MonoBehaviour
         FindChild(level, "Background").SetActive(true);
         FindChild(gameOver, "PressToContinue").SetActive(false);
         FindChild(level, "RedBackground").SetActive(false);
+        FindChild(FindChild(gameOver, "Blackout"), "Spotlight").SetActive(false);
         ResetPositions("Blob 1");
         ResetBlobPositions();
         isStarting = false;
         isPlaying = false;
         ball.SetActive(true);
         gameOver.SetActive(false);
+        matchMessage.SetActive(false);
+        pointMessage.SetActive(false);
         ball.GetComponent<BallLogics>().UpdateBall(2);
         blob1Score = 0;
         blob2Score = 0;
@@ -691,10 +696,30 @@ public class GameLogics : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Time.timeScale = 1f;
         ball.SetActive(false);
+        FindChild(gameObject, "Ball Indicator").SetActive(false);
         gameOver.SetActive(true);
+        SpriteRenderer blackSpriteRenderer = FindChild(FindChild(gameOver, "Blackout"), "Black").GetComponent<SpriteRenderer>();
+        float t = 0.0f;
+        while (t < 2f)
+        {
+            blackSpriteRenderer.color = new Color(blackSpriteRenderer.color.r, blackSpriteRenderer.color.g, blackSpriteRenderer.color.b, Mathf.Lerp(0, 0.85f, t * 2));
+            t += Time.deltaTime;
+            yield return null;
+        }
+        if (player == "Blob 1" || player == "Blob 3")
+        {
+            FindChild(FindChild(gameOver, "Blackout"), "Spotlight").transform.position = new Vector3(-6f, 0.1f, 0);
+        }
+        else
+        {
+            FindChild(FindChild(gameOver, "Blackout"), "Spotlight").transform.position = new Vector3(6f, 0.1f, 0);
+        }
+        FindChild(FindChild(gameOver, "Blackout"), "Spotlight").SetActive(true);
+        yield return new WaitForSeconds(2f);
         FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(false);
         FindChild(FindChild(blob2, "SpriteBlob"), "EyesWhite").SetActive(false);
-        FindChild(gameOver, "PressToContinue").SetActive(true);
+        FindChild(gameOver, "Cup").SetActive(true);
+        FindChild(gameOver, "Confetti").SetActive(true);
         if (maxPlayers == 4)
         {
             FindChild(FindChild(blob3, "SpriteBlob"), "EyesWhite").SetActive(false);
@@ -702,7 +727,7 @@ public class GameLogics : MonoBehaviour
         }
         if (player == "Blob 1" || player == "Blob 3")
         {
-            FindChild(gameOver, "Cup").transform.position = new Vector3(-5, 5, 0);
+            FindChild(gameOver, "Cup").transform.position = new Vector3(-6, 5, 0);
             FindChild(gameOver, "Confetti").transform.position = new Vector3(-9, 12, -20);
             FindChild(FindChild(blob1, "SpriteBlob"), "HappyEyes").SetActive(true);
             FindChild(FindChild(blob2, "SpriteBlob"), "SadEyes").SetActive(true);
@@ -714,7 +739,7 @@ public class GameLogics : MonoBehaviour
         }
         else
         {
-            FindChild(gameOver, "Cup").transform.position = new Vector3(5, 5, 0);
+            FindChild(gameOver, "Cup").transform.position = new Vector3(6, 5, 0);
             FindChild(gameOver, "Confetti").transform.position = new Vector3(9, 12, -20);
             FindChild(FindChild(blob2, "SpriteBlob"), "HappyEyes").SetActive(true);
             FindChild(FindChild(blob1, "SpriteBlob"), "SadEyes").SetActive(true);
@@ -726,6 +751,7 @@ public class GameLogics : MonoBehaviour
         }
         isPlaying = true;
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().gameOver = true;
+        FindChild(gameOver, "PressToContinue").SetActive(true);
     }
 
     public int GetTeamFromPlayer(int playerId)
@@ -789,6 +815,7 @@ public class GameLogics : MonoBehaviour
     }
     public void PlayerServes(GameObject player)
     {
+        Debug.Log("serve");
         if (!isStarting || !isPlaying || !serve)
         {
             return;

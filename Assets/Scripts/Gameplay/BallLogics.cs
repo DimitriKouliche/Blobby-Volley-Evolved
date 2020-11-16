@@ -186,7 +186,7 @@ public class BallLogics : MonoBehaviour
         particles.startColor = new Color(1, 1, 1, opacity);
         if (ballIndicator!= null && ballIndicator.activeSelf)
         {
-            ballIndicator.transform.position = new Vector3(transform.position.x, 7f, -2);
+            ballIndicator.transform.position = new Vector3(transform.position.x, 6.5f, -2);
         }
     }
 
@@ -299,10 +299,24 @@ public class BallLogics : MonoBehaviour
         follow = false;
     }
     
-
     IEnumerator VictoryMusic()
     {
-        yield return new WaitForSeconds(3);
+        SpriteRenderer blackSpriteRenderer = FindChild(FindChild(GameObject.Find("GameOver"), "Blackout"), "Black").GetComponent<SpriteRenderer>();
+        float t = 0.0f;
+        if(blackSpriteRenderer.color.a == 0)
+        {
+            yield return new WaitForSeconds(2);
+        }
+        else
+        {
+            while (t < 2f)
+            {
+                blackSpriteRenderer.color = new Color(blackSpriteRenderer.color.r, blackSpriteRenderer.color.g, blackSpriteRenderer.color.b, Mathf.Lerp(0.85f, 0, t * 2));
+                t += Time.deltaTime;
+                yield return null;
+            }
+        }
+        yield return new WaitForSeconds(1);
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
     }
 
