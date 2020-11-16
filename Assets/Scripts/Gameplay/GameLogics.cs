@@ -223,7 +223,6 @@ public class GameLogics : MonoBehaviour
             FindChild(level, "RedBackground").SetActive(true);
         }
         StartCoroutine(PlayerWinsCorountine(player));
-        ball.GetComponent<BallLogics>().UpdateBall(2);
     }
 
     void ChangeBackground()
@@ -670,6 +669,7 @@ public class GameLogics : MonoBehaviour
         ResetPositions(player);
         EraseMessage();
         BeginGame();
+        ball.GetComponent<BallLogics>().UpdateBall(2);
     }
 
     IEnumerator GameOver(string player)

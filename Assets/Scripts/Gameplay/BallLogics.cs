@@ -272,7 +272,6 @@ public class BallLogics : MonoBehaviour
         {
             Material mat = GetComponent<SpriteRenderer>().material;
             mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0.75f, 0, t * 2)));
-            Debug.Log(mat.color);
             t += Time.deltaTime;
             yield return null;
         }
@@ -281,7 +280,6 @@ public class BallLogics : MonoBehaviour
         {
             Material mat = GetComponent<SpriteRenderer>().material;
             mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0, 1, t * 2)));
-            Debug.Log(mat.color);
             t += Time.deltaTime;
             yield return null;
         }
