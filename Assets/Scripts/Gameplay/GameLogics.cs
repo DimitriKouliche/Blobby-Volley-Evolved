@@ -222,7 +222,7 @@ public class GameLogics : MonoBehaviour
     public void ChangeBackground()
     {
 
-        if ((blob1Score < 10 && blob2Score < 10) || backgroundHasChanged)
+        if ((blob1Score < 8 && blob2Score < 8) || backgroundHasChanged)
         {
             return;
         }
