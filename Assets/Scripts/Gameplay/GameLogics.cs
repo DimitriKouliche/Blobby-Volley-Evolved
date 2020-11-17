@@ -156,7 +156,6 @@ public class GameLogics : MonoBehaviour
 
     public void PlayerWins(string player)
     {
-        ChangeBackground();
         if (roundTime > 300)
         {
             Debug.Log("Achievement: LONG_PLAY");
