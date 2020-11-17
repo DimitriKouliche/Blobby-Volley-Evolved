@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1088,7 +1088,7 @@ PrefabInstance:
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: smashImpactClips.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
@@ -1113,7 +1113,7 @@ PrefabInstance:
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: ballHitVolume
-      value: 0.2
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
@@ -1124,6 +1124,26 @@ PrefabInstance:
         type: 3}
       propertyPath: dashUpwardForce
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: smashImpactVolume
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: smashImpactClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e81a62c9b98d6824d8300117f90d562b, type: 3}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: smashImpactClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: c9ca5ae17646adb48a7405eca49503ad, type: 3}
+    - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
+        type: 3}
+      propertyPath: ballHardHitVolume
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8399981741089298158, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
@@ -64557,6 +64577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ballHardHitVolume
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: smashImpactVolume
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1299431638664912145, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}
