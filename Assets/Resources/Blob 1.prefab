@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.011
+  framerate: 0.008
   loop: 0
   rotate: 0
   frameArray:
@@ -908,7 +908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.025
+  framerate: 0.022
   loop: 0
   rotate: 0
   frameArray:

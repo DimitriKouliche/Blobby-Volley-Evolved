@@ -285,6 +285,17 @@
                     "action": "Bump",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ea3390d-35f2-4bf8-9f39-cdc32a004f9d",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Bump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
