@@ -103,11 +103,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 22
-  m_LinearDrag: 0.5
+  m_Mass: 30
+  m_LinearDrag: 0.3
   m_AngularDrag: 0.05
   m_GravityScale: 1.2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a90f2ebc2aa8b3c408a4e7379ca6d75a, type: 2}
   m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -142,10 +142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballIndicator: {fileID: 0}
   gameLogics: {fileID: 0}
-  dashUpwardForce: 25000
-  bumpUpwardForce: 20000
-  serviceForce: 4000
-  smashDownwardForce: 23000
+  dashUpwardForce: 30000
+  bumpUpwardForce: 25000
+  serviceForce: 6000
+  smashDownwardForce: 30000
   service: 1
   ballHitClips:
   - {fileID: 8300000, guid: 14c07d5e1df31e742aa94a0904f22fc9, type: 3}

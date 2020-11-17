@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.015
+  framerate: 0.011
   loop: 0
   rotate: 0
   frameArray:
@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.011
+  framerate: 0.009
   loop: 0
   rotate: 0
   frameArray:
@@ -908,7 +908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.03
+  framerate: 0.025
   loop: 0
   rotate: 0
   frameArray:
@@ -10669,7 +10669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stayInPlace: 0
-  framerate: 0.011
+  framerate: 0.009
   loop: 0
   rotate: 0
   frameArray:
@@ -11809,7 +11809,7 @@ Transform:
   m_GameObject: {fileID: 8330191615473064848}
   m_LocalRotation: {x: 0, y: 0, z: 0.42261827, w: 0.9063079}
   m_LocalPosition: {x: -10, y: -6.4, z: -2}
-  m_LocalScale: {x: 0.17897849, y: 0.17897849, z: 0.35795698}
+  m_LocalScale: {x: 0.21, y: 0.21, z: 0.21}
   m_Children:
   - {fileID: 8330191616336779352}
   - {fileID: 8330191616122438501}
@@ -11841,9 +11841,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 30
-  m_LinearDrag: 0.5
+  m_LinearDrag: 0.4
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 4.5
   m_Material: {fileID: 6200000, guid: e9748dceb11716a43804ca447cc98fc9, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -11892,11 +11892,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c37b1d213b8b644bc5f4f44ded9071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 9
+  maxSpeed: 10
   jumpHeight: 55
   dashDistance: 20
   gravityScale: 4
-  smashRadius: 10
+  smashRadius: 12
   bumpRadius: 20
   gameLogics: {fileID: 0}
   isDashing: 0
@@ -11984,9 +11984,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f3803c833ab4ba445b15409c5f43be6c, type: 3}
   - {fileID: 8300000, guid: f8917f3b11332004ebdd871ce28e225d, type: 3}
   ballContactVolume: 0.1
-  chargeJumpClips:
-  - {fileID: 8300000, guid: da72c3affa458484f88f1450b9538f5a, type: 3}
-  chargeJumpVolume: 0
   smashClips:
   - {fileID: 8300000, guid: e2ba671a28668fe4788487cff108c5db, type: 3}
   - {fileID: 8300000, guid: aeff457c3387e754d9fb0add4202e32d, type: 3}
@@ -12671,9 +12668,9 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 16
-  pivotCapSmoothness: 1
-  tipCapSmoothness: 1
+  smoothness: 32
+  pivotCapSmoothness: 8
+  tipCapSmoothness: 8
   width: 0.1
   shape:
     serializedVersion: 2
@@ -12703,8 +12700,8 @@ MonoBehaviour:
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 20000
-  frequency: 1
+  speed: 30000
+  frequency: 3
   amplitude: 40
   animationDelay: 0
   debugOutline: 0
@@ -13375,9 +13372,9 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 16
-  pivotCapSmoothness: 1
-  tipCapSmoothness: 1
+  smoothness: 32
+  pivotCapSmoothness: 8
+  tipCapSmoothness: 8
   width: 0.1
   shape:
     serializedVersion: 2
@@ -13407,8 +13404,8 @@ MonoBehaviour:
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 20000
-  frequency: 1
+  speed: 30000
+  frequency: 3
   amplitude: 30
   animationDelay: 0
   debugOutline: 0
@@ -14031,9 +14028,9 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 16
-  pivotCapSmoothness: 1
-  tipCapSmoothness: 1
+  smoothness: 32
+  pivotCapSmoothness: 8
+  tipCapSmoothness: 8
   width: 0.1
   shape:
     serializedVersion: 2
@@ -14063,8 +14060,8 @@ MonoBehaviour:
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 20000
-  frequency: 1
+  speed: 30000
+  frequency: 3
   amplitude: 70
   animationDelay: 0
   debugOutline: 0
@@ -14120,9 +14117,9 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 16
-  pivotCapSmoothness: 1
-  tipCapSmoothness: 1
+  smoothness: 32
+  pivotCapSmoothness: 8
+  tipCapSmoothness: 8
   width: 0.1
   shape:
     serializedVersion: 2
@@ -14152,8 +14149,8 @@ MonoBehaviour:
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 20000
-  frequency: 1
+  speed: 30000
+  frequency: 3
   amplitude: 60
   animationDelay: 0
   debugOutline: 0
@@ -14528,9 +14525,9 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 16
-  pivotCapSmoothness: 1
-  tipCapSmoothness: 1
+  smoothness: 32
+  pivotCapSmoothness: 8
+  tipCapSmoothness: 8
   width: 0.1
   shape:
     serializedVersion: 2
@@ -14560,8 +14557,8 @@ MonoBehaviour:
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 20000
-  frequency: 1
+  speed: 30000
+  frequency: 3
   amplitude: 120
   animationDelay: 0
   debugOutline: 0
@@ -15488,9 +15485,9 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 16
-  pivotCapSmoothness: 1
-  tipCapSmoothness: 1
+  smoothness: 32
+  pivotCapSmoothness: 8
+  tipCapSmoothness: 8
   width: 0.1
   shape:
     serializedVersion: 2
@@ -15520,8 +15517,8 @@ MonoBehaviour:
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 20000
-  frequency: 1
+  speed: 30000
+  frequency: 3
   amplitude: 100
   animationDelay: 0
   debugOutline: 0
@@ -16005,9 +16002,9 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 16
-  pivotCapSmoothness: 1
-  tipCapSmoothness: 1
+  smoothness: 32
+  pivotCapSmoothness: 8
+  tipCapSmoothness: 8
   width: 0.1
   shape:
     serializedVersion: 2
@@ -16037,8 +16034,8 @@ MonoBehaviour:
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 20000
-  frequency: 1
+  speed: 30000
+  frequency: 3
   amplitude: 70
   animationDelay: 0
   debugOutline: 0
@@ -16184,9 +16181,9 @@ MonoBehaviour:
   color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   textureType: 2
-  smoothness: 16
-  pivotCapSmoothness: 1
-  tipCapSmoothness: 1
+  smoothness: 32
+  pivotCapSmoothness: 8
+  tipCapSmoothness: 8
   width: 0.1
   shape:
     serializedVersion: 2
@@ -16216,8 +16213,8 @@ MonoBehaviour:
   animation: 1
   target: {fileID: 0}
   targetRigidbody: {fileID: 0}
-  speed: 20000
-  frequency: 1
+  speed: 30000
+  frequency: 3
   amplitude: 50
   animationDelay: 0
   debugOutline: 0

@@ -389,7 +389,7 @@ public class BallLogics : MonoBehaviour
         yield return StartCoroutine(WaitForRealSeconds(duration));
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(false);
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrameWhite").SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1.2f;
         Camera.main.GetComponent<CameraShake>().Shake();
         StartCoroutine(SmashParticleTrail(0.7f));
     }

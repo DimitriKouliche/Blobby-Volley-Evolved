@@ -734,6 +734,7 @@ public class GameLogics : MonoBehaviour
 
     void BeginGame()
     {
+        Time.timeScale = 1.2f;
         ResetBlobCharge();
         ToggleMovement(false);
         serve = true;
@@ -794,7 +795,7 @@ public class GameLogics : MonoBehaviour
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().StopMusic();
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(0.5f);
-        Time.timeScale = 1f;
+        Time.timeScale = 1.2f;
         ball.SetActive(false);
         FindChild(gameObject, "Ball Indicator").SetActive(false);
         gameOver.SetActive(true);
