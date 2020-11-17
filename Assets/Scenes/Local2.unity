@@ -10740,7 +10740,7 @@ MonoBehaviour:
   isPlaying: 1
   isOnline: 0
   maxPlayers: 2
-  winningScore: 2
+  winningScore: 15
 --- !u!4 &236572991
 Transform:
   m_ObjectHideFlags: 0
