@@ -21,6 +21,13 @@ public class SpriteAnimator : MonoBehaviour
         localPosition = transform.localPosition;
     }
 
+    private void OnDisable()
+    {
+        currentFrame = 0;
+        timer = 0f;
+        spriteRenderer.sprite = frameArray[0];
+    }
+
     void OnEnable()
     {
         if(transform.parent != null)

@@ -9,6 +9,7 @@ public class SplashController : MonoBehaviour
     public GameObject rules1v1;
     public GameObject rules2v2;
     InputAction confirmAction;
+    InputAction cancelAction;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class SplashController : MonoBehaviour
             rules1v1.SetActive(false);
         }
         confirmAction = GetComponent<PlayerInput>().actions["Confirm"];
+        cancelAction = GetComponent<PlayerInput>().actions["Cancel"];
 
         confirmAction.started += ctx =>
         {
@@ -33,10 +35,18 @@ public class SplashController : MonoBehaviour
                 StartCoroutine(ConfirmAnimation("Local2"));
             }
         };
+        cancelAction.started += ctx =>
+        {
+            if (this == null)
+            {
+                return;
+            }
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        };
     }
     IEnumerator ConfirmAnimation(string scene)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }
