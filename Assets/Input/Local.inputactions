@@ -168,7 +168,7 @@
                 {
                     "name": "",
                     "id": "d99021af-e359-45d6-9953-551ff33d2b3c",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/space",
                     "interactions": "Hold(duration=500)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -205,6 +205,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1290db8f-e564-4086-95b3-438df37f40de",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -267,7 +278,7 @@
                 {
                     "name": "",
                     "id": "6ac522e1-8fea-476e-8a1b-bcbd7552be1c",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/leftAlt",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
