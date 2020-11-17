@@ -78,7 +78,6 @@ public class BallLogics : MonoBehaviour
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
             if (intensity > chromaticAberrationThreshold)
             {
-                Debug.Log("Achievement won: RAINBOW");
                 if (SteamManager.Initialized)
                 {
                     SteamUserStats.SetAchievement("RAINBOW");
@@ -193,7 +192,6 @@ public class BallLogics : MonoBehaviour
     {
         if (timeBetweenCollisions > 5.9f)
         {
-            Debug.Log("Achievement: BALL");
             if (SteamManager.Initialized)
             {
                 SteamUserStats.SetAchievement("BALL");
@@ -344,7 +342,7 @@ public class BallLogics : MonoBehaviour
     
     IEnumerator VictoryMusic()
     {
-        if(victoryMusicIsPlayed)
+        if (victoryMusicIsPlayed)
         {
             yield break;
         }
@@ -368,11 +366,9 @@ public class BallLogics : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
-        Debug.Log("Waiting...");
         yield return new WaitForSeconds(300);
         if(gameOver.activeSelf)
         {
-            Debug.Log("Achievement won: JANITOR");
             if (SteamManager.Initialized)
             {
                 SteamUserStats.SetAchievement("JANITOR");

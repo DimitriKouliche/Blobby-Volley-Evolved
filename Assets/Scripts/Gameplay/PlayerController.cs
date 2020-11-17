@@ -216,7 +216,6 @@ public class PlayerController : MonoBehaviour
         if (PlayerPrefs.GetInt("hasSmashed", 0) == 1 && PlayerPrefs.GetInt("hasBumped", 0) == 1 &&
             PlayerPrefs.GetInt("hasJumped", 0) == 1 && PlayerPrefs.GetInt("hasDashed", 0) == 1)
         {
-            Debug.Log("Achievement: SKILLED");
             if (SteamManager.Initialized)
             {
                 SteamUserStats.SetAchievement("SKILLED");
@@ -284,6 +283,10 @@ public class PlayerController : MonoBehaviour
             return true;
         }
         if (GameObject.Find("Blob 4(Clone)") && gameObject.name != "Blob 4(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 4(Clone)").GetComponent<CircleCollider2D>()))
+        {
+            return true;
+        }
+        if (GameObject.Find("Cup") && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Cup").GetComponent<EdgeCollider2D>()))
         {
             return true;
         }

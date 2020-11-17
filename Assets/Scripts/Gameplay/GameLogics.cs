@@ -158,7 +158,6 @@ public class GameLogics : MonoBehaviour
     {
         if (roundTime > 300)
         {
-            Debug.Log("Achievement: LONG_PLAY");
             if (SteamManager.Initialized)
             {
                 SteamUserStats.SetAchievement("LONG_PLAY");
@@ -189,13 +188,6 @@ public class GameLogics : MonoBehaviour
         DisplayScore();
         if (blob1Score >= winningScore || blob2Score >= winningScore)
         {
-            if (maxPlayers == 4)
-            {
-                Debug.Log("Achievement: TEAMWORK");
-            } else
-            {
-                Debug.Log("Achievement: DUEL");
-            }
             if (SteamManager.Initialized)
             {
                 if(maxPlayers == 4)
@@ -210,7 +202,6 @@ public class GameLogics : MonoBehaviour
 
             if(blob1Score == 0 || blob2Score == 0)
             {
-                Debug.Log("Achievement: NO_MERCY");
                 if (SteamManager.Initialized)
                 {
                     SteamUserStats.SetAchievement("NO_MERCY");
@@ -260,7 +251,7 @@ public class GameLogics : MonoBehaviour
 
     public void ChangeBackground()
     {
-        if ((blob1Score < 8 && blob2Score < 8) || backgroundHasChanged)
+        if ((blob1Score < winningScore/2 && blob2Score < winningScore/2) || backgroundHasChanged)
         {
             return;
         }
@@ -286,7 +277,6 @@ public class GameLogics : MonoBehaviour
         }
         if(sightseer)
         {
-            Debug.Log("Achievement: SIGHTSEEING");
             if (SteamManager.Initialized)
             {
                 SteamUserStats.SetAchievement("SIGHTSEEING");
@@ -317,6 +307,7 @@ public class GameLogics : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+        backgroundHasChanged = false;
         FindChild(level, "Background").GetComponent<SpriteRenderer>().material.SetFloat("_Fade", 1);
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().RestartGameMusic();
         FindChild(gameOver, "Cup").GetComponent<Rigidbody2D>().gravityScale = 0.05f;
@@ -355,7 +346,7 @@ public class GameLogics : MonoBehaviour
         pointMessage.SetActive(false);
         ball.GetComponent<BallLogics>().UpdateBall(2);
         ball.GetComponent<BallLogics>().canHit = true;
-        ball.GetComponent<BallLogics>().victoryMusicIsPlayed = false;
+        FindChild(gameOver, "Cup").GetComponent<BallLogics>().victoryMusicIsPlayed = false;
         ball.GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(1, 1, 1, 1));
         blob1Score = 0;
         blob2Score = 0;
@@ -574,7 +565,6 @@ public class GameLogics : MonoBehaviour
         {
             if (blobColor[cpt].g == 0.827451f && blobSprite[cpt].name == "SquidH")
             {
-                Debug.Log("Achievement: PINEAPPLE");
                 if (SteamManager.Initialized)
                 {
                     SteamUserStats.SetAchievement("PINEAPPLE");
@@ -585,7 +575,6 @@ public class GameLogics : MonoBehaviour
 
         if(maxPlayers == 4 && blobSprite[0].name == "SquidE" && blobSprite[1].name == "SquidE" && blobSprite[2].name == "SquidE" && blobSprite[3].name == "SquidE")
         {
-            Debug.Log("Achievement: PACMAN");
             if (SteamManager.Initialized)
             {
                 SteamUserStats.SetAchievement("PACMAN");
@@ -796,7 +785,6 @@ public class GameLogics : MonoBehaviour
         PlayerPrefs.SetInt("GamesPlayed", gamesPlayed);
         if (gamesPlayed == 100)
         {
-            Debug.Log("Achievement: PLAYER");
             if (SteamManager.Initialized)
             {
                 SteamUserStats.SetAchievement("PLAYER");
