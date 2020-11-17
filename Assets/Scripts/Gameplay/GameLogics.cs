@@ -6,6 +6,7 @@ using UnityEngine.InputSystem.Users;
 using Cubequad.Tentacles2D;
 using System;
 using UnityEngine.SceneManagement;
+using Steamworks;
 
 public class GameLogics : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class GameLogics : MonoBehaviour
     Sprite[] blobSprite = new Sprite[4];
     GameObject musicMixer;
     bool backgroundHasChanged = false;
+    float roundTime = 0;
 
     public void ResetVelocity(GameObject target)
     {
@@ -154,6 +156,16 @@ public class GameLogics : MonoBehaviour
 
     public void PlayerWins(string player)
     {
+        ChangeBackground();
+        if (roundTime > 300)
+        {
+            Debug.Log("Achievement: LONG_PLAY");
+            if (SteamManager.Initialized)
+            {
+                SteamUserStats.SetAchievement("LONG_PLAY");
+                SteamUserStats.StoreStats();
+            }
+        }
         isStarting = false;
         isPlaying = false;
         for (int i = 0; i < 4; i++)
@@ -178,6 +190,34 @@ public class GameLogics : MonoBehaviour
         DisplayScore();
         if (blob1Score >= winningScore || blob2Score >= winningScore)
         {
+            if (maxPlayers == 4)
+            {
+                Debug.Log("Achievement: TEAMWORK");
+            } else
+            {
+                Debug.Log("Achievement: DUEL");
+            }
+            if (SteamManager.Initialized)
+            {
+                if(maxPlayers == 4)
+                {
+                    SteamUserStats.SetAchievement("TEAMWORK");
+                } else
+                {
+                    SteamUserStats.SetAchievement("DUEL");
+                }
+                SteamUserStats.StoreStats();
+            }
+
+            if(blob1Score == 0 || blob2Score == 0)
+            {
+                Debug.Log("Achievement: NO_MERCY");
+                if (SteamManager.Initialized)
+                {
+                    SteamUserStats.SetAchievement("NO_MERCY");
+                    SteamUserStats.StoreStats();
+                }
+            }
             StartCoroutine(GameOver(player));
             return;
         }
@@ -221,8 +261,7 @@ public class GameLogics : MonoBehaviour
 
     public void ChangeBackground()
     {
-
-        if ((blob1Score < 2 && blob2Score < 2) || backgroundHasChanged)
+        if ((blob1Score < 8 && blob2Score < 8) || backgroundHasChanged)
         {
             return;
         }
@@ -231,10 +270,31 @@ public class GameLogics : MonoBehaviour
         Transform alternativeBackground = FindChild(FindChild(level, "Background"), "BackgroundAlt").transform;
         foreach (Transform child in alternativeBackground)
         {
+
             childs[i] = child;
             i++;
         }
-        childs[UnityEngine.Random.Range(0, i)].gameObject.SetActive(true);
+        int randomBackground = UnityEngine.Random.Range(0, i);
+        PlayerPrefs.SetInt("Background" + randomBackground, 1);
+        bool sightseer = true;
+        for (int j = 0; j < i; j++)
+        {
+            if (PlayerPrefs.GetInt("Background" + j, 0) == 0)
+            {
+                sightseer = false;
+                break;
+            }
+        }
+        if(sightseer)
+        {
+            Debug.Log("Achievement: SIGHTSEEING");
+            if (SteamManager.Initialized)
+            {
+                SteamUserStats.SetAchievement("SIGHTSEEING");
+                SteamUserStats.StoreStats();
+            }
+        }
+        childs[randomBackground].gameObject.SetActive(true);
         StartCoroutine(FadeBackground());
         backgroundHasChanged = true;
     }
@@ -379,6 +439,11 @@ public class GameLogics : MonoBehaviour
         playerSelection.transform.parent = selectionMenu.transform;
     }
 
+    private void Update()
+    {
+        roundTime += Time.deltaTime;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -498,6 +563,29 @@ public class GameLogics : MonoBehaviour
             while (!playerReady[0] || !playerReady[1])
             {
                 yield return null;
+            }
+        }
+
+        for(int cpt = 0; cpt < maxPlayers; cpt++)
+        {
+            if (blobColor[cpt].g == 0.827451f && blobSprite[cpt].name == "SquidH")
+            {
+                Debug.Log("Achievement: PINEAPPLE");
+                if (SteamManager.Initialized)
+                {
+                    SteamUserStats.SetAchievement("PINEAPPLE");
+                    SteamUserStats.StoreStats();
+                }
+            }
+        }
+
+        if(maxPlayers == 4 && blobSprite[0].name == "SquidE" && blobSprite[1].name == "SquidE" && blobSprite[2].name == "SquidE" && blobSprite[3].name == "SquidE")
+        {
+            Debug.Log("Achievement: PACMAN");
+            if (SteamManager.Initialized)
+            {
+                SteamUserStats.SetAchievement("PACMAN");
+                SteamUserStats.StoreStats();
             }
         }
 
@@ -694,10 +782,23 @@ public class GameLogics : MonoBehaviour
         EraseMessage();
         BeginGame();
         ball.GetComponent<BallLogics>().UpdateBall(2);
+        roundTime = 0;
     }
 
     IEnumerator GameOver(string player)
     {
+        int gamesPlayed = PlayerPrefs.GetInt("GamesPlayed", 0);
+        gamesPlayed++;
+        PlayerPrefs.SetInt("GamesPlayed", gamesPlayed);
+        if (gamesPlayed == 100)
+        {
+            Debug.Log("Achievement: PLAYER");
+            if (SteamManager.Initialized)
+            {
+                SteamUserStats.SetAchievement("PLAYER");
+                SteamUserStats.StoreStats();
+            }
+        }
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().StopMusic();
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(0.5f);

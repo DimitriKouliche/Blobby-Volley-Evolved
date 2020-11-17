@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.IO.IsolatedStorage;
+using Steamworks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -96,7 +97,6 @@ public class PlayerController : MonoBehaviour
             }
             if (IsPlaying() && Time.timeScale != 0)
             {
-                playerSounds.ChargeJumpSound();
                 chargingJump = true;
             }
         };
@@ -119,6 +119,8 @@ public class PlayerController : MonoBehaviour
             isSmashing = true;
             smashCollider.SetActive(true);
             StartCoroutine(Smash(0.7f));
+            PlayerPrefs.SetInt("hasSmashed", 1);
+            SkillAchievement();
         };
 
         // Bumping
@@ -137,6 +139,8 @@ public class PlayerController : MonoBehaviour
             bumpCollider.SetActive(true);
             isBumping = true;
             StartCoroutine(Bump(0.5f, invert));
+            PlayerPrefs.SetInt("hasBumped", 1);
+            SkillAchievement();
         };
 
         // Releasing charged jump
@@ -147,6 +151,8 @@ public class PlayerController : MonoBehaviour
                 return;
             }
             Jump();
+            PlayerPrefs.SetInt("hasJumped", 1);
+            SkillAchievement();
         };
 
         // Dashing
@@ -180,6 +186,8 @@ public class PlayerController : MonoBehaviour
                 dashRightAnimation.SetActive(true);
                 StartCoroutine(DisableDash(0.45f, 70f));
             }
+            PlayerPrefs.SetInt("hasDashed", 1);
+            SkillAchievement();
         }
     };
     }
@@ -201,6 +209,20 @@ public class PlayerController : MonoBehaviour
         FindChild(gameObject, "Jump").SetActive(true);
         r2d.velocity = new Vector2(r2d.velocity.x, jumpSpeed);
         CancelCharge();
+    }
+
+    void SkillAchievement()
+    {
+        if (PlayerPrefs.GetInt("hasSmashed", 0) == 1 && PlayerPrefs.GetInt("hasBumped", 0) == 1 &&
+            PlayerPrefs.GetInt("hasJumped", 0) == 1 && PlayerPrefs.GetInt("hasDashed", 0) == 1)
+        {
+            Debug.Log("Achievement: SKILLED");
+            if (SteamManager.Initialized)
+            {
+                SteamUserStats.SetAchievement("SKILLED");
+                SteamUserStats.StoreStats();
+            }
+        }
     }
 
     public void CancelCharge()

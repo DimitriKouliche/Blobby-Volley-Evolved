@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Steamworks;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
@@ -35,6 +36,7 @@ public class BallLogics : MonoBehaviour
     public bool canHit = true;
     Rigidbody2D rigidBody;
     AudioSource audioSource;
+    float timeBetweenCollisions = 0;
 
 
 
@@ -50,6 +52,10 @@ public class BallLogics : MonoBehaviour
         }
         if (gameLogics != null && collision.gameObject.name == "Left Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
+            if(gameObject.name != "Cup")
+            {
+                BallAchievement();
+            }
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 2");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
@@ -62,11 +68,21 @@ public class BallLogics : MonoBehaviour
 
         if (gameLogics != null && collision.gameObject.name == "Right Ground" && gameLogics.GetComponent<GameLogics>().isStarting)
         {
+            if (gameObject.name != "Cup")
+            {
+                BallAchievement();
+            }
             gameLogics.GetComponent<GameLogics>().PlayerWins("Blob 1");
             FindChild(gameObject, "ParticleStars").GetComponent<ParticleSystem>().Play();
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
             if (intensity > chromaticAberrationThreshold)
             {
+                Debug.Log("Achievement won: RAINBOW");
+                if (SteamManager.Initialized)
+                {
+                    SteamUserStats.SetAchievement("RAINBOW");
+                    SteamUserStats.StoreStats();
+                }
                 GameObject.Find("Global Volume").GetComponent<ChromaticAberrationEffect>().IntenseEffect();
                 BallHardHitSound();
             }
@@ -79,7 +95,11 @@ public class BallLogics : MonoBehaviour
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
         {
-            if(gameObject.name == "Cup")
+            if (gameObject.name != "Cup")
+            {
+                BallAchievement();
+            }
+            if (gameObject.name == "Cup")
             {
                 rigidBody.gravityScale = 1.6f;
                 FindChild(GameObject.Find("Level"), "Ceiling").SetActive(true);
@@ -168,6 +188,20 @@ public class BallLogics : MonoBehaviour
         }
     }
 
+    void BallAchievement()
+    {
+        if (timeBetweenCollisions > 5.9f)
+        {
+            Debug.Log("Achievement: BALL");
+            if (SteamManager.Initialized)
+            {
+                SteamUserStats.SetAchievement("BALL");
+                SteamUserStats.StoreStats();
+            }
+        }
+        timeBetweenCollisions = 0;
+    }
+
     private void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
@@ -177,6 +211,10 @@ public class BallLogics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!service)
+        {
+            timeBetweenCollisions += Time.deltaTime;
+        }
         float opacity = Mathf.Min((rigidBody.velocity.magnitude - 10) / 20, 1);
         if(opacity < 0)
         {
@@ -301,7 +339,8 @@ public class BallLogics : MonoBehaviour
     
     IEnumerator VictoryMusic()
     {
-        FindChild(GameObject.Find("GameOver"), "Confetti").GetComponent<ParticleSystem>().Stop();
+        GameObject gameOver = GameObject.Find("GameOver");
+        FindChild(gameOver, "Confetti").GetComponent<ParticleSystem>().Stop();
         SpriteRenderer blackSpriteRenderer = FindChild(FindChild(GameObject.Find("GameOver"), "Blackout"), "Black").GetComponent<SpriteRenderer>();
         float t = 0.0f;
         if(blackSpriteRenderer.color.a == 0)
@@ -319,6 +358,16 @@ public class BallLogics : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
+        yield return new WaitForSeconds(300);
+        if(gameOver.activeSelf)
+        {
+            Debug.Log("Achievement won: JANITOR");
+            if (SteamManager.Initialized)
+            {
+                SteamUserStats.SetAchievement("JANITOR");
+                SteamUserStats.StoreStats();
+            }
+        }
     }
 
     IEnumerator SmashFreeze(float duration, GameObject smash)

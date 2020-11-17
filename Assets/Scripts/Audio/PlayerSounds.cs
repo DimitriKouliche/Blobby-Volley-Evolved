@@ -18,9 +18,6 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip[] ballContactClips;
     [Range(0f, 5f)]
     public float ballContactVolume = 1f;
-    public AudioClip[] chargeJumpClips;
-    [Range(0f, 5f)]
-    public float chargeJumpVolume = 1f;
     public AudioClip[] smashClips;
     [Range(0f, 5f)]
     public float smashVolume = 1f;
@@ -65,14 +62,6 @@ public class PlayerSounds : MonoBehaviour
         int index = Random.Range(0, ballContactClips.Length);
         audioSource.PlayOneShot(ballContactClips[index], ballContactVolume * sfxVolume / 100);
     }
-
-    public void ChargeJumpSound()
-    {
-        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
-        int index = Random.Range(0, chargeJumpClips.Length);
-        audioSource.PlayOneShot(chargeJumpClips[index], chargeJumpVolume * sfxVolume / 100);
-    }
-
     public void SmashSound()
     {
         float sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 100f);
