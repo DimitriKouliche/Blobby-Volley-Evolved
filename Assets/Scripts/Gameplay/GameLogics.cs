@@ -355,6 +355,8 @@ public class GameLogics : MonoBehaviour
         pointMessage.SetActive(false);
         ball.GetComponent<BallLogics>().UpdateBall(2);
         ball.GetComponent<BallLogics>().canHit = true;
+        ball.GetComponent<BallLogics>().victoryMusicIsPlayed = false;
+        ball.GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(1, 1, 1, 1));
         blob1Score = 0;
         blob2Score = 0;
         DisplayScore();
@@ -440,7 +442,10 @@ public class GameLogics : MonoBehaviour
 
     private void Update()
     {
-        roundTime += Time.deltaTime;
+        if (isPlaying)
+        {
+            roundTime += Time.deltaTime;
+        }
     }
 
     // Start is called before the first frame update

@@ -64540,11 +64540,6 @@ PrefabInstance:
       objectReference: {fileID: 236572989}
     - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}
-      propertyPath: chromaticAberrationThreshold
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
-        type: 3}
       propertyPath: ballHitClips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 24e578e718182a442a45e0e4dfd1e126, type: 3}

@@ -17,10 +17,10 @@ public class MusicMixer : MonoBehaviour
     [Range(0f, 5f)]
     public float fadeOutVolume = 1f;
     public bool gameOver = false;
+    public bool musicChange = false;
 
     bool isOnMenu = false;
     bool isInGame = false;
-    bool musicChange = false;
     AudioClip nextMusicClip;
 
     private void Start()
@@ -45,6 +45,7 @@ public class MusicMixer : MonoBehaviour
         isOnMenu = true;
         isInGame = false;
         audioSource.loop = true;
+        gameOver = true;
     }
 
     public void GameMusic()
@@ -61,6 +62,7 @@ public class MusicMixer : MonoBehaviour
         isOnMenu = false;
         isInGame = true;
         audioSource.loop = true;
+        gameOver = false;
     }
 
     public void VictoryMusic()
@@ -102,6 +104,7 @@ public class MusicMixer : MonoBehaviour
     }
     public void RestartGameMusic()
     {
+        musicChange = false;
         audioSource.Stop();
         audioSource.clip = gameMusicClips[0];
         audioSource.loop = true;
@@ -111,7 +114,8 @@ public class MusicMixer : MonoBehaviour
     IEnumerator ChangeMusic()
     {
         yield return StartCoroutine(WaitForRealSeconds(audioSource.clip.length - audioSource.time));
-        if(gameOver)
+        musicChange = false;
+        if (gameOver)
         {
             gameOver = false;
             yield break;
@@ -120,7 +124,6 @@ public class MusicMixer : MonoBehaviour
         audioSource.clip = nextMusicClip;
         audioSource.Play();
         audioSource.loop = true;
-        musicChange = false;
         GameObject.Find("Gameplay").GetComponent<GameLogics>().ChangeBackground();
     }
 

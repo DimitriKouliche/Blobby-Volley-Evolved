@@ -31,6 +31,7 @@ public class BallLogics : MonoBehaviour
     public Color firstHitColor = new Color(233f / 255f, 208f / 255f, 118f / 255f);
     public Color secondHitColor = new Color(203f / 255f, 119f / 255f, 52f / 255f);
     public Color thirdHitColor = new Color(172f / 255f, 49f / 255f, 39f / 255f);
+    public bool victoryMusicIsPlayed = false;
 
     bool follow = false;
     public bool canHit = true;
@@ -306,21 +307,25 @@ public class BallLogics : MonoBehaviour
     IEnumerator BallFlash()
     {
         GetComponent<Rigidbody2D>().velocity /= 3;
-        float t = 0.0f;
-        while (t < 0.5f)
+        float t;
+        for(int i = 0; i < 3; i++)
         {
-            Material mat = GetComponent<SpriteRenderer>().material;
-            mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0.75f, 0, t * 2)));
-            t += Time.deltaTime;
-            yield return null;
-        }
-        t = 0.0f;
-        while (t < 0.5f)
-        {
-            Material mat = GetComponent<SpriteRenderer>().material;
-            mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0, 1, t * 2)));
-            t += Time.deltaTime;
-            yield return null;
+            t = 0.0f;
+            while (t < 0.2f)
+            {
+                Material mat = GetComponent<SpriteRenderer>().material;
+                mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0.75f, 0, t * 5)));
+                t += Time.deltaTime;
+                yield return null;
+            }
+            t = 0.0f;
+            while (t < 0.2f)
+            {
+                Material mat = GetComponent<SpriteRenderer>().material;
+                mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0, 1, t * 5)));
+                t += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 
@@ -339,6 +344,11 @@ public class BallLogics : MonoBehaviour
     
     IEnumerator VictoryMusic()
     {
+        if(victoryMusicIsPlayed)
+        {
+            yield break;
+        }
+        victoryMusicIsPlayed = true;
         GameObject gameOver = GameObject.Find("GameOver");
         FindChild(gameOver, "Confetti").GetComponent<ParticleSystem>().Stop();
         SpriteRenderer blackSpriteRenderer = FindChild(FindChild(GameObject.Find("GameOver"), "Blackout"), "Black").GetComponent<SpriteRenderer>();
@@ -358,6 +368,7 @@ public class BallLogics : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
+        Debug.Log("Waiting...");
         yield return new WaitForSeconds(300);
         if(gameOver.activeSelf)
         {
