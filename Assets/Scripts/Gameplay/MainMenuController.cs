@@ -11,6 +11,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject credits;
     public GameObject duelSplash;
     public GameObject partySplash;
+    public GameObject practiceSplash;
     public GameObject keyboardControls;
     public GameObject gamepadControls;
     public GameObject soundMenu;
@@ -87,6 +88,10 @@ public class MainMenuController : MonoBehaviour
                     break;
                 case 1:
                     PlayerPrefs.SetInt("numberPlayers", 2);
+                    StartCoroutine(ConfirmAnimation("SplashScreen"));
+                    break;
+                case 2:
+                    PlayerPrefs.SetInt("numberPlayers", 1);
                     StartCoroutine(ConfirmAnimation("SplashScreen"));
                     break;
                 case 5:
@@ -215,6 +220,7 @@ public class MainMenuController : MonoBehaviour
         credits.SetActive(false);
         partySplash.SetActive(false);
         duelSplash.SetActive(false);
+        practiceSplash.SetActive(false);
         isOnControl = false;
         isOnSound = false;
         if (menuId == 0)
@@ -227,14 +233,18 @@ public class MainMenuController : MonoBehaviour
         }
         if (menuId == 2)
         {
-            isOnControl = true;
+            practiceSplash.SetActive(true);
         }
         if (menuId == 3)
+        {
+            isOnControl = true;
+        }
+        if (menuId == 4)
         {
             isOnSound = true;
             soundManager.SetActive(true);
         }
-        if (menuId == 4)
+        if (menuId == 5)
         {
             credits.SetActive(true);
         }
@@ -266,7 +276,7 @@ public class MainMenuController : MonoBehaviour
             GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             return;
         }
-        if (menuId >= 5)
+        if (menuId >= 6)
         {
             return;
         }

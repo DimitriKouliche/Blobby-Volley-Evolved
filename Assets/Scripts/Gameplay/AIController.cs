@@ -124,6 +124,11 @@ public class AIController : MonoBehaviour
             return;
         }
 
+        if (gameLogics.GetComponent<GameLogics>().teamBallTouches[1] == 3)
+        {
+            return;
+        }
+
         moveDirection = 0;
         if(target < 5 || target > 8)
         {
@@ -133,7 +138,7 @@ public class AIController : MonoBehaviour
         {
             target = ball.transform.position.x;
         }
-        if (ball.transform.position.y < 3f && Math.Abs(ball.transform.position.x) < 1.5f && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f)
+        if (ball.transform.position.y < 3f && ball.transform.position.y > -5 && Math.Abs(ball.transform.position.x) < 1.5f && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f)
         {
             Jump(jumpHeight);
         }

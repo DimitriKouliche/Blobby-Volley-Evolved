@@ -37,6 +37,7 @@ public class GameLogics : MonoBehaviour
     public bool isOnline = true;
     public int maxPlayers = 2;
     public int winningScore = 15;
+    public int[] teamBallTouches = new int[2];
 
     GameObject blob1;
     GameObject blob2;
@@ -53,7 +54,6 @@ public class GameLogics : MonoBehaviour
     InputDevice player2Device;
     InputDevice player3Device;
     InputDevice player4Device;
-    int[] teamBallTouches = new int[2];
     int[] playerBallTouches = new int[4];
     private bool serve = true;
     bool[] playerReady = { false, false, false, false };
@@ -612,6 +612,7 @@ public class GameLogics : MonoBehaviour
         {
             blob2 = GameObject.Instantiate(AIBlob);
             blob2.name = "Blob 2(Clone)";
+            blob2.GetComponent<AIController>().gameLogics = gameObject;
             UIController uiController = playerSelectionPrefab.GetComponent<UIController>();
             blobSprite[1] = uiController.shapes[UnityEngine.Random.Range(0, uiController.shapes.Length)];
             blobColor[1] = uiController.colorPool[UnityEngine.Random.Range(0, uiController.colorPool.Length)];

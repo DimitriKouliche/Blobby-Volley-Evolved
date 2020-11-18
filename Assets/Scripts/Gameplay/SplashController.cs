@@ -30,6 +30,9 @@ public class SplashController : MonoBehaviour
             if (PlayerPrefs.GetInt("numberPlayers") == 4)
             {
                 StartCoroutine(ConfirmAnimation("Local4"));
+            } else if(PlayerPrefs.GetInt("numberPlayers") == 1)
+            {
+                StartCoroutine(ConfirmAnimation("LocalAI"));
             } else
             {
                 StartCoroutine(ConfirmAnimation("Local2"));
