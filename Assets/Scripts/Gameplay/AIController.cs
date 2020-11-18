@@ -83,7 +83,6 @@ public class AIController : MonoBehaviour
     {
         jumpSpeed = jumpHeight / 2.5f;
         chargingJump = false;
-        FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<SpriteRenderer>().color = Color.black;
         FindChild(gameObject, "Charge").SetActive(false);
 
     }
@@ -124,9 +123,9 @@ public class AIController : MonoBehaviour
             return;
         }
 
-        if(target < 5 || target > 8)
+        if(target < 6 || target > 11)
         {
-            target = UnityEngine.Random.Range(5, 8);
+            target = UnityEngine.Random.Range(6, 11);
         } 
         if (ball.transform.position.x > 1f)
         {
@@ -135,18 +134,31 @@ public class AIController : MonoBehaviour
         {
             target = 1f;
         }
-        if (ball.transform.position.y < 3.5f && ball.transform.position.y > -5 && ball.transform.position.x < 1.5 && ball.transform.position.x > -2.5 && 
-            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 8f)
+        if (ball.transform.position.y < 3f && ball.transform.position.y > -5 && ball.transform.position.x < 1.5 && ball.transform.position.x > -2.5 && 
+            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 12f)
         {
             Jump(jumpHeight);
         }
-        else if(target > transform.position.x - 0.3f)
+        else if(target > transform.position.x - 0.4f)
         {
-            moveDirection += 0.2f;
+            if(!isGrounded)
+            {
+                moveDirection += 0.1f;
+            } else
+            {
+                moveDirection += 0.4f;
+            }
         }
         else if (target < transform.position.x - 0.5f)
         {
-            moveDirection -= 0.2f;
+            if (!isGrounded)
+            {
+                moveDirection -= 0.1f;
+            }
+            else
+            {
+                moveDirection -= 0.4f;
+            }
         } else if(ball.transform.position.y < -3.5 && ball.transform.position.x > 0)
         {
             if(gameLogics.GetComponent<GameLogics>().teamBallTouches[1] == 2 && ball.transform.position.x > 4)
@@ -169,7 +181,7 @@ public class AIController : MonoBehaviour
             moveDirection = -1;
         }
         if (transform.position.y > -3 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f 
-            && Math.Abs(ball.transform.position.y - transform.position.y) < 2 && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing)
+            && Math.Abs(ball.transform.position.y - transform.position.y) < 1 && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing)
         {
             playerSounds.SmashSound();
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
@@ -194,7 +206,7 @@ public class AIController : MonoBehaviour
             StartCoroutine(Bump(0.5f, 1));
         }
 
-        if (ball.transform.position.y < -4.5 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 1 
+        if (ball.transform.position.y < -5 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 0.8f 
             && !isDashing && isGrounded && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
         {
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
