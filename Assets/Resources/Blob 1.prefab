@@ -11905,7 +11905,7 @@ MonoBehaviour:
   dashDistance: 20
   gravityScale: 4
   smashRadius: 12
-  bumpRadius: 20
+  bumpRadius: 12
   gameLogics: {fileID: 0}
   isDashing: 0
   isSmashing: 0

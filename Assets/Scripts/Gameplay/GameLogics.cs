@@ -551,12 +551,12 @@ public class GameLogics : MonoBehaviour
         if (blob.GetComponent<PlayerController>() != null)
         {
             blob.GetComponent<PlayerController>().gameLogics = gameObject;
+            ApplyColor(id + 1, blob);
+            ApplyShape(id + 1, blob);
         }
         blob.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<EyeLogics>().ball = ball;
         blobPosition[id] = blob.transform.position;
         blobScale[id] = blob.transform.localScale;
-        ApplyColor(id + 1, blob);
-        ApplyShape(id + 1, blob);
     }
 
     IEnumerator PlayersReady()
@@ -616,9 +616,6 @@ public class GameLogics : MonoBehaviour
             blob2 = GameObject.Instantiate(AIBlob);
             blob2.name = "Blob 2(Clone)";
             blob2.GetComponent<AIController>().gameLogics = gameObject;
-            UIController uiController = playerSelectionPrefab.GetComponent<UIController>();
-            blobSprite[1] = uiController.shapes[UnityEngine.Random.Range(0, uiController.shapes.Length)];
-            blobColor[1] = uiController.colorPool[UnityEngine.Random.Range(0, uiController.colorPool.Length)];
         }
 
         blob1.SetActive(true);

@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         bumpAction.started += ctx =>
         {
             int invert = 1;
-            if (this == null || isDashing || isSmashing || isBumping || !IsPlaying() || Time.timeScale == 0)
+            if (this == null || isDashing || isBumping || !IsPlaying() || Time.timeScale == 0)
             {
                 return;
             }

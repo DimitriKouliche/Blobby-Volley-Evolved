@@ -124,11 +124,6 @@ public class AIController : MonoBehaviour
             return;
         }
 
-        if (gameLogics.GetComponent<GameLogics>().teamBallTouches[1] == 3)
-        {
-            return;
-        }
-
         if(target < 5 || target > 8)
         {
             target = UnityEngine.Random.Range(5, 8);
@@ -137,20 +132,27 @@ public class AIController : MonoBehaviour
         {
             target = ball.transform.position.x;
         }
-        if (ball.transform.position.y < 3f && ball.transform.position.y > -5 && Math.Abs(ball.transform.position.x) < 1.5f && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f)
+        if (ball.transform.position.y < 3.5f && ball.transform.position.y > -5 && ball.transform.position.x < 1 && ball.transform.position.x > -2 && 
+            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 10f)
         {
             Jump(jumpHeight);
         }
         else if(target > transform.position.x - 0.3f)
         {
-            moveDirection += 0.3f;
+            moveDirection += 0.2f;
         }
         else if (target < transform.position.x - 0.5f)
         {
-            moveDirection -= 0.3f;
+            moveDirection -= 0.2f;
         } else if(ball.transform.position.y < -3.5 && ball.transform.position.x > 0)
         {
-            Jump(UnityEngine.Random.Range(jumpHeight / 1.5f, jumpHeight));
+            if(gameLogics.GetComponent<GameLogics>().teamBallTouches[1] == 2 && ball.transform.position.x > 4)
+            {
+                Jump(UnityEngine.Random.Range(jumpHeight / 1.5f, jumpHeight));
+            } else
+            {
+                Jump(jumpHeight);
+            }
         } else
         {
             moveDirection = 0;
@@ -163,7 +165,9 @@ public class AIController : MonoBehaviour
         {
             moveDirection = -1;
         }
-        if (transform.position.y > -3 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 1.5f && Math.Abs(ball.transform.position.y - transform.position.y) < UnityEngine.Random.Range(0, 2.5f))
+        if (transform.position.y > -3 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2f 
+            && Math.Abs(ball.transform.position.y - transform.position.y) < 2 && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 8f 
+            && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
         {
             playerSounds.SmashSound();
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
@@ -177,7 +181,8 @@ public class AIController : MonoBehaviour
             smashCollider.SetActive(true);
             StartCoroutine(Smash(0.7f));
         }
-        if (ball.transform.position.y < -3 && ball.transform.position.x > 0 && transform.position.x - ball.transform.position.x > 1)
+        if (ball.transform.position.y < -3 && ball.transform.position.x > 0 && transform.position.x - ball.transform.position.x > 2 
+            && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
         { 
             playerSounds.BumpSound();
             bumpAnimation.SetActive(true);
@@ -187,7 +192,8 @@ public class AIController : MonoBehaviour
             StartCoroutine(Bump(0.5f, 1));
         }
 
-        if (ball.transform.position.y < -4.5 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 1 && !isDashing && isGrounded)
+        if (ball.transform.position.y < -4.5 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 1 
+            && !isDashing && isGrounded && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
         {
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
             {
@@ -222,19 +228,23 @@ public class AIController : MonoBehaviour
         {
             return false;
         }
-        if (GameObject.Find("Blob 1(Clone)") && gameObject.name != "Blob 1(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 1(Clone)").GetComponent<CircleCollider2D>()))
+        if (GameObject.Find("Blob 1(Clone)") && gameObject.name != "Blob 1(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(
+            GameObject.Find("Blob 1(Clone)").GetComponent<CircleCollider2D>()))
         {
             return true;
         }
-        if (GameObject.Find("Blob 2(Clone)") && gameObject.name != "Blob 2(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 2(Clone)").GetComponent<CircleCollider2D>()))
+        if (GameObject.Find("Blob 2(Clone)") && gameObject.name != "Blob 2(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(
+            GameObject.Find("Blob 2(Clone)").GetComponent<CircleCollider2D>()))
         {
             return true;
         }
-        if (GameObject.Find("Blob 3(Clone)") && gameObject.name != "Blob 3(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 3(Clone)").GetComponent<CircleCollider2D>()))
+        if (GameObject.Find("Blob 3(Clone)") && gameObject.name != "Blob 3(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(
+            GameObject.Find("Blob 3(Clone)").GetComponent<CircleCollider2D>()))
         {
             return true;
         }
-        if (GameObject.Find("Blob 4(Clone)") && gameObject.name != "Blob 4(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(GameObject.Find("Blob 4(Clone)").GetComponent<CircleCollider2D>()))
+        if (GameObject.Find("Blob 4(Clone)") && gameObject.name != "Blob 4(Clone)" && gameObject.GetComponent<CapsuleCollider2D>().IsTouching(
+            GameObject.Find("Blob 4(Clone)").GetComponent<CircleCollider2D>()))
         {
             return true;
         }
@@ -352,12 +362,14 @@ public class AIController : MonoBehaviour
             if (t < duration / 2)
             {
                 r2d.rotation = Mathf.Lerp(0, angle, 2 * t / duration);
-                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius / 1.5f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(
+                    smashRadius / 1.5f, smashRadius, 2 * t / duration), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             else
             {
                 r2d.rotation = Mathf.Lerp(angle, 0, 2 * t / duration - 1);
-                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(smashRadius, smashRadius / 1.5f, 2 * t / duration - 1), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
+                smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(
+                    smashRadius, smashRadius / 1.5f, 2 * t / duration - 1), smashCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             t += Time.deltaTime;
             yield return null;
@@ -391,12 +403,14 @@ public class AIController : MonoBehaviour
             if (t < duration / 2)
             {
                 r2d.rotation = Mathf.Lerp(0, angle, 2 * t / duration);
-                bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(bumpRadius / 1.5f, bumpRadius, 2 * t / duration), bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
+                bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(
+                    Mathf.SmoothStep(bumpRadius / 1.5f, bumpRadius, 2 * t / duration), bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             else
             {
                 r2d.rotation = Mathf.Lerp(angle, 0, 2 * t / duration - 1);
-                bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(Mathf.SmoothStep(bumpRadius, bumpRadius / 1.5f, 2 * t / duration - 1), bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
+                bumpCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(
+                    Mathf.SmoothStep(bumpRadius, bumpRadius / 1.5f, 2 * t / duration - 1), bumpCollider.GetComponent<CapsuleCollider2D>().size.y);
             }
             t += Time.deltaTime;
             yield return null;
