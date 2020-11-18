@@ -10931,7 +10931,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11074,7 +11074,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11515,7 +11515,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12653,8 +12653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80beb8f4234a6458ff0734cec39f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   textureType: 2
   smoothness: 32
   pivotCapSmoothness: 8
@@ -13369,8 +13369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80beb8f4234a6458ff0734cec39f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   textureType: 2
   smoothness: 32
   pivotCapSmoothness: 8
@@ -13655,7 +13655,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13798,7 +13798,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14025,8 +14025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80beb8f4234a6458ff0734cec39f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   textureType: 2
   smoothness: 32
   pivotCapSmoothness: 8
@@ -14114,8 +14114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80beb8f4234a6458ff0734cec39f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   textureType: 2
   smoothness: 32
   pivotCapSmoothness: 8
@@ -14522,8 +14522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80beb8f4234a6458ff0734cec39f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   textureType: 2
   smoothness: 32
   pivotCapSmoothness: 8
@@ -14703,7 +14703,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14884,7 +14884,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15482,8 +15482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80beb8f4234a6458ff0734cec39f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   textureType: 2
   smoothness: 32
   pivotCapSmoothness: 8
@@ -15667,7 +15667,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15999,8 +15999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80beb8f4234a6458ff0734cec39f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   textureType: 2
   smoothness: 32
   pivotCapSmoothness: 8
@@ -16178,8 +16178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80beb8f4234a6458ff0734cec39f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.7137255, g: 0.87058824, b: 0.16470589, a: 1}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 706d5eaaa093983479a2e461fa40867a, type: 2}
   textureType: 2
   smoothness: 32
   pivotCapSmoothness: 8
