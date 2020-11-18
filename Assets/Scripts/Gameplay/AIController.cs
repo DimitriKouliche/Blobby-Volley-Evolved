@@ -107,19 +107,21 @@ public class AIController : MonoBehaviour
         {
             r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.2f);
         }
-        if (GameObject.Find("Ball") == null || GameObject.Find("Cup"))
+
+        ball = null;
+        if (GameObject.Find("Ball") != null)
         {
-            return;
+            ball = GameObject.Find("Ball");
         }
 
-        if (GameObject.Find("Ball") == null)
+        if (GameObject.Find("Cup") != null)
         {
             ball = GameObject.Find("Cup");
         }
 
-        if (GameObject.Find("Cup") == null)
+        if (ball == null)
         {
-            ball = GameObject.Find("Ball");
+            return;
         }
 
         moveDirection = 0;
@@ -170,7 +172,7 @@ public class AIController : MonoBehaviour
             StartCoroutine(Bump(0.5f, 1));
         }
 
-        if (ball.transform.position.y < -4.5 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 1)
+        if (ball.transform.position.y < -4.5 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 1 && !isDashing && isGrounded)
         {
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
             {
