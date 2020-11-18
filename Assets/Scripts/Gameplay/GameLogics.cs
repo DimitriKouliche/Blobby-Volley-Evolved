@@ -551,12 +551,12 @@ public class GameLogics : MonoBehaviour
         if (blob.GetComponent<PlayerController>() != null)
         {
             blob.GetComponent<PlayerController>().gameLogics = gameObject;
-            ApplyColor(id + 1, blob);
-            ApplyShape(id + 1, blob);
         }
         blob.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<EyeLogics>().ball = ball;
         blobPosition[id] = blob.transform.position;
         blobScale[id] = blob.transform.localScale;
+        ApplyColor(id + 1, blob);
+        ApplyShape(id + 1, blob);
     }
 
     IEnumerator PlayersReady()
@@ -616,6 +616,9 @@ public class GameLogics : MonoBehaviour
             blob2 = GameObject.Instantiate(AIBlob);
             blob2.name = "Blob 2(Clone)";
             blob2.GetComponent<AIController>().gameLogics = gameObject;
+            UIController uiController = playerSelectionPrefab.GetComponent<UIController>();
+            blobSprite[1] = uiController.shapes[UnityEngine.Random.Range(0, uiController.shapes.Length)];
+            blobColor[1] = uiController.colorPool[UnityEngine.Random.Range(0, uiController.colorPool.Length)];
         }
 
         blob1.SetActive(true);
@@ -989,20 +992,39 @@ public class GameLogics : MonoBehaviour
 
     void ApplyColor(int id, GameObject blob)
     {
-        FindChild(blob, "SpriteBlob").GetComponent<SpriteRenderer>().color = blobColor[id-1];
-
-        foreach (Transform child in FindChild(FindChild(blob, "SpriteBlob"), "Tentacles").transform)
+        if(blob.GetComponent<PlayerController>() == null)
         {
-            child.gameObject.GetComponent<Tentacle>().Color = blobColor[id-1];
-        }
-        FindChild(FindChild(blob, "Smash"), "SmashAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
-        FindChild(FindChild(blob, "Bump"), "BumpAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
-        FindChild(blob, "SmashFreezeFrame").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+            FindChild(blob, "SpriteBlob").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
-        ParticleSystem.MainModule settings = FindChild(blob, "ParticleContact").GetComponent<ParticleSystem>().main;
-        settings.startColor = new ParticleSystem.MinMaxGradient(blobColor[id - 1]);
-        settings = FindChild(blob, "InkStains").GetComponent<ParticleSystem>().main;
-        settings.startColor = new ParticleSystem.MinMaxGradient(blobColor[id - 1]);
+            foreach (Transform child in FindChild(FindChild(blob, "SpriteBlob"), "Tentacles").transform)
+            {
+                child.gameObject.GetComponent<Tentacle>().Color = new Color(1, 1, 1, 1);
+            }
+            FindChild(FindChild(blob, "Smash"), "SmashAnimation").GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
+            FindChild(FindChild(blob, "Bump"), "BumpAnimation").GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
+            FindChild(blob, "SmashFreezeFrame").GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
+
+            ParticleSystem.MainModule settings = FindChild(blob, "ParticleContact").GetComponent<ParticleSystem>().main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(new Color(0, 0, 0, 1));
+            settings = FindChild(blob, "InkStains").GetComponent<ParticleSystem>().main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(new Color(0, 0, 0, 1));
+        } else
+        {
+            FindChild(blob, "SpriteBlob").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+
+            foreach (Transform child in FindChild(FindChild(blob, "SpriteBlob"), "Tentacles").transform)
+            {
+                child.gameObject.GetComponent<Tentacle>().Color = blobColor[id - 1];
+            }
+            FindChild(FindChild(blob, "Smash"), "SmashAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+            FindChild(FindChild(blob, "Bump"), "BumpAnimation").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+            FindChild(blob, "SmashFreezeFrame").GetComponent<SpriteRenderer>().color = blobColor[id - 1];
+
+            ParticleSystem.MainModule settings = FindChild(blob, "ParticleContact").GetComponent<ParticleSystem>().main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(blobColor[id - 1]);
+            settings = FindChild(blob, "InkStains").GetComponent<ParticleSystem>().main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(blobColor[id - 1]);
+        }
     }
 
     void ApplyShape(int id, GameObject blob)

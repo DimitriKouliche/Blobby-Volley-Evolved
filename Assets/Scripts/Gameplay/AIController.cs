@@ -127,13 +127,16 @@ public class AIController : MonoBehaviour
         if(target < 5 || target > 8)
         {
             target = UnityEngine.Random.Range(5, 8);
-        }
-        if (ball.transform.position.x > -5)
+        } 
+        if (ball.transform.position.x > 1f)
         {
             target = ball.transform.position.x;
+        } else if (ball.transform.position.x > -3 && ball.transform.position.x <= 1f)
+        {
+            target = 1f;
         }
         if (ball.transform.position.y < 3.5f && ball.transform.position.y > -5 && ball.transform.position.x < 1 && ball.transform.position.x > -2 && 
-            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 10f)
+            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 8f)
         {
             Jump(jumpHeight);
         }
@@ -165,9 +168,8 @@ public class AIController : MonoBehaviour
         {
             moveDirection = -1;
         }
-        if (transform.position.y > -3 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2f 
-            && Math.Abs(ball.transform.position.y - transform.position.y) < 2 && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 8f 
-            && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
+        if (transform.position.y > -3 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f 
+            && Math.Abs(ball.transform.position.y - transform.position.y) < 2 && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
         {
             playerSounds.SmashSound();
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)

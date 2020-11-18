@@ -38,6 +38,7 @@ public class BallLogics : MonoBehaviour
     Rigidbody2D rigidBody;
     AudioSource audioSource;
     float timeBetweenCollisions = 0;
+    string lastPlayerTouch = "";
 
 
 
@@ -87,14 +88,19 @@ public class BallLogics : MonoBehaviour
                 BallHardHitSound();
             }
         }
-        if (!canHit)
+        if (!canHit && lastPlayerTouch == collision.gameObject.name)
         {
             return;
         }
-        StartCoroutine(EnableHit(0.15f));
+
+        if(canHit)
+        {
+            StartCoroutine(EnableHit(0.15f));
+        }
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
         {
+            lastPlayerTouch = collision.gameObject.name;
             if (gameObject.name != "Cup")
             {
                 BallAchievement();
