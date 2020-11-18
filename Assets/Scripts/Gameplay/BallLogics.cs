@@ -112,7 +112,11 @@ public class BallLogics : MonoBehaviour
                 int touches = gameLogics.GetComponent<GameLogics>().PlayerTouchesBall(collision.gameObject);
                 UpdateBall(touches);
             }
-            if (collision.gameObject.GetComponent<PlayerController>().isDashing)
+            if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject.GetComponent<PlayerController>().isDashing)
+            {
+                rigidBody.AddForce(new Vector2(0, dashUpwardForce));
+            }
+            if (collision.gameObject.GetComponent<AIController>() != null && collision.gameObject.GetComponent<AIController>().isDashing)
             {
                 rigidBody.AddForce(new Vector2(0, dashUpwardForce));
             }

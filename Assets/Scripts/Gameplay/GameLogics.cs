@@ -15,6 +15,7 @@ public class GameLogics : MonoBehaviour
     public GameObject uiScoreRight;
     public GameObject gameOver;
     public GameObject blobPrefab;
+    public GameObject AIBlob;
     public GameObject playerSelectionPrefab;
     public GameObject ball;
     public GameObject ballAnimation;
@@ -86,7 +87,7 @@ public class GameLogics : MonoBehaviour
     public void ResetBlobPositions()
     {
         blob1.transform.position = new Vector3(-10, -6.3f, 2);
-        if (maxPlayers == 2)
+        if (maxPlayers == 2 || maxPlayers == 1)
         {
             blob2.transform.position = new Vector3(10, -6.3f, 2);
         } else
@@ -106,7 +107,10 @@ public class GameLogics : MonoBehaviour
             blob1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse");
         }
         InitBlob(blob1, 0);
-        if (maxPlayers == 2)
+        if (maxPlayers == 1)
+        {
+        }
+        else if (maxPlayers == 2)
         {
             Destroy(blob2);
             blob2 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: player2Device).gameObject;
@@ -366,7 +370,7 @@ public class GameLogics : MonoBehaviour
         blob1.transform.position = new Vector3(-9.5f, blob1.transform.position.y, blob1.transform.position.z);
         if (blob2 != null)
         {
-            if (maxPlayers == 2)
+            if (maxPlayers == 2 || maxPlayers == 1)
             {
                 blob2.transform.position = new Vector3(9.5f, blob2.transform.position.y, blob2.transform.position.z);
                 InvertSmash(blob2);
@@ -490,6 +494,10 @@ public class GameLogics : MonoBehaviour
                     blob1 = PlayerInput.Instantiate(blobPrefab, pairWithDevice: control.device).gameObject;
                     blob1.SetActive(false);
                     player1Device = control.device;
+                    if(maxPlayers == 1)
+                    {
+                        InstantiateSelectionMenu(1, player1Device, new Vector3(0, 0, 0), blob1);
+                    }
                     if(maxPlayers == 2)
                     {
                         InstantiateSelectionMenu(1, player1Device, new Vector3(-5f, 0, 0), blob1);
@@ -537,7 +545,10 @@ public class GameLogics : MonoBehaviour
     void InitBlob(GameObject blob, int id)
     {
         blob.name = "Blob " + (id + 1) + "(Clone)";
-        blob.GetComponent<PlayerController>().gameLogics = gameObject;
+        if (blob.GetComponent<PlayerController>() != null)
+        {
+            blob.GetComponent<PlayerController>().gameLogics = gameObject;
+        }
         blob.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<EyeLogics>().ball = ball;
         blobPosition[id] = blob.transform.position;
         blobScale[id] = blob.transform.localScale;
@@ -557,6 +568,13 @@ public class GameLogics : MonoBehaviour
         if(maxPlayers == 2)
         {
             while (!playerReady[0] || !playerReady[1])
+            {
+                yield return null;
+            }
+        }
+        if(maxPlayers == 1)
+        {
+            while (!playerReady[0])
             {
                 yield return null;
             }
@@ -590,6 +608,15 @@ public class GameLogics : MonoBehaviour
 
         yield return new WaitForSeconds(1.8f);
 
+        if(maxPlayers == 1)
+        {
+            blob2 = GameObject.Instantiate(AIBlob);
+            blob2.name = "Blob 2(Clone)";
+            UIController uiController = playerSelectionPrefab.GetComponent<UIController>();
+            blobSprite[1] = uiController.shapes[UnityEngine.Random.Range(0, uiController.shapes.Length)];
+            blobColor[1] = uiController.colorPool[UnityEngine.Random.Range(0, uiController.colorPool.Length)];
+        }
+
         blob1.SetActive(true);
         blob2.SetActive(true);
         if (maxPlayers == 4)
@@ -603,7 +630,14 @@ public class GameLogics : MonoBehaviour
         InitBlob(blob1, 0);
         InitBlob(blob2, 1);
         blob1.GetComponent<PlayerController>().enabled = false;
-        blob2.GetComponent<PlayerController>().enabled = false;
+        if(maxPlayers == 1)
+        {
+            blob2.GetComponent<AIController>().enabled = false;
+        }
+        if(maxPlayers == 2)
+        {
+            blob2.GetComponent<PlayerController>().enabled = false;
+        }
         if (maxPlayers == 4)
         {
             InitBlob(blob3, 2);
@@ -611,7 +645,7 @@ public class GameLogics : MonoBehaviour
             blob3.GetComponent<PlayerController>().enabled = false;
             blob4.GetComponent<PlayerController>().enabled = false;
         }
-        if (maxPlayers == 2)
+        if (maxPlayers == 2 || maxPlayers == 1)
         {
             blob1.transform.position = FindChild(startAnimation, "CanonRight").transform.position;
             blob2.transform.position = FindChild(startAnimation, "CanonLeft").transform.position;
@@ -659,7 +693,14 @@ public class GameLogics : MonoBehaviour
         }
         FindChild(level, "PlayerBounds").SetActive(true);
         blob1.GetComponent<PlayerController>().enabled = true;
-        blob2.GetComponent<PlayerController>().enabled = true;
+        if (maxPlayers == 1)
+        {
+            blob2.GetComponent<AIController>().enabled = true;
+        }
+        if (maxPlayers == 2)
+        {
+            blob2.GetComponent<PlayerController>().enabled = true;
+        }
         if (maxPlayers == 4)
         {
             blob3.GetComponent<PlayerController>().enabled = true;
@@ -751,7 +792,7 @@ public class GameLogics : MonoBehaviour
         {
             blob1.GetComponent<PlayerController>().CancelCharge();
         }
-        if(blob2 != null)
+        if(blob2 != null && blob2.GetComponent<PlayerController>() != null)
         {
             blob2.GetComponent<PlayerController>().CancelCharge();
         }

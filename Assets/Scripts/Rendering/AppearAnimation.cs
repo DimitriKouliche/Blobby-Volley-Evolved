@@ -15,6 +15,10 @@ public class AppearAnimation : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        if (maxPlayers == 1)
+        {
+            StartCoroutine(AppearCoroutine1Player());
+        }
         if (maxPlayers == 2)
         {
             StartCoroutine(AppearCoroutine2Players());
@@ -22,6 +26,34 @@ public class AppearAnimation : MonoBehaviour
         if(maxPlayers == 4)
         {
             StartCoroutine(AppearCoroutine4Players());
+        }
+    }
+
+    IEnumerator AppearCoroutine1Player()
+    {
+        yield return new WaitForSeconds(0.3f);
+        float t = 0.0f;
+        PocSound();
+        while (t < 0.2f)
+        {
+            Vector3 position = Vector3.Lerp(new Vector3(-2f, 9.25f, -0.5f), new Vector3(0.6f, 0.1f, -0.5f), t * 5);
+            FindChild(gameObject, "FondSelection1").transform.localPosition = position;
+            t += Time.deltaTime;
+            yield return null;
+        }
+        FindChild(gameObject, "FondSelection1").transform.localPosition = new Vector3(0.6f, 0.1f, -0.5f);
+        var objects = GameObject.FindGameObjectsWithTag("MenuText");
+        t = 0.0f;
+        BlancSound();
+        while (t < 0.2f)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, t * 5);
+            foreach (var obj in objects)
+            {
+                obj.GetComponent<SpriteRenderer>().color = new Color(obj.GetComponent<SpriteRenderer>().color.r, obj.GetComponent<SpriteRenderer>().color.g, obj.GetComponent<SpriteRenderer>().color.b, alpha);
+            }
+            t += Time.deltaTime;
+            yield return null;
         }
     }
 
