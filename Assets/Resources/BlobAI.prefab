@@ -11848,8 +11848,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
-  jumpHeight: 55
-  dashDistance: 4
+  jumpHeight: 50
+  dashDistance: 15
   gravityScale: 4
   smashRadius: 12
   bumpRadius: 20
