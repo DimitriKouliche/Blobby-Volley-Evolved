@@ -321,7 +321,7 @@ public class GameLogics : MonoBehaviour
         FindChild(FindChild(blob2, "SpriteBlob"), "SadEyes").SetActive(false);
         FindChild(FindChild(blob1, "SpriteBlob"), "HappyEyes").SetActive(false);
         FindChild(FindChild(blob2, "SpriteBlob"), "HappyEyes").SetActive(false);
-        if(maxPlayers == 4)
+        if (maxPlayers == 4)
         {
             FindChild(FindChild(blob3, "SpriteBlob"), "EyesWhite").SetActive(true);
             FindChild(FindChild(blob4, "SpriteBlob"), "EyesWhite").SetActive(true);
@@ -336,6 +336,7 @@ public class GameLogics : MonoBehaviour
         FindChild(gameOver, "PressToContinue").SetActive(false);
         FindChild(level, "RedBackground").SetActive(false);
         FindChild(FindChild(gameOver, "Blackout"), "Spotlight").SetActive(false);
+        FindChild(level, "PlayerBounds").SetActive(true);
         ResetPositions("Blob 1");
         ResetBlobPositions();
         isStarting = false;
@@ -853,6 +854,7 @@ public class GameLogics : MonoBehaviour
         isPlaying = true;
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().gameOver = true;
         FindChild(gameOver, "PressToContinue").SetActive(true);
+        FindChild(level, "PlayerBounds").SetActive(false);
     }
 
     public int GetTeamFromPlayer(int playerId)
