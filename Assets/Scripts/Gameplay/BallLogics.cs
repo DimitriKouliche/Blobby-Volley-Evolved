@@ -316,12 +316,12 @@ public class BallLogics : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity /= 3;
         float t;
-        for(int i = 0; i < 3; i++)
+        Material mat = GetComponent<SpriteRenderer>().material;
+        for (int i = 0; i < 3; i++)
         {
             t = 0.0f;
             while (t < 0.2f)
             {
-                Material mat = GetComponent<SpriteRenderer>().material;
                 mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0.75f, 0, t * 5)));
                 t += Time.deltaTime;
                 yield return null;
@@ -329,12 +329,12 @@ public class BallLogics : MonoBehaviour
             t = 0.0f;
             while (t < 0.2f)
             {
-                Material mat = GetComponent<SpriteRenderer>().material;
                 mat.SetColor("_Color", new Color(1, 1, 1, Mathf.Lerp(0, 1, t * 5)));
                 t += Time.deltaTime;
                 yield return null;
             }
         }
+        mat.SetColor("_Color", new Color(1, 1, 1, 1));
     }
 
     IEnumerator SmoothFollow(float duration, float originX)
