@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SplashScreen.unity
     guid: 47440971aba00ae4eaf7c1d6f68f43bc
+  - enabled: 1
+    path: Assets/Scenes/LocalAI.unity
+    guid: fedc5fd8379e3df4b9cc9fc41fad6fae
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fd20f990b099c4745b6d4e6087c80f05,
       type: 2}

@@ -129,7 +129,6 @@ public class AIController : MonoBehaviour
             return;
         }
 
-        moveDirection = 0;
         if(target < 5 || target > 8)
         {
             target = UnityEngine.Random.Range(5, 8);
@@ -144,16 +143,27 @@ public class AIController : MonoBehaviour
         }
         else if(target > transform.position.x - 0.3f)
         {
-            moveDirection = 1;
+            moveDirection += 0.3f;
         }
         else if (target < transform.position.x - 0.5f)
         {
-            moveDirection = -1;
+            moveDirection -= 0.3f;
         } else if(ball.transform.position.y < -3.5 && ball.transform.position.x > 0)
         {
             Jump(UnityEngine.Random.Range(jumpHeight / 1.5f, jumpHeight));
+        } else
+        {
+            moveDirection = 0;
         }
-        if (transform.position.y > -3 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2 && Math.Abs(ball.transform.position.y - transform.position.y) < UnityEngine.Random.Range(0, 3))
+        if(moveDirection > 1)
+        {
+            moveDirection = 1;
+        }
+        if(moveDirection < -1)
+        {
+            moveDirection = -1;
+        }
+        if (transform.position.y > -3 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 1.5f && Math.Abs(ball.transform.position.y - transform.position.y) < UnityEngine.Random.Range(0, 2.5f))
         {
             playerSounds.SmashSound();
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
@@ -197,6 +207,11 @@ public class AIController : MonoBehaviour
                 dashRightAnimation.SetActive(true);
                 StartCoroutine(DisableDash(0.45f, 70f));
             }
+        }
+        // Fast falling
+        if (!isGrounded && !isSmashing)
+        {
+            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.2f);
         }
     }
 

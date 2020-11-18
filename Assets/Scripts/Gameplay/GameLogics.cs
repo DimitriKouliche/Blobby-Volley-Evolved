@@ -197,9 +197,12 @@ public class GameLogics : MonoBehaviour
                 if(maxPlayers == 4)
                 {
                     SteamUserStats.SetAchievement("TEAMWORK");
-                } else
+                } else if(maxPlayers == 2)
                 {
                     SteamUserStats.SetAchievement("DUEL");
+                } else if (blob1Score >= winningScore)
+                {
+                    SteamUserStats.SetAchievement("TERMINATOR");
                 }
                 SteamUserStats.StoreStats();
             }
