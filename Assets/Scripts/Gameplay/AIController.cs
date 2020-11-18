@@ -84,7 +84,6 @@ public class AIController : MonoBehaviour
         jumpSpeed = jumpHeight / 2.5f;
         chargingJump = false;
         FindChild(gameObject, "Charge").SetActive(false);
-
     }
 
 
@@ -134,10 +133,18 @@ public class AIController : MonoBehaviour
         {
             target = 1f;
         }
-        if (ball.transform.position.y < 3f && ball.transform.position.y > -5 && ball.transform.position.x < 1.5 && ball.transform.position.x > -2.5 && 
-            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 12f)
+        if (ball.transform.position.y < 3f && ball.transform.position.y > -5 && ball.transform.position.x < 0.5f && ball.transform.position.x > -3f && 
+            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 15f)
         {
             Jump(jumpHeight);
+        }
+        else if(target - transform.position.x > 3)
+        {
+            moveDirection = 1f;
+        }
+        else if(target - transform.position.x < -3)
+        {
+            moveDirection = -1f;
         }
         else if(target > transform.position.x - 0.4f)
         {
@@ -180,8 +187,8 @@ public class AIController : MonoBehaviour
         {
             moveDirection = -1;
         }
-        if (transform.position.y > -3 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f 
-            && Math.Abs(ball.transform.position.y - transform.position.y) < 1 && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing)
+        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f 
+            && Math.Abs(ball.transform.position.y - transform.position.y) < 1.3f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing)
         {
             playerSounds.SmashSound();
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
