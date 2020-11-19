@@ -94,7 +94,7 @@ public class MainMenuController : MonoBehaviour
                     PlayerPrefs.SetInt("numberPlayers", 1);
                     StartCoroutine(ConfirmAnimation("SplashScreen"));
                     break;
-                case 5:
+                case 6:
                     Application.Quit();
                     break;
             }

@@ -88,7 +88,7 @@ public class AIController : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (gameLogics != null && !IsPlaying() || this == null)
         {
@@ -276,7 +276,7 @@ public class AIController : MonoBehaviour
         return false;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (!IsPlaying())
         {
