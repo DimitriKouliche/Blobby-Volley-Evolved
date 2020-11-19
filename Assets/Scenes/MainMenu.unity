@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -407,7 +407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227361363}
   m_LocalRotation: {x: -0, y: -0, z: -0.99987954, w: 0.0155232595}
-  m_LocalPosition: {x: 0.25, y: -0.52, z: 6}
+  m_LocalPosition: {x: 0.2, y: -0.28, z: 6}
   m_LocalScale: {x: 3.4492953, y: 3.0244455, z: 0.19413577}
   m_Children:
   - {fileID: 1755032008}
@@ -15497,7 +15497,7 @@ GameObject:
   - component: {fileID: 738693073}
   - component: {fileID: 738693072}
   m_Layer: 5
-  m_Name: PracticeRight
+  m_Name: SoloRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15669,7 +15669,7 @@ GameObject:
   - component: {fileID: 764345591}
   - component: {fileID: 764345592}
   m_Layer: 5
-  m_Name: Practice
+  m_Name: Solo
   m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15683,8 +15683,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764345590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.72, y: -0.61, z: 0}
-  m_LocalScale: {x: 0.41038543, y: 0.41038543, z: 0.1899381}
+  m_LocalPosition: {x: -2.55, y: -0.4, z: 0}
+  m_LocalScale: {x: 0.4238393, y: 0.4238393, z: 0.19616495}
   m_Children:
   - {fileID: 437626244}
   m_Father: {fileID: 1760196213}
@@ -15729,7 +15729,7 @@ SpriteRenderer:
   m_SortingLayerID: -420772333
   m_SortingLayer: 7
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e8bfeffbf9b5a5e458065adebc4f86c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e03c6c5023956be408cb9bda98f55723, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15928,13 +15928,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822974239}
-  m_LocalRotation: {x: -0, y: -0, z: 0.14658874, w: 0.98919755}
-  m_LocalPosition: {x: 1.48, y: 1.86, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.06317344, w: 0.99800265}
+  m_LocalPosition: {x: 3.03, y: 2.09, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 738693071}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 16.859001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -7.2440004}
 --- !u!114 &822974241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15989,7 +15989,7 @@ SpriteRenderer:
   m_SortingLayerID: 277677237
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 70a229c77d831bc4f825c5bf895c5488, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c95195ccbae5724b8923de7b508be02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -31120,7 +31120,7 @@ GameObject:
   - component: {fileID: 1543053301}
   - component: {fileID: 1543053302}
   m_Layer: 5
-  m_Name: Duel
+  m_Name: Solo
   m_TagString: MenuText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31179,7 +31179,7 @@ SpriteRenderer:
   m_SortingLayerID: -420772333
   m_SortingLayer: 7
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e8bfeffbf9b5a5e458065adebc4f86c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e03c6c5023956be408cb9bda98f55723, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -36096,8 +36096,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787343031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.99, y: 0.43, z: 0}
-  m_LocalScale: {x: 0.41038543, y: 0.41038543, z: 0.1899381}
+  m_LocalPosition: {x: -2.8720999, y: 0.48154002, z: 0}
+  m_LocalScale: {x: 0.34785908, y: 0.34785908, z: 0.16099912}
   m_Children:
   - {fileID: 1276959072}
   m_Father: {fileID: 1760196213}
