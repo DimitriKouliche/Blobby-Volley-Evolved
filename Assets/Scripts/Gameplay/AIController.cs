@@ -127,28 +127,29 @@ public class AIController : MonoBehaviour
             return;
         }
 
-        if(target < 3 || target > 7)
+        if(target < 4 || target > 8)
         {
-            target = UnityEngine.Random.Range(3, 7);
+            target = UnityEngine.Random.Range(4, 8);
         } 
         if (ball.transform.position.x > 0.5f)
         {
             target = ball.transform.position.x;
-        } else if (ball.transform.position.x > -5 && ball.transform.position.x < 0f)
+        } else if (ball.transform.position.x > -1 && ball.transform.position.x < 0f)
         {
             target = 0.5f;
         }
         if (ball.transform.position.y < 1.5f - ball.GetComponent<Rigidbody2D>().velocity.y / 10 && ball.transform.position.y > -2 && ball.transform.position.x > -1f && ball.transform.position.x < 3f &&
-            transform.position.x - ball.transform.position.x > -0.5f && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f 
-            && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 15f && ball.GetComponent<Rigidbody2D>().velocity.y > -15 && ball.GetComponent<Rigidbody2D>().velocity.y < 8)
+            transform.position.x - ball.transform.position.x > -0.5f && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3
+            && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 20f && ball.GetComponent<Rigidbody2D>().velocity.y > -15 && ball.GetComponent<Rigidbody2D>().velocity.y < 5)
         {
+            moveDirection = 0f;
             Jump(jumpHeight);
         }
-        if (ball.transform.position.y < 1.5f && ball.transform.position.y > 0 && ball.transform.position.x > 0 && ball.transform.position.x < 7 && 
+        if (ball.transform.position.y < 0.5f && ball.transform.position.y > 0 && ball.transform.position.x > 0 && ball.transform.position.x < 7 && 
             Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && 
-            gameLogics.GetComponent<GameLogics>().teamBallTouches[1] > 0)
+            gameLogics.GetComponent<GameLogics>().teamBallTouches[1] > 0 && ball.GetComponent<Rigidbody2D>().velocity.y < 0)
         {
-            moveDirection = 0;
+            moveDirection = 0f;
             Jump(jumpHeight);
         }
         else if(target - transform.position.x > 3)
@@ -163,7 +164,7 @@ public class AIController : MonoBehaviour
         {
             if(!isGrounded)
             {
-                moveDirection += 0.3f;
+                moveDirection += 0.2f;
             } else
             {
                 moveDirection += 0.7f;
@@ -173,7 +174,7 @@ public class AIController : MonoBehaviour
         {
             if (!isGrounded)
             {
-                moveDirection -= 0.3f;
+                moveDirection -= 0.2f;
             }
             else
             {
@@ -202,11 +203,11 @@ public class AIController : MonoBehaviour
         }
         if(isSmashing)
         {
-            moveDirection = -0.5f;
+            moveDirection = 0.5f;
         }
-        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x - transform.position.x) < 3.2f  && ball.transform.position.x < transform.position.x + 0.5f
-            && Math.Abs(ball.transform.position.y - transform.position.y) < 1.5f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing 
-            && ball.transform.position.x < 7 && ball.transform.position.y > -1 + transform.position.x / 10 && blob1.transform.position.y < transform.position.y)
+        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x - transform.position.x) < 3f  && ball.transform.position.x < transform.position.x + 1f
+            && Math.Abs(ball.transform.position.y - transform.position.y) < 1.8f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing 
+            && ball.transform.position.x < 7 && ball.transform.position.y > -3 + transform.position.x / 10)
         {
             playerSounds.SmashSound();
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
@@ -220,8 +221,8 @@ public class AIController : MonoBehaviour
             smashCollider.SetActive(true);
             StartCoroutine(Smash(0.7f));
         }
-        if (Math.Abs(ball.transform.position.y - transform.position.y) < 1.3f && ball.transform.position.x > 0 && transform.position.x - ball.transform.position.x > 2 
-            && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
+        if (Math.Abs(ball.transform.position.y - transform.position.y) < 1.5f && ball.transform.position.x > 0 && transform.position.x - ball.transform.position.x > 1.5f 
+            && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isBumping)
         { 
             playerSounds.BumpSound();
             bumpAnimation.SetActive(true);
@@ -231,7 +232,7 @@ public class AIController : MonoBehaviour
             StartCoroutine(Bump(0.5f, 1));
         }
 
-        if ((ball.transform.position.y < -5f + ball.GetComponent<Rigidbody2D>().velocity.y / 20 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 0.8f 
+        if ((ball.transform.position.y < -6f + ball.GetComponent<Rigidbody2D>().velocity.magnitude / 50 + Math.Abs(ball.transform.position.x - transform.position.x) / 10 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 0.8f 
             && !isDashing && isGrounded && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3) || 
             ((ball.transform.position.y < -6 && ball.transform.position.x > 2) 
             && !isDashing && isGrounded))
@@ -243,8 +244,16 @@ public class AIController : MonoBehaviour
             }
             isDashing = true;
             playerSounds.DashSound();
+            if (ball.transform.position.x < transform.position.x)
+            {
+                moveDirection = -1f;
+            }
+            else
+            {
+                moveDirection = 1f;
+            }
             r2d.AddForce(new Vector3(moveDirection * dashDistance * 5000, 0, transform.position.z));
-            if (moveDirection > 0)
+            if (moveDirection < 0)
             {
                 dashLefttAnimation.SetActive(true);
                 StartCoroutine(DisableDash(0.45f, -70f));

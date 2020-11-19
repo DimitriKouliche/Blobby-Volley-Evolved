@@ -389,7 +389,7 @@ public class BallLogics : MonoBehaviour
 
     IEnumerator SmashFreeze(float duration, GameObject smash)
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0.0001f;
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrameWhite").SetActive(true);
         FindChild(smash.transform.parent.gameObject, "SmashImpact").transform.position = transform.position;
