@@ -160,27 +160,27 @@ public class AIController : MonoBehaviour
         {
             moveDirection = -1f;
         }
-        else if(target > transform.position.x - 0.25f)
+        else if(target > transform.position.x - 0.2f)
         {
             if(!isGrounded)
             {
-                moveDirection += 0.2f;
+                moveDirection += 0.8f;
             } else
             {
-                moveDirection += 0.1f;
+                moveDirection += 0.7f;
             }
         }
-        else if (target < transform.position.x - 0.45f)
+        else if (target < transform.position.x - 0.4f)
         {
             if (!isGrounded)
             {
-                moveDirection -= 0.2f;
+                moveDirection -= 0.8f;
             }
             else
             {
-                moveDirection -= 0.1f;
+                moveDirection -= 0.7f;
             }
-        } else if(ball.transform.position.y < -3.5 && ball.transform.position.x > 0)
+        } else if(ball.transform.position.y < -3.2 && ball.transform.position.x > 0)
         {
             if(gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 2 && (ball.transform.position.y < -4.1 || ball.transform.position.y > -3.9))
             {
@@ -232,7 +232,7 @@ public class AIController : MonoBehaviour
             StartCoroutine(Bump(0.5f, 1));
         }
 
-        if ((ball.transform.position.y < -6f + ball.GetComponent<Rigidbody2D>().velocity.magnitude / 50 + Math.Abs(ball.transform.position.x - transform.position.x) / 10 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 0.8f 
+        if ((ball.transform.position.y < -5.8f + ball.GetComponent<Rigidbody2D>().velocity.magnitude / 50 + Math.Abs(ball.transform.position.x - transform.position.x) / 10 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 0.8f 
             && !isDashing && isGrounded && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3) || 
             ((ball.transform.position.y < -6 && ball.transform.position.x > 2) 
             && !isDashing && isGrounded))
