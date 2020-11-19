@@ -167,7 +167,7 @@ public class AIController : MonoBehaviour
                 moveDirection += 0.2f;
             } else
             {
-                moveDirection += 0.7f;
+                moveDirection += 0.1f;
             }
         }
         else if (target < transform.position.x - 0.45f)
@@ -178,13 +178,13 @@ public class AIController : MonoBehaviour
             }
             else
             {
-                moveDirection -= 0.7f;
+                moveDirection -= 0.1f;
             }
         } else if(ball.transform.position.y < -3.5 && ball.transform.position.x > 0)
         {
             if(gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 2)
             {
-                Jump(UnityEngine.Random.Range(jumpHeight / 1.5f, jumpHeight));
+                Jump(UnityEngine.Random.Range(jumpHeight / 1.4f, jumpHeight));
             } else
             {
                 Jump(jumpHeight);
@@ -253,7 +253,7 @@ public class AIController : MonoBehaviour
                 moveDirection = 1f;
             }
             r2d.AddForce(new Vector3(moveDirection * dashDistance * 5000, 0, transform.position.z));
-            if (moveDirection < 0)
+            if (moveDirection > 0)
             {
                 dashLefttAnimation.SetActive(true);
                 StartCoroutine(DisableDash(0.45f, -70f));
