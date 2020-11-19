@@ -36,7 +36,7 @@ public class AppearAnimation : MonoBehaviour
         PocSound();
         while (t < 0.2f)
         {
-            Vector3 position = Vector3.Lerp(new Vector3(-2f, 9.25f, -0.5f), new Vector3(0.6f, 0.1f, -0.5f), t * 5);
+            Vector3 position = Vector3.Lerp(new Vector3(-1.8f, 9.5f, -0.5f), new Vector3(0.6f, 0.1f, -0.5f), t * 5);
             FindChild(gameObject, "FondSelection1").transform.localPosition = position;
             t += Time.deltaTime;
             yield return null;

@@ -182,9 +182,9 @@ public class AIController : MonoBehaviour
             }
         } else if(ball.transform.position.y < -3.5 && ball.transform.position.x > 0)
         {
-            if(gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 2)
+            if(gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 2 && (ball.transform.position.y < -4.1 || ball.transform.position.y > -3.9))
             {
-                Jump(UnityEngine.Random.Range(jumpHeight / 1.4f, jumpHeight));
+                Jump(UnityEngine.Random.Range(jumpHeight / 1.5f, jumpHeight));
             } else
             {
                 Jump(jumpHeight);
@@ -206,7 +206,7 @@ public class AIController : MonoBehaviour
             moveDirection = 0.5f;
         }
         if (transform.position.y > -2 && Math.Abs(ball.transform.position.x - transform.position.x) < 3f  && ball.transform.position.x < transform.position.x + 1f
-            && Math.Abs(ball.transform.position.y - transform.position.y) < 1.8f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing 
+            && Math.Abs(ball.transform.position.y - transform.position.y) < 1.75f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing 
             && ball.transform.position.x < 7 && ball.transform.position.y > -3 + transform.position.x / 10)
         {
             playerSounds.SmashSound();
