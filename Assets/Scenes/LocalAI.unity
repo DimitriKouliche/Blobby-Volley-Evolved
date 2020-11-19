@@ -10661,6 +10661,7 @@ MonoBehaviour:
   isOnline: 0
   maxPlayers: 1
   winningScore: 15
+  teamBallTouches: 0000000000000000
 --- !u!4 &236572991
 Transform:
   m_ObjectHideFlags: 0
@@ -32327,6 +32328,11 @@ PrefabInstance:
         type: 3}
       propertyPath: smashImpactVolume
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 252215340814901647, guid: 3d73e426fc3270740a4c67e979931247,
+        type: 3}
+      propertyPath: dashUpwardForce
+      value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 1299431638664912145, guid: 3d73e426fc3270740a4c67e979931247,
         type: 3}

@@ -37,6 +37,7 @@ public class AIController : MonoBehaviour
     bool isJumpDashing = false;
     float target = 0;
     GameObject ball;
+    GameObject blob1;
 
     bool IsPlaying()
     {
@@ -57,6 +58,7 @@ public class AIController : MonoBehaviour
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         gameObject.layer = 8;
+        blob1 = GameObject.Find("Blob 1(Clone)");
     }
 
     void Jump(float height)
@@ -88,7 +90,7 @@ public class AIController : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (gameLogics != null && !IsPlaying() || this == null)
         {
@@ -106,15 +108,18 @@ public class AIController : MonoBehaviour
             r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.2f);
         }
 
-        ball = null;
-        if (GameObject.Find("Ball") != null)
+        if(ball == null || ball.activeSelf == false)
         {
-            ball = GameObject.Find("Ball");
-        }
+            ball = null;
+            if (GameObject.Find("Ball") != null)
+            {
+                ball = GameObject.Find("Ball");
+            }
 
-        if (GameObject.Find("Cup") != null)
-        {
-            ball = GameObject.Find("Cup");
+            if (GameObject.Find("Cup") != null)
+            {
+                ball = GameObject.Find("Cup");
+            }
         }
 
         if (ball == null)
@@ -122,20 +127,28 @@ public class AIController : MonoBehaviour
             return;
         }
 
-        if(target < 6 || target > 11)
+        if(target < 3 || target > 7)
         {
-            target = UnityEngine.Random.Range(6, 11);
+            target = UnityEngine.Random.Range(3, 7);
         } 
-        if (ball.transform.position.x > 1f)
+        if (ball.transform.position.x > 0.5f)
         {
             target = ball.transform.position.x;
-        } else if (ball.transform.position.x > -3 && ball.transform.position.x <= 1f)
+        } else if (ball.transform.position.x > -5 && ball.transform.position.x < 0f)
         {
-            target = 1f;
+            target = 0.5f;
         }
-        if (ball.transform.position.y < 3f && ball.transform.position.y > -5 && ball.transform.position.x < 0.5f && ball.transform.position.x > -3f && 
-            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 15f)
+        if (ball.transform.position.y < 1.5f - ball.GetComponent<Rigidbody2D>().velocity.y / 10 && ball.transform.position.y > -2 && ball.transform.position.x > -1f && ball.transform.position.x < 3f &&
+            transform.position.x - ball.transform.position.x > -0.5f && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f 
+            && ball.GetComponent<Rigidbody2D>().velocity.magnitude < 15f && ball.GetComponent<Rigidbody2D>().velocity.y > -15 && ball.GetComponent<Rigidbody2D>().velocity.y < 8)
         {
+            Jump(jumpHeight);
+        }
+        if (ball.transform.position.y < 1.5f && ball.transform.position.y > 0 && ball.transform.position.x > 0 && ball.transform.position.x < 7 && 
+            Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && 
+            gameLogics.GetComponent<GameLogics>().teamBallTouches[1] > 0)
+        {
+            moveDirection = 0;
             Jump(jumpHeight);
         }
         else if(target - transform.position.x > 3)
@@ -146,31 +159,31 @@ public class AIController : MonoBehaviour
         {
             moveDirection = -1f;
         }
-        else if(target > transform.position.x - 0.4f)
+        else if(target > transform.position.x - 0.25f)
         {
             if(!isGrounded)
             {
-                moveDirection += 0.1f;
+                moveDirection += 0.3f;
             } else
             {
-                moveDirection += 0.4f;
+                moveDirection += 0.7f;
             }
         }
-        else if (target < transform.position.x - 0.5f)
+        else if (target < transform.position.x - 0.45f)
         {
             if (!isGrounded)
             {
-                moveDirection -= 0.1f;
+                moveDirection -= 0.3f;
             }
             else
             {
-                moveDirection -= 0.4f;
+                moveDirection -= 0.7f;
             }
         } else if(ball.transform.position.y < -3.5 && ball.transform.position.x > 0)
         {
-            if(gameLogics.GetComponent<GameLogics>().teamBallTouches[1] == 2 && ball.transform.position.x > 4)
+            if(gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 2)
             {
-                Jump(UnityEngine.Random.Range(jumpHeight / 1.6f, jumpHeight));
+                Jump(UnityEngine.Random.Range(jumpHeight / 1.5f, jumpHeight));
             } else
             {
                 Jump(jumpHeight);
@@ -187,8 +200,13 @@ public class AIController : MonoBehaviour
         {
             moveDirection = -1;
         }
-        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x) < 2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2.5f 
-            && Math.Abs(ball.transform.position.y - transform.position.y) < 1.3f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing)
+        if(isSmashing)
+        {
+            moveDirection = -0.5f;
+        }
+        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x - transform.position.x) < 3.2f  && ball.transform.position.x < transform.position.x + 0.5f
+            && Math.Abs(ball.transform.position.y - transform.position.y) < 1.5f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing 
+            && ball.transform.position.x < 7 && ball.transform.position.y > -1 + transform.position.x / 10 && blob1.transform.position.y < transform.position.y)
         {
             playerSounds.SmashSound();
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
@@ -202,7 +220,7 @@ public class AIController : MonoBehaviour
             smashCollider.SetActive(true);
             StartCoroutine(Smash(0.7f));
         }
-        if (ball.transform.position.y < -3 && ball.transform.position.x > 0 && transform.position.x - ball.transform.position.x > 2 
+        if (Math.Abs(ball.transform.position.y - transform.position.y) < 1.3f && ball.transform.position.x > 0 && transform.position.x - ball.transform.position.x > 2 
             && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
         { 
             playerSounds.BumpSound();
@@ -213,8 +231,10 @@ public class AIController : MonoBehaviour
             StartCoroutine(Bump(0.5f, 1));
         }
 
-        if (ball.transform.position.y < -5 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 0.8f 
-            && !isDashing && isGrounded && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3)
+        if ((ball.transform.position.y < -5f + ball.GetComponent<Rigidbody2D>().velocity.y / 20 && ball.transform.position.x > 0 && Math.Abs(ball.transform.position.x - transform.position.x) > 0.8f 
+            && !isDashing && isGrounded && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3) || 
+            ((ball.transform.position.y < -6 && ball.transform.position.x > 2) 
+            && !isDashing && isGrounded))
         {
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
             {
@@ -238,7 +258,7 @@ public class AIController : MonoBehaviour
         // Fast falling
         if (!isGrounded && !isSmashing)
         {
-            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.2f);
+            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.5f);
         }
     }
 
@@ -276,7 +296,7 @@ public class AIController : MonoBehaviour
         return false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!IsPlaying())
         {

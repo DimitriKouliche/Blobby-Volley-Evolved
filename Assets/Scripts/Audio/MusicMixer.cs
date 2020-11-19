@@ -115,7 +115,7 @@ public class MusicMixer : MonoBehaviour
     {
         yield return StartCoroutine(WaitForRealSeconds(audioSource.clip.length - audioSource.time));
         musicChange = false;
-        if (gameOver)
+        if (gameOver || GameObject.Find("Ball") == null)
         {
             gameOver = false;
             yield break;
