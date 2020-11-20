@@ -104,6 +104,7 @@ public class MusicMixer : MonoBehaviour
     }
     public void RestartGameMusic()
     {
+        gameOver = true;
         musicChange = false;
         audioSource.Stop();
         audioSource.clip = gameMusicClips[0];

@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     PlayerSounds playerSounds;
     Vector2 moveDirectionVector;
     bool isJumpDashing = false;
+    bool hasWallJumped = false;
+    bool isWallJumping = false;
 
     bool IsPlaying()
     {
@@ -93,6 +95,21 @@ public class PlayerController : MonoBehaviour
         {
             if (this == null)
             {
+                return;
+            }
+            if (IsTouchingWall() && !isGrounded && !hasWallJumped)
+            {
+                if(transform.position.x > 0)
+                {
+                    r2d.velocity = new Vector2(-jumpHeight * 1.2f, jumpHeight * 0.8f);
+                }
+                if(transform.position.x < 0)
+                {
+                    r2d.velocity = new Vector2(jumpHeight * 1.2f, jumpHeight * 0.8f);
+                }
+                hasWallJumped = true;
+                isWallJumping = true;
+                StartCoroutine(DisableWallJump());
                 return;
             }
             if (IsPlaying() && Time.timeScale != 0)
@@ -146,10 +163,6 @@ public class PlayerController : MonoBehaviour
         // Releasing charged jump
         chargeJumpAction.canceled += ctx =>
         {
-            if (this == null)
-            {
-                return;
-            }
             Jump();
             PlayerPrefs.SetInt("hasJumped", 1);
             SkillAchievement();
@@ -260,7 +273,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsTouchingWall()
     {
-        return gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Left Wall").GetComponent<Collider2D>()) || gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Right Wall").GetComponent<Collider2D>());
+        return gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Left Wall Jump").GetComponent<Collider2D>()) || gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Right Wall Jump").GetComponent<Collider2D>());
     }
 
 
@@ -307,10 +320,11 @@ public class PlayerController : MonoBehaviour
         if(isGrounded)
         {
             isJumpDashing = false;
+            hasWallJumped = false;
         }
 
         // Apply movement velocity
-        if (!isDashing && !isSmashing)
+        if (!isDashing && !isSmashing && !isWallJumping)
         {
             if (moveDirection == 0)
             {
@@ -347,7 +361,11 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpSpeed < jumpHeight)
             {
-                jumpSpeed += 7f * 1 / Time.timeScale;
+                jumpSpeed += 7f;
+                if(Time.timeScale < 0.1f && Time.timeScale > 0.01f)
+                {
+                    jumpSpeed = jumpHeight;
+                }
                 FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<EyeLogics>().ChangeEyeColor(jumpSpeed / jumpHeight, Color.black, eyeChargeColor);
             }
             else
@@ -394,6 +412,12 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         isJumpDashing = false;
+    }
+
+    IEnumerator DisableWallJump()
+    {
+        yield return new WaitForSeconds(0.6f);
+        isWallJumping = false;
     }
 
     IEnumerator Smash(float duration)
