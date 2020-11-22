@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10718,6 +10718,7 @@ MonoBehaviour:
   gameOver: {fileID: 1490865249}
   blobPrefab: {fileID: 8330191615473064848, guid: a647e902abd18ab49aeb6ffcfb884bc6,
     type: 3}
+  AIBlob: {fileID: 0}
   playerSelectionPrefab: {fileID: 5362717922218213883, guid: cb21d18b32e463c41b5d0c91e7b5c6c9,
     type: 3}
   ball: {fileID: 726271547}
@@ -10741,6 +10742,7 @@ MonoBehaviour:
   isOnline: 0
   maxPlayers: 2
   winningScore: 15
+  teamBallTouches: 0000000000000000
 --- !u!4 &236572991
 Transform:
   m_ObjectHideFlags: 0
@@ -16222,6 +16224,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056774846356824537, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6355733425544031062, guid: 0aa0769efd80e0d469f5863f5dd6cf41,
         type: 3}
@@ -26707,7 +26714,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundAlt
       objectReference: {fileID: 0}
+    - target: {fileID: 7815722539536896716, guid: 7179426c28d3b6540979627884eef43f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7815722539960250992, guid: 7179426c28d3b6540979627884eef43f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815722540001092314, guid: 7179426c28d3b6540979627884eef43f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -26716,6 +26733,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815722540560333993, guid: 7179426c28d3b6540979627884eef43f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7815722540783157810, guid: 7179426c28d3b6540979627884eef43f,
         type: 3}
