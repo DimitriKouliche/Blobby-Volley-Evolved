@@ -1029,6 +1029,7 @@ public class GameLogics : MonoBehaviour
 
     void ApplyShape(int id, GameObject blob)
     {
-        FindChild(blob, "SpriteBlob").GetComponent<SpriteRenderer>().sprite = blobSprite[id-1];
+        FindChild(blob, "SpriteBlob").GetComponent<SpriteRenderer>().sprite = blobSprite[id - 1];
+        FindChild(FindChild(blob, "SpriteBlob"), "Shadow").GetComponent<SpriteRenderer>().sprite = blobSprite[id-1];
     }
 }

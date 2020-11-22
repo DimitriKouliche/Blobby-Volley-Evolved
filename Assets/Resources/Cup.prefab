@@ -38419,10 +38419,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballIndicator: {fileID: 0}
   gameLogics: {fileID: 0}
-  dashUpwardForce: 15000
-  bumpUpwardForce: 12000
+  dashUpwardForce: 12000
+  bumpUpwardForce: 10000
   serviceForce: 3000
-  smashDownwardForce: 20000
+  smashDownwardForce: 15000
   service: 1
   ballHitClips:
   - {fileID: 8300000, guid: 69c44dff64830ac44b2d05bff5f2604c, type: 3}
@@ -38432,15 +38432,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3ff1d2c40e6409944ab46a22c1d816b1, type: 3}
   - {fileID: 8300000, guid: 33aabeef5504efe4ead2c5c53193e165, type: 3}
   ballHitVolume: 0.3
+  smashImpactClips: []
+  smashImpactVolume: 1
   ballHardHitClips:
   - {fileID: 8300000, guid: 61bba61e5b396514d9a431eb5204d73f, type: 3}
   - {fileID: 8300000, guid: e81a62c9b98d6824d8300117f90d562b, type: 3}
   - {fileID: 8300000, guid: c9ca5ae17646adb48a7405eca49503ad, type: 3}
   ballHardHitVolume: 1
+  tooManyTouchesClips: []
+  tooManyTouchesVolume: 1
   chromaticAberrationThreshold: 0.8
   firstHitColor: {r: 0.9137255, g: 0.8156863, b: 0.4627451, a: 1}
   secondHitColor: {r: 0.79607844, g: 0.46666667, b: 0.20392157, a: 1}
   thirdHitColor: {r: 0.6745098, g: 0.19215687, b: 0.15294118, a: 1}
+  victoryMusicIsPlayed: 0
+  canHit: 1
 --- !u!68 &8399981740947801544
 EdgeCollider2D:
   m_ObjectHideFlags: 0
