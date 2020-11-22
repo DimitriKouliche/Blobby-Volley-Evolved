@@ -518,7 +518,7 @@ MonoBehaviour:
   uiScoreLeft: {fileID: 1064403243}
   uiScoreRight: {fileID: 1975444495}
   gameOver: {fileID: 483875706}
-  blobPrefab: {fileID: 8330191615473064848, guid: a647e902abd18ab49aeb6ffcfb884bc6,
+  blobPrefab: {fileID: 8330191615473064848, guid: fb72be438c5c5f74e8efbe3d0e251ced,
     type: 3}
   AIBlob: {fileID: 0}
   playerSelectionPrefab: {fileID: 5362717922218213883, guid: cb21d18b32e463c41b5d0c91e7b5c6c9,
