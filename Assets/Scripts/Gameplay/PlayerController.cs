@@ -317,7 +317,7 @@ public class PlayerController : MonoBehaviour
         // Check if player is grounded
         isGrounded = transform.position.y < -6f;
 
-        if(isGrounded)
+        if (isGrounded)
         {
             isJumpDashing = false;
             hasWallJumped = false;
@@ -338,10 +338,11 @@ public class PlayerController : MonoBehaviour
             {
                 FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 3);
             }
-            if(isJumpDashing)
+            if (isJumpDashing)
             {
                 r2d.velocity = new Vector2((moveDirection) * maxSpeed * 3, r2d.velocity.y);
-            } else
+            }
+            else
             {
                 r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
             }
@@ -362,7 +363,7 @@ public class PlayerController : MonoBehaviour
             if (jumpSpeed < jumpHeight)
             {
                 jumpSpeed += 7f;
-                if(Time.timeScale < 0.1f && Time.timeScale > 0.01f)
+                if (Time.timeScale < 0.1f && Time.timeScale > 0.01f)
                 {
                     jumpSpeed = jumpHeight;
                 }
@@ -374,7 +375,15 @@ public class PlayerController : MonoBehaviour
                 Jump();
             }
         }
-
+        if (IsTouchingWall() && !isGrounded && !hasWallJumped)
+        {
+            float rotationX = -40;
+            if (transform.position.x > 0)
+            {
+                rotationX = 40;
+            }
+            FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, rotationX);
+        }
     }
 
     IEnumerator DisableDash(float duration, float rotationX)
@@ -419,7 +428,7 @@ public class PlayerController : MonoBehaviour
         float rotationX = -20;
         if (transform.position.x > 0)
         {
-            rotationX = -20;
+            rotationX = 20;
         }
         float startRotation = transform.eulerAngles.y;
         float endRotation = startRotation + rotationX;
