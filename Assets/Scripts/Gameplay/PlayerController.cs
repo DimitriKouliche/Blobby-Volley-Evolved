@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public GameObject dashRightAnimation;
     public GameObject dashLefttAnimation;
     public GameObject jumpAnimation;
+    public GameObject wallJumpAnimation;
     public GameObject smashAnimation;
     public GameObject bumpAnimation;
     public GameObject smashAnimationWhite;
@@ -110,6 +111,7 @@ public class PlayerController : MonoBehaviour
                 hasWallJumped = true;
                 isWallJumping = true;
                 StartCoroutine(DisableWallJump());
+                FindChild(gameObject, "WallJump").SetActive(true);
                 return;
             }
             if (IsPlaying() && Time.timeScale != 0)
