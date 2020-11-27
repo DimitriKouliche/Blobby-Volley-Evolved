@@ -416,7 +416,34 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DisableWallJump()
     {
-        yield return new WaitForSeconds(0.6f);
+        float rotationX = -20;
+        if (transform.position.x > 0)
+        {
+            rotationX = -20;
+        }
+        float startRotation = transform.eulerAngles.y;
+        float endRotation = startRotation + rotationX;
+        float t = 0.0f;
+        float zRotation;
+        float duration = 0.6f;
+        while (t < 0.6f)
+        {
+            t += Time.deltaTime;
+            if (t < duration / 3)
+            {
+                zRotation = Mathf.SmoothStep(startRotation, endRotation, 3 * t / duration);
+            }
+            else if (t > 2 * duration / 3)
+            {
+                zRotation = Mathf.SmoothStep(endRotation, startRotation, 3 * t / duration - 2);
+            }
+            else
+            {
+                zRotation = rotationX;
+            }
+            FindChild(gameObject, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, zRotation);
+            yield return null;
+        }
         isWallJumping = false;
     }
 
