@@ -35,6 +35,7 @@ public class GameLogics : MonoBehaviour
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;
+    public bool capture = false;
     public int maxPlayers = 2;
     public int winningScore = 15;
     public int[] teamBallTouches = new int[2];
@@ -557,6 +558,10 @@ public class GameLogics : MonoBehaviour
         blobScale[id] = blob.transform.localScale;
         ApplyColor(id + 1, blob);
         ApplyShape(id + 1, blob);
+        if(capture)
+        {
+            blob.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(false);
+        }
     }
 
     IEnumerator PlayersReady()
