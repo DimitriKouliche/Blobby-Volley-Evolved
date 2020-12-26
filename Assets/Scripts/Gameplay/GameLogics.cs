@@ -713,6 +713,7 @@ public class GameLogics : MonoBehaviour
         }
         if (maxPlayers == 4)
         {
+            blob2.GetComponent<PlayerController>().enabled = true;
             blob3.GetComponent<PlayerController>().enabled = true;
             blob4.GetComponent<PlayerController>().enabled = true;
         }
@@ -870,7 +871,10 @@ public class GameLogics : MonoBehaviour
         FindChild(FindChild(gameOver, "Blackout"), "Spotlight").SetActive(true);
         yield return new WaitForSeconds(2f);
         FindChild(FindChild(blob1, "SpriteBlob"), "EyesWhite").SetActive(false);
-        FindChild(FindChild(blob2, "SpriteBlob"), "EyesWhite").SetActive(false);
+        if (maxPlayers != 1)
+        {
+            FindChild(FindChild(blob2, "SpriteBlob"), "EyesWhite").SetActive(false);
+        }
         FindChild(gameOver, "Cup").SetActive(true);
         FindChild(gameOver, "Confetti").SetActive(true);
         if (maxPlayers == 4)
@@ -883,10 +887,14 @@ public class GameLogics : MonoBehaviour
             FindChild(gameOver, "Cup").transform.position = new Vector3(-6, 5, 0);
             FindChild(gameOver, "Confetti").transform.position = new Vector3(-9, 12, -20);
             FindChild(FindChild(blob1, "SpriteBlob"), "HappyEyes").SetActive(true);
-            FindChild(FindChild(blob2, "SpriteBlob"), "SadEyes").SetActive(true);
+            if (maxPlayers == 2)
+            {
+                FindChild(FindChild(blob2, "SpriteBlob"), "SadEyes").SetActive(true);
+            }
             if(maxPlayers== 4)
             {
-                FindChild(FindChild(blob3, "SpriteBlob"), "HappyEyes").SetActive(true);
+                FindChild(FindChild(blob2, "SpriteBlob"), "HappyEyes").SetActive(true);
+                FindChild(FindChild(blob3, "SpriteBlob"), "SadEyes").SetActive(true);
                 FindChild(FindChild(blob4, "SpriteBlob"), "SadEyes").SetActive(true);
             }
         }
@@ -894,12 +902,16 @@ public class GameLogics : MonoBehaviour
         {
             FindChild(gameOver, "Cup").transform.position = new Vector3(6, 5, 0);
             FindChild(gameOver, "Confetti").transform.position = new Vector3(9, 12, -20);
-            FindChild(FindChild(blob2, "SpriteBlob"), "HappyEyes").SetActive(true);
             FindChild(FindChild(blob1, "SpriteBlob"), "SadEyes").SetActive(true);
+            if (maxPlayers == 2)
+            {
+                FindChild(FindChild(blob2, "SpriteBlob"), "HappyEyes").SetActive(true);
+            }
             if (maxPlayers == 4)
             {
+                FindChild(FindChild(blob2, "SpriteBlob"), "SadEyes").SetActive(true);
                 FindChild(FindChild(blob4, "SpriteBlob"), "HappyEyes").SetActive(true);
-                FindChild(FindChild(blob3, "SpriteBlob"), "SadEyes").SetActive(true);
+                FindChild(FindChild(blob3, "SpriteBlob"), "HappyEyes").SetActive(true);
             }
         }
         isPlaying = true;
