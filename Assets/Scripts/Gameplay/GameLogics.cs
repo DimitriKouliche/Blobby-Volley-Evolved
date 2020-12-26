@@ -651,6 +651,7 @@ public class GameLogics : MonoBehaviour
         {
             InitBlob(blob3, 2);
             InitBlob(blob4, 3);
+            blob2.GetComponent<PlayerController>().enabled = false;
             blob3.GetComponent<PlayerController>().enabled = false;
             blob4.GetComponent<PlayerController>().enabled = false;
         }
