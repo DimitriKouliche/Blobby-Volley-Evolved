@@ -205,11 +205,11 @@ public class AIController : MonoBehaviour
         {
             moveDirection = 0.5f;
         }
-        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x - transform.position.x) < 3f  && ball.transform.position.x < transform.position.x + 0.3f
+        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2.8f  && ball.transform.position.x < transform.position.x + 0.5f
             && Math.Abs(ball.transform.position.y - transform.position.y) < 1.3f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing 
             && ball.transform.position.x < 7 && ball.transform.position.y > -2.7 + transform.position.x / 10 && 
             ((blob1.transform.position.x + transform.position.x > 1.5f || transform.position.y - 0.1f > blob1.transform.position.y && !blob1.GetComponent<PlayerController>().isSmashing)
-            || (blob1.transform.position.x + transform.position.x < 3f && transform.position.y - 0.2f > blob1.transform.position.y && blob1.GetComponent<PlayerController>().isSmashing)))
+            || (blob1.transform.position.x + transform.position.x < 3f && blob1.GetComponent<PlayerController>().isSmashing)))
         {
             playerSounds.SmashSound();
             if (FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite").activeSelf)
