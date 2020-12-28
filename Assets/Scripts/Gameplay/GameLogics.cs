@@ -955,6 +955,7 @@ public class GameLogics : MonoBehaviour
             }
             if (playerBallTouches[playerId] > 1)
             {
+                ball.GetComponent<BallLogics>().TooManyTouchesSound();
                 if (teamId == 0)
                 {
                     PlayerWins("Blob 2");

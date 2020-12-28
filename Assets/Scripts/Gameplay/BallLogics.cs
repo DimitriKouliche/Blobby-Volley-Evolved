@@ -95,7 +95,7 @@ public class BallLogics : MonoBehaviour
 
         if(canHit)
         {
-            StartCoroutine(EnableHit(0.2f));
+            StartCoroutine(EnableHit(0.25f));
         }
 
         if (collision.gameObject.name == "Blob 1(Clone)" || collision.gameObject.name == "Blob 2(Clone)" || collision.gameObject.name == "Blob 3(Clone)" || collision.gameObject.name == "Blob 4(Clone)")
