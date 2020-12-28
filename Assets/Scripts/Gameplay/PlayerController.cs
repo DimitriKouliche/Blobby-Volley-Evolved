@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
                 FindChild(FindChild(gameObject, "SpriteBlob"), "ClosedEyes").SetActive(true);
             }
             isDashing = true;
+            r2d.rotation = 0;
             playerSounds.DashSound();
             r2d.AddForce(new Vector3(moveDirectionVector.x * dashDistance * 5000, 0, transform.position.z));
             if (moveDirectionVector.x > 0)
@@ -355,7 +356,7 @@ public class PlayerController : MonoBehaviour
             r2d.velocity = new Vector2(r2d.velocity.x, 0);
         }
 
-        if (isSmashing)
+        if (isSmashing && !isDashing)
         {
             r2d.velocity = new Vector2((moveDirection / 2) * maxSpeed, r2d.velocity.y);
         }
@@ -472,6 +473,10 @@ public class PlayerController : MonoBehaviour
         }
         while (t < duration)
         {
+            if(isGrounded)
+            {
+                break;
+            }
             if (t < duration / 2)
             {
                 r2d.rotation = Mathf.Lerp(0, angle, 2 * t / duration);
@@ -492,9 +497,9 @@ public class PlayerController : MonoBehaviour
         }
         smashCollider.GetComponent<CapsuleCollider2D>().size = new Vector2(0.00001f, smashCollider.GetComponent<CapsuleCollider2D>().size.y);
         smashCollider.SetActive(false);
+        r2d.rotation = 0;
         yield return new WaitForSeconds(0.15f);
         isSmashing = false;
-        isDashing = false;
     }
 
     IEnumerator Bump(float duration, int invert)

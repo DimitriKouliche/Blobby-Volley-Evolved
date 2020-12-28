@@ -11928,8 +11928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f0323edb82f964b8516b80707f80ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
-  jumpHeight: 55
+  maxSpeed: 12
+  jumpHeight: 60
   dashDistance: 30
   gravityScale: 4
   smashRadius: 12
