@@ -294,6 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 94524618}
   - component: {fileID: 94524619}
+  - component: {fileID: 94524620}
   m_Layer: 5
   m_Name: BGGreen
   m_TagString: Untagged
@@ -309,8 +310,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94524617}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.79, z: 0}
-  m_LocalScale: {x: 0.64685535, y: 0.7187282, z: 0.7187282}
+  m_LocalPosition: {x: 2.07, y: -0.91, z: 0}
+  m_LocalScale: {x: 0.6045454, y: 0.5671017, z: 0.7261807}
   m_Children: []
   m_Father: {fileID: 1980026740163912241}
   m_RootOrder: 3
@@ -354,7 +355,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 291725d375d6fc04988281ad49f1093d, type: 3}
+  m_Sprite: {fileID: 2201637679077101918, guid: e7ec7075e044fb644a012f633a9879a2,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -365,6 +367,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &94524620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94524617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615d462dc60ef7645baf572703f665d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stayInPlace: 0
+  framerate: 0.1
+  loop: 1
+  rotate: 0
+  frameArray:
+  - {fileID: 2201637679077101918, guid: e7ec7075e044fb644a012f633a9879a2, type: 3}
+  - {fileID: -5466994505851833155, guid: e7ec7075e044fb644a012f633a9879a2, type: 3}
+  - {fileID: -3742804735678059318, guid: e7ec7075e044fb644a012f633a9879a2, type: 3}
+  - {fileID: -4314410267707484457, guid: e7ec7075e044fb644a012f633a9879a2, type: 3}
 --- !u!1 &143668328
 GameObject:
   m_ObjectHideFlags: 0
