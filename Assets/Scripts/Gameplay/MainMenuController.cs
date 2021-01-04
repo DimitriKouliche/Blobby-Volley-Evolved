@@ -11,7 +11,8 @@ public class MainMenuController : MonoBehaviour
     public GameObject credits;
     public GameObject duelSplash;
     public GameObject partySplash;
-    public GameObject practiceSplash;
+    public GameObject duelTitle;
+    public GameObject partyTitle;
     public GameObject keyboardControls;
     public GameObject gamepadControls;
     public GameObject soundMenu;
@@ -218,22 +219,21 @@ public class MainMenuController : MonoBehaviour
     {
         soundManager.SetActive(false);
         credits.SetActive(false);
-        partySplash.SetActive(false);
-        duelSplash.SetActive(false);
-        practiceSplash.SetActive(false);
+        partyTitle.SetActive(false);
+        duelTitle.SetActive(false);
         isOnControl = false;
         isOnSound = false;
         if (menuId == 0)
         {
             partySplash.SetActive(true);
+            partyTitle.SetActive(true);
+            duelSplash.SetActive(false);
         }
         if (menuId == 1)
         {
             duelSplash.SetActive(true);
-        }
-        if (menuId == 2)
-        {
-            practiceSplash.SetActive(true);
+            duelTitle.SetActive(true);
+            partySplash.SetActive(false);
         }
         if (menuId == 3)
         {
