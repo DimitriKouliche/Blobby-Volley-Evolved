@@ -84679,6 +84679,7 @@ MonoBehaviour:
   partySplash: {fileID: 1521471777}
   duelTitle: {fileID: 553057555}
   partyTitle: {fileID: 143668328}
+  soloTitle: {fileID: 822974239}
   keyboardControls: {fileID: 757813941}
   gamepadControls: {fileID: 771826305}
   soundMenu: {fileID: 1080067681}
