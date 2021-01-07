@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -228,8 +228,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69498144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -0.85, z: 0}
-  m_LocalScale: {x: -1.5, y: 1.5, z: 0.8403361}
+  m_LocalPosition: {x: -8.283688, y: -0.84999985, z: 0}
+  m_LocalScale: {x: -1.4999999, y: 1.4999999, z: 0.84033614}
   m_Children: []
   m_Father: {fileID: 757813942}
   m_RootOrder: 0
@@ -15694,7 +15694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757813941}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.96, y: 4.23, z: 0}
+  m_LocalPosition: {x: 17.11, y: 4.23, z: 0}
   m_LocalScale: {x: 1.3611064, y: 1.3611064, z: 0.9527744}
   m_Children:
   - {fileID: 69498145}
@@ -15740,7 +15740,7 @@ SpriteRenderer:
   m_SortingLayerID: 277677237
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04bb7ce23691ccb4c8d0da564f47e704, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5e649d8f30bb8344b0834bc325ed6a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
