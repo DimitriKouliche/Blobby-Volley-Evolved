@@ -1149,6 +1149,7 @@ MonoBehaviour:
   isStarting: 0
   isPlaying: 1
   isOnline: 0
+  capture: 0
   maxPlayers: 2
   winningScore: 15
   teamBallTouches: 0000000000000000
@@ -5558,7 +5559,7 @@ PrefabInstance:
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}
       propertyPath: smashDownwardForce
-      value: 30000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 8399981740947801551, guid: 6af61e9e66ace66469e9cd06af4c42e5,
         type: 3}

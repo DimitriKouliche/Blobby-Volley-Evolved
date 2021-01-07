@@ -38419,10 +38419,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballIndicator: {fileID: 0}
   gameLogics: {fileID: 0}
-  dashUpwardForce: 12000
-  bumpUpwardForce: 10000
+  dashUpwardForce: 10000
+  bumpUpwardForce: 8000
   serviceForce: 3000
-  smashDownwardForce: 15000
+  smashDownwardForce: 12000
   service: 1
   ballHitClips:
   - {fileID: 8300000, guid: 69c44dff64830ac44b2d05bff5f2604c, type: 3}
