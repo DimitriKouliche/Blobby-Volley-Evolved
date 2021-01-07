@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Steamworks;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
@@ -79,11 +78,6 @@ public class BallLogics : MonoBehaviour
             FindChild(gameObject, "ParticleStars").transform.position = transform.position;
             if (intensity > chromaticAberrationThreshold)
             {
-                if (SteamManager.Initialized)
-                {
-                    SteamUserStats.SetAchievement("RAINBOW");
-                    SteamUserStats.StoreStats();
-                }
                 GameObject.Find("Global Volume").GetComponent<ChromaticAberrationEffect>().IntenseEffect();
                 BallHardHitSound();
             }
@@ -200,15 +194,7 @@ public class BallLogics : MonoBehaviour
 
     void BallAchievement()
     {
-        if (timeBetweenCollisions > 5.9f)
-        {
-            if (SteamManager.Initialized)
-            {
-                SteamUserStats.SetAchievement("BALL");
-                SteamUserStats.StoreStats();
-            }
-        }
-        timeBetweenCollisions = 0;
+
     }
 
     private void Start()
@@ -377,14 +363,6 @@ public class BallLogics : MonoBehaviour
         yield return new WaitForSeconds(1);
         GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().VictoryMusic();
         yield return new WaitForSeconds(300);
-        if(gameOver.activeSelf)
-        {
-            if (SteamManager.Initialized)
-            {
-                SteamUserStats.SetAchievement("JANITOR");
-                SteamUserStats.StoreStats();
-            }
-        }
     }
 
     IEnumerator SmashFreeze(float duration, GameObject smash)

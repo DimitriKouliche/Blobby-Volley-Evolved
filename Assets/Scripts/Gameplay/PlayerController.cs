@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO.IsolatedStorage;
-using Steamworks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -229,15 +228,6 @@ public class PlayerController : MonoBehaviour
 
     void SkillAchievement()
     {
-        if (PlayerPrefs.GetInt("hasSmashed", 0) == 1 && PlayerPrefs.GetInt("hasBumped", 0) == 1 &&
-            PlayerPrefs.GetInt("hasJumped", 0) == 1 && PlayerPrefs.GetInt("hasDashed", 0) == 1)
-        {
-            if (SteamManager.Initialized)
-            {
-                SteamUserStats.SetAchievement("SKILLED");
-                SteamUserStats.StoreStats();
-            }
-        }
     }
 
     public void CancelCharge()

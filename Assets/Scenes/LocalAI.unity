@@ -1070,7 +1070,7 @@ MonoBehaviour:
   isOnline: 0
   capture: 0
   maxPlayers: 1
-  winningScore: 15
+  winningScore: 5
   teamBallTouches: 0000000000000000
 --- !u!4 &236572991
 Transform:
