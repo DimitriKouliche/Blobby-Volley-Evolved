@@ -122,9 +122,64 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Arrows2",
+                    "id": "225cda4a-f436-4638-845a-9eb804e8bdcc",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "a3eea653-d9a9-4c78-a851-e6a49d785246",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "8f38a0d3-89d7-4a19-b490-9d03e6daa8d5",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "d08a9de4-e27d-46fe-bf49-23bf4170ed7e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "5e8d78d2-82dd-4be9-985e-c8efdb4311f2",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "3e191f9f-11e5-4ab8-be35-ab9c0e385c94",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -159,6 +214,28 @@
                     "id": "a9f8d7cf-78ae-463b-8401-d7929f8835bc",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb6c3f29-a2ce-4caf-bbb3-d075fe15cced",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c069059-df2f-4d4f-85a5-b2a7ebedf989",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
@@ -223,7 +300,7 @@
                 {
                     "name": "",
                     "id": "eae7aaf6-2e3b-4910-a2b7-6357a920fba5",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -278,18 +355,7 @@
                 {
                     "name": "",
                     "id": "6ac522e1-8fea-476e-8a1b-bcbd7552be1c",
-                    "path": "<Keyboard>/leftAlt",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Bump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5ea3390d-35f2-4bf8-9f39-cdc32a004f9d",
-                    "path": "<Keyboard>/x",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
