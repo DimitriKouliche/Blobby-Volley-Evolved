@@ -227,46 +227,9 @@ public class GameLogics : MonoBehaviour
 
     public void ChangeBackground()
     {
-        if ((blob1Score < winningScore/2 && blob2Score < winningScore/2) || backgroundHasChanged)
-        {
-            return;
-        }
-        int i = 0;
-        Transform[] childs = new Transform[50];
-        Transform alternativeBackground = FindChild(FindChild(level, "Background"), "BackgroundAlt").transform;
-        foreach (Transform child in alternativeBackground)
-        {
-
-            childs[i] = child;
-            i++;
-        }
-        int randomBackground = UnityEngine.Random.Range(0, i);
-        PlayerPrefs.SetInt("Background" + randomBackground, 1);
-        bool sightseer = true;
-        for (int j = 0; j < i; j++)
-        {
-            if (PlayerPrefs.GetInt("Background" + j, 0) == 0)
-            {
-                sightseer = false;
-                break;
-            }
-        }
-        childs[randomBackground].gameObject.SetActive(true);
-        StartCoroutine(FadeBackground());
-        backgroundHasChanged = true;
+        return;
     }
 
-    IEnumerator FadeBackground()
-    {
-        Material mat = FindChild(level, "Background").GetComponent<SpriteRenderer>().material;
-        float t = 0.0f;
-        while (t < 2f)
-        {
-            mat.SetFloat("_Fade", Mathf.Lerp(1, 0, t / 2));
-            t += Time.deltaTime;
-            yield return null;
-        }
-    }
 
     public void RestartGame()
     {

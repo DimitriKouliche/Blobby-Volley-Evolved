@@ -58,10 +58,6 @@ public class PauseMenuController : MonoBehaviour
                     gameLogics.GetComponent<GameLogics>().RestartGame();
                     Time.timeScale = 1.2f;
                     break;
-                case 4:
-                    Time.timeScale = 1.2f;
-                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-                    break;
             }
         };
 
@@ -157,7 +153,7 @@ public class PauseMenuController : MonoBehaviour
             GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             return;
         }
-        if (menuId >= 4)
+        if (menuId >= 3)
         {
             return;
         }

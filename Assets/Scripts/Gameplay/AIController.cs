@@ -105,7 +105,7 @@ public class AIController : MonoBehaviour
         // Fast falling
         if (moveDirectionVector.y < -0.7 && !isGrounded && !isSmashing)
         {
-            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.2f);
+            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y - 0.3f);
         }
 
         if(ball == null || ball.activeSelf == false)
@@ -205,10 +205,10 @@ public class AIController : MonoBehaviour
         {
             moveDirection = 1f;
         }
-        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x - transform.position.x) < 2.8f  && ball.transform.position.x < transform.position.x + 0.5f
+        if (transform.position.y > -2 && Math.Abs(ball.transform.position.x - transform.position.x) < 3f  && ball.transform.position.x < transform.position.x + 0.6f
             && Math.Abs(ball.transform.position.y - transform.position.y) < 1.5f && gameLogics.GetComponent<GameLogics>().teamBallTouches[1] < 3 && !isSmashing 
             && ball.transform.position.x < 7 && ball.transform.position.y > -2.7 + transform.position.x / 10 && 
-            ((blob1.transform.position.x + transform.position.x > 1.5f || transform.position.y - 0.1f > blob1.transform.position.y && !blob1.GetComponent<PlayerController>().isSmashing)
+            ((blob1.transform.position.x + transform.position.x > 1.8f || transform.position.y - 0.2f > blob1.transform.position.y && !blob1.GetComponent<PlayerController>().isSmashing)
             || (blob1.transform.position.x + transform.position.x < 3f && blob1.GetComponent<PlayerController>().isSmashing)))
         {
             playerSounds.SmashSound();
