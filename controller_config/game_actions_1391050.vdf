@@ -1,0 +1,47 @@
+"In Game Actions"
+{
+    "actions"
+    {
+        "GameControls"
+        {
+            "title"                 "#Set_GameControls"
+            "Button"
+            {
+                "Action_Jump"       "#Action_Jump"
+                "Action_Dash"       "#Action_Dash"
+                "Action_Bump"       "#Action_Bump"
+                "Action_Smash"      "#Action_Smash"
+                "Action_Up"         "#Action_Up"
+                "Action_Down"       "#Action_Down"
+                "Action_Left"       "#Action_Left"
+                "Action_Right"      "#Action_Right"
+                "Action_Pause"      "#Action_Pause"
+            }
+            "StickPadGyro"
+            {
+                "Move"
+                {
+                    "title"         "#Action_Move"
+                    "input_mode"    "joystick_move"
+                }
+            }
+        }
+    }
+    "localization"
+    {
+        "english"
+        {
+           "Set_GameControls"       "General Controls"
+           "Action_Move"            "Move"
+           "Action_Jump"            "Jump"
+           "Action_Dash"            "Dash"
+           "Action_Bump"            "Bump"
+           "Action_Smash"           "Smash"
+           "Action_Up"              "Up"
+           "Action_Down"            "Down"
+           "Action_Left"            "Left"
+           "Action_Right"           "Right"
+           "Action_Pause"           "Pause"
+        }
+    }
+}
