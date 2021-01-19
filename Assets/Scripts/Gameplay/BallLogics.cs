@@ -233,7 +233,7 @@ public class BallLogics : MonoBehaviour
         particles.startColor = new Color(1, 1, 1, opacity);
         if (ballIndicator!= null && ballIndicator.activeSelf)
         {
-            ballIndicator.transform.position = new Vector3(transform.position.x, 6.5f, -2);
+            ballIndicator.transform.position = new Vector3(transform.position.x, 8f, -2);
         }
     }
 
@@ -343,7 +343,7 @@ public class BallLogics : MonoBehaviour
         float t = 0.0f;
         while (t < duration)
         {
-            Camera.main.transform.position = new Vector3(Mathf.Lerp(originX, targetX, t / duration), 0, -10);
+            Camera.main.transform.position = new Vector3(Mathf.Lerp(originX, targetX, t / duration), Camera.main.transform.position.y, -10);
             t += Time.deltaTime;
             yield return null;
         }
