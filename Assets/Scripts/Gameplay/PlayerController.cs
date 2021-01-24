@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
+            gameLogics.GetComponent<GameLogics>().isPaused = true;
             Time.timeScale = 0;
             FindChild(GameObject.Find("UI"), "MenuContent").GetComponent<PauseMenuController>().playerInput = playerInput;
             FindChild(GameObject.Find("UI"), "MenuContent").SetActive(true);

@@ -32,6 +32,7 @@ public class GameLogics : MonoBehaviour
     public GameObject startAnimation;
     public GameObject UISound;
     public GameObject musicMixerPrefab;
+    public bool isPaused = false;
     public bool isStarting = false;
     public bool isPlaying = false;
     public bool isOnline = true;

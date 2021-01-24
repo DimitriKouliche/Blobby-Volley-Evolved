@@ -50,15 +50,18 @@ public class PauseMenuController : MonoBehaviour
             switch (menuId)
             {
                 case 0:
+                    gameLogics.GetComponent<GameLogics>().isPaused = false;
                     Time.timeScale = 1.2f;
                     gameObject.SetActive(false);
                     break;
                 case 1:
+                    gameLogics.GetComponent<GameLogics>().isPaused = false;
                     gameObject.SetActive(false);
                     gameLogics.GetComponent<GameLogics>().RestartGame();
                     Time.timeScale = 1.2f;
                     break;
                 case 4:
+                    gameLogics.GetComponent<GameLogics>().isPaused = false;
                     Time.timeScale = 1.2f;
                     SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
                     break;

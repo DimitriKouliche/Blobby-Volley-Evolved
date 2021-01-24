@@ -811,6 +811,7 @@ MonoBehaviour:
   UISound: {fileID: 7286459353985764521, guid: 299d9ed39d82e18479a10ec2c03560a7, type: 3}
   musicMixerPrefab: {fileID: 8284654640165492068, guid: e4caa76954a3e194c985652420a9548c,
     type: 3}
+  isPaused: 0
   isStarting: 0
   isPlaying: 1
   isOnline: 0

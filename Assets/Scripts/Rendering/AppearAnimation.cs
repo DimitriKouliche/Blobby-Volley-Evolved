@@ -36,12 +36,12 @@ public class AppearAnimation : MonoBehaviour
         PocSound();
         while (t < 0.2f)
         {
-            Vector3 position = Vector3.Lerp(new Vector3(-1.8f, 9.5f, -0.5f), new Vector3(0.6f, 0.1f, -0.5f), t * 5);
+            Vector3 position = Vector3.Lerp(new Vector3(-1.8f, 9.5f, -0.5f), new Vector3(0.74f, -0.44f, -0.5f), t * 5);
             FindChild(gameObject, "FondSelection1").transform.localPosition = position;
             t += Time.deltaTime;
             yield return null;
         }
-        FindChild(gameObject, "FondSelection1").transform.localPosition = new Vector3(0.6f, 0.1f, -0.5f);
+        FindChild(gameObject, "FondSelection1").transform.localPosition = new Vector3(0.74f, -0.44f, -0.5f);
         var objects = GameObject.FindGameObjectsWithTag("MenuText");
         t = 0.0f;
         BlancSound();
@@ -132,12 +132,12 @@ public class AppearAnimation : MonoBehaviour
         PocSound();
         while (t < 0.2f)
         {
-            Vector3 position = Vector3.Lerp(new Vector3(2.39f, 9.89f, -0.5f), new Vector3(4.69f, 0.87f, -0.5f), t * 5);
+            Vector3 position = Vector3.Lerp(new Vector3(2.39f, 9.89f, -0.5f), new Vector3(4.79f, 0.45f, -0.5f), t * 5);
             FindChild(gameObject, "FondSelection4").transform.localPosition = position;
             t += Time.deltaTime;
             yield return null;
         }
-        FindChild(gameObject, "FondSelection4").transform.localPosition = new Vector3(4.69f, 0.87f, -0.5f);
+        FindChild(gameObject, "FondSelection4").transform.localPosition = new Vector3(4.79f, 0.45f, -0.5f);
         var objects = GameObject.FindGameObjectsWithTag("MenuText");
         t = 0.0f;
         BlancSound();
