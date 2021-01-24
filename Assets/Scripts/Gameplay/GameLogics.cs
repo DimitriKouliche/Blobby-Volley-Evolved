@@ -788,6 +788,7 @@ public class GameLogics : MonoBehaviour
 
     void BeginGame()
     {
+        isPaused = false;
         Time.timeScale = 1.2f;
         ResetBlobCharge();
         ToggleMovement(false);
@@ -850,6 +851,7 @@ public class GameLogics : MonoBehaviour
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1.2f;
+        isPaused = false;
         ball.SetActive(false);
         FindChild(gameObject, "Ball Indicator").SetActive(false);
         gameOver.SetActive(true);
