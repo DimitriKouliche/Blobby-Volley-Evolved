@@ -27,6 +27,7 @@ public class UIController : MonoBehaviour
     bool isHoveringReady = false;
     bool playerReady = false;
     bool active = true;
+    private IEnumerator buttonBCoroutine;
 
     // Use this for initialization
     void Start()
@@ -98,6 +99,41 @@ public class UIController : MonoBehaviour
             }
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         };
+
+        playerInput.actions["MainMenu"].canceled += ctx =>
+        {
+            if (this == null)
+            {
+                return;
+            }
+            StopCoroutine(buttonBCoroutine);
+            Material mat = FindChild(GameObject.Find("SelectionMenu"), "ABoutonRetour").GetComponent<SpriteRenderer>().material;
+            mat.SetFloat("_Slider", 0);
+        };
+
+        playerInput.actions["MainMenu"].started += ctx =>
+        {
+            if (this == null)
+            {
+                return;
+            }
+            buttonBCoroutine = ButtonBSlideUp();
+            StartCoroutine(buttonBCoroutine);
+        };
+    }
+
+    IEnumerator ButtonBSlideUp()
+    {
+        float t;
+        Material mat = FindChild(GameObject.Find("SelectionMenu"), "ABoutonRetour").GetComponent<SpriteRenderer>().material;
+        t = 0.0f;
+        while (t < 0.4f)
+        {
+            mat.SetFloat("_Slider",  Mathf.Lerp(0, 1, t * 2.5f));
+            t += Time.deltaTime;
+            yield return null;
+        }
+        mat.SetFloat("_Slider", 1);
     }
 
     void Update()
