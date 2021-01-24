@@ -501,7 +501,7 @@ public class GameLogics : MonoBehaviour
                     player1Device = control.device;
                     if(maxPlayers == 1)
                     {
-                        InstantiateSelectionMenu(1, player1Device, new Vector3(0, 0, 0), blob1);
+                        InstantiateSelectionMenu(1, player1Device, new Vector3(0.3f, 0, 0), blob1);
                     }
                     if(maxPlayers == 2)
                     {
