@@ -307,6 +307,7 @@ public class GameLogics : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+        mat.SetFloat("_Fade", 0);
     }
 
     public void RestartGame()
