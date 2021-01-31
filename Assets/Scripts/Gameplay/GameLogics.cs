@@ -493,7 +493,7 @@ public class GameLogics : MonoBehaviour
                 {
                     return;
                 }
-                if (control.name == "buttonEast" || control.name == "escape")
+                if ((control.name == "buttonEast" || control.name == "escape") && nbPlayer == 0)
                 {
                     SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
                 }

@@ -70,6 +70,7 @@ public class UIController : MonoBehaviour
 
         cancelAction.started += ctx =>
         {
+            Debug.Log("test");
             if (this == null || isSelectingShape)
             {
                 return;

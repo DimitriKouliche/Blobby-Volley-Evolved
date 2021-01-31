@@ -248,6 +248,10 @@ public class PlayerController : MonoBehaviour
 
     public void CancelCharge()
     {
+        if(this == null)
+        {
+            return;
+        }
         jumpSpeed = jumpHeight / 2.5f;
         chargingJump = false;
         FindChild(FindChild(FindChild(gameObject, "SpriteBlob"), "EyesWhite"), "eyes").GetComponent<SpriteRenderer>().color = Color.black;
