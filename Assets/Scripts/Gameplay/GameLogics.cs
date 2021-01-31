@@ -297,6 +297,11 @@ public class GameLogics : MonoBehaviour
         backgroundHasChanged = true;
     }
 
+    public bool CanPauseGame()
+    {
+        return ! ball.GetComponent<BallLogics>().isFreezed;
+    }
+
     IEnumerator FadeBackground()
     {
         Material mat = FindChild(level, "Background").GetComponent<SpriteRenderer>().material;
@@ -453,6 +458,17 @@ public class GameLogics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InputSystem.onDeviceChange +=
+        (device, change) =>
+        {
+            switch (change)
+            {
+                case InputDeviceChange.Removed:
+                    blob1.GetComponent<PlayerController>().PauseGame();
+                    break;
+            }
+        };
+
         GameObject uiSound = GameObject.Find("UISound(Clone)");
         if (uiSound == null)
         {

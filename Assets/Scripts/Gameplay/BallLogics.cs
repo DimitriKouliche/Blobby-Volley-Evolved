@@ -14,6 +14,7 @@ public class BallLogics : MonoBehaviour
     public float serviceForce = 2000;
     public float smashDownwardForce = 7000;
     public bool service = true;
+    public bool isFreezed = false;
     public AudioClip[] ballHitClips;
     [Range(0f, 5f)]
     public float ballHitVolume = 1f;
@@ -389,6 +390,7 @@ public class BallLogics : MonoBehaviour
 
     IEnumerator SmashFreeze(float duration, GameObject smash)
     {
+        isFreezed = true;
         Time.timeScale = 0.0001f;
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(true);
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrameWhite").SetActive(true);
@@ -400,6 +402,7 @@ public class BallLogics : MonoBehaviour
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrame").SetActive(false);
         FindChild(smash.transform.parent.gameObject, "SmashFreezeFrameWhite").SetActive(false);
         Time.timeScale = 1.2f;
+        isFreezed = false;
         Camera.main.GetComponent<CameraShake>().Shake();
         StartCoroutine(SmashParticleTrail(0.7f));
     }
