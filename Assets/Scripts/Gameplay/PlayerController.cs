@@ -60,6 +60,18 @@ public class PlayerController : MonoBehaviour
         return (gameLogics == null || gameLogics.GetComponent<GameLogics>().isPlaying) && !FindChild(GameObject.Find("UI"), "MenuContent").activeSelf;
     }
 
+    public void PauseGame()
+    {
+        if (isSmashing || !IsPlaying() || this == null || !gameLogics.GetComponent<GameLogics>().CanPauseGame())
+        {
+            return;
+        }
+        gameLogics.GetComponent<GameLogics>().isPaused = true;
+        Time.timeScale = 0;
+        FindChild(GameObject.Find("UI"), "MenuContent").GetComponent<PauseMenuController>().playerInput = playerInput;
+        FindChild(GameObject.Find("UI"), "MenuContent").SetActive(true);
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -81,14 +93,7 @@ public class PlayerController : MonoBehaviour
 
         startAction.started += ctx =>
         {
-            if (isSmashing || !IsPlaying() || this == null)
-            {
-                return;
-            }
-            gameLogics.GetComponent<GameLogics>().isPaused = true;
-            Time.timeScale = 0;
-            FindChild(GameObject.Find("UI"), "MenuContent").GetComponent<PauseMenuController>().playerInput = playerInput;
-            FindChild(GameObject.Find("UI"), "MenuContent").SetActive(true);
+            PauseGame();
         };
 
 
