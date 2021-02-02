@@ -843,6 +843,17 @@ public class GameLogics : MonoBehaviour
 
     IEnumerator PlayerWinsCorountine(string player)
     {
+        blob1.transform.rotation = Quaternion.Euler(0, 0, 0);
+        FindChild(blob1, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 0);
+        blob2.transform.rotation = Quaternion.Euler(0, 0, 0);
+        FindChild(blob2, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (maxPlayers == 4)
+        {
+            FindChild(blob3, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 0);
+            blob3.transform.rotation = Quaternion.Euler(0, 0, 0);
+            FindChild(blob4, "SpriteBlob").transform.rotation = Quaternion.Euler(0, 0, 0);
+            blob4.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
         yield return new WaitForSeconds(3);
         ResetPositions(player);
         EraseMessage();

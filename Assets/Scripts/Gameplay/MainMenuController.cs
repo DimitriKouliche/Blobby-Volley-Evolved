@@ -96,7 +96,10 @@ public class MainMenuController : MonoBehaviour
                     PlayerPrefs.SetInt("numberPlayers", 1);
                     StartCoroutine(ConfirmAnimation("SplashScreen"));
                     break;
-                case 6:
+                case 3:
+                    Application.OpenURL("https://steamcommunity.com/sharedfiles/filedetails/?id=2381185635");
+                    break;
+                case 7:
                     Application.Quit();
                     break;
             }
@@ -241,16 +244,16 @@ public class MainMenuController : MonoBehaviour
         {
             soloTitle.SetActive(true);
         }
-        if (menuId == 3)
+        if (menuId == 4)
         {
             isOnControl = true;
         }
-        if (menuId == 4)
+        if (menuId == 5)
         {
             isOnSound = true;
             soundManager.SetActive(true);
         }
-        if (menuId == 5)
+        if (menuId == 6)
         {
             credits.SetActive(true);
         }
@@ -282,7 +285,7 @@ public class MainMenuController : MonoBehaviour
             GameObject.Find("Music(Clone)").GetComponent<MusicMixer>().UpdateVolume();
             return;
         }
-        if (menuId >= 6)
+        if (menuId > 6)
         {
             return;
         }
