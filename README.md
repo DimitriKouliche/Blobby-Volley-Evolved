@@ -1,13 +1,13 @@
 <!-- PROJECT LOGO -->
 <br />
-<p align="center">
+<p>
   <a href="https://store.steampowered.com/app/1391050/Kraken_Smash_Volleyball/">
-    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1391050/header.jpg" alt="Logo" width="80" height="80">
+    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1391050/header.jpg" alt="Logo">
   </a>
 
-  <h3 align="center">Kraken Smash: Valleyball</h3>
+  <h3>Kraken Smash: Valleyball</h3>
 
-  <p align="center">
+  <p>
 This is the source code of Kraken Smash, a game where squids play volleyball.
   </p>
 </p>
